@@ -15,14 +15,16 @@ struct VERTEX
 	float  dep : TEXCOORD1;
 };
 
-VERTEX main(ATTRIBUTE input)
+VERTEX main(ATTRIBUTE IN)
 {
-	VERTEX output;
+	VERTEX OUT;
+	float3 normal = mul(gm_Matrices[MATRIX_WORLD_VIEW], float4(IN.nor,0));
+	float l = 1.;//max(dot(normal,float3(1,2,2)/3.)*.5+.5,0.);
 	
-    output.pos = mul(gm_Matrices[MATRIX_WORLD_VIEW_PROJECTION], float4(input.pos,1));
-    output.col = float4(1,1,1,1);//input.col;
-	output.nor = mul(gm_Matrices[MATRIX_WORLD_VIEW], float4(input.nor,0));
-    output.tex = input.tex;
-	output.dep = mul(gm_Matrices[MATRIX_WORLD_VIEW], float4(input.pos,1)).z;
-    return output;
+    OUT.pos = mul(gm_Matrices[MATRIX_WORLD_VIEW_PROJECTION], float4(IN.pos,1));
+    OUT.col = float4(l,l,l,1);//IN.col;
+	OUT.nor = normal;
+    OUT.tex = IN.tex;
+	OUT.dep = mul(gm_Matrices[MATRIX_WORLD_VIEW], float4(IN.pos,1)).z;
+    return OUT;
 }
