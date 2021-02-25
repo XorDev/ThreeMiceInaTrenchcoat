@@ -1,7 +1,7 @@
 struct VERTEX
 {
 	float4 pos : SV_POSITION;
-	float  dep : TEXCOORD1;
+	float  dep : TEXCOORD0;
 };
 
 struct PIXEL

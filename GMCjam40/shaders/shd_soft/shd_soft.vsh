@@ -1,4 +1,4 @@
-ruct ATTRIBUTE
+struct ATTRIBUTE
 {
 	float3 pos : POSITION;
 	float2 tex : TEXCOORD0;
