@@ -1,3 +1,6 @@
+Texture2D	 tdep : register(t1);
+SamplerState sdep : register(s1);
+
 struct VERTEX
 {
 	float4 pos : SV_POSITION;
@@ -17,8 +20,8 @@ struct PIXEL
 //Screen resolution
 #define RES float2(1366,768) 
 //#define RATIO RES.x/RES.y
-#define SAM 32.
-#define RAD 6.
+#define SAM 16.
+#define RAD 4.
 
 float unpack_depth(float4 samp)
 {
@@ -28,19 +31,20 @@ float unpack_depth(float4 samp)
 }
 float2 hash2(float2 p)
 {
-	return normalize(frac(cos(mul(p,float2x2(94.55,-69.38,-89.27,78.69)))*825.79)-.5);
+	return normalize(frac(cos(mul(p,float2x2(194.55,-269.38,-189.27,278.69)))*825.79)-.5);
 }
 
 PIXEL main(VERTEX IN) : SV_TARGET
 {
-    float4 depthRGBA = gm_BaseTextureObject.Sample(gm_BaseTexture,IN.tex);
+	float4 soft = 0.;//gm_BaseTextureObject.Sample(gm_BaseTexture,IN.tex);
+    float4 depthRGBA = tdep.Sample(sdep,IN.tex);
 	
 	float depth = unpack_depth(depthRGBA);
 	
 	float3 pos = float3(IN.tex-.5,1)*float3(RES.x/RES.y,1,1)*depth;
 	float o = 0.;
 	
-	float s = RAD*RES.x/SAM/depth;
+	float s = RAD/SAM;///depth*RES.x;
 	float2 r = hash2(IN.tex)*s;
 	float2x2 g = float2x2(.73736882209777832,-.67549037933349609,.67549037933349609,.73736882209777832);
 	
@@ -50,15 +54,16 @@ PIXEL main(VERTEX IN) : SV_TARGET
 		float2 u = IN.tex + r*i/RES;
 		float2 b = step(abs(u-.5),.5);
 		
-		float d = unpack_depth(gm_BaseTextureObject.Sample(gm_BaseTexture,u));
+		float d = unpack_depth(tdep.Sample(sdep,u));
 		float3 p = float3(u-.5,1)*float3(RES.x/RES.y,1,1)*d-pos;
 		float l = length(p);
 		
-		o += b.x*b.y*rsqrt(1.+l/RAD)*clamp(3.-l/RAD,0.,1.);
+		soft += gm_BaseTextureObject.Sample(gm_BaseTexture,u)*rsqrt(l/i);
 	}
 	
 	PIXEL OUT;
-	float occ = 1.-4.*o/SAM;
-	OUT.col = float4(occ,occ,occ,1);
+	//float occ = 1.-4.*o/SAM;
+	OUT.col = soft/soft.a;
+	//float4(occ,occ,occ,1);
     return OUT;
 }

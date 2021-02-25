@@ -1,5 +1,7 @@
-Texture2D	 tsha : register(t2);
-SamplerState ssha : register(s2);
+Texture2D	 tsha : register(t1);
+SamplerState ssha : register(s1);
+
+#define AMB float3(.1,.2,.3)
 
 struct VERTEX
 {
@@ -16,6 +18,7 @@ struct PIXEL
 	float4 col : COLOR0;
 	float4 dep : COLOR1;
 	float4 nor : COLOR2;
+	float4 buf : COLOR3;
 };
 
 //MIN is the z-near clipping distance.
@@ -51,13 +54,14 @@ PIXEL main(VERTEX IN) : SV_TARGET
 	float2 b = smoothstep(.5,.4,abs(u-.5));
 	float4 shadeRGBA = tsha.Sample(ssha,u);
 	float depth = unpack_depth(shadeRGBA)-IN.coo.z;
-	float3 c = lerp(1.,float3(.1,.2,.3),step(depth,-.5)*b.x*b.y);
-	sample.rgb *= c;
+	float3 c = lerp(1.,AMB,step(depth,-.1)*b.x*b.y);
+	//sample.rgb *= c;
 	//if (sample.a<0.5) discard;	
 	
 	PIXEL OUT;
-	OUT.col = IN.col  * sample;
+	OUT.col = IN.col*sample;
 	OUT.dep = pack_depth(IN.dep);
 	OUT.nor = float4(.5+.5*IN.nor,1);
+	OUT.buf = float4(c,1);
     return OUT;
 }

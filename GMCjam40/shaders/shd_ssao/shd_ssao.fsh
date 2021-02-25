@@ -31,7 +31,7 @@ float unpack_depth(float4 samp)
 }
 float2 hash2(float2 p)
 {
-	return normalize(frac(cos(mul(p,float2x2(94.55,-69.38,-89.27,78.69)))*825.79)-.5);
+	return normalize(frac(cos(mul(p,float2x2(194.55,-269.38,-189.27,278.69)))*825.79)-.5);
 }
 
 PIXEL main(VERTEX IN) : SV_TARGET

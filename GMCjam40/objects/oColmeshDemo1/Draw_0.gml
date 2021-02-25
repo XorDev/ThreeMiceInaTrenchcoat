@@ -8,7 +8,7 @@ gpu_set_cullmode(cull_noculling);
 //Draw the level
 
 deferred_surface();
-shadow_set(x*2-global.camX,y*2-global.camY,z*2-global.camZ,1,3,-5,5000);
+shadow_set(lerp(x,global.camX,-2),lerp(y,global.camY,-2),lerp(z,global.camZ,-2),1,-3,-5,5000);
 
 vertex_submit(modLevel, pr_trianglelist, sprite_get_texture(ImphenziaPalette01, 0));
 shadow_reset();
