@@ -44,7 +44,6 @@ function deferred_set()
 
 	camera_apply(view_camera[0]);
 	gpu_set_blendenable(0);
-	
 	var _uni,_tex;
 	_uni = shader_get_sampler_index(shd_deferred,"ssha");
 	_tex = surface_get_texture(global.surf_sha);

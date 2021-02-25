@@ -10,7 +10,7 @@ struct VERTEX
 	float3 nor : NORMAL;
 	float2 tex : TEXCOORD0;
 	float  dep : TEXCOORD1;
-	float3 coo : TEXCOORD4;
+	float4 coo : TEXCOORD2;
 };
 
 struct PIXEL
@@ -25,7 +25,7 @@ struct PIXEL
 #define MIN 1.
 //MIN is the z-far clipping distance.
 #define MAX 65025.
-#define RES float2(1024,1024)
+#define RES float2(2048,2048)
 
 float4 pack_depth(float z)
 {
@@ -45,16 +45,30 @@ float2 hash2(float2 p)
 {
 	return frac(cos(mul(p,float2x2(94.55,-69.38,-89.27,78.69)))*825.79)-.5;
 }
-
+float hard(float2 u,float d)
+{
+	float4 shadeRGBA = tsha.Sample(ssha,u);
+	return step(.1,d-unpack_depth(shadeRGBA));
+}
+float soft(float2 u,float d)
+{
+	float3 o = float3(1./RES,0.);
+	float2 f = floor(u*RES)/RES;
+	float2 s = frac(u*RES);
+	
+	float h1 = hard(f+o.zz,d);
+	float h2 = hard(f+o.xz,d);
+	float h3 = hard(f+o.zy,d);
+	float h4 = hard(f+o.xy,d);
+	return lerp(lerp(h1,h2,s.x),lerp(h3,h4,s.x),s.y);
+}
 PIXEL main(VERTEX IN) : SV_TARGET
 {
-    float4 sample = gm_BaseTextureObject.Sample(gm_BaseTexture,IN.tex);
-	float2 h = 0.;//hash2(IN.coo.xy);
-	float2 u = IN.coo.xy/IN.coo.z*float2(.5,-.5)+.5+h/RES;
+	float4 sample = gm_BaseTextureObject.Sample(gm_BaseTexture,IN.tex);
+	float2 u = IN.coo.xy/IN.coo.z*float2(.5,-.5)+.5;
 	float2 b = smoothstep(.5,.4,abs(u-.5));
-	float4 shadeRGBA = tsha.Sample(ssha,u);
-	float depth = unpack_depth(shadeRGBA)-IN.coo.z;
-	float3 c = lerp(1.,AMB,step(depth,-.1)*b.x*b.y);
+	
+	float3 c = lerp(1.,AMB,max(soft(u,IN.coo.z)*b.x*b.y,min(IN.coo.w+1.,1.)));
 	//sample.rgb *= c;
 	//if (sample.a<0.5) discard;	
 	

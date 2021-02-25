@@ -1,4 +1,4 @@
 ///@desc
 
 deferred_init();
-shadow_init(1024);
+shadow_init(2048);
