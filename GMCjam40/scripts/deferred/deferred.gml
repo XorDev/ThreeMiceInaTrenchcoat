@@ -48,7 +48,8 @@ function deferred_set()
 	_uni = shader_get_sampler_index(shd_deferred,"ssha");
 	_tex = surface_get_texture(global.surf_sha);
 	texture_set_stage(_uni,_tex);
-	shader_set_uniform_matrix_array(shader_get_uniform(shd_deferred,"view"),light_mat);
+	_uni = shader_get_uniform(shd_deferred,"light_mat");
+	shader_set_uniform_matrix_array(_uni,light_mat);
 
 }
 

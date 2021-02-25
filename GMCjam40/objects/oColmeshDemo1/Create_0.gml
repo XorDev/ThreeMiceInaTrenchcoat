@@ -1,11 +1,9 @@
 /// @description
 event_inherited();
 
-if !instance_exists(obj_deferred_control) instance_create_depth(0,0,0,obj_deferred_control);
+gpu_set_tex_mip_enable(1);
 
-global.demoText = "This demo shows how you can create a ColMesh from an OBJ file!"
-	+ "\nIt also shows how you can push the player out of the ColMesh,"
-	+ "\nand how you can use the collision system to collect coins";
+if !instance_exists(obj_deferred_control) instance_create_depth(0,0,0,obj_deferred_control);
 	
 //Load the level model to a vertex buffer
 var mbuffLevel = colmesh_load_obj_to_buffer("scenery.obj");//ColMesh Demo/Demo1Level.obj");
@@ -48,5 +46,5 @@ view_set_camera(0, camera_create());
 gpu_set_ztestenable(true);
 gpu_set_zwriteenable(true);
 camera_set_proj_mat(view_camera[0], matrix_build_projection_perspective_fov(-80, -window_get_width() / window_get_height(), 1, 32000));
-yaw = 90;
+yaw = 0;
 pitch = 20;

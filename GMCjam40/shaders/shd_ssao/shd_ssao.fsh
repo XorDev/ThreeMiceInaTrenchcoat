@@ -21,7 +21,8 @@ struct PIXEL
 #define RES float2(1366,768) 
 //#define RATIO RES.x/RES.y
 #define SAM 32.
-#define RAD 6.
+#define RAD 10.
+#define AMT 4.
 
 float unpack_depth(float4 samp)
 {
@@ -63,7 +64,7 @@ PIXEL main(VERTEX IN) : SV_TARGET
 	}
 	
 	PIXEL OUT;
-	float occ = 1.-4.*o/SAM;
+	float occ = 1.-AMT*o/SAM;
 	OUT.col = float4(occ,occ,occ,1);
     return OUT;
 }

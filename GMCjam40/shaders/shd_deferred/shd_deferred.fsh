@@ -1,7 +1,7 @@
 Texture2D	 tsha : register(t1);
 SamplerState ssha : register(s1);
 
-#define AMB float3(.1,.2,.3)
+#define AMB float3(.06,.12,.2)
 
 struct VERTEX
 {
@@ -68,7 +68,7 @@ PIXEL main(VERTEX IN) : SV_TARGET
 	float2 u = IN.coo.xy/IN.coo.z*float2(.5,-.5)+.5;
 	float2 b = smoothstep(.5,.4,abs(u-.5));
 	
-	float3 c = lerp(1.,AMB,max(soft(u,IN.coo.z)*b.x*b.y,min(IN.coo.w+1.,1.)));
+	float3 c = lerp(1.,AMB,max(soft(u,IN.coo.z)*b.x*b.y,IN.coo.w));
 	//sample.rgb *= c;
 	//if (sample.a<0.5) discard;	
 	
