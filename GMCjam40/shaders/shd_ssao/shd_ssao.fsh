@@ -53,7 +53,7 @@ PIXEL main(VERTEX IN) : SV_TARGET
 	{
 		r = mul(r,g);
 		float2 u = IN.tex + r*i/RES;
-		float2 b = step(abs(u-.5),float2(.5,.5));
+		float2 b = step(abs(u-.5),.5);
 		
 		float d = unpack_depth(gm_BaseTextureObject.Sample(gm_BaseTexture,u));
 		float3 p = float3(u-.5,1)*float3(RES.x/RES.y,1,1)*d-pos;

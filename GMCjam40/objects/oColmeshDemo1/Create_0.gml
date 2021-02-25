@@ -41,14 +41,6 @@ xup = 0;
 yup = 0;
 zup = 1;
 
-//Create a bunch of coins around the level
-repeat 30
-{
-	xx = random_range(-800, 800);	
-	yy = random_range(-800, 800);	
-	instance_create_depth(xx, yy, 0, oCoin);
-}
-
 //Enable 3D projection
 view_enabled = true;
 view_visible[0] = true;
