@@ -3,7 +3,7 @@
 fric = 1 - .4;
 spdX = (x - prevX) * fric;
 spdY = (y - prevY) * fric;
-spdZ = (z - prevZ) * (1 - 0.01);
+spdZ = (z - prevZ) * fric;//(1 - 0.01);
 prevX = x;
 prevY = y;
 prevZ = z;
@@ -12,6 +12,7 @@ prevZ = z;
 jump = keyboard_check_pressed(vk_space);
 var h = keyboard_check(ord("D")) - keyboard_check(ord("A"));
 var v = keyboard_check(ord("W")) - keyboard_check(ord("S"));
+var u = keyboard_check(ord("E")) - keyboard_check(ord("Q"));
 if (h != 0 && v != 0)
 {	//If walking diagonally, divide the input vector by its own length
 	var s = 1 / sqrt(2);
@@ -20,10 +21,11 @@ if (h != 0 && v != 0)
 }
 
 //Move
-acc = 5;
+acc = 1;//5
 x += spdX - acc * v;
 y += spdY - acc * h;
-z += spdZ - 1 + jump * ground * 15; //Apply gravity in z-direction
+z += spdZ - acc * u; //Apply gravity in z-direction
+//z += spdZ - 1 + jump * ground * 15
 
 //Cast a short-range ray from the previous position to the current position to avoid going through geometry
 if (sqr(x - prevX) + sqr(y - prevY) + sqr(z - prevZ) > radius * radius) //Only cast ray if there's a risk that we've gone through geometry
@@ -46,7 +48,7 @@ ground = false;
 fast = false;			//Fast collisions should usually not be used for important objects like the player
 executeColfunc = true;	//We want to execute the collision function of the coins
 col = levelColmesh.displaceCapsule(x, y, z, 0, 0, 1, radius, height, 40, fast, executeColfunc);
-if (col[6]) //If we're touching ground
+/*if (col[6]) //If we're touching ground
 {
 	x = col[0];
 	y = col[1];
@@ -68,7 +70,7 @@ if (z < -400)
 	prevX = x;
 	prevY = y;
 	prevZ = z;
-}
+}*/
 
 var d = 150;
 global.camX = x + d * dcos(yaw) * dcos(pitch);

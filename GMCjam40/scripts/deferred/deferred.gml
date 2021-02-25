@@ -1,3 +1,12 @@
+function deferred_init()
+{
+	global.screen_width = window_get_width();
+	global.screen_height = window_get_height();
+
+	global.surf_dif = -1;
+	global.surf_dep = -1;
+	global.surf_nor = -1;
+}
 function deferred_surface()
 {
 	if !surface_exists(global.surf_dif) global.surf_dif = surface_create(global.screen_width,global.screen_height);
@@ -33,6 +42,13 @@ function deferred_set()
 
 	camera_apply(view_camera[0]);
 	gpu_set_blendenable(0);
+	
+	var _uni,_tex;
+	_uni = shader_get_sampler_index(shd_deferred,"ssha");
+	_tex = surface_get_texture(global.surf_sha);
+	texture_set_stage(_uni,_tex);
+	shader_set_uniform_matrix_array(shader_get_uniform(shd_deferred,"view"),light_mat);
+
 }
 
 function deferred_reset()
@@ -49,10 +65,10 @@ function deferred_draw()
 	_uni = shader_get_sampler_index(shd_ssao,"snor");
 	_tex = surface_get_texture(global.surf_nor);
 	texture_set_stage(_uni,_tex);
-	//draw_surface_ext(global.surf_dep,0,0,1,1,0,-1,1);
+	draw_surface_ext(global.surf_dep,0,0,1,1,0,-1,1);
 	shader_reset();
 	
-	//gpu_set_blendmode_ext(bm_dest_color,bm_zero);
+	gpu_set_blendmode_ext(bm_dest_color,bm_zero);
 	draw_surface_ext(global.surf_dif,0,0,1,1,0,-1,1);
 	gpu_set_blendmode(bm_normal);
 	//draw_surface_ext(global.surf_sha,global.screen_width*.25,0,1/4,1/4,0,-1,1);

@@ -46,7 +46,7 @@ float2 hash2(float2 p)
 PIXEL main(VERTEX IN) : SV_TARGET
 {
     float4 sample = gm_BaseTextureObject.Sample(gm_BaseTexture,IN.tex);
-	float2 h = 0.;//hash2(IN.coo.xy)*2.;
+	float2 h = 0.;//hash2(IN.coo.xy);
 	float2 u = IN.coo.xy/IN.coo.z*float2(.5,-.5)+.5+h/RES;
 	float2 b = smoothstep(.5,.4,abs(u-.5));
 	float4 shadeRGBA = tsha.Sample(ssha,u);
