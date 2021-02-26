@@ -96,7 +96,9 @@ function deferred_draw()
 	//TODO: Multiple lights
 	draw_set_color(c_gray);
 	_uni = shader_get_uniform(shd_light,"lig_pos");
-	shader_set_uniform_f(_uni,0,0,300,200);
+	var _pos = [0,0,200];
+	//matrix_transform_vertex(matrix_get(matrix_view),global.camX,global.camY,global.camZ);
+	shader_set_uniform_f(_uni,_pos[0],_pos[1],_pos[2],300);
 	draw_circle(global.screen_width/2,global.screen_height/2,700,0);
 	shader_reset();
 	
