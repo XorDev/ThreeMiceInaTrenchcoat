@@ -50,8 +50,6 @@ function deferred_set()
 	texture_set_stage(_uni,_tex);
 	_uni = shader_get_uniform(shd_deferred,"lig_mat");
 	shader_set_uniform_matrix_array(_uni,global.lig_mat);
-	_uni = shader_get_uniform(shd_deferred,"lig_pos");
-	shader_set_uniform_f_array(_uni,global.lig_pos);
 
 }
 
@@ -64,6 +62,7 @@ function deferred_reset()
 
 function deferred_draw()
 {
+	//SSAO:
 	surface_set_target(global.surf_buf);
 	gpu_set_blendmode_ext(bm_dest_color,bm_zero);
 	shader_set(shd_ssao);
@@ -76,15 +75,37 @@ function deferred_draw()
 	gpu_set_blendmode(bm_normal);
 	surface_reset_target();
 	
+	//Soften shadows/occlusion.
 	shader_set(shd_soft);
 	_uni = shader_get_sampler_index(shd_soft,"sdep");
 	_tex = surface_get_texture(global.surf_dep);
+	texture_set_stage(_uni,_tex);
 	draw_surface_ext(global.surf_buf,0,0,1,1,0,-1,1);
 	shader_reset();
 	
+	//Draw point lights here.
+	gpu_set_blendmode(bm_add);
+	shader_set(shd_light);
+	_uni = shader_get_sampler_index(shd_light,"sdep");
+	_tex = surface_get_texture(global.surf_dep);
+	texture_set_stage(_uni,_tex);
+	_uni = shader_get_sampler_index(shd_light,"snor");
+	_tex = surface_get_texture(global.surf_nor);
+	texture_set_stage(_uni,_tex);
+	//TODO: Compute circle coordinates/radius
+	//TODO: Multiple lights
+	draw_set_color(c_gray);
+	_uni = shader_get_uniform(shd_light,"lig_pos");
+	shader_set_uniform_f(_uni,0,0,300,200);
+	draw_circle(global.screen_width/2,global.screen_height/2,700,0);
+	shader_reset();
+	
+	//Texture colors
 	gpu_set_blendmode_ext(bm_dest_color,bm_zero);
 	draw_surface_ext(global.surf_dif,0,0,1,1,0,-1,1);
 	gpu_set_blendmode(bm_normal);
+	
+	
 	
 	
 	//draw_surface_ext(global.surf_sha,global.screen_width*.25,0,1/4,1/4,0,-1,1);

@@ -6,8 +6,8 @@
 #define RES float2(1366,768) 
 //#define RATIO RES.x/RES.y
 #define SAM 32.
-#define RAD 8.
-#define AMT 4.
+#define RAD 5.
+#define AMT 3.
 
 Texture2D	 tnor : register(t1);
 SamplerState snor : register(s1);

@@ -21,7 +21,7 @@ struct PIXEL
 #define RES float2(1366,768) 
 //#define RATIO RES.x/RES.y
 #define SAM 16.
-#define RAD 4.
+#define RAD 6.
 
 float unpack_depth(float4 samp)
 {
@@ -44,7 +44,7 @@ PIXEL main(VERTEX IN) : SV_TARGET
 	float3 pos = float3(IN.tex-.5,1)*float3(RES.x/RES.y,1,1)*depth;
 	float o = 0.;
 	
-	float s = RAD/SAM;///depth*RES.x;
+	float s = RAD/SAM;//*depth/RES.x/32.;
 	float2 r = hash2(IN.tex)*s;
 	float2x2 g = float2x2(.73736882209777832,-.67549037933349609,.67549037933349609,.73736882209777832);
 	
@@ -62,8 +62,6 @@ PIXEL main(VERTEX IN) : SV_TARGET
 	}
 	
 	PIXEL OUT;
-	//float occ = 1.-4.*o/SAM;
 	OUT.col = soft/soft.a;
-	//float4(occ,occ,occ,1);
     return OUT;
 }

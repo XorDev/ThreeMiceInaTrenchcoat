@@ -8,12 +8,7 @@ gpu_set_cullmode(cull_counterclockwise);
 //Draw the level
 
 deferred_surface();
-light_set(lerp(x,global.camX,-2),lerp(y,global.camY,-2),lerp(z,global.camZ,-2),-.48,.36,-.8,5000);
-
-global.lig_pos[0] = lerp(x,global.camX,-1);
-global.lig_pos[1] = lerp(y,global.camY,-1);
-global.lig_pos[2] = z+20;
-global.lig_pos[3] = 200;
+light_set(lerp(x,global.camX,-2),lerp(y,global.camY,-2),lerp(z,global.camZ,-2),-.48,.36,-.8,1000);
 
 vertex_submit(modLevel, pr_trianglelist,-1);
 light_reset();

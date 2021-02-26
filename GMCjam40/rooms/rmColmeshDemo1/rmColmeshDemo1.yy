@@ -46,8 +46,8 @@
     "PhysicsWorldPixToMetres": 0.1,
   },
   "parent": {
-    "name": "Demo 1 - Simple mesh",
-    "path": "folders/ColMesh/Demo/Demo 1 - Simple mesh.yy",
+    "name": "Demo",
+    "path": "folders/ColMesh/Demo.yy",
   },
   "resourceVersion": "1.0",
   "name": "rmColmeshDemo1",
