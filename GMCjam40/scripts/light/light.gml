@@ -7,7 +7,7 @@ function light_init(res)
 function light_set(cx,cy,cz,dx,dy,dz,d,animated)
 {
 	var _shader = shd_shadow;
-	if (animated) _shader = shd_shadow_smf;
+	if (argument_count>6 && animated) _shader = shd_shadow_smf;
 	if !surface_exists(global.surf_sha) global.surf_sha = surface_create(global.shadow_res,  global.shadow_res);
 	
 	surface_set_target(global.surf_sha);

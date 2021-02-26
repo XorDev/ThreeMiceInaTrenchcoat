@@ -26,8 +26,8 @@ float3 anim_transform(float3 v, float4 b, float3 t)
 
 VERTEX main(ATTRIBUTE IN)
 {
-	int4 bone = int4(IN.col0 * 510.);
-	float4 weight = IN.col1;
+	int4 bone = int4(IN.col1 * 510.);
+	float4 weight = IN.col2;
 	
 	float4 blendReal, blendDual;
 	float3 blendTranslation;

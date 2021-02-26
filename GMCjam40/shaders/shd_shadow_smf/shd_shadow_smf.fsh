@@ -1,3 +1,8 @@
+//MIN is the z-near clipping distance.
+#define MIN 1.
+//MIN is the z-far clipping distance.
+#define MAX 65025.
+
 struct VERTEX
 {
 	float4 pos : SV_POSITION;
@@ -8,11 +13,6 @@ struct PIXEL
 {
 	float4 col : COLOR0;
 };
-
-//MIN is the z-near clipping distance.
-#define MIN 1.
-//MIN is the z-far clipping distance.
-#define MAX 65025.
 
 float4 pack_depth(float z)
 {
