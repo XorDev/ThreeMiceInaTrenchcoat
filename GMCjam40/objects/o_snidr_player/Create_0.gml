@@ -3,12 +3,7 @@
 x = 0;
 y = 0;
 z = 300;
-radius = 15;
-height = 0;
-prevX = x;
-prevY = y;
-prevZ = z;
-ground = false;
+radius = 10;
 
 trenchcoat = false;
 trenchcoatTimer = 0;
@@ -22,7 +17,7 @@ function mouse(_x, _y, _z, _parent) constructor
 	prevX = x;
 	prevY = y;
 	prevZ = z;
-	radius = 16;
+	radius = 10;
 	height = 0;
 	ground = false;
 	jumpLag = 4;
@@ -47,15 +42,14 @@ function mouse(_x, _y, _z, _parent) constructor
 	{
 		//This is a follower mouse
 		mouseIndex = parent.mouseIndex + 1;
-		radius = 10;
+		radius = 9;
 	}
 	if (mouseIndex == 0)
 	{
 		trenchcoatInst = new smf_instance(global.modTrenchcoat);
 		trenchcoatInst.play("Idle", .1, 1, true);
-		trenchcoatInst.scale = .37;
+		trenchcoatInst.scale = .33;
 	}
-	
 	
 	static step = function(trenchcoat)
 	{
@@ -136,8 +130,8 @@ function mouse(_x, _y, _z, _parent) constructor
 			
 			//Move
 			acc = 2;
-			x += spdX - acc * v;
-			y += spdY - acc * h;
+			x += spdX + acc * h;
+			y += spdY - acc * v;
 			z += spdZ - 1 + jump * ground * 12; //Apply gravity in z-direction
 			
 			//Put player in the middle of the map if he falls off
