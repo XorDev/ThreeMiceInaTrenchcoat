@@ -26,7 +26,6 @@
     {"isDnD":false,"eventNum":82,"eventType":9,"collisionObjectId":null,"parent":{"name":"oColmeshParent","path":"objects/oColmeshParent/oColmeshParent.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,"parent":{"name":"oColmeshParent","path":"objects/oColmeshParent/oColmeshParent.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":52,"eventType":9,"collisionObjectId":null,"parent":{"name":"oColmeshParent","path":"objects/oColmeshParent/oColmeshParent.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":64,"eventType":8,"collisionObjectId":null,"parent":{"name":"oColmeshParent","path":"objects/oColmeshParent/oColmeshParent.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":72,"eventType":9,"collisionObjectId":null,"parent":{"name":"oColmeshParent","path":"objects/oColmeshParent/oColmeshParent.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],

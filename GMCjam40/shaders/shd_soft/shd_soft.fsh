@@ -1,3 +1,14 @@
+//MIN is the z-near clipping distance.
+#define MIN 1.
+//MIN is the z-far clipping distance.
+#define MAX 65025.
+//Screen resolution
+//#define RATIO RES.x/RES.y
+#define SAM 16.
+#define RAD 4.
+
+uniform float2 RES;
+
 Texture2D	 tdep : register(t1);
 SamplerState sdep : register(s1);
 
@@ -13,15 +24,6 @@ struct PIXEL
 	float4 col : COLOR0;
 };
 
-//MIN is the z-near clipping distance.
-#define MIN 1.
-//MIN is the z-far clipping distance.
-#define MAX 65025.
-//Screen resolution
-#define RES float2(1366,768) 
-//#define RATIO RES.x/RES.y
-#define SAM 16.
-#define RAD 6.
 
 float unpack_depth(float4 samp)
 {

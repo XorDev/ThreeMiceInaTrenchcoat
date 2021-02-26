@@ -2,6 +2,7 @@
 if global.disableDraw{exit;}
 
 //Draw mice
+deferred_set(1);
 for (var i = 0; i < mice; i ++)
 {
 	mouseArray[i].draw();
@@ -11,3 +12,4 @@ for (var i = 0; i < mice; i ++)
 		break;
 	}
 }
+deferred_reset();

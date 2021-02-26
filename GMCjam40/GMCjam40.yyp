@@ -27,6 +27,7 @@
     {"id":{"name":"texpack_replace_sprite","path":"scripts/texpack_replace_sprite/texpack_replace_sprite.yy",},"order":6,},
     {"id":{"name":"mbuff_remove","path":"scripts/mbuff_remove/mbuff_remove.yy",},"order":11,},
     {"id":{"name":"texpack_load_mtl","path":"scripts/texpack_load_mtl/texpack_load_mtl.yy",},"order":3,},
+    {"id":{"name":"spr_brick","path":"sprites/spr_brick/spr_brick.yy",},"order":1,},
     {"id":{"name":"colmesh_math","path":"scripts/colmesh_math/colmesh_math.yy",},"order":1,},
     {"id":{"name":"sh_smf_animate","path":"shaders/sh_smf_animate/sh_smf_animate.yy",},"order":0,},
     {"id":{"name":"mbuff_load_obj_ext","path":"scripts/mbuff_load_obj_ext/mbuff_load_obj_ext.yy",},"order":7,},
@@ -55,7 +56,6 @@
     {"id":{"name":"_ds_list_get_array_index","path":"scripts/_ds_list_get_array_index/_ds_list_get_array_index.yy",},"order":2,},
     {"id":{"name":"smf_rig","path":"scripts/smf_rig/smf_rig.yy",},"order":1,},
     {"id":{"name":"texpack_remove_sprite","path":"scripts/texpack_remove_sprite/texpack_remove_sprite.yy",},"order":5,},
-    {"id":{"name":"spr_grid","path":"sprites/spr_grid/spr_grid.yy",},"order":0,},
     {"id":{"name":"_load_bmp","path":"scripts/_load_bmp/_load_bmp.yy",},"order":3,},
     {"id":{"name":"vbuff_remove","path":"scripts/vbuff_remove/vbuff_remove.yy",},"order":15,},
     {"id":{"name":"mbuff_combine_ext","path":"scripts/mbuff_combine_ext/mbuff_combine_ext.yy",},"order":2,},
@@ -123,8 +123,8 @@
   },
   "RoomOrderNodes": [
     {"roomId":{"name":"rmMovementTest","path":"rooms/rmMovementTest/rmMovementTest.yy",},},
-    {"roomId":{"name":"rm_crimson_splash","path":"rooms/rm_crimson_splash/rm_crimson_splash.yy",},},
     {"roomId":{"name":"rmColmeshDemo","path":"rooms/rmColmeshDemo/rmColmeshDemo.yy",},},
+    {"roomId":{"name":"rm_crimson_splash","path":"rooms/rm_crimson_splash/rm_crimson_splash.yy",},},
   ],
   "Folders": [
     {"folderPath":"folders/Sprites.yy","order":0,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},

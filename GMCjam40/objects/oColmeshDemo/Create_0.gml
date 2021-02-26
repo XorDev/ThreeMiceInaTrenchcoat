@@ -3,7 +3,7 @@ event_inherited();
 
 gpu_set_tex_mip_enable(1);
 
-if !instance_exists(obj_deferred_control) instance_create_depth(0,0,0,obj_deferred_control);
+
 	
 //Load the level model to a vertex buffer
 var mbuffLevel = colmesh_load_obj_to_buffer("scenery.obj");//ColMesh Demo/Demo1Level.obj");

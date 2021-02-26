@@ -8,7 +8,6 @@ function light_set(cx,cy,cz,dx,dy,dz,d)
 {
 	if !surface_exists(global.surf_sha) global.surf_sha = surface_create(global.shadow_res,  global.shadow_res);
 	
-	
 	surface_set_target(global.surf_sha);
 	gpu_set_blendenable(0);
 	draw_clear_alpha(0,0);
@@ -21,7 +20,7 @@ function light_set(cx,cy,cz,dx,dy,dz,d)
 	matrix_set(matrix_view,_lig_view);
 	global.lig_mat = matrix_multiply(_lig_view,_lig_proj);
 
-	shader_set(shd_shadow)
+	shader_set(shd_shadow);
 }
 
 function light_reset()

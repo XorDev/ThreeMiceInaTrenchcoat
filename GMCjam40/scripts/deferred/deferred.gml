@@ -2,6 +2,7 @@ function deferred_init()
 {
 	global.screen_width = window_get_width();
 	global.screen_height = window_get_height();
+	global.view_mat = matrix_get(matrix_view);
 
 	global.surf_dif = -1;
 	global.surf_dep = -1;
@@ -33,22 +34,27 @@ function deferred_surface()
 	
 }
 
-function deferred_set()
+function deferred_set(animated)
 {
-	shader_set(shd_deferred);
-	
+	var _shader = shd_deferred;
+	if (argument_count && animated) _shader = shd_deferred_smf;
+	shader_set(_shader);
+
 	surface_set_target_ext(0,global.surf_dif);
 	surface_set_target_ext(1,global.surf_dep);
 	surface_set_target_ext(2,global.surf_nor);
 	surface_set_target_ext(3,global.surf_buf);
 
 	camera_apply(view_camera[0]);
+	global.view_mat = matrix_get(matrix_view);
 	gpu_set_blendenable(0);
 	var _uni,_tex;
-	_uni = shader_get_sampler_index(shd_deferred,"ssha");
+	_uni = shader_get_uniform(shd_deferred,"SHA_RES");
+	shader_set_uniform_f(_uni,global.shadow_res,global.shadow_res);
+	_uni = shader_get_sampler_index(_shader,"ssha");
 	_tex = surface_get_texture(global.surf_sha);
 	texture_set_stage(_uni,_tex);
-	_uni = shader_get_uniform(shd_deferred,"lig_mat");
+	_uni = shader_get_uniform(_shader,"lig_mat");
 	shader_set_uniform_matrix_array(_uni,global.lig_mat);
 
 }
@@ -67,6 +73,8 @@ function deferred_draw()
 	gpu_set_blendmode_ext(bm_dest_color,bm_zero);
 	shader_set(shd_ssao);
 	var _uni,_tex;
+	_uni = shader_get_uniform(shd_ssao,"RES");
+	shader_set_uniform_f(_uni,global.screen_width,global.screen_height);
 	_uni = shader_get_sampler_index(shd_ssao,"snor");
 	_tex = surface_get_texture(global.surf_nor);
 	texture_set_stage(_uni,_tex);
@@ -77,6 +85,8 @@ function deferred_draw()
 	
 	//Soften shadows/occlusion.
 	shader_set(shd_soft);
+	_uni = shader_get_uniform(shd_soft,"RES");
+	shader_set_uniform_f(_uni,global.screen_width,global.screen_height);
 	_uni = shader_get_sampler_index(shd_soft,"sdep");
 	_tex = surface_get_texture(global.surf_dep);
 	texture_set_stage(_uni,_tex);
@@ -84,8 +94,10 @@ function deferred_draw()
 	shader_reset();
 	
 	//Draw point lights here.
-	gpu_set_blendmode(bm_add);
+	/*gpu_set_blendmode(bm_add);
 	shader_set(shd_light);
+	_uni = shader_get_uniform(shd_light,"RES");
+	shader_set_uniform_f(_uni,global.screen_width,global.screen_height);
 	_uni = shader_get_sampler_index(shd_light,"sdep");
 	_tex = surface_get_texture(global.surf_dep);
 	texture_set_stage(_uni,_tex);
@@ -96,11 +108,10 @@ function deferred_draw()
 	//TODO: Multiple lights
 	draw_set_color(c_gray);
 	_uni = shader_get_uniform(shd_light,"lig_pos");
-	var _pos = [0,0,200];
-	//matrix_transform_vertex(matrix_get(matrix_view),global.camX,global.camY,global.camZ);
+	var _pos = matrix_transform_vertex(global.view_mat,0,0,50);
 	shader_set_uniform_f(_uni,_pos[0],_pos[1],_pos[2],300);
-	draw_circle(global.screen_width/2,global.screen_height/2,700,0);
-	shader_reset();
+	draw_circle(global.screen_width*(_pos[0]/_pos[2]*.5+.5),global.screen_width*(_pos[1]/_pos[2]*-.5+.5/16*9),50*300/_pos[2],0);
+	shader_reset();*/
 	
 	//Texture colors
 	gpu_set_blendmode_ext(bm_dest_color,bm_zero);

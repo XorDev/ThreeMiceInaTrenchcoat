@@ -3,12 +3,12 @@
 //MIN is the z-far clipping distance.
 #define MAX 65025.
 //Screen resolution
-#define RES float2(1366,768) 
 //#define RATIO RES.x/RES.y
 #define SAM 32.
 #define RAD 5.
 #define AMT 3.
 
+uniform float2 RES;//w,h
 uniform float4 lig_pos;
 
 Texture2D	 tdep : register(t1);
@@ -44,11 +44,11 @@ PIXEL main(VERTEX IN) : SV_TARGET
 	float depth = unpack_depth(depthRGBA);
 	float3 normal = normalize(normalRGB-.5)*float3(1,-1,1);
 	
-	float3 pos = float3(IN.tex-.5,1)*float3(RES.x/RES.y/.5625,1./.5625,1)*depth;
+	float3 pos = float3(IN.tex-.5,1)*float3(RES.x/RES.y,1,1)*depth;
 	
 	float3 diff = pos-lig_pos.xyz;
 	float l = length(diff);
-	float c = max(1.-l/lig_pos.z,0.)*max(dot(diff/l,-normal),0.);
+	float c = max(1.-l/lig_pos.w,0.)*max(dot(diff/l,-normal),0.);
 	
 	PIXEL OUT;
 	OUT.col = IN.col*float4(c,c,c,1);

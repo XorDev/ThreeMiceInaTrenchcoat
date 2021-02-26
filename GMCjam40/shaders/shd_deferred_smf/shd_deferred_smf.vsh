@@ -1,4 +1,4 @@
-#define SUN float3(-.48,.36,-.8)
+#define SUN float3(-.48,-.36,-.8)
 #define AMB_COL float3(.06,.12,.2)
 
 struct ATTRIBUTE
@@ -64,7 +64,7 @@ VERTEX main(ATTRIBUTE IN)
 	OUT.nor = nor;
     OUT.tex = IN.tex;
 	OUT.dep = mul(gm_Matrices[MATRIX_WORLD_VIEW], float4(apos,1)).z;
-	OUT.coo = mul(lig_mat, float4(apos,1)).xyz;
+	OUT.coo = mul(lig_mat, float4(wpos,1)).xyz;
 	OUT.lig = l;
     return OUT;
 }

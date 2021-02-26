@@ -227,10 +227,8 @@ function mouse(_x, _y, _z, _parent) constructor
 	{
 		var s = currInst.scale * radius;
 		matrix_set(matrix_world, matrix_build(x, y, z - radius - height, 0, 0, angle, s, s, s));
-		shader_set(sh_smf_animate);
 		currInst.draw();
-		shader_reset();
-		matrix_set(matrix_world, matrix_build_identity());
+		//matrix_set(matrix_world, matrix_build_identity());
 		//colmesh_debug_draw_capsule(x, y, z, dcos(angle), -dsin(angle), 0, radius * .5, radius * .5, make_colour_rgb(110, 127, 200));
 	}
 }
