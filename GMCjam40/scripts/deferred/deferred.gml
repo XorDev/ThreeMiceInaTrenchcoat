@@ -2,7 +2,6 @@ function deferred_init()
 {
 	global.screen_width = window_get_width();
 	global.screen_height = window_get_height();
-	global.view_mat = matrix_get(matrix_view);
 
 	global.surf_dif = -1;
 	global.surf_dep = -1;
@@ -52,7 +51,6 @@ function deferred_set(animated)
 	surface_set_target_ext(3,global.surf_buf);
 
 	camera_apply(view_camera[0]);
-	global.view_mat = matrix_get(matrix_view);
 	gpu_set_blendenable(0);
 	var _uni,_tex;
 	_uni = shader_get_uniform(shd_deferred,"SHA_RES");
@@ -100,7 +98,8 @@ function deferred_draw()
 	shader_reset();
 	
 	//Draw point lights here.
-	/*gpu_set_blendmode(bm_add);
+	/*
+	gpu_set_blendmode(bm_add);
 	shader_set(shd_light);
 	_uni = shader_get_uniform(shd_light,"RES");
 	shader_set_uniform_f(_uni,global.screen_width,global.screen_height);
@@ -112,11 +111,12 @@ function deferred_draw()
 	texture_set_stage(_uni,_tex);
 	//TODO: Compute circle coordinates/radius
 	//TODO: Multiple lights
-	draw_set_color(c_gray);
+	var t = current_time/90;
 	_uni = shader_get_uniform(shd_light,"lig_pos");
-	var _pos = matrix_transform_vertex(global.view_mat,0,0,50);
-	shader_set_uniform_f(_uni,_pos[0],_pos[1],_pos[2],300);
-	draw_circle(global.screen_width*(_pos[0]/_pos[2]*.5+.5),global.screen_width*(_pos[1]/_pos[2]*-.5+.5/16*9),50*300/_pos[2],0);
+	var _view = camera_get_view_mat(view_camera[0]);
+	var _pos = matrix_transform_vertex(_view,0,0,0);//global.camX,global.camY,global.camZ);
+	shader_set_uniform_f(_uni,_pos[0],_pos[1],_pos[2],200+40*cos(t+cos(t/.7)));
+	draw_circle_color(global.screen_width*(_pos[0]/_pos[2]*.5+.5),global.screen_width*(_pos[1]/_pos[2]*-.5+.5/16*9),500,$1177FF,0,0);
 	shader_reset();*/
 	
 	//Texture colors

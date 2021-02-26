@@ -1,5 +1,4 @@
 #define SUN float3(-.48,-.36,-.8)
-#define AMB_COL float3(.06,.12,.2)
 
 struct ATTRIBUTE
 {
