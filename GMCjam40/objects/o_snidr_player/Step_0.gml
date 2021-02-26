@@ -84,7 +84,7 @@ else
 		{
 			mouseArray[i].avoid(mouseArray[j]);
 		}
-		mouseArray[i].step();
+		mouseArray[i].step(trenchcoat);
 		
 		if (trenchcoat)
 		{

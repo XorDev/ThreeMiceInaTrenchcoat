@@ -107,7 +107,7 @@ function smf_instance(_model) constructor
 	/// @func getAnimSpeed(anim)
 	static getAnimSpeed = function(animName)
 	{
-		var anim = model.get_animation("Jump");
+		var anim = model.get_animation(animName);
 		if is_undefined(anim){return 0;}
 		return 1000 / anim.playTime / game_get_speed(gamespeed_fps);
 	}

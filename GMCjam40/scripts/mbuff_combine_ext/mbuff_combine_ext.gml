@@ -47,15 +47,13 @@ function mbuff_combine_ext(argument0, argument1, argument2) {
 		n = matrix_transform_vertex(N, nx, ny, nz);
 	
 		//Write vertex to target buffer
-		buffer_copy(src, i, bytesPerVert, trg, buffer_tell(trg));
-		buffer_write(trg, buffer_f32, v[0]);
-		buffer_write(trg, buffer_f32, v[1]);
-		buffer_write(trg, buffer_f32, v[2]);
-		buffer_write(trg, buffer_f32, n[0]);
-		buffer_write(trg, buffer_f32, n[1]);
-		buffer_write(trg, buffer_f32, n[2]);
-		buffer_seek(trg, buffer_seek_relative, bytesPerVert);
+        buffer_seek(trg, buffer_seek_start, trgSize + i);
+        buffer_copy(src, i, bytesPerVert, trg, buffer_tell(trg));
+        buffer_write(trg, buffer_f32, v[0]);
+        buffer_write(trg, buffer_f32, v[1]);
+        buffer_write(trg, buffer_f32, v[2]);
+        buffer_write(trg, buffer_f32, n[0]);
+        buffer_write(trg, buffer_f32, n[1]);
+        buffer_write(trg, buffer_f32, n[2]);
 	}
-
-
 }

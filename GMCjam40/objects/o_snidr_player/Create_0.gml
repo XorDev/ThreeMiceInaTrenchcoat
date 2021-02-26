@@ -129,7 +129,7 @@ function mouse(_x, _y, _z, _parent) constructor
 			}
 			
 			//Move
-			acc = 2;
+			acc = 2 - trenchcoat;
 			x += spdX + acc * h;
 			y += spdY - acc * v;
 			z += spdZ - 1 + jump * ground * 12; //Apply gravity in z-direction
@@ -188,7 +188,7 @@ function mouse(_x, _y, _z, _parent) constructor
 			if !(global.hInput == 0 && global.vInput == 0)
 			{
 				var animSpd = currInst.getAnimSpeed("Walk");
-				currInst.play("Walk", animSpd * 1.2, .15, false);
+				currInst.play("Walk", animSpd, .15, false);
 			}
 			else
 			{
