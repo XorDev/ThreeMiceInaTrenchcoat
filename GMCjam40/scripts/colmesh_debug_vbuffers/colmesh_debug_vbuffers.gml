@@ -11,6 +11,10 @@ global.ColMeshFormat = vertex_format_end();
 
 function colmesh_debug_draw_capsule(x, y, z, xup, yup, zup, radius, height, colour)
 {
+	if (height == 0)
+	{
+		colmesh_debug_draw_sphere(x, y, z, radius, colour);
+	}
 	var type = eColMeshShape.Capsule;
 	var vbuff = global.ColMeshDebugShapes[type];
 	if (vbuff < 0)
@@ -18,7 +22,7 @@ function colmesh_debug_draw_capsule(x, y, z, xup, yup, zup, radius, height, colo
 		global.ColMeshDebugShapes[type] = colmesh_create_capsule(20, 10, 1, 1);
 		vbuff = global.ColMeshDebugShapes[type];
 	}
-	//shader_set(sh_colmesh_debug);
+	shader_set(sh_colmesh_debug);
 	shader_set_uniform_f(shader_get_uniform(sh_colmesh_debug, "u_color"), color_get_red(colour) / 255, color_get_green(colour) / 255, color_get_blue(colour) / 255, 1);
 	shader_set_uniform_f(shader_get_uniform(sh_colmesh_debug, "u_radius"), radius);
 	matrix_set(matrix_world, colmesh_matrix_build_from_vector(x, y, z, xup, yup, zup, 1, 1, height));
@@ -52,7 +56,7 @@ function colmesh_debug_draw_sphere(x, y, z, radius, colour)
 		global.ColMeshDebugShapes[type] = colmesh_create_sphere(20, 10, 1, 1);
 		vbuff = global.ColMeshDebugShapes[type];
 	}
-	//shader_set(sh_colmesh_debug);
+	shader_set(sh_colmesh_debug);
 	shader_set_uniform_f(shader_get_uniform(sh_colmesh_debug, "u_color"), color_get_red(colour) / 255, color_get_green(colour) / 255, color_get_blue(colour) / 255, 1);
 	shader_set_uniform_f(shader_get_uniform(sh_colmesh_debug, "u_radius"), radius);
 	matrix_set(matrix_world, matrix_build(x, y, z, 0, 0, 0, 1, 1, 1));
