@@ -182,7 +182,7 @@ function smf_model() constructor
 	{	/*	Search through the model's animations to find the animation with the given name.
 			Returns the index of the new animation, or -1 if the animation does not exist.*/
 		var animInd = animMap[? name];
-		if is_undefined(animInd){return -1;}
+		if is_undefined(animInd){return undefined;}
 		return animations[animInd];
 	}
 	

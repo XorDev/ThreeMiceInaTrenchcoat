@@ -40,6 +40,8 @@ function mouse(_x, _y, _z, _parent) constructor
 	
 	instance = new smf_instance(global.modMouse);
 	instance.play("Idle", .1, 1, true);
+	instance.scale = .333;
+	currInst = instance;
 	
 	if (is_struct(parent))
 	{
@@ -47,6 +49,13 @@ function mouse(_x, _y, _z, _parent) constructor
 		mouseIndex = parent.mouseIndex + 1;
 		radius = 10;
 	}
+	if (mouseIndex == 0)
+	{
+		trenchcoatInst = new smf_instance(global.modTrenchcoat);
+		trenchcoatInst.play("Idle", .1, 1, true);
+		trenchcoatInst.scale = .37;
+	}
+	
 	
 	static step = function(trenchcoat)
 	{
@@ -177,26 +186,23 @@ function mouse(_x, _y, _z, _parent) constructor
 		//Animate the player
 		if (!ground)
 		{
-			var anim = global.modMouse.get_animation("Jump");
-			var animSpd = 1000 / anim.playTime / game_get_speed(gamespeed_fps);
-			instance.play("Jump", animSpd, .25, false);
+			var animSpd = currInst.getAnimSpeed("Jump");
+			currInst.play("Jump", animSpd, .25, false);
 		}
 		else
 		{
 			if !(global.hInput == 0 && global.vInput == 0)
 			{
-				var anim = global.modMouse.get_animation("Walk");
-				var animSpd = 1000 / anim.playTime / game_get_speed(gamespeed_fps);
-				instance.play("Walk", animSpd * 1.2, .15, false);
+				var animSpd = currInst.getAnimSpeed("Walk");
+				currInst.play("Walk", animSpd * 1.2, .15, false);
 			}
 			else
 			{
-				var anim = global.modMouse.get_animation("Idle");
-				var animSpd = 1000 / anim.playTime / game_get_speed(gamespeed_fps);
-				instance.play("Idle", animSpd, .15, false);
+				var animSpd = currInst.getAnimSpeed("Idle");
+				currInst.play("Idle", animSpd, .15, false);
 			}
 		}
-		instance.step(1);
+		currInst.step(1);
 	}
 	
 	static avoid = function(ind)
@@ -225,9 +231,10 @@ function mouse(_x, _y, _z, _parent) constructor
 	
 	static draw = function()
 	{
-		matrix_set(matrix_world, matrix_build(x, y, z, 0, 0, angle, radius / 3, radius / 3, radius / 3));
+		var s = currInst.scale * radius;
+		matrix_set(matrix_world, matrix_build(x, y, z - radius - height, 0, 0, angle, s, s, s));
 		shader_set(sh_smf_animate);
-		instance.draw();
+		currInst.draw();
 		shader_reset();
 		matrix_set(matrix_world, matrix_build_identity());
 		//colmesh_debug_draw_capsule(x, y, z, dcos(angle), -dsin(angle), 0, radius * .5, radius * .5, make_colour_rgb(110, 127, 200));

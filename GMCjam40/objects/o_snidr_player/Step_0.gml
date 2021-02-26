@@ -12,6 +12,7 @@ if (global.trenchCoatInput)
 	if (!trenchcoat)
 	{
 		mouseArray[0].height = 0;
+		mouseArray[0].currInst = mouseArray[0].instance;
 		for (var i = 1; i < mice; i ++)
 		{
 			with mouseArray[i]
@@ -32,13 +33,13 @@ if (global.trenchCoatInput)
 		//Make follower mice jump towards their new position
 		with mouseArray[0]
 		{
-			height = radius * 2 + other.mouseArray[1].radius * 4;
+			jumpHeight = radius * 2 + other.mouseArray[1].radius * 4;
 			jumpStartX = x;
 			jumpStartY = y;
 			jumpStartZ = z;
 			jumpEndX = x;
 			jumpEndY = y;
-			jumpEndZ = z + height;
+			jumpEndZ = z + jumpHeight;
 			prevX = jumpEndX;
 			prevY = jumpEndY;
 			prevZ = jumpEndZ;
@@ -67,6 +68,11 @@ if (trenchcoatTimer > 0)
 		_mouse.z = lerp(_mouse.jumpEndZ, _mouse.jumpStartZ, trenchcoatTimer);
 		_mouse.z += (1 - sqr(trenchcoatTimer * 2 - 1)) * radius * 3; //Jump in an arc
 		trenchcoatTimer -= .01;
+	}
+	if (trenchcoatTimer <= 0)
+	{
+		mouseArray[0].currInst = mouseArray[0].trenchcoatInst;
+		mouseArray[0].height = mouseArray[0].jumpHeight;
 	}
 }
 else
