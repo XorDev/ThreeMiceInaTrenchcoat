@@ -51,7 +51,7 @@ function mouse(_x, _y, _z, _parent) constructor
 		trenchcoatInst.play("Idle", .1, 1, true);
 		trenchcoatInst.scale = .35;
 		
-		trailSize = 20;
+		trailSize = 100;
 		trail = array_create(trailSize);
 	}
 	
@@ -85,17 +85,14 @@ function mouse(_x, _y, _z, _parent) constructor
 		{
 			//This is a follower mouse
 			var dist = point_distance_3d(parent.x, parent.y, parent.z, x, y, z);
-			if (dist > parent.radius + radius)
+			trailPos = (parent.trailPos - 2 + global.masterMouse.trailSize) mod global.masterMouse.trailSize;
+			var t1 = global.masterMouse.trail[floor(trailPos)];
+			var t2 = global.masterMouse.trail[(floor(trailPos) + 1)];
+			if (is_array(t1) && is_array(t2))
 			{
-				trailPos = parent.trailPos - 3;
-				var t1 = global.masterMouse.trail[floor(trailPos)];
-				var t2 = global.masterMouse.trail[(floor(trailPos) + 1) mod global.masterMouse.trailSize];
-				if (is_array(t1) && is_array(t2))
-				{
-					x = lerp(t1[0], t2[0], frac(trailPos));
-					y = lerp(t1[1], t2[1], frac(trailPos));
-					z = lerp(t1[2], t2[2], frac(trailPos));
-				}
+				x += (lerp(t1[0], t2[0], frac(trailPos)) - x) * .5;
+				y += (lerp(t1[1], t2[1], frac(trailPos)) - y) * .5;
+				z += (lerp(t1[2], t2[2], frac(trailPos)) - z) * .5;
 			}
 		}
 		else
@@ -130,10 +127,8 @@ function mouse(_x, _y, _z, _parent) constructor
 			}
 			
 			//Cast a short-range ray from the previous position to the current position to avoid going through geometry
-			if true//(sqr(x - prevX) + sqr(y - prevY) + sqr(z - height - prevZ) > radius * radius) //Only cast ray if there's a risk that we've gone through geometry
+			if (sqr(x - prevX) + sqr(y - prevY) + sqr(z - height - prevZ) > radius * radius) //Only cast ray if there's a risk that we've gone through geometry
 			{
-				var d = 0;//height * (.5 + .5 * sign(z - prevZ));
-				var dz = d;
 				ray = levelColmesh.castRay(prevX, prevY, prevZ - height, x, y, z - height);
 				if (is_array(ray))
 				{
@@ -162,19 +157,29 @@ function mouse(_x, _y, _z, _parent) constructor
 			}
 			
 			//Save trail
-			if (ground || jump)
+			if true || (ground || jump)
 			{
 				trail[(floor(trailPos) + 1) mod trailSize] = [x, y, z, jump];
 				
-				var t = trail[floor(trailPos)];
+				var p = floor(trailPos);
+				var t = trail[p];
 				if (!is_array(t))
 				{
+					trail[(floor(trailPos))] = [x, y, z, false];
 					trailPos = (trailPos + 1) mod trailSize;
 				}
 				else
 				{
 					var dist = point_distance_3d(t[0], t[1], t[2], x, y, z);
-					trailPos = max(trailPos, floor(trailPos) + min(dist / radius, 1)) mod trailSize;
+					repeat floor(dist / radius)
+					{
+						d = radius / dist;
+						t[0] += (x - t[0]) * d;
+						t[1] += (y - t[1]) * d;
+						t[2] += (z - t[2]) * d;
+						trail[(++ p) mod trailSize] = [t[0], t[1], t[2], jump];
+					}
+					trailPos = max(trailPos, floor(trailPos) + dist / radius) mod trailSize;
 					/*if (jump)
 					{
 						trailPos = (floor(trailPos) + 1) mod trailSize;
