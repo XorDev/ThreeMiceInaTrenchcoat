@@ -21,7 +21,7 @@ if (true)//!levelColmesh.load("SnidrCache.cm"))
 {
 	//If a cache does not exist, generate a colmesh from an OBJ file, subdivide it, and save a cache
 	levelColmesh.addMesh("test_level2.obj"); //Notice how I supply a path to an OBJ file. I could have instead used the mbuffLevel that I created earlier in this event
-	levelColmesh.subdivide(30); //<-- You need to define the size of the subdivision regions. Play around with it and see what value fits your model best. This is a list that stores all the triangles in a region in space. A larger value makes colmesh generation faster, but slows down collision detection. A too low value increases memory usage and generation time.
+	levelColmesh.subdivide(50); //<-- You need to define the size of the subdivision regions. Play around with it and see what value fits your model best. This is a list that stores all the triangles in a region in space. A larger value makes colmesh generation faster, but slows down collision detection. A too low value increases memory usage and generation time.
 	//levelColmesh.save("Demo1Cache.cm"); //Save a cache, so that loading it the next time will be quicker
 }
 

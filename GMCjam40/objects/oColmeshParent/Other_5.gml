@@ -3,4 +3,4 @@
 /*
 	Clear all data contained in the ColMesh
 */
-levelColmesh.clear();
+//levelColmesh.clear();

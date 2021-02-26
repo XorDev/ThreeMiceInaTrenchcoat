@@ -79,11 +79,6 @@ else
 {
 	for (var i = 0; i < mice; i ++)
 	{
-		//Make mice avoid each other
-		for (var j = i - 1; j >= 0; j --)
-		{
-			mouseArray[i].avoid(mouseArray[j]);
-		}
 		mouseArray[i].step(trenchcoat);
 		
 		if (trenchcoat)
