@@ -38,6 +38,9 @@ function mouse(_x, _y, _z, _parent) constructor
 	jumpTimer = -1;
 	mouseIndex = 0;
 	
+	instance = new smf_instance(global.modMouse);
+	instance.play("Idle", .1, 1, true);
+	
 	if (is_struct(parent))
 	{
 		//This is a follower mouse
@@ -126,7 +129,7 @@ function mouse(_x, _y, _z, _parent) constructor
 			acc = 2;
 			x += spdX - acc * v;
 			y += spdY - acc * h;
-			z += spdZ - 1 + jump * ground * 10; //Apply gravity in z-direction
+			z += spdZ - 1 + jump * ground * 12; //Apply gravity in z-direction
 			
 			//Put player in the middle of the map if he falls off
 			if (z < -400)
@@ -170,7 +173,30 @@ function mouse(_x, _y, _z, _parent) constructor
 				ground = true;
 			}
 		}
-		show_debug_message([x, y, z]);
+		
+		//Animate the player
+		if (!ground)
+		{
+			var anim = global.modMouse.get_animation("Jump");
+			var animSpd = 1000 / anim.playTime / game_get_speed(gamespeed_fps);
+			instance.play("Jump", animSpd, .25, false);
+		}
+		else
+		{
+			if !(global.hInput == 0 && global.vInput == 0)
+			{
+				var anim = global.modMouse.get_animation("Walk");
+				var animSpd = 1000 / anim.playTime / game_get_speed(gamespeed_fps);
+				instance.play("Walk", animSpd * 1.2, .15, false);
+			}
+			else
+			{
+				var anim = global.modMouse.get_animation("Idle");
+				var animSpd = 1000 / anim.playTime / game_get_speed(gamespeed_fps);
+				instance.play("Idle", animSpd, .15, false);
+			}
+		}
+		instance.step(1);
 	}
 	
 	static avoid = function(ind)
@@ -199,7 +225,12 @@ function mouse(_x, _y, _z, _parent) constructor
 	
 	static draw = function()
 	{
-		colmesh_debug_draw_capsule(x, y, z, dcos(angle), -dsin(angle), 0, radius * .5, radius * .5, make_colour_rgb(110, 127, 200));
+		matrix_set(matrix_world, matrix_build(x, y, z, 0, 0, angle, radius / 3, radius / 3, radius / 3));
+		shader_set(sh_smf_animate);
+		instance.draw();
+		shader_reset();
+		matrix_set(matrix_world, matrix_build_identity());
+		//colmesh_debug_draw_capsule(x, y, z, dcos(angle), -dsin(angle), 0, radius * .5, radius * .5, make_colour_rgb(110, 127, 200));
 	}
 }
 

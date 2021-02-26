@@ -58,6 +58,7 @@
     {"id":{"name":"_load_bmp","path":"scripts/_load_bmp/_load_bmp.yy",},"order":3,},
     {"id":{"name":"vbuff_remove","path":"scripts/vbuff_remove/vbuff_remove.yy",},"order":15,},
     {"id":{"name":"mbuff_combine_ext","path":"scripts/mbuff_combine_ext/mbuff_combine_ext.yy",},"order":2,},
+    {"id":{"name":"o_snidr_loadmodels","path":"objects/o_snidr_loadmodels/o_snidr_loadmodels.yy",},"order":5,},
     {"id":{"name":"sp_CG_Tower_Shadow","path":"sprites/sp_CG_Tower_Shadow/sp_CG_Tower_Shadow.yy",},"order":7,},
     {"id":{"name":"mbuff_get_boundingbox","path":"scripts/mbuff_get_boundingbox/mbuff_get_boundingbox.yy",},"order":9,},
     {"id":{"name":"sp_CG_Text_Mask","path":"sprites/sp_CG_Text_Mask/sp_CG_Text_Mask.yy",},"order":4,},
@@ -177,6 +178,7 @@
     {"CopyToMask":153157610357391598,"filePath":"datafiles","resourceVersion":"1.0","name":"scenery.obj","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"test_level1.mtl","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"test_level1.obj","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"Mouse.smf","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2.3.1.542",
