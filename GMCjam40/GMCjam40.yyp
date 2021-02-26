@@ -86,6 +86,7 @@
     {"id":{"name":"texClouds","path":"sprites/texClouds/texClouds.yy",},"order":14,},
     {"id":{"name":"smf_system","path":"scripts/smf_system/smf_system.yy",},"order":5,},
     {"id":{"name":"oColmeshParent","path":"objects/oColmeshParent/oColmeshParent.yy",},"order":8,},
+    {"id":{"name":"oCoin","path":"objects/oCoin/oCoin.yy",},"order":0,},
     {"id":{"name":"_mbuff_tesselate_add_point","path":"scripts/_mbuff_tesselate_add_point/_mbuff_tesselate_add_point.yy",},"order":9,},
     {"id":{"name":"_mbuff_read_obj_line","path":"scripts/_mbuff_read_obj_line/_mbuff_read_obj_line.yy",},"order":7,},
     {"id":{"name":"mbuff_load","path":"scripts/mbuff_load/mbuff_load.yy",},"order":5,},

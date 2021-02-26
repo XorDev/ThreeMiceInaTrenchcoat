@@ -1,5 +1,5 @@
-#define LIG_COL float3(1,1,1)
-#define AMB_COL float3(.1,.18,.3)
+#define LIG_COL float3(.2,.2,.2)
+#define AMB_COL float3(.04,.06,.1)
 
 //MIN is the z-near clipping distance.
 #define MIN 1.
@@ -9,6 +9,8 @@
 
 Texture2D	 tsha : register(t1);
 SamplerState ssha : register(s1);
+
+
 
 struct VERTEX
 {
