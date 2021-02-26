@@ -12,7 +12,6 @@ struct VERTEX
 VERTEX main(ATTRIBUTE IN)
 {
 	VERTEX OUT;
-	
     OUT.pos = mul(gm_Matrices[MATRIX_WORLD_VIEW_PROJECTION], float4(IN.pos,1));
 	OUT.dep = mul(gm_Matrices[MATRIX_WORLD_VIEW], float4(IN.pos,1)).z;
     return OUT;

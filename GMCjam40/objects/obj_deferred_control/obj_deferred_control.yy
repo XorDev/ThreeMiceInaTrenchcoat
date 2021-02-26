@@ -20,7 +20,7 @@
   "eventList": [
     {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"obj_deferred_control","path":"objects/obj_deferred_control/obj_deferred_control.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":64,"eventType":8,"collisionObjectId":null,"parent":{"name":"obj_deferred_control","path":"objects/obj_deferred_control/obj_deferred_control.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":72,"eventType":8,"collisionObjectId":null,"parent":{"name":"obj_deferred_control","path":"objects/obj_deferred_control/obj_deferred_control.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":76,"eventType":8,"collisionObjectId":null,"parent":{"name":"obj_deferred_control","path":"objects/obj_deferred_control/obj_deferred_control.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],

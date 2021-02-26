@@ -32,6 +32,12 @@ function deferred_surface()
 	draw_clear(0);
 	surface_reset_target();
 	
+	if surface_exists(global.surf_sha)
+	{
+		surface_set_target(global.surf_sha);
+		draw_clear(0);
+		surface_reset_target();
+	}
 }
 
 function deferred_set(animated)
