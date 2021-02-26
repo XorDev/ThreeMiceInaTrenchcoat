@@ -1,7 +1,5 @@
 /// @description
 //Player variables
-x = 0;
-y = 0;
 z = 300;
 radius = 10;
 

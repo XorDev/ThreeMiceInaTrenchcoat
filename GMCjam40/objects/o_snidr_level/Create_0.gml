@@ -27,4 +27,6 @@ if (true)//!levelColmesh.load("SnidrCache.cm"))
 
 instance_create_depth(0, 0, 0, o_snidr_loadmodels);
 instance_create_depth(0, 0, 0, o_snidr_camera);
-instance_create_depth(0, 0, 0, o_snidr_player);
+with(instance_find(obj_player_start, 0)) {
+	instance_create_depth(x, y, 0, o_snidr_player);
+}

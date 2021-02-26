@@ -1,4 +1,4 @@
-# Blender MTL File: 'None'
+# Blender MTL File: 'scenery.blend'
 # Material Count: 4
 
 newmtl Brick_Wall
@@ -11,8 +11,8 @@ Ni 1.450000
 d 1.000000
 illum 2
 
-newmtl Material
-Ns 323.999994
+newmtl Grid
+Ns 225.000000
 Ka 1.000000 1.000000 1.000000
 Kd 0.800000 0.800000 0.800000
 Ks 0.500000 0.500000 0.500000
@@ -20,15 +20,14 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
+map_Kd C:\\Users\\bart_\\Documents\\GitHub\\GMCjam40\\Models\\grid.png
 
 newmtl None
-Ns 500.000001
-Ka 1.000000 1.000000 1.000000
-Kd 0.800000 0.800000 0.800000
-Ks 0.800000 0.800000 0.800000
-Ke 0.000000 0.000000 0.000000
-Ni 1.450000
-d 1.000000
+Ns 500
+Ka 0.8 0.8 0.8
+Kd 0.8 0.8 0.8
+Ks 0.8 0.8 0.8
+d 1
 illum 2
 
 newmtl Wood
