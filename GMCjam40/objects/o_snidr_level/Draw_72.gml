@@ -2,11 +2,7 @@
 if global.disableDraw{exit;}
 
 //Shadow pass (move light forward)
-var _cx,_cy,_cz;
-_cx = lerp(o_snidr_player.x,global.camX,-2);
-_cy = lerp(o_snidr_player.y,global.camY,-2);
-_cz = lerp(o_snidr_player.z,global.camZ,-2);
-light_set(_cx,_cy,_cz,-.48,-.36,-.8,1000,0);
+light_set(0);
 gpu_set_cullmode(cull_noculling);
 //Draw the level
 matrix_set(matrix_world,matrix_build_identity());
