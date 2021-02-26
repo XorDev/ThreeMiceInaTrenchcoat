@@ -1,6 +1,5 @@
 ///@desc draw enemy
 
-//Draw mice
-deferred_set(0);
+deferred_set(anim);
 draw();
 deferred_reset();

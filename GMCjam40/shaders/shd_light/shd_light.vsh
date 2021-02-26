@@ -11,7 +11,7 @@ struct VERTEX
 	float4 pos : SV_POSITION;
 	float4 col : COLOR0;
 	float2 tex : TEXCOORD0;
-	float  rat : TEXCOORD2;
+	float  rat : TEXCOORD1;
 };
 
 VERTEX main(ATTRIBUTE IN)

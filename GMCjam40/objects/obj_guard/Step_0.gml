@@ -1,102 +1,45 @@
 ///@desc movement
-
-face = point_direction(x,y,o_snidr_player.x,o_snidr_player.y);
-/*
-global.hInput = keyboard_check(ord("D")) - keyboard_check(ord("A"));
-global.vInput = keyboard_check(ord("W")) - keyboard_check(ord("S"));
-global.jumpInput = keyboard_check_pressed(vk_space);
-global.trenchCoatInput = keyboard_check_pressed(ord("E"));
-
-//Update followers
-if (global.trenchCoatInput)
+if !irandom(6)
 {
-	trenchcoat = !trenchcoat;
-	if (!trenchcoat)
+	var _num = irandom(o_snidr_player.mice-1);
+	target = o_snidr_player.mouseArray[_num];
+	
+	var _arc,_range;
+	_arc = 60+30*awareness;
+	_range = 128+128*awareness;
+	
+	var _dir,_dis;
+	_dir = point_direction(x,y,target.x,target.y);
+	_dis = point_distance_3d(x,y,z,target.x,target.y,target.z);
+	
+	if (abs(angle_difference(face,_dir))<60) &&	(_dis<256)
 	{
-		mouseArray[0].height = 0;
-		mouseArray[0].currInst = mouseArray[0].instance;
-		for (var i = 1; i < mice; i ++)
+		//var _ray = levelColmesh.castRay(x,y,z,target.x,target.y,target.z,false);
+		//if !is_array(_ray)
 		{
-			with mouseArray[i]
-			{
-				x = parent.x + 10;
-				y = parent.y;
-				z = parent.z - parent.radius - radius;
-				prevX = x;
-				prevY = y;
-				prevZ = z;
-			}
+			zspeed = 5*(z==0);
+			target_x = target.x;
+			target_y = target.y;
+			target_z = target.z;
+			awareness = 1;
 		}
 	}
-	if (trenchcoat)
+	else
 	{
-		trenchcoatTimer = 1;
-		
-		//Make follower mice jump towards their new position
-		with mouseArray[0]
-		{
-			jumpHeight = radius + other.mouseArray[1].radius * 4;
-			jumpStartX = x;
-			jumpStartY = y;
-			jumpStartZ = z;
-			jumpEndX = x;
-			jumpEndY = y;
-			jumpEndZ = z + jumpHeight;
-			prevX = jumpEndX;
-			prevY = jumpEndY;
-			prevZ = jumpEndZ;
-		}
-		for (var i = 1; i < mice; i ++)
-		{
-			with mouseArray[i]
-			{
-				jumpStartX = x;
-				jumpStartY = y;
-				jumpStartZ = z;
-				jumpEndX = parent.jumpEndX;
-				jumpEndY = parent.jumpEndY;
-				jumpEndZ = parent.jumpEndZ - parent.radius - radius;
-			}
-		}
-	}
-}
-if (trenchcoatTimer > 0)
-{
-	for (var i = 0; i < mice; i ++)
-	{
-		var _mouse = mouseArray[i];
-		_mouse.x = lerp(_mouse.jumpEndX, _mouse.jumpStartX, trenchcoatTimer);
-		_mouse.y = lerp(_mouse.jumpEndY, _mouse.jumpStartY, trenchcoatTimer);
-		_mouse.z = lerp(_mouse.jumpEndZ, _mouse.jumpStartZ, trenchcoatTimer);
-		_mouse.z += (1 - sqr(trenchcoatTimer * 2 - 1)) * radius * 3; //Jump in an arc
-		trenchcoatTimer -= .01;
-	}
-	if (trenchcoatTimer <= 0)
-	{
-		mouseArray[0].currInst = mouseArray[0].trenchcoatInst;
-		mouseArray[0].height = mouseArray[0].jumpHeight;
-	}
-}
-else
-{
-	for (var i = 0; i < mice; i ++)
-	{
-		//Make mice avoid each other
-		for (var j = i - 1; j >= 0; j --)
-		{
-			mouseArray[i].avoid(mouseArray[j]);
-		}
-		mouseArray[i].step(trenchcoat);
-		
-		if (trenchcoat)
-		{
-			break;
-		}
+		target = -1;
 	}
 }
 
+awareness *= .99;
+z += zspeed;
 
-var mainMouse = mouseArray[0];
-x = mainMouse.x;
-y = mainMouse.y;
-z = mainMouse.z;*/
+var _dis;
+_dis = point_distance_3d(x,y,z,target_x,target_y,target_z);
+_move = max((_dis>32)*awareness,(target>0))*5;
+hspeed = lerp(hspeed,+dcos(face)*_move,.1);
+vspeed = lerp(vspeed,-dsin(face)*_move,.1);
+zspeed = max(zspeed-.3,-z);
+
+var _dir;
+_dir = point_direction(x,y,target_x,target_y);
+face += .2*angle_difference(_dir,face);

@@ -26,15 +26,15 @@ VERTEX main(ATTRIBUTE IN)
 	VERTEX OUT;
 	float3 wpos = mul(gm_Matrices[MATRIX_WORLD], float4(IN.pos,1)).xyz;
 	float3 wnor = normalize(mul(gm_Matrices[MATRIX_WORLD], float4(IN.nor,0)).xyz);
-	float3 nor = normalize(mul(gm_Matrices[MATRIX_WORLD_VIEW], float4(IN.nor,0)).xyz);
+	float3 vnor = normalize(mul(gm_Matrices[MATRIX_WORLD_VIEW], float4(IN.nor,0)).xyz);
 	float l = min(dot(wnor,SUN)+1.,1.);
 	
     OUT.pos = mul(gm_Matrices[MATRIX_WORLD_VIEW_PROJECTION], float4(IN.pos,1));
     OUT.col = float4(IN.col.rgb,1);
-	OUT.nor = nor;
+	OUT.nor = vnor;
     OUT.tex = IN.tex;
-	OUT.dep = mul(gm_Matrices[MATRIX_WORLD_VIEW], float4(IN.pos,1)).xyz;
-	OUT.coo = mul(lig_mat, float4(IN.pos,1)).xyz;
+	OUT.dep = mul(gm_Matrices[MATRIX_WORLD_VIEW], float4(wpos,1)).xyz;
+	OUT.coo = mul(lig_mat, float4(wpos,1)).xyz;
 	OUT.lig = l;
     return OUT;
 }

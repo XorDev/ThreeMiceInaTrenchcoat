@@ -9,7 +9,7 @@ function light_init(res)
 
 function light_set_pos(x,y,z,dx,dy,dz,dist)
 {
-	global.lig_pos = [ x-dx*dist, y-dy*dist, z-dz*dist];
+	global.lig_pos = [x-dx*dist, y-dy*dist, z-dz*dist];
 	global.lig_dir = [dx,dy,dz];
 }
 function light_follow(x,y,z)
@@ -24,12 +24,12 @@ function light_set(animated)
 	
 	surface_set_target(global.surf_sha);
 	gpu_set_blendenable(0);
-	var _x,_y,_z,_dx,_dy,_dz;
-	 _x = global.lig_pos[0];  _y = global.lig_pos[1];  _z = global.lig_pos[2];
-	_dx = global.lig_dir[0]; _dy = global.lig_dir[1]; _dz = global.lig_dir[2];
+	var _px,_py,_pz,_dx,_dy,_dz;
+	_px = global.lig_pos[0]; _py = global.lig_pos[1]; _pz = global.lig_pos[2];
+	_dx = _px+global.lig_dir[0]; _dy = _py+global.lig_dir[1]; _dz = _pz+global.lig_dir[2];
 	var _lig_proj,_lig_view;
 	_lig_proj = matrix_build_projection_perspective_fov(50,1,1,65025);
-	_lig_view = matrix_build_lookat(_x,_y,_z,_dx,_dy,_dz,0,0,1);
+	_lig_view = matrix_build_lookat(_px,_py,_pz,_dx,_dy,_dz,0,0,1);
 	
 	matrix_set(matrix_projection,_lig_proj);
 	matrix_set(matrix_view,_lig_view);

@@ -55,12 +55,12 @@ VERTEX main(ATTRIBUTE IN)
 	
 	float3 wpos = mul(gm_Matrices[MATRIX_WORLD], float4(apos,1)).xyz;
 	float3 wnor = normalize(mul(gm_Matrices[MATRIX_WORLD], float4(anor,0)).xyz);
-	float3 nor = normalize(mul(gm_Matrices[MATRIX_WORLD_VIEW], float4(anor,0)).xyz);
+	float3 vnor = normalize(mul(gm_Matrices[MATRIX_WORLD_VIEW], float4(anor,0)).xyz);
 	float l = min(dot(wnor,SUN)+1.,1.);
 	
 	VERTEX OUT;
     OUT.pos = mul(gm_Matrices[MATRIX_WORLD_VIEW_PROJECTION], float4(apos,1));
-	OUT.nor = nor;
+	OUT.nor = vnor;
     OUT.tex = IN.tex;
 	OUT.dep = mul(gm_Matrices[MATRIX_WORLD_VIEW], float4(apos,1)).z;
 	OUT.coo = mul(lig_mat, float4(wpos,1)).xyz;

@@ -125,8 +125,6 @@ function deferred_draw()
 	gpu_set_blendmode(bm_normal);
 	
 	
-	
-	
 	//draw_surface_ext(global.surf_sha,global.screen_width*.25,0,1/4,1/4,0,-1,1);
 	//draw_surface_ext(global.surf_dep,global.screen_width*.50,0,1/4,1/4,0,-1,1);
 	//draw_surface_ext(global.surf_nor,global.screen_width*.75,0,1/4,1/4,0,-1,1);
