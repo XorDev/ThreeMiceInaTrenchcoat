@@ -9,7 +9,7 @@ prevY = y;
 prevZ = z;
 
 //Controls
-jump = keyboard_check_pressed(vk_space);
+//jump = keyboard_check_pressed(vk_space);
 var h = keyboard_check(ord("D")) - keyboard_check(ord("A"));
 var v = keyboard_check(ord("W")) - keyboard_check(ord("S"));
 var u = keyboard_check(ord("E")) - keyboard_check(ord("Q"));
@@ -21,7 +21,7 @@ if (h != 0 && v != 0)
 }
 
 //Move
-acc = 5;//5
+acc = 1+4*keyboard_check(vk_shift);//5
 x += spdX - acc * v;
 y += spdY - acc * h;
 z += spdZ - acc * u; 

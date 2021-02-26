@@ -3,15 +3,20 @@ if global.disableDraw{exit;}
 
 event_inherited();
 
-gpu_set_cullmode(cull_noculling);
+gpu_set_cullmode(cull_counterclockwise);
 
 //Draw the level
 
 deferred_surface();
-shadow_set(lerp(x,global.camX,-2),lerp(y,global.camY,-2),lerp(z,global.camZ,-2),-.48,.36,-.8,5000);
+light_set(lerp(x,global.camX,-2),lerp(y,global.camY,-2),lerp(z,global.camZ,-2),-.48,.36,-.8,5000);
+
+global.lig_pos[0] = lerp(x,global.camX,-1);
+global.lig_pos[1] = lerp(y,global.camY,-1);
+global.lig_pos[2] = z+20;
+global.lig_pos[3] = 200;
 
 vertex_submit(modLevel, pr_trianglelist,-1);
-shadow_reset();
+light_reset();
 
 deferred_set();
 
@@ -20,7 +25,6 @@ vertex_submit(modLevel, pr_trianglelist,sprite_get_texture(spr_grid,0));
 //colmesh_debug_draw_capsule(x, y, z, xup, yup, zup, radius, height, make_colour_rgb(110, 127, 200));
 
 deferred_reset();
-
 
 
 //Draw debug collision shapes

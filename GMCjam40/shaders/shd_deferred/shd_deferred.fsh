@@ -1,7 +1,7 @@
 Texture2D	 tsha : register(t1);
 SamplerState ssha : register(s1);
 
-#define AMB float3(.06,.12,.2)
+#define AMB_COL float3(.06,.12,.2)
 
 struct VERTEX
 {
@@ -10,7 +10,8 @@ struct VERTEX
 	float3 nor : NORMAL;
 	float2 tex : TEXCOORD0;
 	float  dep : TEXCOORD1;
-	float4 coo : TEXCOORD2;
+	float3 coo : TEXCOORD2;
+	float4 lig : TEXCOORD3;
 };
 
 struct PIXEL
@@ -62,13 +63,14 @@ float soft(float2 u,float d)
 	float h4 = hard(f+o.xy,d);
 	return lerp(lerp(h1,h2,s.x),lerp(h3,h4,s.x),s.y);
 }
+
 PIXEL main(VERTEX IN) : SV_TARGET
 {
 	float4 sample = gm_BaseTextureObject.Sample(gm_BaseTexture,IN.tex);
 	float2 u = IN.coo.xy/IN.coo.z*float2(.5,-.5)+.5;
 	float2 b = smoothstep(.5,.4,abs(u-.5));
 	
-	float3 c = lerp(1.,AMB,max(soft(u,IN.coo.z)*b.x*b.y,IN.coo.w));
+	float3 c = lerp(1.,AMB_COL,max(soft(u,IN.coo.z)*b.x*b.y,IN.lig.a))+IN.lig.rgb;
 	//sample.rgb *= c;
 	//if (sample.a<0.5) discard;	
 	

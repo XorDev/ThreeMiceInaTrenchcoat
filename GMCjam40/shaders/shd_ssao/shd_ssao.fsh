@@ -1,5 +1,17 @@
+//MIN is the z-near clipping distance.
+#define MIN 1.
+//MIN is the z-far clipping distance.
+#define MAX 65025.
+//Screen resolution
+#define RES float2(1366,768) 
+//#define RATIO RES.x/RES.y
+#define SAM 32.
+#define RAD 8.
+#define AMT 4.
+
 Texture2D	 tnor : register(t1);
 SamplerState snor : register(s1);
+
 
 struct VERTEX
 {
@@ -12,17 +24,6 @@ struct PIXEL
 {
 	float4 col : COLOR0;
 };
-
-//MIN is the z-near clipping distance.
-#define MIN 1.
-//MIN is the z-far clipping distance.
-#define MAX 65025.
-//Screen resolution
-#define RES float2(1366,768) 
-//#define RATIO RES.x/RES.y
-#define SAM 32.
-#define RAD 10.
-#define AMT 4.
 
 float unpack_depth(float4 samp)
 {

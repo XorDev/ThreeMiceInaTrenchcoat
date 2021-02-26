@@ -6,7 +6,7 @@
     "path": "folders/Scripts.yy",
   },
   "resourceVersion": "1.0",
-  "name": "shadow_set",
+  "name": "light",
   "tags": [],
   "resourceType": "GMScript",
 }
