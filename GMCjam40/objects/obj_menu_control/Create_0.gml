@@ -5,6 +5,7 @@ gpu_set_tex_filter(1);
 alpha = 0;
 fade = alpha;
 global.button = noone;
+global.hover = noone;
 
 
 layer_id = layer_get_id("Background");

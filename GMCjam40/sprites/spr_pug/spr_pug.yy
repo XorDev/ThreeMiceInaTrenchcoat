@@ -68,8 +68,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"52774bf9-c764-4ab0-a433-16daf2c1caac","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "Sprites",
-    "path": "folders/Sprites.yy",
+    "name": "Textures",
+    "path": "folders/Sprites/Textures.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_pug",

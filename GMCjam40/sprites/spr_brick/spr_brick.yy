@@ -68,8 +68,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"23c680c4-6a86-4745-9b6e-8d5b89dc516d","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "Sprites",
-    "path": "folders/Sprites.yy",
+    "name": "Textures",
+    "path": "folders/Sprites/Textures.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_brick",

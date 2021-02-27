@@ -68,8 +68,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"d15d6527-041d-426c-bacf-b49bec8a3709","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "Sprites",
-    "path": "folders/Sprites.yy",
+    "name": "Textures",
+    "path": "folders/Sprites/Textures.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_owl",

@@ -1,8 +1,8 @@
 #define LIG_COL float3(1,1,1)
 #define AMB_COL float3(.1,.18,.3)
 
-#define CLIP_DEP 110.
-#define CLIP_RAD 25.
+#define CLIP_DEP 85.
+#define CLIP_RAD 15.
 
 //MIN is the z-near clipping distance.
 #define MIN 1.
@@ -82,7 +82,7 @@ PIXEL main(VERTEX IN) : SV_TARGET
 	
 	float3 c = lerp(LIG_COL,AMB_COL,max(soft(u,IN.coo.z)*b.x*b.y,IN.lig));
 	float dis = length(IN.dep-float3(0,0,1)*clamp(IN.dep.z,0.,CLIP_DEP))-CLIP_RAD;
-	if (dis<0.) discard;	//sample.a<0.5)
+	if (dis<0 || sample.a<0.5) discard;
 	
 	PIXEL OUT;
 	OUT.col = IN.col*sample;
