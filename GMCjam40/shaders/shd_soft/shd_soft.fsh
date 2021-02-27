@@ -53,7 +53,7 @@ PIXEL main(VERTEX IN) : SV_TARGET
 	for(float i = 1.;i<=SAM;i++)
 	{
 		r = mul(r,g);
-		float2 u = IN.tex + r*i/RES;
+		float2 u = IN.tex + r*i/RES.xy;
 		float2 b = step(abs(u-.5),.5);
 		
 		float d = unpack_depth(tdep.Sample(sdep,u));

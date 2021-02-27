@@ -231,6 +231,9 @@
     {"CopyToMask":-1,"filePath":"datafiles/Game objects","resourceVersion":"1.0","name":"Button.obj","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Scenery","resourceVersion":"1.0","name":"wall_hori_32x32.mtl","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Scenery","resourceVersion":"1.0","name":"wall_hori_32x32.obj","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Scenery","resourceVersion":"1.0","name":"tunnel_hori_32x64.mtl","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Scenery","resourceVersion":"1.0","name":"tunnel_hori_32x64.png","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Scenery","resourceVersion":"1.0","name":"tunnel_hori_32x64.obj","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2.3.1.542",
