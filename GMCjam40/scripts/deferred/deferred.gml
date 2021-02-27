@@ -46,8 +46,6 @@ function deferred_clean()
 	if surface_exists(global.surf_dep) surface_free(global.surf_dep);
 	if surface_exists(global.surf_nor) surface_free(global.surf_nor);
 	if surface_exists(global.surf_buf) surface_free(global.surf_buf);
-	
-	if surface_exists(global.surf_sha) surface_free(global.surf_sha);
 }
 
 function deferred_set(animated)
