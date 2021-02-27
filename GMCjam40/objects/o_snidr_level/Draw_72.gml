@@ -1,5 +1,4 @@
 /// @desc shadow pass
-if global.disableDraw{exit;}
 
 //Shadow pass (move light forward)
 light_set(0);
