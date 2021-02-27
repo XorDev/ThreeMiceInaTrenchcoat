@@ -116,8 +116,8 @@ function mouse(_x, _y, _z, _parent) constructor
 			//Put player in the middle of the map if he falls off
 			if (z < -400)
 			{
-				x = 0;
-				y = 0;
+				x = o_snidr_player.xstart;
+				y = o_snidr_player.ystart;
 				z = 300;
 				prevX = x;
 				prevY = y;

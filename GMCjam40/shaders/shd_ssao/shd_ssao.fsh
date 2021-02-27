@@ -13,13 +13,11 @@ uniform float2 RES;
 Texture2D	 tnor : register(t1);
 SamplerState snor : register(s1);
 
-
 struct VERTEX
 {
 	float4 pos : SV_POSITION;
 	float2 tex : TEXCOORD0;
 };
-
 
 struct PIXEL
 {

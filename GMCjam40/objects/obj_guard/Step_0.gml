@@ -7,7 +7,7 @@ if !irandom(6)
 	target = o_snidr_player.mouseArray[_num];
 	
 	var _arc,_range;
-	_arc = 80+30*awareness;
+	_arc = 80+60*awareness;
 	_range = 256+128*awareness;
 	sequence_create()
 	
