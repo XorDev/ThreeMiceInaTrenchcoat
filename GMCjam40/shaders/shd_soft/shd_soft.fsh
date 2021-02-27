@@ -6,6 +6,7 @@
 #define RATIO RES.x/RES.y
 #define SAM RES.z
 #define RAD 4.
+#define D (.5625)
 
 uniform float3 RES;
 
@@ -43,7 +44,7 @@ PIXEL main(VERTEX IN) : SV_TARGET
 	
 	float depth = unpack_depth(depthRGBA);
 	
-	float3 pos = float3(IN.tex-.5,1)*float3(RES.x/RES.y,1,1)*depth;
+	float3 pos = float3(IN.tex-.5,1)*float3(RATIO/D,1./D,1)*depth;
 	float o = 0.;
 	
 	float s = RAD/SAM;//*depth/RES.x/32.;
@@ -57,7 +58,7 @@ PIXEL main(VERTEX IN) : SV_TARGET
 		float2 b = step(abs(u-.5),.5);
 		
 		float d = unpack_depth(tdep.Sample(sdep,u));
-		float3 p = float3(u-.5,1)*float3(RES.x/RES.y,1,1)*d-pos;
+		float3 p = float3(u-.5,1)*float3(RATIO/D,1./D,1)*d-pos;
 		float l = length(p);
 		
 		soft += gm_BaseTextureObject.Sample(gm_BaseTexture,u)*rsqrt(l/i);
