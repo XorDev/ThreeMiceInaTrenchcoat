@@ -1,5 +1,4 @@
 /// @description
-if global.disableDraw{exit;}
 
 //Shadow pass
 light_set(1);

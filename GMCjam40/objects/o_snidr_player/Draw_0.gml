@@ -1,5 +1,4 @@
 /// @description
-if global.disableDraw{exit;}
 
 //Draw mice
 deferred_set(1);
@@ -13,3 +12,4 @@ for (var i = 0; i < mice; i ++)
 	}
 }
 deferred_reset();
+matrix_set(matrix_world, matrix_build_identity());
