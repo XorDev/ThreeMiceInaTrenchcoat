@@ -33,7 +33,7 @@ fric_air = 0.02;
 
 //Enemy variables:
 //No animation currently
-anim = false;
+anim = true;
 //Z-position and speed
 z = 0;
 zspeed = 0;

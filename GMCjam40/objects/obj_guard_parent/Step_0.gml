@@ -117,3 +117,15 @@ _dir = point_direction(x,y,target_x,target_y);
 _swing = look*cos(current_time/300+id);
 _swing *= power((1-awareness)*awareness*4,6)-min(power(smooth,8)*14,1);
 face += (turn_min+turn_add*awareness)*angle_difference(_dir,face+_swing);
+
+if (speed > .5)
+{
+	var animSpd = instance.getAnimSpeed("Run");
+	instance.play("Run", animSpd, 1, false);
+}
+else
+{
+	var animSpd = instance.getAnimSpeed("Idle");
+	instance.play("Idle", animSpd, 1, false);
+}
+instance.step(1);
