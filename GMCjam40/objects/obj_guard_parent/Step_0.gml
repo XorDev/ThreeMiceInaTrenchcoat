@@ -15,8 +15,16 @@ if (target_id>-1)
 		//If targeting a mouse, capture it
 		target_id = -1;
 		capture = 1;
-		//Just to prevent errors.
-		if (o_snidr_player.mice>1) o_snidr_player.mice--;
+		
+		//Remove mice if possible
+		if (o_snidr_player.mice>1)
+		{
+			o_snidr_player.mice--;
+		}
+		else
+		{
+			window_set_caption("You were captured! (GAME OVER)");
+		}
 	}
 }
 #endregion

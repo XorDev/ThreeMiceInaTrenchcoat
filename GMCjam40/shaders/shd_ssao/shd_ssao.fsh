@@ -6,7 +6,7 @@
 //#define RATIO RES.x/RES.y
 #define SAM 32.
 #define RAD 5.
-#define AMT 4.
+#define AMT 5.
 
 uniform float2 RES;
 
