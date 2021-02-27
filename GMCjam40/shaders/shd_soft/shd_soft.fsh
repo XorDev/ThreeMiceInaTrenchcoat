@@ -3,11 +3,11 @@
 //MIN is the z-far clipping distance.
 #define MAX 65025.
 //Screen resolution
-//#define RATIO RES.x/RES.y
-#define SAM 16.
+#define RATIO RES.x/RES.y
+#define SAM (16.*RES.z)
 #define RAD 4.
 
-uniform float2 RES;
+uniform float3 RES;
 
 Texture2D	 tdep : register(t1);
 SamplerState sdep : register(s1);
@@ -53,7 +53,7 @@ PIXEL main(VERTEX IN) : SV_TARGET
 	for(float i = 1.;i<=SAM;i++)
 	{
 		r = mul(r,g);
-		float2 u = IN.tex + r*i/RES;
+		float2 u = IN.tex + r*i/RES.xy;
 		float2 b = step(abs(u-.5),.5);
 		
 		float d = unpack_depth(tdep.Sample(sdep,u));

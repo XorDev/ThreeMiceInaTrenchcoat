@@ -2,9 +2,10 @@
 
 var _hover = global.hover==id;
 
+smooth = lerp(smooth,_hover,.2);
 //Scale
-image_xscale = lerp(image_xscale,1+.2*_hover,.2);
-image_yscale = lerp(image_yscale,1+.2*_hover,.2);
+image_xscale = 1+.2*smooth;
+image_yscale = 1+.2*smooth;
 
 if _hover && !instance_exists(global.button)
 {
@@ -20,7 +21,7 @@ if _hover && !instance_exists(global.button)
 		}
 		else
 		{
-			event_user(0)	;
+			event_user(0);
 		}
 	}
 }
