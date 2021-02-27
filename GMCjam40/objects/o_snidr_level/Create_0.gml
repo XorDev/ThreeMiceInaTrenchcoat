@@ -25,9 +25,5 @@ if (true)//!levelColmesh.load("SnidrCache.cm"))
 	//levelColmesh.save("Demo1Cache.cm"); //Save a cache, so that loading it the next time will be quicker
 }
 
-instance_create_depth(0, 0, 0, o_snidr_loadmodels);
 instance_create_depth(0, 0, 0, o_snidr_camera);
-with(instance_find(obj_player_start, 0)) {
-	instance_create_depth(x, y, 0, o_snidr_player);
-}
 buffer_delete(mbuffLevel);

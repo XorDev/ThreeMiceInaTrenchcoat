@@ -31,7 +31,7 @@ function deferred_surface()
 	draw_clear(0);
 	surface_reset_target();
 	
-	if (global.gsettings!=0) && surface_exists(global.surf_sha)
+	if surface_exists(global.surf_sha)
 	{
 		surface_set_target(global.surf_sha);
 		draw_clear(0);
@@ -76,10 +76,9 @@ function deferred_draw()
 	surface_set_target(global.surf_buf);
 	gpu_set_blendmode_ext(bm_dest_color,bm_zero);
 	shader_set(shd_ssao);
-	var _quality = (global.gsettings!=0)+(global.gsettings==2);
 	var _uni,_tex;
 	_uni = shader_get_uniform(shd_ssao,"RES");
-	shader_set_uniform_f(_uni,global.screen_width,global.screen_height,_quality);
+	shader_set_uniform_f(_uni,global.screen_width,global.screen_height);
 	_uni = shader_get_sampler_index(shd_ssao,"snor");
 	_tex = surface_get_texture(global.surf_nor);
 	texture_set_stage(_uni,_tex);
@@ -88,18 +87,16 @@ function deferred_draw()
 	gpu_set_blendmode(bm_normal);
 	surface_reset_target();
 	
-	if (global.gsettings!=0)
-	{
-		//Soften shadows/occlusion.
-		shader_set(shd_soft);
-		_uni = shader_get_uniform(shd_soft,"RES");
-		shader_set_uniform_f(_uni,global.screen_width,global.screen_height);
-		_uni = shader_get_sampler_index(shd_soft,"sdep");
-		_tex = surface_get_texture(global.surf_dep);
-		texture_set_stage(_uni,_tex);
-	}
+	//Soften shadows/occlusion.
+	shader_set(shd_soft);
+	_uni = shader_get_uniform(shd_soft,"RES");
+	shader_set_uniform_f(_uni,global.screen_width,global.screen_height);
+	_uni = shader_get_sampler_index(shd_soft,"sdep");
+	_tex = surface_get_texture(global.surf_dep);
+	texture_set_stage(_uni,_tex);
 	draw_surface_ext(global.surf_buf,0,0,1,1,0,-1,1);
 	shader_reset();
+	
 	//Draw point lights here.
 	/*
 	gpu_set_blendmode(bm_add);

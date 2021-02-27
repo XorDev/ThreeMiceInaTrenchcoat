@@ -1,7 +1,7 @@
 #define LIG_COL float3(1,1,1)
 #define AMB_COL float3(.1,.18,.3)
 
-#define CLIP_DEP 85.
+#define CLIP_DEP 70.
 #define CLIP_RAD 15.
 
 //MIN is the z-near clipping distance.
@@ -11,8 +11,10 @@
 
 uniform float2 SHA_RES;
 
+
 Texture2D	 tsha : register(t1);
 SamplerState ssha : register(s1);
+
 
 
 struct VERTEX
