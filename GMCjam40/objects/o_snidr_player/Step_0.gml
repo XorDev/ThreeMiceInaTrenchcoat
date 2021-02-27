@@ -28,13 +28,12 @@ if (global.trenchCoatInput)
 		//Make follower mice jump towards their new position
 		with mouseArray[0]
 		{
-			jumpHeight = radius + other.mouseArray[1].radius * 4;
 			jumpStartX = x;
 			jumpStartY = y;
 			jumpStartZ = z;
 			jumpEndX = x;
 			jumpEndY = y;
-			jumpEndZ = z + jumpHeight;
+			jumpEndZ = z + trenchcoatHeight;
 			prevX = jumpEndX;
 			prevY = jumpEndY;
 			prevZ = jumpEndZ;
@@ -67,7 +66,7 @@ if (trenchcoatTimer > 0)
 	if (trenchcoatTimer <= 0)
 	{
 		mouseArray[0].currInst = mouseArray[0].trenchcoatInst;
-		mouseArray[0].height = mouseArray[0].jumpHeight;
+		mouseArray[0].height = mouseArray[0].trenchcoatHeight;
 	}
 }
 else

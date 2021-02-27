@@ -34,7 +34,7 @@ function mouse(_x, _y, _z, _parent) constructor
 	
 	instance = new smf_instance(global.modMouse);
 	instance.play("Idle", .1, 1, true);
-	instance.scale = .333;
+	instance.scale = .28;
 	currInst = instance;
 	
 	if (is_struct(parent))
@@ -47,10 +47,11 @@ function mouse(_x, _y, _z, _parent) constructor
 	{
 		trenchcoatInst = new smf_instance(global.modTrenchcoat);
 		trenchcoatInst.play("Idle", .1, 1, true);
-		trenchcoatInst.scale = .43;
+		trenchcoatInst.scale = .35;
 		
 		trailSize = 100;
 		trail = array_create(trailSize);
+		trenchcoatHeight = radius * 2;
 	}
 	
 	static step = function(trenchcoat)
@@ -65,9 +66,9 @@ function mouse(_x, _y, _z, _parent) constructor
 		
 		var dx = spdX;
 		var dy = spdY;
-		var d = sqrt(spdX * spdX + spdY * spdY);
+		var spd = sqrt(spdX * spdX + spdY * spdY);
 		var dir = point_direction(0, 0, spdX, spdY);
-		angle += angle_difference(dir, angle) * min(5, d) / 5.;
+		angle += angle_difference(dir, angle) * min(5, spd) / 5.;
 
 		jump = false;
 		if (jumpTimer)
@@ -88,6 +89,7 @@ function mouse(_x, _y, _z, _parent) constructor
 			if (is_array(t1) && is_array(t2))
 			{
 				jump = t1[3];
+				ground = !jump;
 				x = lerp(t1[0], t2[0], frac(trailPos));
 				y = lerp(t1[1], t2[1], frac(trailPos));
 				z = lerp(t1[2], t2[2], frac(trailPos));
@@ -99,7 +101,7 @@ function mouse(_x, _y, _z, _parent) constructor
 				else
 				{
 					if (parent.trailPos < trailPos){trailPos -= global.masterMouse.trailSize;}
-					trailPos = (max(trailPos, trailPos + (parent.trailPos - 1.5 - trailPos) * .2) + global.masterMouse.trailSize) mod global.masterMouse.trailSize;
+					trailPos = (max(trailPos, trailPos + (parent.trailPos - 1.5 - trailPos) * .4) + global.masterMouse.trailSize) mod global.masterMouse.trailSize;
 				}
 			}
 			else
@@ -225,7 +227,7 @@ function mouse(_x, _y, _z, _parent) constructor
 		}
 		else
 		{
-			if !(global.hInput == 0 && global.vInput == 0)
+			if (spd > .5)
 			{
 				var animSpd = currInst.getAnimSpeed("Walk");
 				currInst.play("Walk", animSpd, .15, false);
@@ -280,7 +282,7 @@ function mouse(_x, _y, _z, _parent) constructor
 		if mouseIndex == 0 && t > 0
 		{
 			var s = trenchcoatInst.scale * radius;
-			matrix_set(matrix_world, matrix_build(x, y, z - (radius + jumpHeight) * max(0, (1 - 2 * t)), 0, 0, angle, s * min(2 - 2 * t, 1), s * min(2 - 2 * t, 1), s * max(.2, min(1 - 2 * t, 1))));
+			matrix_set(matrix_world, matrix_build(x, y, z - (radius + trenchcoatHeight) * max(0, (1 - 2 * t)), 0, 0, angle, s * min(2 - 2 * t, 1), s * min(2 - 2 * t, 1), s * max(.2, min(1 - 2 * t, 1))));
 			trenchcoatInst.draw();
 		}
 	}
