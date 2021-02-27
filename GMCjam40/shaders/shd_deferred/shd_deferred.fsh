@@ -80,7 +80,7 @@ PIXEL main(VERTEX IN) : SV_TARGET
 	
 	float3 c = lerp(LIG_COL,AMB_COL,max(soft(u,IN.coo.z)*b.x*b.y,IN.lig));
 	float dis = length(IN.dep-float3(0,0,1)*clamp(IN.dep.z,0.,CLIP_DEP))-CLIP_RAD;
-	if (dis<0 || sample.a<0.5) discard;
+	//if (dis<0 || sample.a<0.5) discard;
 	
 	PIXEL OUT;
 	OUT.col = IN.col*sample;
