@@ -15,8 +15,9 @@ global.modTrenchcoat = smf_model_load("Characters/MouseInTrenchcoat.smf");
 global.mbuffTunnelHor = colmesh_load_obj_to_buffer("Scenery/tunnel_hori_32x64.obj");
 global.mbuffWallCornerBottomLeft = colmesh_load_obj_to_buffer("Scenery/wall_corner_bottomleft_32x32.obj");
 global.mbuffWallWallHor = colmesh_load_obj_to_buffer("Scenery/wall_hori_32x32.obj");
-global.mbuffWallWallHorColumns = colmesh_load_obj_to_buffer("Scenery/wall_hori_column_32x32.obj");
+global.mbuffWallWallHorColumns = colmesh_load_obj_to_buffer("Scenery/wall_hori_columns_32x32x64.obj");
 global.mbuffFloor = colmesh_load_obj_to_buffer("Scenery/floor_32x32.obj");
+global.mbuffStair = colmesh_load_obj_to_buffer("Scenery/stairs_vert_64x128x64.obj");
 
 //Load environment models
 global.modButton = loadObj("Game objects/Button.obj");
