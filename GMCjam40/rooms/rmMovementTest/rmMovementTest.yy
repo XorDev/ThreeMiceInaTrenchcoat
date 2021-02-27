@@ -36,7 +36,6 @@
     {"name":"inst_1AFB24DA","path":"rooms/rmMovementTest/rmMovementTest.yy",},
     {"name":"inst_25AEA774","path":"rooms/rmMovementTest/rmMovementTest.yy",},
     {"name":"inst_6624D31","path":"rooms/rmMovementTest/rmMovementTest.yy",},
-    {"name":"inst_2698C452","path":"rooms/rmMovementTest/rmMovementTest.yy",},
   ],
   "inheritCreationOrder": false,
   "sequenceId": null,

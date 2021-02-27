@@ -1,7 +1,7 @@
 /// @description
 
 //Draw mice
-deferred_set(1);
+//deferred_set(1);
 for (var i = 0; i < mice; i ++)
 {
 	mouseArray[i].draw();
@@ -11,5 +11,5 @@ for (var i = 0; i < mice; i ++)
 		break;
 	}
 }
-deferred_reset();
+//deferred_reset();
 matrix_set(matrix_world, matrix_build_identity());

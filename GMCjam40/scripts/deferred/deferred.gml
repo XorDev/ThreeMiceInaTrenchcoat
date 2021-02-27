@@ -93,7 +93,7 @@ function deferred_draw()
 		//Soften shadows/occlusion.
 		shader_set(shd_soft);
 		_uni = shader_get_uniform(shd_soft,"RES");
-		shader_set_uniform_f(_uni,global.screen_width,global.screen_height,_quality);
+		shader_set_uniform_f(_uni,global.screen_width,global.screen_height);
 		_uni = shader_get_sampler_index(shd_soft,"sdep");
 		_tex = surface_get_texture(global.surf_dep);
 		texture_set_stage(_uni,_tex);
