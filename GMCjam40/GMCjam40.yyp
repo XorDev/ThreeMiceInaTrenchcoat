@@ -53,6 +53,7 @@
     {"id":{"name":"mbuff_transform","path":"scripts/mbuff_transform/mbuff_transform.yy",},"order":14,},
     {"id":{"name":"mbuff_get_vertices","path":"scripts/mbuff_get_vertices/mbuff_get_vertices.yy",},"order":10,},
     {"id":{"name":"Various","path":"scripts/Various/Various.yy",},"order":3,},
+    {"id":{"name":"spr_icon_wall","path":"sprites/spr_icon_wall/spr_icon_wall.yy",},"order":3,},
     {"id":{"name":"_mbuff_read_obj_face","path":"scripts/_mbuff_read_obj_face/_mbuff_read_obj_face.yy",},"order":6,},
     {"id":{"name":"sh_colmesh_shadow","path":"shaders/sh_colmesh_shadow/sh_colmesh_shadow.yy",},"order":1,},
     {"id":{"name":"vbuff_delete","path":"scripts/vbuff_delete/vbuff_delete.yy",},"order":13,},
@@ -224,6 +225,8 @@
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"cage.obj","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"test_level2.obj","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Game objects","resourceVersion":"1.0","name":"Button.obj","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Scenery","resourceVersion":"1.0","name":"wall_hori_32x32.mtl","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Scenery","resourceVersion":"1.0","name":"wall_hori_32x32.obj","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2.3.1.542",
