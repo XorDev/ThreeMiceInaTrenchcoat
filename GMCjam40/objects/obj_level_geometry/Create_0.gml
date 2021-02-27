@@ -10,7 +10,7 @@ function addModel(mesh, tex, matrix)
 		mbuff = buffer_create(1, buffer_grow, 1);
 		texMap[? tex] = mbuff;
 	}
-	mbuff_combine_ext(mbuff, mesh, matrix);
+	model_combine_ext(mbuff, mesh, matrix);
 }
 
 function model_combine_ext(trg, src, M) 
@@ -28,7 +28,7 @@ function model_combine_ext(trg, src, M)
 	var srcSize = bytesPerTri * (buffer_get_size(src) div bytesPerTri);
 	var trgSize = bytesPerTri * (buffer_get_size(trg) div bytesPerTri);
 	buffer_resize(trg, srcSize + trgSize);
-	buffer_seek(trg, buffer_seek_start, trgSize);
+    buffer_copy(src, 0, srcSize, trg, trgSize);
 
 	//Loop through the vertices of the source buffer
 	for (var i = 0; i < srcSize; i += bytesPerVert)
@@ -53,7 +53,6 @@ function model_combine_ext(trg, src, M)
 	
 		//Write vertex to target buffer
         buffer_seek(trg, buffer_seek_start, trgSize + i);
-        buffer_copy(src, i, bytesPerVert, trg, buffer_tell(trg));
         buffer_write(trg, buffer_f32, v[0]);
         buffer_write(trg, buffer_f32, v[1]);
         buffer_write(trg, buffer_f32, v[2]);

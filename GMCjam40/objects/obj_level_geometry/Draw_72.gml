@@ -1,5 +1,5 @@
 /// @desc shadow pass
-/*
+
 //Shadow pass (move light forward)
 light_set(0);
 gpu_set_cullmode(cull_noculling);
