@@ -26,8 +26,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "NPCs",
+    "path": "folders/Game objects/NPCs.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_guard_parent",

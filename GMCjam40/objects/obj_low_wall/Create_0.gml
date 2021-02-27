@@ -1,5 +1,4 @@
 /// @description
 var size = 32;
-z = layer_id;
-show_message(layer_id);
+z = 0;
 shape = levelColmesh.addShape(new colmesh_cube(x, y, z, size));
