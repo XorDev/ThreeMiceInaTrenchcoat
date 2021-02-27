@@ -1,6 +1,6 @@
 ///@desc enemy init
-
 event_inherited();
+
 
 
 #region Set different stats:
@@ -33,6 +33,9 @@ turn_add = 0.15;
 fric_ground = 0.3;
 fric_air = 0.03;
 #endregion
+
+instance = new smf_instance(global.modPug);
+instance.play("Idle", .2, 1, true);
 
 function draw()
 {

@@ -4,6 +4,7 @@ z = 300;
 radius = 10;
 
 trenchcoat = false;
+globalvar trenchcoatTimer;
 trenchcoatTimer = 0;
 
 /// @func mouse(x, y, z)
@@ -267,7 +268,7 @@ function mouse(_x, _y, _z, _parent) constructor
 	
 	static draw = function()
 	{
-		var t = obj_player.trenchcoatTimer;
+		var t = trenchcoatTimer;
 		
 		var s = currInst.scale * radius;
 		if (t > 0 && mouseIndex == 0)

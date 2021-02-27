@@ -10,6 +10,8 @@ function loadObj(path)
 //Load animated models
 global.modMouse = smf_model_load("Characters/Mouse.smf");
 global.modTrenchcoat = smf_model_load("Characters/MouseInTrenchcoat.smf");
+global.modOwl = smf_model_load("Characters/Owl.smf");
+global.modPug = smf_model_load("Characters/Pug.smf");
 
 //Load scenery
 global.mbuffTunnelHor = colmesh_load_obj_to_buffer("Scenery/tunnel_hori_32x64.obj");
@@ -23,8 +25,6 @@ global.mbuffMouseHoleHor = colmesh_load_obj_to_buffer("Scenery/mousehole_tunnel_
 
 //Load environment models
 global.modButton = loadObj("Game objects/Button.obj");
-global.modOwl = loadObj("Characters/Owl.obj");
-global.modPug = loadObj("Characters/Pug.obj");
 
 //Make sure the level colmesh exists
 if !instance_exists(obj_colmesh)
