@@ -9,7 +9,7 @@ function addToLevel()
 	tex = sprite_get_texture(spr_brick, 0);
 	
 	//Add to colmesh
-	levelColmesh.addShape(new colmesh_cube(x + 16, y + 16, z + 16, 16));
+	levelColmesh.addShape(new colmesh_cube(x + 16, y + 16, z + 16, 32));
 	
 	//Add to level geometry
 	addTiledWalls(global.mbuffWallWallHor, tex, 32, tile);
