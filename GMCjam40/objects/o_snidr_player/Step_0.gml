@@ -17,12 +17,7 @@ if (global.trenchCoatInput)
 		{
 			with mouseArray[i]
 			{
-				x = parent.x + 10;
-				y = parent.y;
-				z = parent.z - parent.radius - radius;
-				prevX = x;
-				prevY = y;
-				prevZ = z;
+				trailPos = parent.trailPos;
 			}
 		}
 	}

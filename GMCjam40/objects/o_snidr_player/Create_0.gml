@@ -47,7 +47,7 @@ function mouse(_x, _y, _z, _parent) constructor
 	{
 		trenchcoatInst = new smf_instance(global.modTrenchcoat);
 		trenchcoatInst.play("Idle", .1, 1, true);
-		trenchcoatInst.scale = .35;
+		trenchcoatInst.scale = .43;
 		
 		trailSize = 100;
 		trail = array_create(trailSize);
@@ -83,14 +83,31 @@ function mouse(_x, _y, _z, _parent) constructor
 		{
 			//This is a follower mouse
 			var dist = point_distance_3d(parent.x, parent.y, parent.z, x, y, z);
-			trailPos = (parent.trailPos - 2 + global.masterMouse.trailSize) mod global.masterMouse.trailSize;
-			var t1 = global.masterMouse.trail[floor(trailPos)];
-			var t2 = global.masterMouse.trail[(floor(trailPos) + 1)];
+			var t1 = global.masterMouse.trail[floor(trailPos) mod global.masterMouse.trailSize];
+			var t2 = global.masterMouse.trail[(floor(trailPos + 1)) mod global.masterMouse.trailSize];
 			if (is_array(t1) && is_array(t2))
 			{
-				x += (lerp(t1[0], t2[0], frac(trailPos)) - x) * .5;
-				y += (lerp(t1[1], t2[1], frac(trailPos)) - y) * .5;
-				z += (lerp(t1[2], t2[2], frac(trailPos)) - z) * .5;
+				jump = t1[3];
+				x = lerp(t1[0], t2[0], frac(trailPos));
+				y = lerp(t1[1], t2[1], frac(trailPos));
+				z = lerp(t1[2], t2[2], frac(trailPos));
+				z += jump * (1 - sqr(frac(trailPos) * 2 - 1)) * radius * 3; //Jump in an arc
+				if (jump)
+				{
+					trailPos = (trailPos + .1 + global.masterMouse.trailSize) mod global.masterMouse.trailSize;
+				}
+				else
+				{
+					if (parent.trailPos < trailPos){trailPos -= global.masterMouse.trailSize;}
+					trailPos = (max(trailPos, trailPos + (parent.trailPos - 1.5 - trailPos) * .2) + global.masterMouse.trailSize) mod global.masterMouse.trailSize;
+				}
+			}
+			else
+			{
+				trailPos = parent.trailPos;
+				x = parent.x;
+				y = parent.y;
+				z = parent.z;
 			}
 		}
 		else
@@ -155,37 +172,46 @@ function mouse(_x, _y, _z, _parent) constructor
 			}
 			
 			//Save trail
-			if true || (ground || jump)
+			if (ground || jump)
 			{
-				trail[(floor(trailPos) + 1) mod trailSize] = [x, y, z, jump];
-				
 				var p = floor(trailPos);
+				trail[(p + 1) mod trailSize] = [x, y, z, jump];
 				var t = trail[p];
 				if (!is_array(t))
 				{
-					trail[(floor(trailPos))] = [x, y, z, false];
+					trail[p] = [x, y, z, false];
 					trailPos = (trailPos + 1) mod trailSize;
 				}
 				else
 				{
 					var dist = point_distance_3d(t[0], t[1], t[2], x, y, z);
-					repeat floor(dist / radius)
+					if (t[3])
 					{
-						d = radius / dist;
-						t[0] += (x - t[0]) * d;
-						t[1] += (y - t[1]) * d;
-						t[2] += (z - t[2]) * d;
-						trail[(++ p) mod trailSize] = [t[0], t[1], t[2], jump];
+						if (point_distance(t[0], t[1], x, y) >= radius)
+						{
+							trailPos = (p + 1) mod trailSize;
+						}
 					}
-					trailPos = max(trailPos, floor(trailPos) + dist / radius) mod trailSize;
-					/*if (jump)
+					else
 					{
-						trailPos = (floor(trailPos) + 1) mod trailSize;
+						repeat ceil(dist / radius)
+						{
+							d = radius / dist;
+							t[0] += (x - t[0]) * d;
+							t[1] += (y - t[1]) * d;
+							t[2] += (z - t[2]) * d;
+							trail[(++ p) mod trailSize] = [t[0], t[1], t[2], jump];
+						}
+						trailPos = max(trailPos, floor(trailPos) + dist / radius) mod trailSize;
+						/*if (jump)
+						{
+							trailPos = (floor(trailPos) + 1) mod trailSize;
+						}
+						if (ground)
+						{
+							trailPos = max(trailPos, floor(trailPos) + min(dist / radius, 1)) mod trailSize;
+						}*/
 					}
-					if (ground)
-					{
-						trailPos = max(trailPos, floor(trailPos) + min(dist / radius, 1)) mod trailSize;
-					}*/
 				}
 			}
 			
@@ -239,11 +265,24 @@ function mouse(_x, _y, _z, _parent) constructor
 	
 	static draw = function()
 	{
+		var t = o_snidr_player.trenchcoatTimer;
+		
 		var s = currInst.scale * radius;
+		if (t > 0)
+		{
+			s *= min(1, 1.5 * t);
+		}
 		matrix_set(matrix_world, matrix_build(x, y, z - radius - height, 0, 0, angle, s, s, s));
 		currInst.draw();
 		//matrix_set(matrix_world, matrix_build_identity());
 		//colmesh_debug_draw_capsule(x, y, z, dcos(angle), -dsin(angle), 0, radius * .5, radius * .5, make_colour_rgb(110, 127, 200));
+		
+		if mouseIndex == 0 && t > 0
+		{
+			var s = trenchcoatInst.scale * radius;
+			matrix_set(matrix_world, matrix_build(x, y, z - (radius + jumpHeight) * max(0, (1 - 2 * t)), 0, 0, angle, s * min(2 - 2 * t, 1), s * min(2 - 2 * t, 1), s * max(.2, min(1 - 2 * t, 1))));
+			trenchcoatInst.draw();
+		}
 	}
 }
 
