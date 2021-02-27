@@ -23,7 +23,7 @@ if (target_id>-1)
 		}
 		else
 		{
-			window_set_caption("You were captured! (GAME OVER)");
+			room_goto(rm_menu);
 		}
 	}
 }

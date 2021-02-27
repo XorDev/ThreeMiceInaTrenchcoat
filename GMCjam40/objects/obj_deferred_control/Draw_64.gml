@@ -1,3 +1,3 @@
 ///@desc Render deferred output
 
-deferred_draw();
+if (room==rmMovementTest) deferred_draw();

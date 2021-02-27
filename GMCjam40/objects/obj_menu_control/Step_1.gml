@@ -19,9 +19,10 @@ layer_background_alpha(_back,fade);
 
 if (fade>.99) && instance_exists(global.button)
 {
-	with(global.button) event_user(0);
 	alpha = 0;
+	var _id = global.button;
 	global.button = noone;
+	with(_id) event_user(0);
 }
 /*
 layer_x(layer_id,(mouse_x-room_width)*.1);

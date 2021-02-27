@@ -1,6 +1,6 @@
-///@desc Tex filter
+///@desc Variables +tex filter
 
-gpu_set_tex_filter(1);
+gpu_set_tex_filter(true);
 
 alpha = 0;
 fade = 1;

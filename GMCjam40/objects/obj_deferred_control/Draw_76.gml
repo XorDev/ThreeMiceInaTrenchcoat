@@ -1,4 +1,4 @@
-///@desc Debug surfaces
+///@desc Clean surfaces and set light
 
 deferred_surface();
 
