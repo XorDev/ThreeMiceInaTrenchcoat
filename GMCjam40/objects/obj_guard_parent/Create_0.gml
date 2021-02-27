@@ -20,11 +20,11 @@ speed_jump = 5;
 speed_fall = 0.3;
 //Default speed + chase speed.
 speed_min = 1;
-speed_add = 2;
+speed_add = 3;
 
 //Default turning speed + chase speed.
-turn_min = 0.05;
-turn_add = 0.15;
+turn_min = 0.08;
+turn_add = 0.12;
 
 //Ground friction and air friction
 fric_ground = 0.2;
@@ -32,15 +32,25 @@ fric_air = 0.02;
 #endregion
 
 //Enemy variables:
+//No animation currently
 anim = false;
+//Z-position and speed
 z = 0;
 zspeed = 0;
+//Face direction
 face = 180;
-target = -1;
+//Awareness = 1 when chasing or capturing mouse
 awareness = 0;
+//Smooth random variable for turning
 smooth = 0;
+//Sway animation variable
 sway = 0;
 
+//Target struct, array id and position
+target = -1;
+target_id = -1;
 target_x = 0;
 target_y = 0;
 target_z = 0;
+//True when a mouse is captured.
+capture = 0;

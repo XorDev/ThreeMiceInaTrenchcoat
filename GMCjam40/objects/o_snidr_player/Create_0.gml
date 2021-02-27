@@ -249,6 +249,6 @@ function mouse(_x, _y, _z, _parent) constructor
 
 mice = 0;
 mouseArray[mice ++] = new mouse(x, y, z, self);
-//mouseArray[mice ++] = new mouse(x + mice * radius * 2, y, z, mouseArray[mice - 1]);
-//mouseArray[mice ++] = new mouse(x + mice * radius * 2, y, z, mouseArray[mice - 1]);
+mouseArray[mice ++] = new mouse(x + mice * radius * 2, y, z, mouseArray[mice - 1]);
+mouseArray[mice ++] = new mouse(x + mice * radius * 2, y, z, mouseArray[mice - 1]);
 global.masterMouse = mouseArray[0];

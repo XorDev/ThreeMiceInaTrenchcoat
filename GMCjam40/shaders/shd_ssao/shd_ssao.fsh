@@ -5,8 +5,8 @@
 //Screen resolution
 //#define RATIO RES.x/RES.y
 #define SAM 32.
-#define RAD 4.
-#define AMT 3.
+#define RAD 5.
+#define AMT 4.
 
 uniform float2 RES;
 
@@ -43,7 +43,7 @@ PIXEL main(VERTEX IN) : SV_TARGET
 	float depth = unpack_depth(depthRGBA);
 	float3 normal = normalize(normalRGB-.5)*float3(1,-1,1);
 	
-	float3 pos = float3(IN.tex-.5,1)*float3(RES.x/RES.y,1,1)*depth;
+	float3 pos = float3(IN.tex-.5,1)*float3(RES.x/RES.y/.5625,1./.5625,1)*depth;
 	float o = 0.;
 	
 	float s = RAD*RES.x/SAM/depth;
@@ -57,7 +57,7 @@ PIXEL main(VERTEX IN) : SV_TARGET
 		float2 b = step(abs(u-.5),.5);
 		
 		float d = unpack_depth(gm_BaseTextureObject.Sample(gm_BaseTexture,u));
-		float3 p = float3(u-.5,1)*float3(RES.x/RES.y,1,1)*d-pos;
+		float3 p = float3(u-.5,1)*float3(RES.x/RES.y/.5625,1./.5625,1)*d-pos;
 		float l = length(p);
 		
 		o += b.x*b.y*max(dot(normal,p/l),0.)*rsqrt(1.+l/RAD)*clamp(3.-l/RAD,0.,1.);

@@ -131,8 +131,8 @@
     "children": [],
   },
   "RoomOrderNodes": [
-    {"roomId":{"name":"rmMovementTest","path":"rooms/rmMovementTest/rmMovementTest.yy",},},
     {"roomId":{"name":"rm_crimson_splash","path":"rooms/rm_crimson_splash/rm_crimson_splash.yy",},},
+    {"roomId":{"name":"rmMovementTest","path":"rooms/rmMovementTest/rmMovementTest.yy",},},
   ],
   "Folders": [
     {"folderPath":"folders/Sprites.yy","order":0,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},
