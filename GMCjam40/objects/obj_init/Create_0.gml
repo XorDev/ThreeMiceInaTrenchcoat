@@ -13,6 +13,7 @@ global.modTrenchcoat = smf_model_load("Characters/MouseInTrenchcoat.smf");
 
 //Load scenery
 global.mbuffTunnelHor = colmesh_load_obj_to_buffer("Scenery/tunnel_hori_32x64.obj");
+global.mbuffWallCornerBottomLeft = colmesh_load_obj_to_buffer("Scenery/wall_corner_bottomleft_32x32.obj");
 
 //Load environment models
 global.modButton = loadObj("Game objects/Button.obj");

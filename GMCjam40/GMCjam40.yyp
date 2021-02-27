@@ -134,6 +134,7 @@
     {"id":{"name":"mbuff_create_smooth_normals","path":"scripts/mbuff_create_smooth_normals/mbuff_create_smooth_normals.yy",},"order":6,},
     {"id":{"name":"spr_button","path":"sprites/spr_button/spr_button.yy",},"order":0,},
     {"id":{"name":"obj_guard_pug","path":"objects/obj_guard_pug/obj_guard_pug.yy",},"order":2,},
+    {"id":{"name":"obj_wall","path":"objects/obj_wall/obj_wall.yy",},"order":6,},
     {"id":{"name":"shd_shadow","path":"shaders/shd_shadow/shd_shadow.yy",},"order":2,},
   ],
   "Options": [
