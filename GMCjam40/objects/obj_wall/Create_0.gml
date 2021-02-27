@@ -1,21 +1,51 @@
 /// @description
+z = 0;
+event_inherited();
+
+type = 0;
+var xx = x + 16;
+var yy = y + 16;
+if (instance_position(xx + 32, yy, obj_wall_parent) != noone)
+{
+	type += 1;
+}
+if (instance_position(xx, yy - 32, obj_wall_parent) != noone)
+{
+	type += 2;
+}
+if (instance_position(xx - 32, yy, obj_wall_parent) != noone)
+{
+	type += 4;
+}
+if (instance_position(xx, yy + 32, obj_wall_parent) != noone)
+{
+	type += 8;
+}
 
 function addToLevel()
 {
 	tex = sprite_get_texture(spr_brick, 0);
-	z = 0;
 	
 	//Add to colmesh
-	var w = 32;
-	var h = 64;
-	var wt = 6; //Wall thickness
-	var ct = 16; //Ceiling thickness
-	levelColmesh.addShape(new colmesh_block(matrix_build(x + w / 2, y + wt / 2, z + h / 2, 0, 0, 0, w / 2, wt / 2, h / 2)));
-	levelColmesh.addShape(new colmesh_block(matrix_build(x + w / 2, y + 64 - wt / 2, z + h / 2, 0, 0, 0, w / 2, wt / 2, h / 2)));
-	levelColmesh.addShape(new colmesh_block(matrix_build(x + w / 2, y + h / 2, z + h - ct / 2, 0, 0, 0, w / 2, w / 2, ct / 2)));
+	levelColmesh.addShape(new colmesh_cube(x + 16, y + 16, z + 16, 32));
 	
 	//Add to level geometry
-	obj_level_geometry.addModel(global.mbuffTunnelHor, tex, matrix_build(x, y, z, 0, 0, 0, 1, 1, 1));
+	if (type mod 2) == 0 //If there is no wall beside this one, add a wall
+	{
+		obj_level_geometry.addModel(global.mbuffWallWallHor, tex, matrix_build(x + 32, y, z, 0, 0, -90, 1, 1, 1));
+	}
+	if ((type div 2) mod 2) == 0 //If there is no wall beside this one, add a wall
+	{
+		obj_level_geometry.addModel(global.mbuffWallWallHor, tex, matrix_build(x, y, z, 0, 0, 0, 1, 1, 1));
+	}
+	if ((type div 4) mod 2) == 0 //If there is no wall beside this one, add a wall
+	{
+		obj_level_geometry.addModel(global.mbuffWallWallHor, tex, matrix_build(x, y, z, 0, 0, -90, 1, 1, 1));
+	}
+	if ((type div 8) mod 2) == 0 //If there is no wall beside this one, add a wall
+	{
+		obj_level_geometry.addModel(global.mbuffWallWallHor, tex, matrix_build(x, y + 32, z, 0, 0, 0, 1, 1, 1));
+	}
 	
 	//Destroy
 	instance_destroy();
