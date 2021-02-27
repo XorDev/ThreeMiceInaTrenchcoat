@@ -4,10 +4,7 @@
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": {
-    "name": "obj_game_object_parent",
-    "path": "objects/obj_game_object_parent/obj_game_object_parent.yy",
-  },
+  "parentObjectId": null,
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,
@@ -21,16 +18,16 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"obj_static_parent","path":"objects/obj_static_parent/obj_static_parent.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"obj_game_object_parent","path":"objects/obj_game_object_parent/obj_game_object_parent.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Walls",
-    "path": "folders/Game objects/Walls.yy",
+    "name": "Game objects",
+    "path": "folders/Game objects.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_static_parent",
+  "name": "obj_game_object_parent",
   "tags": [],
   "resourceType": "GMObject",
 }
