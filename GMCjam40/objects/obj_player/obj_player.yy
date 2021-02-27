@@ -29,8 +29,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Player and camera",
-    "path": "folders/Game objects/Player and camera.yy",
+    "name": "Player",
+    "path": "folders/Game objects/Player.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_player",
