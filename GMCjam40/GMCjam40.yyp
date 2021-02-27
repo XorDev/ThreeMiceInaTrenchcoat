@@ -38,7 +38,7 @@
     {"id":{"name":"spr_brick","path":"sprites/spr_brick/spr_brick.yy",},"order":0,},
     {"id":{"name":"obj_button_settings","path":"objects/obj_button_settings/obj_button_settings.yy",},"order":7,},
     {"id":{"name":"colmesh_math","path":"scripts/colmesh_math/colmesh_math.yy",},"order":1,},
-    {"id":{"name":"fnt_menu","path":"fonts/fnt_menu/fnt_menu.yy",},"order":11,},
+    {"id":{"name":"fnt_menu","path":"fonts/fnt_menu/fnt_menu.yy",},"order":9,},
     {"id":{"name":"sh_smf_animate","path":"shaders/sh_smf_animate/sh_smf_animate.yy",},"order":0,},
     {"id":{"name":"mbuff_load_obj_ext","path":"scripts/mbuff_load_obj_ext/mbuff_load_obj_ext.yy",},"order":7,},
     {"id":{"name":"smf_anim","path":"scripts/smf_anim/smf_anim.yy",},"order":0,},
@@ -57,7 +57,6 @@
     {"id":{"name":"sh_colmesh_shadow","path":"shaders/sh_colmesh_shadow/sh_colmesh_shadow.yy",},"order":1,},
     {"id":{"name":"vbuff_delete","path":"scripts/vbuff_delete/vbuff_delete.yy",},"order":13,},
     {"id":{"name":"sh_colmesh_world","path":"shaders/sh_colmesh_world/sh_colmesh_world.yy",},"order":3,},
-    {"id":{"name":"obj_xor_control","path":"objects/obj_xor_control/obj_xor_control.yy",},"order":0,},
     {"id":{"name":"sh_colmesh_collider","path":"shaders/sh_colmesh_collider/sh_colmesh_collider.yy",},"order":0,},
     {"id":{"name":"mbuff_add","path":"scripts/mbuff_add/mbuff_add.yy",},"order":0,},
     {"id":{"name":"matrices","path":"scripts/matrices/matrices.yy",},"order":1,},
@@ -146,10 +145,10 @@
     "children": [],
   },
   "RoomOrderNodes": [
+    {"roomId":{"name":"rm_menu","path":"rooms/rm_menu/rm_menu.yy",},},
     {"roomId":{"name":"rm_init","path":"rooms/rm_init/rm_init.yy",},},
     {"roomId":{"name":"rmMovementTest","path":"rooms/rmMovementTest/rmMovementTest.yy",},},
     {"roomId":{"name":"rm_crimson_splash","path":"rooms/rm_crimson_splash/rm_crimson_splash.yy",},},
-    {"roomId":{"name":"rm_menu","path":"rooms/rm_menu/rm_menu.yy",},},
   ],
   "Folders": [
     {"folderPath":"folders/Sprites.yy","order":0,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},

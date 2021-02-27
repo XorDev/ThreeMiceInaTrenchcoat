@@ -14,5 +14,11 @@ global.modTrenchcoat = smf_model_load("MouseInTrenchcoat.smf");
 //Load environment models
 global.modButton = loadObj("Game objects/Button.obj");
 
+global.modOwl = loadObj("Owl.obj");
+global.modPug = loadObj("Pug.obj");
+
+global.texOwl = sprite_get_texture(spr_owl,0);
+global.texPug = sprite_get_texture(spr_pug,0);
+
 
 room_goto_next();

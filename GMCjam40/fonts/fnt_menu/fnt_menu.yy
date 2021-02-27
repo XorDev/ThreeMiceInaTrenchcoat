@@ -641,8 +641,8 @@
   "canGenerateBitmap": true,
   "maintainGms1Font": false,
   "parent": {
-    "name": "GMCjam40",
-    "path": "GMCjam40.yyp",
+    "name": "Menus",
+    "path": "folders/Menus.yy",
   },
   "resourceVersion": "1.0",
   "name": "fnt_menu",

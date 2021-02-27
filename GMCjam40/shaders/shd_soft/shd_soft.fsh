@@ -3,11 +3,11 @@
 //MIN is the z-far clipping distance.
 #define MAX 65025.
 //Screen resolution
-//#define RATIO RES.x/RES.y
-#define SAM 16.
+#define RATIO RES.x/RES.y
+#define SAM (16.*RES.z)
 #define RAD 4.
 
-uniform float2 RES;
+uniform float3 RES;
 
 Texture2D	 tdep : register(t1);
 SamplerState sdep : register(s1);
