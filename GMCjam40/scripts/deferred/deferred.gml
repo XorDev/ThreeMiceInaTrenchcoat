@@ -41,6 +41,7 @@ function deferred_surface()
 
 function deferred_set(animated)
 {
+	if (!variable_global_exists("surf_dif")) exit;
 	var _shader = shd_deferred;
 	if (argument_count && animated) _shader = shd_deferred_smf;
 	shader_set(_shader);
@@ -65,6 +66,7 @@ function deferred_set(animated)
 
 function deferred_reset()
 {
+	if (!variable_global_exists("surf_dif")) exit;
 	shader_reset();
 	surface_reset_target();
 	gpu_set_blendenable(1);

@@ -17,9 +17,9 @@ if (target_id>-1)
 		capture = 1;
 		
 		//Remove mice if possible
-		if (o_snidr_player.mice>1)
+		if (obj_player.mice>1)
 		{
-			o_snidr_player.mice--;
+			obj_player.mice--;
 		}
 		else
 		{
@@ -42,8 +42,8 @@ if capture
 else if !irandom(attention)
 {
 	//Pick and random mouse (preferring last mouse)
-	target_id = max(target_id,irandom(o_snidr_player.mice-1));
-	target = o_snidr_player.mouseArray[target_id];
+	target_id = max(target_id,irandom(obj_player.mice-1));
+	target = obj_player.mouseArray[target_id];
 	
 	//Get sight arc and range
 	var _arc,_range;
