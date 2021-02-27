@@ -18,6 +18,8 @@ global.mbuffWallWallHor = colmesh_load_obj_to_buffer("Scenery/wall_hori_32x32.ob
 global.mbuffWallWallHorColumns = colmesh_load_obj_to_buffer("Scenery/wall_hori_columns_32x32x64.obj");
 global.mbuffFloor = colmesh_load_obj_to_buffer("Scenery/floor_32x32.obj");
 global.mbuffStair = colmesh_load_obj_to_buffer("Scenery/stairs_vert_64x128x64.obj");
+global.mbuffStairColmesh = colmesh_load_obj_to_buffer("Scenery/StairColmesh.obj");
+global.mbuffMouseHoleHor = colmesh_load_obj_to_buffer("Scenery/mousehole_tunnel_hor_32x32.obj");
 
 //Load environment models
 global.modButton = loadObj("Game objects/Button.obj");

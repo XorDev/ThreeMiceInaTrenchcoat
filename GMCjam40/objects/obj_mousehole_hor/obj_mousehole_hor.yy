@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_stair_north",
-    "path": "sprites/spr_stair_north/spr_stair_north.yy",
+    "name": "spr_mousehole_hor",
+    "path": "sprites/spr_mousehole_hor/spr_mousehole_hor.yy",
   },
   "solid": false,
   "visible": true,
@@ -24,7 +24,7 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"obj_stairs_north","path":"objects/obj_stairs_north/obj_stairs_north.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"obj_mousehole_hor","path":"objects/obj_mousehole_hor/obj_mousehole_hor.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
@@ -33,7 +33,7 @@
     "path": "folders/Game objects/Walls.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_stairs_north",
+  "name": "obj_mousehole_hor",
   "tags": [],
   "resourceType": "GMObject",
 }
