@@ -61,8 +61,8 @@ if (trenchcoatTimer > 0)
 		_mouse.y = lerp(_mouse.jumpEndY, _mouse.jumpStartY, trenchcoatTimer);
 		_mouse.z = lerp(_mouse.jumpEndZ, _mouse.jumpStartZ, trenchcoatTimer);
 		_mouse.z += (1 - sqr(trenchcoatTimer * 2 - 1)) * radius * 3; //Jump in an arc
+		trenchcoatTimer -= .01;
 	}
-	trenchcoatTimer -= .03;
 	if (trenchcoatTimer <= 0)
 	{
 		mouseArray[0].currInst = mouseArray[0].trenchcoatInst;

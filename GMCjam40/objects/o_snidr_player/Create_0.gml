@@ -285,7 +285,6 @@ function mouse(_x, _y, _z, _parent) constructor
 			matrix_set(matrix_world, matrix_build(x, y, z - (radius + trenchcoatHeight) * max(0, (1 - 2 * t)), 0, 0, angle, s * min(2 - 2 * t, 1), s * min(2 - 2 * t, 1), s * max(.2, min(1 - 2 * t, 1))));
 			trenchcoatInst.draw();
 		}
-		matrix_set(matrix_world, matrix_build_identity());
 	}
 }
 
