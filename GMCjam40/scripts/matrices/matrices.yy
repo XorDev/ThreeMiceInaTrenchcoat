@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "Math",
-    "path": "folders/SMF/SMF/Supplementary scripts/Math.yy",
+    "path": "folders/Script packages/SMF/SMF/Supplementary scripts/Math.yy",
   },
   "resourceVersion": "1.0",
   "name": "matrices",

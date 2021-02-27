@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "Textures",
-    "path": "folders/SMF/SMF/Supplementary scripts/Model buffers/Textures.yy",
+    "path": "folders/Script packages/SMF/SMF/Supplementary scripts/Model buffers/Textures.yy",
   },
   "resourceVersion": "1.0",
   "name": "texpack_create",

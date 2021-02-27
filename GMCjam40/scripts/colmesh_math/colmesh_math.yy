@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "Supplementary scripts",
-    "path": "folders/ColMesh/ColMesh Scripts/Supplementary scripts.yy",
+    "path": "folders/Script packages/ColMesh/ColMesh Scripts/Supplementary scripts.yy",
   },
   "resourceVersion": "1.0",
   "name": "colmesh_math",

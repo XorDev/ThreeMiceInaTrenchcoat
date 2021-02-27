@@ -18,16 +18,16 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"o_snidr_loadmodels","path":"objects/o_snidr_loadmodels/o_snidr_loadmodels.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"obj_init","path":"objects/obj_init/obj_init.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Movement system",
-    "path": "folders/Snidrs Corner/Movement system.yy",
+    "name": "Game objects",
+    "path": "folders/Game objects.yy",
   },
   "resourceVersion": "1.0",
-  "name": "o_snidr_loadmodels",
+  "name": "obj_init",
   "tags": [],
   "resourceType": "GMObject",
 }
