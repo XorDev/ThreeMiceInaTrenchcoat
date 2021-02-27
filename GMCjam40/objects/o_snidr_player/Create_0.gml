@@ -47,7 +47,7 @@ function mouse(_x, _y, _z, _parent) constructor
 	{
 		trenchcoatInst = new smf_instance(global.modTrenchcoat);
 		trenchcoatInst.play("Idle", .1, 1, true);
-		trenchcoatInst.scale = .35;
+		trenchcoatInst.scale = .32;
 		
 		trailSize = 100;
 		trail = array_create(trailSize);
@@ -127,10 +127,10 @@ function mouse(_x, _y, _z, _parent) constructor
 			}
 			
 			//Move
-			acc = 2 - trenchcoat;
+			acc = (2 - trenchcoat) * .6;
 			x += spdX + acc * h;
 			y += spdY - acc * v;
-			z += spdZ - 1 + jump * ground * 12; //Apply gravity in z-direction
+			z += spdZ - .5 + jump * ground * 7; //Apply gravity in z-direction
 			
 			//Put player in the middle of the map if he falls off
 			if (z < -400)
