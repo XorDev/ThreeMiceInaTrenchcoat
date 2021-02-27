@@ -4,7 +4,7 @@
 #define MAX 65025.
 //Screen resolution
 
-#define SAM (32.*RES.z)
+#define SAM (RES.z)
 #define RAD 5.
 #define AMT 3.
 

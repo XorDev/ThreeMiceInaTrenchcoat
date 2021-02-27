@@ -39,6 +39,15 @@ function deferred_surface()
 	}
 }
 
+function deferred_clean()
+{
+	if !variable_global_exists("surf_dif") exit;
+	if surface_exists(global.surf_dif) surface_free(global.surf_dif);
+	if surface_exists(global.surf_dep) surface_free(global.surf_dep);
+	if surface_exists(global.surf_nor) surface_free(global.surf_nor);
+	if surface_exists(global.surf_buf) surface_free(global.surf_buf);
+}
+
 function deferred_set(animated)
 {
 	var _shader = shd_deferred;
@@ -73,27 +82,26 @@ function deferred_reset()
 function deferred_draw()
 {
 	//SSAO:
-	surface_set_target(global.surf_buf);
-	gpu_set_blendmode_ext(bm_dest_color,bm_zero);
-	shader_set(shd_ssao);
 	var _quality = (global.gsettings!=0)+(global.gsettings==2);
-	var _uni,_tex;
-	_uni = shader_get_uniform(shd_ssao,"RES");
-	shader_set_uniform_f(_uni,global.screen_width,global.screen_height,_quality);
-	_uni = shader_get_sampler_index(shd_ssao,"snor");
-	_tex = surface_get_texture(global.surf_nor);
-	texture_set_stage(_uni,_tex);
-	draw_surface_ext(global.surf_dep,0,global.screen_height,1,-1,0,-1,1);
-	shader_reset();
-	gpu_set_blendmode(bm_normal);
-	surface_reset_target();
-	
-	if (global.gsettings!=0)
+	if _quality
 	{
-		//Soften shadows/occlusion.
+		surface_set_target(global.surf_buf);
+		gpu_set_blendmode_ext(bm_dest_color,bm_zero);
+		shader_set(shd_ssao);
+		var _uni,_tex;
+		_uni = shader_get_uniform(shd_ssao,"RES");
+		shader_set_uniform_f(_uni,global.screen_width,global.screen_height,32*_quality);
+		_uni = shader_get_sampler_index(shd_ssao,"snor");
+		_tex = surface_get_texture(global.surf_nor);
+		texture_set_stage(_uni,_tex);
+		draw_surface_ext(global.surf_dep,0,global.screen_height,1,-1,0,-1,1);
+		shader_reset();
+		gpu_set_blendmode(bm_normal);
+		surface_reset_target();
+		
 		shader_set(shd_soft);
 		_uni = shader_get_uniform(shd_soft,"RES");
-		shader_set_uniform_f(_uni,global.screen_width,global.screen_height,_quality);
+		shader_set_uniform_f(_uni,global.screen_width,global.screen_height,16*_quality);
 		_uni = shader_get_sampler_index(shd_soft,"sdep");
 		_tex = surface_get_texture(global.surf_dep);
 		texture_set_stage(_uni,_tex);
@@ -126,6 +134,8 @@ function deferred_draw()
 	gpu_set_blendmode_ext(bm_dest_color,bm_zero);
 	draw_surface_ext(global.surf_dif,0,0,1,1,0,-1,1);
 	gpu_set_blendmode(bm_normal);
+	
+	draw_text(8,8,string(fps));
 	
 	
 	//draw_surface_ext(global.surf_sha,global.screen_width*.25,0,1/4,1/4,0,-1,1);
