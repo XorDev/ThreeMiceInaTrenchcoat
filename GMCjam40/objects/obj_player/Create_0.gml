@@ -135,8 +135,8 @@ function mouse(_x, _y, _z, _parent) constructor
 			//Put player in the middle of the map if he falls off
 			if (z < -400)
 			{
-				x = o_snidr_player.xstart;
-				y = o_snidr_player.ystart;
+				x = obj_player.xstart;
+				y = obj_player.ystart;
 				z = 300;
 				prevX = x;
 				prevY = y;
@@ -267,7 +267,7 @@ function mouse(_x, _y, _z, _parent) constructor
 	
 	static draw = function()
 	{
-		var t = o_snidr_player.trenchcoatTimer;
+		var t = obj_player.trenchcoatTimer;
 		
 		var s = currInst.scale * radius;
 		if (t > 0)

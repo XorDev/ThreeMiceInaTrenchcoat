@@ -24,8 +24,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Game objects",
-    "path": "folders/Game objects.yy",
+    "name": "Control",
+    "path": "folders/Game objects/Control.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_colmesh",

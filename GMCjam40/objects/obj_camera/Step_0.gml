@@ -1,9 +1,9 @@
 /// @description
-if (instance_exists(o_snidr_player))
+if (instance_exists(obj_player))
 {
-	targetX = o_snidr_player.x;
-	targetY = o_snidr_player.y;
-	targetZ = o_snidr_player.z;
+	targetX = obj_player.x;
+	targetY = obj_player.y;
+	targetZ = obj_player.z;
 }
 global.camX = targetX + 16;
 global.camY = targetY + 50;

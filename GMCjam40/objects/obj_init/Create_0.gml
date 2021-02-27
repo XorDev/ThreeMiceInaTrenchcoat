@@ -8,16 +8,29 @@ function loadObj(path)
 }
 
 //Load animated models
-global.modMouse = smf_model_load("Mouse.smf");
-global.modTrenchcoat = smf_model_load("MouseInTrenchcoat.smf");
+global.modMouse = smf_model_load("Characters/Mouse.smf");
+global.modTrenchcoat = smf_model_load("Characters/MouseInTrenchcoat.smf");
 
 //Load environment models
 global.modButton = loadObj("Game objects/Button.obj");
-
+global.modOwl = loadObj("Characters/Owl.obj");
+global.modPug = loadObj("Characters/Pug.obj");
 
 //Make sure the level colmesh exists
 if !instance_exists(obj_colmesh)
 {
 	instance_create_depth(0, 0, 0, obj_colmesh);
+}
+
+//Make sure the deferred controller exists
+if !instance_exists(obj_deferred_control)
+{
+	instance_create_depth(0, 0, 0, obj_deferred_control);
+}
+
+//Make sure the camera controller exists
+if !instance_exists(obj_camera)
+{
+	instance_create_depth(0, 0, 0, obj_camera);
 }
 room_goto_next();
