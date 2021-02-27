@@ -65,11 +65,11 @@ function addTiledWalls(mesh, tex, size, tile)
 {
 	if (tile mod 2) == 0 //If there is no wall beside this one, add a wall
 	{
-		obj_level_geometry.addModel(mesh, tex, matrix_build(x + size, y, z, 0, 0, -90, 1, 1, 1));
+		obj_level_geometry.addModel(mesh, tex, matrix_build(x + size, y + size, z, 0, 0, 90, 1, 1, 1));
 	}
 	if ((tile div 2) mod 2) == 0 //If there is no wall beside this one, add a wall
 	{
-		obj_level_geometry.addModel(mesh, tex, matrix_build(x, y, z, 0, 0, 0, 1, 1, 1));
+		obj_level_geometry.addModel(mesh, tex, matrix_build(x + size, y, z, 0, 0, 180, 1, 1, 1));
 	}
 	if ((tile div 4) mod 2) == 0 //If there is no wall beside this one, add a wall
 	{
