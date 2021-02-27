@@ -1,9 +1,4 @@
 /// @description
-event_inherited();
-
-global.demoText = "This demo shows how you can create a ColMesh from an OBJ file!"
-	+ "\nIt also shows how you can push the player out of the ColMesh,"
-	+ "\nand how you can use the collision system to collect coins";
 	
 //Load the level model to a vertex buffer
 var mbuffLevel = colmesh_load_obj_to_buffer("test_level2.obj");

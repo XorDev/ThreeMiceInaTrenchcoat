@@ -11,16 +11,20 @@ if (!is_array(ray))
 	exit;
 }
 z = ray[2];
+timer = 20; //20 ingame frames until the button goes from active to inactive
 
 active = false;
 colFunc = function()
 {
-	active = true;
+	if (active <= 0)
+	{
+		audio_play_sound(sndCoin, 0, false);
+	}
+	active = 1;
 	if (!is_undefined(target))
 	{
 		target.active = true;
 	}
-	//audio_play_sound(snd_buttonpress, 0, false);
 }
 
-shape = levelColmesh.addTrigger(new colmesh_cylinder(x, y, z, 0, 0, 1, 8, 5), colFunc);
+shape = levelColmesh.addTrigger(new colmesh_cylinder(x + 16, y + 16, z, 0, 0, 1, 8, 5), colFunc);

@@ -7,4 +7,4 @@ vertex_submit(global.modButton, pr_trianglelist, tex);
 matrix_set(matrix_world, matrix_build_identity());
 deferred_reset();
 
-active = false;
+active = max(0, active - 1 / timer); //Slowly deactivate the button
