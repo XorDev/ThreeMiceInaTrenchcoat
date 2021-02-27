@@ -26,8 +26,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Control",
-    "path": "folders/Game objects/Control.yy",
+    "name": "Movement system",
+    "path": "folders/Snidrs Corner/Movement system.yy",
   },
   "resourceVersion": "1.0",
   "name": "o_snidr_level",

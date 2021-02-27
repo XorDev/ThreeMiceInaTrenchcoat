@@ -36,4 +36,10 @@ if !instance_exists(obj_camera)
 {
 	instance_create_depth(0, 0, 0, obj_camera);
 }
+
+//Make sure the level geometry controller exists
+if !instance_exists(obj_level_geometry)
+{
+	instance_create_depth(0, 0, 0, obj_level_geometry);
+}
 room_goto_next();

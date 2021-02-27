@@ -82,7 +82,6 @@ else
 	}
 }
 
-
 var mainMouse = mouseArray[0];
 x = mainMouse.x;
 y = mainMouse.y;

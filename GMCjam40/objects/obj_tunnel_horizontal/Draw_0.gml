@@ -1,5 +1,5 @@
 /// @description
-
+/*
 //Draw
 deferred_set(false);
 matrix_set(matrix_world, M);
