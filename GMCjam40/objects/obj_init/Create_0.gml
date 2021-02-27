@@ -15,4 +15,9 @@ global.modTrenchcoat = smf_model_load("MouseInTrenchcoat.smf");
 global.modButton = loadObj("Game objects/Button.obj");
 
 
+//Make sure the level colmesh exists
+if !instance_exists(obj_colmesh)
+{
+	instance_create_depth(0, 0, 0, obj_colmesh);
+}
 room_goto_next();
