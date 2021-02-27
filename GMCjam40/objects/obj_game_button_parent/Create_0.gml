@@ -3,7 +3,7 @@ tex = sprite_get_texture(tex_button, 0);
 target = undefined;
 
 //Cast a ray from high above to the ground so that the coin is placed onto the ground
-var ray = levelColmesh.castRay(x, y, 1000, x, y, -100);
+var ray = levelColmesh.castRay(x + 16, y + 16, 1000, x + 16, y + 16, -100);
 if (!is_array(ray))
 {
 	//The ray didn't hit anything, for some reason. Destroy this object
@@ -27,4 +27,4 @@ colFunc = function()
 	}
 }
 
-shape = levelColmesh.addTrigger(new colmesh_cylinder(x + 16, y + 16, z, 0, 0, 1, 8, 5), colFunc);
+shape = levelColmesh.addTrigger(new colmesh_cylinder(x + 16, y + 16, z, 0, 0, 1, 5, 5), colFunc);
