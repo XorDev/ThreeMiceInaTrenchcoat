@@ -19,7 +19,7 @@ layer_background_alpha(_back,fade);
 
 if (fade>.99) && instance_exists(global.button)
 {
-	with(global.button) event_perform(ev_user0,0);
+	with(global.button) event_user(0);
 	alpha = 0;
 	global.button = noone;
 }

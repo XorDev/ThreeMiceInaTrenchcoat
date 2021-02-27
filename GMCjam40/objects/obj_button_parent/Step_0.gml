@@ -13,7 +13,14 @@ if _hover && !instance_exists(global.button)
 	if mouse_check_button_released(mb_left)
 	{
 		window_set_cursor(cr_default);
-		global.button = object_index;
-		obj_menu_control.alpha = 1;
+		if fade
+		{
+			global.button = object_index;
+			obj_menu_control.alpha = 1;
+		}
+		else
+		{
+			event_user(0)	;
+		}
 	}
 }

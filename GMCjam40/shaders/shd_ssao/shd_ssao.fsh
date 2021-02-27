@@ -3,12 +3,14 @@
 //MIN is the z-far clipping distance.
 #define MAX 65025.
 //Screen resolution
-//#define RATIO RES.x/RES.y
-#define SAM 32.
-#define RAD 5.
-#define AMT 5.
 
-uniform float2 RES;
+#define SAM 32.*RES.z
+#define RAD 5.
+#define AMT 3.
+
+#define RATIO RES.x/RES.y
+
+uniform float3 RES;
 
 Texture2D	 tnor : register(t1);
 SamplerState snor : register(s1);
@@ -43,7 +45,7 @@ PIXEL main(VERTEX IN) : SV_TARGET
 	float depth = unpack_depth(depthRGBA);
 	float3 normal = normalize(normalRGB-.5)*float3(1,-1,1);
 	
-	float3 pos = float3(IN.tex-.5,1)*float3(RES.x/RES.y/.5625,1./.5625,1)*depth;
+	float3 pos = float3(IN.tex-.5,1)*float3(RATIO/.5625,1./.5625,1)*depth;
 	float o = 0.;
 	
 	float s = RAD*RES.x/SAM/depth;
@@ -53,11 +55,11 @@ PIXEL main(VERTEX IN) : SV_TARGET
 	for(float i = 1.;i<=SAM;i++)
 	{
 		r = mul(r,g);
-		float2 u = IN.tex + r*i/RES;
+		float2 u = IN.tex + r*i/RES.xy;
 		float2 b = step(abs(u-.5),.5);
 		
 		float d = unpack_depth(gm_BaseTextureObject.Sample(gm_BaseTexture,u));
-		float3 p = float3(u-.5,1)*float3(RES.x/RES.y/.5625,1./.5625,1)*d-pos;
+		float3 p = float3(u-.5,1)*float3(RATIO/.5625,1./.5625,1)*d-pos;
 		float l = length(p);
 		
 		o += b.x*b.y*max(dot(normal,p/l),0.)*rsqrt(1.+l/RAD)*clamp(3.-l/RAD,0.,1.);

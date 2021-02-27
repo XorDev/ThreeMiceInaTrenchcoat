@@ -18,6 +18,7 @@ function light_follow(x,y,z)
 }
 function light_set(animated)
 {
+	if (global.gsettings==0) exit;
 	var _shader = shd_shadow;
 	if (argument_count && animated) _shader = shd_shadow_smf;
 	if !surface_exists(global.surf_sha) global.surf_sha = surface_create(global.shadow_res,  global.shadow_res);
@@ -40,6 +41,7 @@ function light_set(animated)
 
 function light_reset()
 {
+	if (global.gsettings==0) exit;
 	shader_reset();
 	surface_reset_target();
 	gpu_set_blendenable(1);

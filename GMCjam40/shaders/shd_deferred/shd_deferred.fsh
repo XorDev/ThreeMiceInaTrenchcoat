@@ -11,10 +11,8 @@
 
 uniform float2 SHA_RES;
 
-
 Texture2D	 tsha : register(t1);
 SamplerState ssha : register(s1);
-
 
 
 struct VERTEX
