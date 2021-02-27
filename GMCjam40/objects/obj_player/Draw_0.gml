@@ -11,5 +11,7 @@ for (var i = 0; i < mice; i ++)
 		break;
 	}
 }
+
+
 //deferred_reset();
 matrix_set(matrix_world, matrix_build_identity());
