@@ -1,5 +1,4 @@
 /// @description
-
 //Shadow pass
 light_set(1);
 gpu_set_cullmode(cull_noculling);

@@ -270,14 +270,12 @@ function mouse(_x, _y, _z, _parent) constructor
 		var t = obj_player.trenchcoatTimer;
 		
 		var s = currInst.scale * radius;
-		if (t > 0)
+		if (t > 0 && mouseIndex == 0)
 		{
 			s *= min(1, 1.5 * t);
 		}
 		matrix_set(matrix_world, matrix_build(x, y, z - radius - height, 0, 0, angle, s, s, s));
 		currInst.draw();
-		//matrix_set(matrix_world, matrix_build_identity());
-		//colmesh_debug_draw_capsule(x, y, z, dcos(angle), -dsin(angle), 0, radius * .5, radius * .5, make_colour_rgb(110, 127, 200));
 		
 		if mouseIndex == 0 && t > 0
 		{

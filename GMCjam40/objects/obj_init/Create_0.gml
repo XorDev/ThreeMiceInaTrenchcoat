@@ -11,6 +11,9 @@ function loadObj(path)
 global.modMouse = smf_model_load("Characters/Mouse.smf");
 global.modTrenchcoat = smf_model_load("Characters/MouseInTrenchcoat.smf");
 
+//Load scenery
+global.modTunnelHor = loadObj("Scenery/tunnel_hori_32x64.obj");
+
 //Load environment models
 global.modButton = loadObj("Game objects/Button.obj");
 global.modOwl = loadObj("Characters/Owl.obj");

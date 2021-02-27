@@ -316,7 +316,7 @@ function colmesh() : colmesh_shapes() constructor
 			var mBuffSize = buffer_get_size(mesh);
 			var triNum = mBuffSize div bytesPerTri;
 			array_resize(triangles, array_length(triangles) + triNum);
-			for (var i = 0; i < mBuffSize; i += bytesPerTri)
+			for (var i = 0; i < triNum; i += 1)
 			{
 				static V = array_create(9);
 				for (var j = 0; j < 3; j ++)
@@ -324,7 +324,7 @@ function colmesh() : colmesh_shapes() constructor
 					for (var k = 0; k < 3; k ++)
 					{
 						//Read vert position
-					    V[j * 3 + k] = buffer_peek(mesh, i + j * bytesPerVert + k * 4, buffer_f32);
+					    V[j * 3 + k] = buffer_peek(mesh, i * bytesPerTri + j * bytesPerVert + k * 4, buffer_f32);
 					}
 				}
 				if (is_array(M))
