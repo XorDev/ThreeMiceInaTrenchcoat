@@ -777,11 +777,7 @@ function colmesh() : colmesh_shapes() constructor
 		}
 		if (!_constrain_ray(x1, y1, z1, x2, y2, z2))
 		{	//The ray is fully outside the borders of this ColMesh
-			cmRay[0] = x2;
-			cmRay[1] = y2;
-			cmRay[2] = z2;
-			cmRay[6] = false;
-			return cmRay;
+			return false;
 		}
 		x1 = cmRay[0];	y1 = cmRay[1];	z1 = cmRay[2];
 		x2 = cmRay[3];	y2 = cmRay[4];	z2 = cmRay[5];

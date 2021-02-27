@@ -60,8 +60,8 @@ else if !irandom(attention)
 	{
 		//Maybe Snidr can figure out a better way to do this...
 		
-		//var _ray = levelColmesh.castRay(x,y,z,target.x,target.y,target.z,false);
-		//if !is_array(_ray) 
+		var _ray = levelColmesh.castRay(x,y,z,target.x,target.y,target.z);
+		if (!is_array(_ray))
 		{
 			//Jump
 			zspeed = speed_jump*_ground;
