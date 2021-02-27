@@ -1,5 +1,5 @@
 /// @description
-with obj_static
+with obj_static_parent
 {
 	addToLevel();
 }

@@ -18,7 +18,7 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"obj_static","path":"objects/obj_static/obj_static.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"obj_static_parent","path":"objects/obj_static_parent/obj_static_parent.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
@@ -27,7 +27,7 @@
     "path": "folders/Game objects/Walls.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_static",
+  "name": "obj_static_parent",
   "tags": [],
   "resourceType": "GMObject",
 }

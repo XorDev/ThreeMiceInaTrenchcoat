@@ -16,6 +16,7 @@ global.mbuffTunnelHor = colmesh_load_obj_to_buffer("Scenery/tunnel_hori_32x64.ob
 global.mbuffWallCornerBottomLeft = colmesh_load_obj_to_buffer("Scenery/wall_corner_bottomleft_32x32.obj");
 global.mbuffWallWallHor = colmesh_load_obj_to_buffer("Scenery/wall_hori_32x32.obj");
 global.mbuffWallWallHorColumns = colmesh_load_obj_to_buffer("Scenery/wall_hori_column_32x32.obj");
+global.mbuffFloor = colmesh_load_obj_to_buffer("Scenery/floor_32x32.obj");
 
 //Load environment models
 global.modButton = loadObj("Game objects/Button.obj");
