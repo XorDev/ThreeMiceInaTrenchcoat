@@ -33,7 +33,7 @@ VERTEX main(ATTRIBUTE IN)
     OUT.col = float4(IN.col.rgb,1);
 	OUT.nor = vnor;
     OUT.tex = IN.tex;
-	OUT.dep = mul(gm_Matrices[MATRIX_WORLD_VIEW], float4(wpos,1)).xyz;
+	OUT.dep = mul(gm_Matrices[MATRIX_WORLD_VIEW], float4(IN.pos,1)).xyz;
 	OUT.coo = mul(lig_mat, float4(wpos,1)).xyz;
 	OUT.lig = l;
     return OUT;

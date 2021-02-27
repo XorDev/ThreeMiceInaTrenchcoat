@@ -5,7 +5,7 @@
 //Screen resolution
 //#define RATIO RES.x/RES.y
 #define SAM 32.
-#define RAD 5.
+#define RAD 4.
 #define AMT 3.
 
 uniform float2 RES;
