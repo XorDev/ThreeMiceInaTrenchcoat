@@ -26,12 +26,14 @@ global.mbuffFloor = colmesh_load_obj_to_buffer("Scenery/floor_32x32.obj");
 global.mbuffStair = colmesh_load_obj_to_buffer("Scenery/stairs_vert_64x128x64.obj");
 global.mbuffStairColmesh = colmesh_load_obj_to_buffer("Scenery/StairColmesh.obj");
 global.mbuffMouseHoleHor = colmesh_load_obj_to_buffer("Scenery/mousehole_tunnel_hor_32x32.obj");
+global.mbuffBarrel = colmesh_load_obj_to_buffer("Scenery/Barrel.obj");
 
 //Load game objects (static ones must be loaded as buffers, not vertex buffers)
 global.mbuffCage = colmesh_load_obj_to_buffer("Game objects/Cage.obj");
 global.mbuffLadder = colmesh_load_obj_to_buffer("Game objects/Ladder.obj");
 
 //Load environment models
+global.modCageDoor = loadObj("Game objects/CageDoor.obj");
 global.modSpikes = loadObj("Game objects/Spikes.obj");
 global.modButton = loadObj("Game objects/Button.obj");
 global.modTrapFloor = loadObj("Scenery/floor_32x32.obj");

@@ -29,8 +29,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Walls",
-    "path": "folders/Game objects/Walls.yy",
+    "name": "Static solids",
+    "path": "folders/Game objects/Static solids.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_floor",

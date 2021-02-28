@@ -1,16 +1,13 @@
 {
   "spriteId": {
-    "name": "spr_stair_north",
-    "path": "sprites/spr_stair_north/spr_stair_north.yy",
+    "name": "spr_wall",
+    "path": "sprites/spr_wall/spr_wall.yy",
   },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": {
-    "name": "obj_static_parent",
-    "path": "objects/obj_static_parent/obj_static_parent.yy",
-  },
+  "parentObjectId": null,
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,
@@ -24,16 +21,16 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"obj_stairs_north","path":"objects/obj_stairs_north/obj_stairs_north.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"obj_low_wall","path":"objects/obj_low_wall/obj_low_wall.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Static solids",
-    "path": "folders/Game objects/Static solids.yy",
+    "name": "Walls",
+    "path": "folders/Game objects/Walls.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_stairs_north",
+  "name": "obj_low_wall",
   "tags": [],
   "resourceType": "GMObject",
 }
