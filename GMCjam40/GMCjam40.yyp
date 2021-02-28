@@ -303,7 +303,6 @@
     {"CopyToMask":-1,"filePath":"datafiles/Characters","resourceVersion":"1.0","name":"Owl.obj","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Characters","resourceVersion":"1.0","name":"Pug.obj","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Characters","resourceVersion":"1.0","name":"MouseInTrenchcoat.smf","resourceType":"GMIncludedFile",},
-    {"CopyToMask":-1,"filePath":"datafiles/Characters","resourceVersion":"1.0","name":"Mouse.smf","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Scenery","resourceVersion":"1.0","name":"wall_corner_bottomleft_32x32.mtl","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Scenery","resourceVersion":"1.0","name":"wall_corner_topright_32x32.obj","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Scenery","resourceVersion":"1.0","name":"wall_vert_entrance_32x32.mtl","resourceType":"GMIncludedFile",},
@@ -367,6 +366,7 @@
     {"CopyToMask":-1,"filePath":"datafiles/Characters","resourceVersion":"1.0","name":"Mouse.blend1","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Characters","resourceVersion":"1.0","name":"Mouse.blend","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Characters","resourceVersion":"1.0","name":"MouseFollower.smf","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Characters","resourceVersion":"1.0","name":"Mouse.smf","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2.3.1.542",
