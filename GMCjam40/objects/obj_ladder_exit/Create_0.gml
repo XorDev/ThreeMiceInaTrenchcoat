@@ -23,16 +23,7 @@ if (global.climbdir = -1)
 	ID.prevY = ID.y;
 	ID.prevZ = ID.z;
 	
-	with obj_player
-	{
-		for (var i = 1; i < mice; i ++)
-		{
-			with mouseArray[i]
-			{
-				trailPos = ID.trailPos;
-			}
-		}
-	}
+	ID.trail = array_create(ID.trailSize);
 	
 	global.climbdir = 0;
 }
