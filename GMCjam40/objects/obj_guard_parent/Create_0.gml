@@ -2,11 +2,11 @@
 
 #region enemy stats:
 //Sight arc = min + add * awareness. High when chasing
-sight_arc_min = 140;
-sight_arc_add = -40;
+sight_arc_min = 0;
+sight_arc_add = 00;
 //Sight range. Increases when chasing.
-sight_range_min = 192;
-sight_range_add = 128;
+sight_range_min = 0;//192;
+sight_range_add = 0;//128;
 
 //Odds of seeing per step
 attention = 6;
@@ -32,6 +32,8 @@ jumpy = 1;
 
 path = -1;
 path_pos = 0;
+path_next = 0;
+
 //Enemy variables:
 //No animation currently
 anim = true;
@@ -70,28 +72,25 @@ function setTarget(tx,ty,tz)
 
 function pathNearest()
 {
-	/*var _value,_point,_size,_length,_px,_py;
+	var _value,_size,_px,_py,_nx,_ny;
 	_value = infinity;
-	_point = 0;
 	_size = path_get_number(path);
-	_length = path_get_length(path);
+	_px = 0;
+	_py = 0;
 	for(var i = 0;i<_size;i++)	
 	{
-		var _x,_y,_p,_d;
+		var _x,_y,_d;
 		_x = path_get_point_x(path,i);
 		_y = path_get_point_y(path,i);
-		_p = path_ge;
 		_d = distance_to_point(_x,_y);
 		
 		if (_d<_value) // New nearest
 		{
-			var _tx,_ty,_td;
-			_tx = path_get_x(path,i+_d/);
-			_ty = path_get_point_y(path,i);
-			_td = distance_to_point(_x,_y);
 			_value = _d;
-			_point = i;
+			_px = _x; _py = _y;
 		}
 	}
-	return _point;*/
+	_nx = path_get_point_x(path,(_value+1)%_size);
+	_ny = path_get_point_y(path,(_value+1)%_size);
+	return [_px,_py,_nx,_ny];
 }
