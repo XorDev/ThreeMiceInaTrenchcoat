@@ -49,7 +49,7 @@ global.modBone = loadObj("Items/Bone.obj");
 
 //Various
 global.climbdir = 0;
-global.texPixelSize = 1 / 6;
+global.texPixelSize = 1 / 5;
 global.mice = 0;
 global.currentCollider = -1;
 

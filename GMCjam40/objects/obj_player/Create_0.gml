@@ -17,7 +17,7 @@ trenchcoat = false;
 globalvar trenchcoatTimer;
 trenchcoatTimer = 0;
 
-iframes = 0;
+global.iframes = 0;
 
 /// @func mouse(x, y, z)
 function mouse(_x, _y, _z, _parent) constructor
@@ -46,6 +46,7 @@ function mouse(_x, _y, _z, _parent) constructor
 	mouseIndex = 0;
 	trailPos = 0;
 	steps = 0;
+	dead = false;
 	
 	
 	if (is_struct(parent))
@@ -74,9 +75,9 @@ function mouse(_x, _y, _z, _parent) constructor
 	
 	function damaged()
 	{
-		if (obj_player.iframes <= 0)
+		if (global.iframes <= 0)
 		{
-			obj_player.iframes = 60;
+			global.iframes = 60;
 			audio_play_sound(snd_ouch, 0, false);
 		
 			//Need to edit the player's previous coordinates in order to make him bounce
@@ -262,6 +263,7 @@ function mouse(_x, _y, _z, _parent) constructor
 				ladder = true;
 				var l = parent.climb_ladder;
 				
+				
 				var endX = l.x + 16;
 				var endY = l.y + radius - 2 * radius * (parent.climb_dir && -l.dir);
 				var endZ = l.z + radius + l.height * .5 + l.height * .5 * (parent.climb_dir - l.dir) *.5;
@@ -275,7 +277,8 @@ function mouse(_x, _y, _z, _parent) constructor
 				var dy = abs(targetY - y);
 				
 				var spd = 1.5;
-				if (point_distance_3d(x, y, z, endX, endY, endZ) <= spd)
+				global.black = (point_distance_3d(x, y, z, endX, endY, endZ) <= spd*6);
+				if (global.fade>=.99)//(point_distance_3d(x, y, z, endX, endY, endZ) <= spd)
 				{
 					if (parent.climb_ladder.dir == -1 && parent.climb_dir == -1)
 					{
@@ -356,7 +359,7 @@ function mouse(_x, _y, _z, _parent) constructor
 		//Animate the player
 		if (!ladder)
 		{
-			if (obj_player.iframes > 0 || dead)
+			if (global.iframes > 0 || dead)
 			{
 				currInst.play("Hurt", .1, .2, false);
 			}

@@ -16,6 +16,6 @@ if _hover && !instance_exists(global.button)
 	{
 		window_set_cursor(cr_default);
 		global.button = object_index;
-		global.black = 1;
+		global.black = (object_index != obj_button_settings);
 	}
 }

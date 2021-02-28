@@ -1,9 +1,9 @@
 /// @description
 
 //Draw mice
-if (iframes > 0)
+if (global.iframes > 0)
 {
-	if (iframes div 5) mod 2 == 0
+	if (global.iframes div 5) mod 2 == 0
 	{
 		exit;
 	}

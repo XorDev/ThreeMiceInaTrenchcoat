@@ -1,7 +1,7 @@
 /// @description
-if (iframes > 0)
+if (global.iframes > 0)
 {
-	iframes --;
+	global.iframes --;
 }
 
 global.hInput = keyboard_check(ord("D")) - keyboard_check(ord("A"));
