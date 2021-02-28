@@ -1,7 +1,17 @@
 ///@desc Sight + movement
+var _ground,_h,_r,_col;
+_ground = 0;
+_h = 20;
+_r = 12;
+_col = levelColmesh.displaceCapsule(x, y, z+_r, 0, 0, 1, _r, _h, 40, true, false);
+if _col[6]
+{
+	x = _col[0];
+	y = _col[1];
+	z = _col[2]-_r;
+	_ground = (_col[5] > 0.7);
+}
 
-var _ground;
-_ground = (z==0);
 
 #region Capture mouse
 if (target_id>-1)
@@ -10,10 +20,9 @@ if (target_id>-1)
 	if (_dis<16)
 	{
 		//Lunge at mouse
-		hspeed += (target.x-x)/4;
-		vspeed += (target.y-y)/4;
+		xspeed += (target.x-x)/8;
+		yspeed += (target.y-y)/8;
 		//If targeting a mouse, capture it
-		target_id = -1;
 		capture = 1;
 		
 		//Remove mice if possible
@@ -32,17 +41,20 @@ if (target_id>-1)
 //Return mouse to cage?
 if capture
 {
-	//Insert location of cage
-	target_x = 0;
-	target_y = 0;
-	target_z = 0;
+	var _i,_x,_y,_z;
+	_i = instance_nearest(x,y,obj_cage);
+	_x = _i.x; _y = _i.y; _z = _i.z;
+	//Try to get to cage
+	setTarget(_x,_y,_z);
 	awareness = 1;
+	
 }
 //Randomly check for mice
 else if !irandom(attention)
 {
 	//Pick and random mouse (preferring last mouse)
-	target_id = max(target_id,irandom(obj_player.mice-1));
+	var _n = obj_player.mice-1;
+	target_id = min(max(target_id,irandom(_n)),_n);
 	target = obj_player.mouseArray[target_id];
 	
 	//Get sight arc and range
@@ -58,17 +70,13 @@ else if !irandom(attention)
 	//If in sight range
 	if (abs(angle_difference(face,_dir))<_arc) &&	(_dis<_range)
 	{
-		//Maybe Snidr can figure out a better way to do this...
-		
-		var _ray = levelColmesh.castRay(x,y,z,target.x,target.y,target.z);
+		var _ray = levelColmesh.castRay(x,y,z+8,target.x,target.y,target.z);
 		if (!is_array(_ray))
 		{
+			setTarget(target.x,target.y,target.z)
+			show_debug_message("Seen");
 			//Jump
-			zspeed = speed_jump*_ground;
-			//Set target
-			target_x = target.x;
-			target_y = target.y;
-			target_z = target.z;
+			zspeed = speed_jump*_ground*!irandom(jumpy);
 			//Maximize awareness
 			awareness = 1;
 		}
@@ -81,8 +89,17 @@ else if !irandom(attention)
 		//Lose interest and move back to the starting postion
 		if (awareness <= random(1/focus))
 		{
-			target_x = xstart;
-			target_y = ystart;
+			var _dis = point_distance_3d(x,y,z,target_x,target_y,target_z);
+			if (_dis>64)
+			{
+				//Try to return home
+				if setTarget(xstart+random_range(-tries,tries),ystart+random_range(-tries,tries),z)
+				{
+					tries = 0;
+					show_debug_message("Home");
+				}
+				else {tries++;}
+			}
 		}
 	}
 }
@@ -94,20 +111,37 @@ smooth = lerp(smooth,random(1),.1);
 //Add to sway position for wobble animation
 sway += speed;
 
-var _dis = point_distance_3d(x,y,z,target_x,target_y,target_z);
 //End capture if close enough
-if capture && (_dis<32)
-{	
-	capture = 0;
-	awareness = 0;
+if capture
+{
+	var _i,_x,_y,_z;
+	_i = instance_nearest(x,y,obj_cage);
+	_x = _i.x; _y = _i.y; _z = _i.z;
+	var _dis = point_distance_3d(x,y,z,_x,_y,_z);
+	if (_dis<80)
+	{
+		show_debug_message("Home");
+		//Return to post
+		target.x = _x+random_range(-20,20);
+		target.y = _y+random_range(-20,20);
+		target.z = _z+8;
+		target_id = -1;
+		capture = 0;
+		awareness = 0;
+	}
 }
+var _dis = point_distance_3d(x,y,z,target_x,target_y,target_z);
 //Move speed based on distance and awareness.
-var _move = clamp(_dis/64-1+2*awareness,0,1)*(speed_min+awareness*speed_add);
+var _move = clamp(_dis/64-1+awareness,0,1)*(speed_min+awareness*speed_add);
 //Update speeds
-hspeed = lerp(hspeed,+dcos(face)*_move,fric_air+fric_ground*_ground);
-vspeed = lerp(vspeed,-dsin(face)*_move,fric_air+fric_ground*_ground);
+xspeed = lerp(xspeed,+dcos(face)*_move,fric_air+fric_ground*_ground);
+yspeed = lerp(yspeed,-dsin(face)*_move,fric_air+fric_ground*_ground);
 zspeed = max(zspeed-speed_fall,-z);
-//Move zspeed.
+
+
+//Move position
+x += xspeed;
+y += yspeed;
 z += zspeed;
 
 //Update facement direction
@@ -118,14 +152,17 @@ _swing = look*cos(current_time/300+id);
 _swing *= power((1-awareness)*awareness*4,6)-min(power(smooth,8)*14,1);
 face += (turn_min+turn_add*awareness)*angle_difference(_dir,face+_swing);
 
-if (speed > .5)
+var _speed = point_distance(0,0,xspeed,xspeed);
+if (_speed > .1)
 {
 	var animSpd = instance.getAnimSpeed("Run");
-	instance.play("Run", animSpd, 1, false);
+	if (animation != 1) instance.play("Run", animSpd, 1, false);
+	animation = 1;
 }
 else
 {
 	var animSpd = instance.getAnimSpeed("Idle");
-	instance.play("Idle", animSpd, 1, false);
+	if (animation != 0) instance.play("Idle", animSpd, 1, false);
+	animation = 0;
 }
 instance.step(1);

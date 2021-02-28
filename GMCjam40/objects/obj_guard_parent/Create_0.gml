@@ -16,8 +16,8 @@ focus = 100;
 look = 10;
 
 //Jump speed and fall speed.
-speed_jump = 5;
-speed_fall = 0.3;
+speed_jump = 3;
+speed_fall = 0.2;
 //Default speed + chase speed.
 speed_min = 1;
 speed_add = 3;
@@ -29,6 +29,7 @@ turn_add = 0.12;
 //Ground friction and air friction
 fric_ground = 0.2;
 fric_air = 0.02;
+jumpy = 1;
 #endregion
 
 //Enemy variables:
@@ -36,7 +37,11 @@ fric_air = 0.02;
 anim = true;
 //Z-position and speed
 z = 0;
+xspeed = 0;
+yspeed = 0;
 zspeed = 0;
+//Animation Idle = 0, Run = 1
+animation = -1;
 //Face direction
 face = 180;
 //Awareness = 1 when chasing or capturing mouse
@@ -49,8 +54,16 @@ sway = 0;
 //Target struct, array id and position
 target = -1;
 target_id = -1;
-target_x = 0;
-target_y = 0;
-target_z = 0;
+target_x = xstart;
+target_y = ystart;
+target_z = z;
+tries = 0;
 //True when a mouse is captured.
 capture = 0;
+
+function setTarget(tx,ty,tz)
+{
+	target_x = tx;
+	target_y = ty;
+	target_z = tz;
+}

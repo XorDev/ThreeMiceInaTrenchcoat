@@ -2,7 +2,7 @@
 
 //Draw mice
 deferred_set(1);
-for (var i = 0; i < mice; i ++)
+for (var i = 0; i < 3; i ++)
 {
 	mouseArray[i].draw();
 	

@@ -2,7 +2,7 @@
 //Shadow pass
 light_set(1);
 gpu_set_cullmode(cull_noculling);
-for (var i = 0; i < mice; i ++)
+for (var i = 0; i < 3; i ++)
 {
 	mouseArray[i].draw();
 	

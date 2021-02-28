@@ -20,6 +20,8 @@ function deferred_surface()
 		global.screen_w = window_get_width();
 		global.screen_h = window_get_height();
 		
+		surface_resize(application_surface,global.screen_w,global.screen_h);
+		
 		surface_resize(global.surf_dif,global.screen_w,global.screen_h);
 		surface_resize(global.surf_dep,global.screen_w,global.screen_h);
 		surface_resize(global.surf_nor,global.screen_w,global.screen_h);
@@ -147,8 +149,6 @@ function deferred_draw()
 	gpu_set_blendmode_ext(bm_dest_color,bm_zero);
 	draw_surface_ext(global.surf_dif,0,0,1,1,0,-1,1);
 	gpu_set_blendmode(bm_normal);
-	
-	draw_text(8,8,string(fps));
 	
 	
 	//draw_surface_ext(global.surf_sha,global.screen_w*.25,0,1/4,1/4,0,-1,1);

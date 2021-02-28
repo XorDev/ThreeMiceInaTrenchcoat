@@ -23,8 +23,12 @@ global.mbuffStair = colmesh_load_obj_to_buffer("Scenery/stairs_vert_64x128x64.ob
 global.mbuffStairColmesh = colmesh_load_obj_to_buffer("Scenery/StairColmesh.obj");
 global.mbuffMouseHoleHor = colmesh_load_obj_to_buffer("Scenery/mousehole_tunnel_hor_32x32.obj");
 
+global.mbuffCage = colmesh_load_obj_to_buffer("Game objects/Cage.obj");
+
+
 //Load environment models
 global.modButton = loadObj("Game objects/Button.obj");
+global.modTrapFloor = loadObj("Scenery/floor_32x32.obj");
 
 //Make sure the level colmesh exists
 if !instance_exists(obj_colmesh)
