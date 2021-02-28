@@ -80,7 +80,7 @@ else if !irandom(attention)
 		var _ray = levelColmesh.castRay(x,y,z+8,target.x,target.y,target.z);
 		if (!is_array(_ray))
 		{
-			if !snd_attack_played sound_randomize(snd_attack,.2,.2);
+			if !snd_attack_played sound_randomize(snd_attack,.2,.2,1);
 			snd_attack_played = 1;
 			setTarget(target.x,target.y,target.z);
 			//Jump
@@ -132,8 +132,6 @@ else if !irandom(attention)
 awareness *= .99;
 //Smooth random number
 smooth = lerp(smooth,random(1),.1);
-//Add to sway position for wobble animation
-sway += speed;
 
 //Return mouse to cage
 if capture
@@ -189,6 +187,14 @@ if (_speed > .1)
 	var animSpd = instance.getAnimSpeed("Run");
 	if (animation != 1) instance.play("Run", animSpd, 1, false);
 	animation = 1;
+	if !(steps++%20)
+	{
+		var _snd,_dis,_gain;
+		_snd = choose(snd_step0,snd_step1,snd_step2,snd_step3,snd_step4,snd_step5,snd_step6);
+		_dis = point_distance_3d(x,y,z,obj_player.x,obj_player.y,obj_player.z);
+		_gain = clamp(1-_dis/512,0,.5);
+		sound_randomize(_snd,.2,.2,_gain);
+	}
 }
 else
 {
