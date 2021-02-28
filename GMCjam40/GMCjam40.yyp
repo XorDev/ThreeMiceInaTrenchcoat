@@ -1,6 +1,7 @@
 {
   "resources": [
     {"id":{"name":"snd_mouse_step0","path":"sounds/snd_mouse_step0/snd_mouse_step0.yy",},"order":1,},
+    {"id":{"name":"spr_icon_dancer","path":"sprites/spr_icon_dancer/spr_icon_dancer.yy",},"order":7,},
     {"id":{"name":"spr_button_play","path":"sprites/spr_button_play/spr_button_play.yy",},"order":0,},
     {"id":{"name":"_mbuff_init","path":"scripts/_mbuff_init/_mbuff_init.yy",},"order":5,},
     {"id":{"name":"snd_owl_attack","path":"sounds/snd_owl_attack/snd_owl_attack.yy",},"order":0,},

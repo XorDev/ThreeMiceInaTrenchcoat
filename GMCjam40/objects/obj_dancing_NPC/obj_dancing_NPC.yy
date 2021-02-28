@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "",
-    "path": "",
+    "name": "spr_icon_dancer",
+    "path": "sprites/spr_icon_dancer/spr_icon_dancer.yy",
   },
   "solid": false,
   "visible": true,

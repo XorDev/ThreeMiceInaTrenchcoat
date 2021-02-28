@@ -32,6 +32,7 @@ global.mbuffBarrel = colmesh_load_obj_to_buffer("Scenery/Barrel.obj");
 //Load game objects (static ones must be loaded as buffers, not vertex buffers)
 global.mbuffCage = colmesh_load_obj_to_buffer("Game objects/Cage.obj");
 global.mbuffLadder = colmesh_load_obj_to_buffer("Game objects/Ladder.obj");
+global.mbuffDoorDoor = colmesh_load_obj_to_buffer("Game objects/Door_door.obj");
 
 //Load environment models
 global.modCageDoor = loadObj("Game objects/CageDoor.obj");
