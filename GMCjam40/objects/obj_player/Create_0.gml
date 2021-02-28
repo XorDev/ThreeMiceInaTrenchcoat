@@ -99,7 +99,7 @@ function mouse(_x, _y, _z, _parent) constructor
 		if !(steps++%15)
 		{
 			var _snd = choose(snd_mouse_step0,snd_mouse_step1,snd_mouse_step2,snd_mouse_step3,snd_mouse_step4,snd_mouse_step5,snd_mouse_step6);
-			sound_randomize(_snd,.2,.2);
+			sound_randomize(_snd,.2,.2,1);
 		}
 	}
 	
@@ -166,6 +166,7 @@ function mouse(_x, _y, _z, _parent) constructor
 				{
 					var animSpd = currInst.getAnimSpeed("Climb");
 					currInst.play("Climb", animSpd + random(0.02), .25, false);
+					
 				}
 			}
 			ladder = parent.ladder;
@@ -251,6 +252,12 @@ function mouse(_x, _y, _z, _parent) constructor
 				{
 					var animSpd = currInst.getAnimSpeed("Climb");
 					currInst.play("Climb", animSpd + random(0.02), .25, false);
+				
+				}
+				
+				if !(steps++%15)
+				{
+					sound_randomize(snd_mouse_ladder,.2,.2,1);
 				}
 				ladder = true;
 				var l = parent.climb_ladder;
