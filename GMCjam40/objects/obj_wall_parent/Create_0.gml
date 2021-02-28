@@ -1,6 +1,26 @@
 /// @description
 event_inherited();
-type = 0;
+
+wallModel = global.mbuffWallWallHor;
+floorModel = global.mbuffFloor;
+width = 32;
+height = 64;
+floorTex = sprite_get_texture(spr_brick, 0);
+wallTex = sprite_get_texture(spr_brick, 0);
+
+function addToLevel()
+{
+	//Add to colmesh
+	levelColmesh.addShape(new colmesh_block(colmesh_matrix_build(x + width / 2, y + width / 2, z + height / 2, 0, 0, 0, width / 2, width / 2, height / 2)));
+	
+	//Add to level geometry
+	addTiledWalls(wallModel, wallTex, width, tile);
+	
+	obj_level_geometry.addModel(floorModel, floorTex, matrix_build(x, y, z + height, 0, 0, 0, 1, 1, 1));	
+	
+	//Destroy
+	instance_destroy();
+}
 
 function checkNeighbours()
 {

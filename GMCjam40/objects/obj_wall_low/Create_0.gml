@@ -1,19 +1,25 @@
 /// @description
 event_inherited();
 
-//Check neighbours for tiles
+floorModel = global.mbuffFloor;
+wallModel = global.mbuffWallWallHor;
+floorTex = sprite_get_texture(spr_brick, 0);
+wallTex = sprite_get_texture(spr_brick, 0);
 tile = checkNeighbours();
+width = 32;
+height = 32;
 
+//The parent contains addToLevel(), which adds this tileable wall to the level
+/*
 function addToLevel()
 {
-	tex = sprite_get_texture(spr_brick, 0);
-	
 	//Add to colmesh
-	levelColmesh.addShape(new colmesh_cube(x + 16, y + 16, z + 16, 32));
+	levelColmesh.addShape(new colmesh_block(colmesh_matrix_build(x + width / 2, y + width / 2, z + height / 2, 0, 0, 0, width / 2, width / 2, height / 2)));
 	
 	//Add to level geometry
-	addTiledWalls(global.mbuffWallWallHor, tex, 32, tile);
-	obj_level_geometry.addModel(global.mbuffFloor, tex, matrix_build(x, y, z + 32, 0, 0, 0, 1, 1, 1));	
+	addTiledWalls(wallModel, tex, width, tile);
+	
+	obj_level_geometry.addModel(floorModel, tex, matrix_build(x, y, z + height, 0, 0, 0, 1, 1, 1));	
 	
 	//Destroy
 	instance_destroy();
