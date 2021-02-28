@@ -56,19 +56,17 @@ function mouse(_x, _y, _z, _parent) constructor
 	mouseIndex = 0;
 	trailPos = 0;
 	
-	instance = new smf_instance(global.modMouse);
-	instance.play("Idle", .1, 1, true);
-	instance.scale = .28;
-	currInst = instance;
 	
 	if (is_struct(parent))
 	{
 		//This is a follower mouse
+		instance = new smf_instance(global.modMouseFollower);
 		mouseIndex = parent.mouseIndex + 1;
 		radius = 9;
 	}
 	if (mouseIndex == 0)
 	{
+		instance = new smf_instance(global.modMouse);
 		trenchcoatInst = new smf_instance(global.modTrenchcoat);
 		trenchcoatInst.play("Idle", .1, 1, true);
 		trenchcoatInst.scale = .32;
@@ -77,6 +75,9 @@ function mouse(_x, _y, _z, _parent) constructor
 		trail = array_create(trailSize);
 		trenchcoatHeight = radius * 2;
 	}
+	instance.play("Idle", .1, 1, true);
+	instance.scale = .28;
+	currInst = instance;
 	
 	static step = function(trenchcoat)
 	{

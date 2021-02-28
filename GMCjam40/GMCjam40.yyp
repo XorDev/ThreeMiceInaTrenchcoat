@@ -351,9 +351,12 @@
     {"CopyToMask":-1,"filePath":"datafiles/Characters","resourceVersion":"1.0","name":"PugTotal.smf","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Scenery","resourceVersion":"1.0","name":"barrel.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Game objects","resourceVersion":"1.0","name":"ladder.png","resourceType":"GMIncludedFile",},
-    {"CopyToMask":-1,"filePath":"datafiles/Characters","resourceVersion":"1.0","name":"Mouse.blend1","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Characters","resourceVersion":"1.0","name":"Mouse.png","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Characters","resourceVersion":"1.0","name":"Mouse.obj","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Characters","resourceVersion":"1.0","name":"Mouse.mtl","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Characters","resourceVersion":"1.0","name":"Mouse.blend1","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Characters","resourceVersion":"1.0","name":"Mouse.blend","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Characters","resourceVersion":"1.0","name":"MouseFollower.smf","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2.3.1.542",

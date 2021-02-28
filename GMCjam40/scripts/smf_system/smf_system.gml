@@ -84,6 +84,7 @@ function smf_model() constructor
 			var prevR = -1;
 			for (var i = 0; i < num; i ++)
 			{
+				if (!vis[i]){continue;}
 				if (subRigNum <= 1)
 				{
 					sample_set_uniform(shader, sample);

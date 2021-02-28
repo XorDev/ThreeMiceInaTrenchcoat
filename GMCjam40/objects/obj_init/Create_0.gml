@@ -9,6 +9,7 @@ function loadObj(path)
 
 //Load animated models
 global.modMouse = smf_model_load("Characters/Mouse.smf");
+global.modMouseFollower = smf_model_load("Characters/MouseFollower.smf");
 global.modTrenchcoat = smf_model_load("Characters/MouseInTrenchcoat.smf");
 global.modOwl = smf_model_load("Characters/Owl.smf");
 global.modPug = smf_model_load("Characters/Pug.smf");
