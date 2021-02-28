@@ -108,6 +108,7 @@
     {"id":{"name":"vectors","path":"scripts/vectors/vectors.yy",},"order":3,},
     {"id":{"name":"mbuff_save","path":"scripts/mbuff_save/mbuff_save.yy",},"order":10,},
     {"id":{"name":"mbuff_combine","path":"scripts/mbuff_combine/mbuff_combine.yy",},"order":1,},
+    {"id":{"name":"snd_song1","path":"sounds/snd_song1/snd_song1.yy",},"order":0,},
     {"id":{"name":"shd_light","path":"shaders/shd_light/shd_light.yy",},"order":6,},
     {"id":{"name":"shd_soft","path":"shaders/shd_soft/shd_soft.yy",},"order":5,},
     {"id":{"name":"sp_CG_Tower","path":"sprites/sp_CG_Tower/sp_CG_Tower.yy",},"order":5,},
@@ -117,6 +118,7 @@
     {"id":{"name":"spr_cage","path":"sprites/spr_cage/spr_cage.yy",},"order":1,},
     {"id":{"name":"vbuff_draw","path":"scripts/vbuff_draw/vbuff_draw.yy",},"order":14,},
     {"id":{"name":"obj_item_bone","path":"objects/obj_item_bone/obj_item_bone.yy",},"order":2,},
+    {"id":{"name":"snd_lose","path":"sounds/snd_lose/snd_lose.yy",},"order":1,},
     {"id":{"name":"spr_icon_bone","path":"sprites/spr_icon_bone/spr_icon_bone.yy",},"order":6,},
     {"id":{"name":"obj_game_button_parent","path":"objects/obj_game_button_parent/obj_game_button_parent.yy",},"order":0,},
     {"id":{"name":"obj_wall_low","path":"objects/obj_wall_low/obj_wall_low.yy",},"order":11,},
@@ -234,6 +236,7 @@
     {"folderPath":"folders/Game objects/NPCs.yy","order":5,"resourceVersion":"1.0","name":"NPCs","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Game objects/Player.yy","order":6,"resourceVersion":"1.0","name":"Player","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Game objects/Control.yy","order":7,"resourceVersion":"1.0","name":"Control","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Audio.yy","order":14,"resourceVersion":"1.0","name":"Audio","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},

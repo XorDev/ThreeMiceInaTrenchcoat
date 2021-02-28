@@ -10,6 +10,8 @@ global.hover = noone;
 layer_id = layer_get_id("Background");
 back_id = layer_background_get_id(layer_id);
 
+if (room==rm_menu_lose) audio_play_sound(snd_lose,0,0);
+
 /*
 layer_background_xscale(back_id,1.1);
 layer_background_yscale(back_id,1.1);

@@ -109,6 +109,4 @@ var _o = obj_tunnel_entrance;
 if instance_exists(_o) && (point_distance_3d(x,y,z,_o.x,_o.y,_o.z)<64)
 {
 	room_goto_previous();
-	x = obj_tunnel_exit.x;
-	y = obj_tunnel_exit.y;
 }

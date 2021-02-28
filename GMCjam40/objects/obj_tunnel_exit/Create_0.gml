@@ -1,5 +1,6 @@
 ///@desc
 
+
 event_inherited();
 
 function addToLevel()
