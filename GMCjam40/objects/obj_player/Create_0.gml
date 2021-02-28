@@ -11,6 +11,7 @@ z += 16;
 radius = 10;
 climb_ladder = -1;
 climb_dir = 1;
+action = false;
 
 trenchcoat = false;
 globalvar trenchcoatTimer;
@@ -252,12 +253,11 @@ function mouse(_x, _y, _z, _parent) constructor
 				{
 					var animSpd = currInst.getAnimSpeed("Climb");
 					currInst.play("Climb", animSpd + random(0.02), .25, false);
-				
 				}
 				
 				if !(steps++%15)
 				{
-					sound_randomize(snd_mouse_ladder,.2,.2,1);
+					sound_randomize(snd_mouse_ladder, .2, .2, 1);
 				}
 				ladder = true;
 				var l = parent.climb_ladder;
