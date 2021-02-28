@@ -29,9 +29,7 @@ if (global.climbdir = -1)
 		{
 			with mouseArray[i]
 			{
-				x = ID.x;
-				y = ID.y;
-				z = ID.z;
+				trailPos = ID.trailPos;
 			}
 		}
 	}

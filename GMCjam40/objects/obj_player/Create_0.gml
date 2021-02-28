@@ -1,5 +1,10 @@
 /// @description
 //Player variables
+if instance_number(obj_player) > 1
+{
+	instance_destroy();
+	exit;
+}
 
 if !audio_is_playing(snd_song1)
 {
