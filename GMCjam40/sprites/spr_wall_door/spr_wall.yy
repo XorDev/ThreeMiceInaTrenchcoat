@@ -8,14 +8,14 @@
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
   "bbox_left": 0,
-  "bbox_right": 127,
+  "bbox_right": 31,
   "bbox_top": 0,
-  "bbox_bottom": 127,
+  "bbox_bottom": 31,
   "HTile": false,
   "VTile": false,
-  "For3D": true,
-  "width": 128,
-  "height": 128,
+  "For3D": false,
+  "width": 32,
+  "height": 32,
   "textureGroupId": {
     "name": "Default",
     "path": "texturegroups/Default",
@@ -24,12 +24,12 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"02792e8f-98d7-4cd8-8d5e-2828d5fbc8cc","path":"sprites/tex_ladder/tex_ladder.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"02792e8f-98d7-4cd8-8d5e-2828d5fbc8cc","path":"sprites/tex_ladder/tex_ladder.yy",},"LayerId":{"name":"6fd565c6-a54b-4860-a815-40500122d7aa","path":"sprites/tex_ladder/tex_ladder.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"tex_ladder","path":"sprites/tex_ladder/tex_ladder.yy",},"resourceVersion":"1.0","name":"02792e8f-98d7-4cd8-8d5e-2828d5fbc8cc","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"6cb53436-3178-407c-814f-563482819c95","path":"sprites/spr_wall/spr_wall.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"6cb53436-3178-407c-814f-563482819c95","path":"sprites/spr_wall/spr_wall.yy",},"LayerId":{"name":"cc7222c1-a7d6-4d4d-a00e-8368756b3e0c","path":"sprites/spr_wall/spr_wall.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_wall","path":"sprites/spr_wall/spr_wall.yy",},"resourceVersion":"1.0","name":"6cb53436-3178-407c-814f-563482819c95","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
-    "spriteId": {"name":"tex_ladder","path":"sprites/tex_ladder/tex_ladder.yy",},
+    "spriteId": {"name":"spr_wall","path":"sprites/spr_wall/spr_wall.yy",},
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 30.0,
@@ -41,7 +41,7 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"25adf474-f956-44f9-9d77-4d275d0071d9","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"02792e8f-98d7-4cd8-8d5e-2828d5fbc8cc","path":"sprites/tex_ladder/tex_ladder.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"417231a2-d564-4c62-bc4c-3e45664bc62e","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"6cb53436-3178-407c-814f-563482819c95","path":"sprites/spr_wall/spr_wall.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
     ],
     "visibleRange": null,
@@ -58,21 +58,21 @@
     "yorigin": 0,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"tex_ladder","path":"sprites/tex_ladder/tex_ladder.yy",},
+    "parent": {"name":"spr_wall","path":"sprites/spr_wall/spr_wall.yy",},
     "resourceVersion": "1.3",
-    "name": "tex_ladder",
+    "name": "spr_wall",
     "tags": [],
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"6fd565c6-a54b-4860-a815-40500122d7aa","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"cc7222c1-a7d6-4d4d-a00e-8368756b3e0c","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "Textures",
-    "path": "folders/Game objects/Textures.yy",
+    "name": "Sprites",
+    "path": "folders/Game objects/Sprites.yy",
   },
   "resourceVersion": "1.0",
-  "name": "tex_ladder",
+  "name": "spr_wall",
   "tags": [],
   "resourceType": "GMSprite",
 }

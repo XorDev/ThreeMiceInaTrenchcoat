@@ -3,13 +3,14 @@
 event_inherited();
 
 open = false;
-zz = 0;
 tex = sprite_get_texture(spr_cage, 0);
+
+update_z_value();
 
 function addToLevel()
 {
 	//Add to colmesh
-	levelColmesh.addShape(new colmesh_block(colmesh_matrix_build(x, y, z + 30, 0, 0, 0, 22, 22, 30)));
+	levelColmesh.addShape(new colmesh_block(colmesh_matrix_build(x, y, z, 0, 0, 0, 22, 22, 30)));
 	
-	obj_level_geometry.addModel(global.mbuffDoorDoor, tex, matrix_build(x, y, z, 0, 0, -90, 1, 1, 1));	
+	obj_level_geometry.addModel(global.mbuffDoor, tex, matrix_build(x, y, z, 0, 0, 0, 1, 1, 1));	
 }

@@ -1,5 +1,8 @@
 {
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_wall",
+    "path": "sprites/spr_wall/spr_wall.yy",
+  },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
@@ -18,17 +21,16 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"obj_door_door","path":"objects/obj_door_door/obj_door_door.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,"parent":{"name":"obj_door_door","path":"objects/obj_door_door/obj_door_door.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"obj_low_wall","path":"objects/obj_low_wall/obj_low_wall.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Interactable objects",
-    "path": "folders/Game objects/Interactable objects.yy",
+    "name": "Walls",
+    "path": "folders/Game objects/Walls.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_door_door",
+  "name": "obj_low_wall",
   "tags": [],
   "resourceType": "GMObject",
 }

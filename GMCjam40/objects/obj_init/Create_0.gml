@@ -23,6 +23,7 @@ global.mbuffWallHor64 = colmesh_load_obj_to_buffer("Scenery/wall_hori_32x32x64.o
 global.mbuffWallHorColumns64 = colmesh_load_obj_to_buffer("Scenery/wall_hori_columns_32x32x64.obj");
 global.mbuffWallOuter = colmesh_load_obj_to_buffer("Scenery/OuterWall.obj");
 global.mbuffWallBridge = colmesh_load_obj_to_buffer("Scenery/bridge_wall_32x32.obj");
+global.mbuffWallDoor = colmesh_load_obj_to_buffer("Scenery/wall_door_32x64.obj");
 global.mbuffFloor = colmesh_load_obj_to_buffer("Scenery/floor_32x32.obj");
 global.mbuffStair = colmesh_load_obj_to_buffer("Scenery/stairs_vert_64x128x64.obj");
 global.mbuffStairColmesh = colmesh_load_obj_to_buffer("Scenery/StairColmesh.obj");
@@ -32,7 +33,7 @@ global.mbuffBarrel = colmesh_load_obj_to_buffer("Scenery/Barrel.obj");
 //Load game objects (static ones must be loaded as buffers, not vertex buffers)
 global.mbuffCage = colmesh_load_obj_to_buffer("Game objects/Cage.obj");
 global.mbuffLadder = colmesh_load_obj_to_buffer("Game objects/Ladder.obj");
-global.mbuffDoorDoor = colmesh_load_obj_to_buffer("Game objects/Door_door.obj");
+global.mbuffDoor = colmesh_load_obj_to_buffer("Game objects/Door.obj");
 
 //Load environment models
 global.modCageDoor = loadObj("Game objects/CageDoor.obj");
