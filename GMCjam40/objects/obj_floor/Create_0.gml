@@ -3,9 +3,9 @@ z = 0;
 event_inherited();
 
 tile = checkNeighbours();
-floorTex = sprite_get_texture(spr_floor, 0);
-wallTex = sprite_get_texture(spr_wall_outer, 0);
-wallModel = global.mbuffWallWallOuter;
+floorTex = sprite_get_texture(spr_wall_low, 0);
+wallTex = sprite_get_texture(spr_brick, 0);
+wallModel = global.mbuffWallOuter;
 floorModel = global.mbuffFloor;
 width = 32;
 height = 64;

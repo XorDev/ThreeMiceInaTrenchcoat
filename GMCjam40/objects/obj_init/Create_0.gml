@@ -16,9 +16,11 @@ global.modPug = smf_model_load("Characters/Pug.smf");
 //Load scenery (These must be loaded to buffers, not vertex buffers!)
 global.mbuffTunnelHor = colmesh_load_obj_to_buffer("Scenery/tunnel_hori_32x64.obj");
 global.mbuffWallCornerBottomLeft = colmesh_load_obj_to_buffer("Scenery/wall_corner_bottomleft_32x32.obj");
-global.mbuffWallWallHor = colmesh_load_obj_to_buffer("Scenery/wall_hori_32x32.obj");
-global.mbuffWallWallHorColumns = colmesh_load_obj_to_buffer("Scenery/wall_hori_columns_32x32x64.obj");
-global.mbuffWallWallOuter = colmesh_load_obj_to_buffer("Scenery/OuterWall.obj");
+global.mbuffWallHor32 = colmesh_load_obj_to_buffer("Scenery/wall_hori_32x32.obj");
+global.mbuffWallHor64 = colmesh_load_obj_to_buffer("Scenery/wall_hori_32x32x64.obj");
+global.mbuffWallHorColumns64 = colmesh_load_obj_to_buffer("Scenery/wall_hori_columns_32x32x64.obj");
+global.mbuffWallOuter = colmesh_load_obj_to_buffer("Scenery/OuterWall.obj");
+global.mbuffWallBridge = colmesh_load_obj_to_buffer("Scenery/bridge_wall_32x32.obj");
 global.mbuffFloor = colmesh_load_obj_to_buffer("Scenery/floor_32x32.obj");
 global.mbuffStair = colmesh_load_obj_to_buffer("Scenery/stairs_vert_64x128x64.obj");
 global.mbuffStairColmesh = colmesh_load_obj_to_buffer("Scenery/StairColmesh.obj");

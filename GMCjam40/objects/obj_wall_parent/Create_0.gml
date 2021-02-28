@@ -1,7 +1,8 @@
 /// @description
 event_inherited();
 
-wallModel = global.mbuffWallWallHor;
+wallModel = global.mbuffWallHor64;
+bridgeWall = global.mbuffWallHor64;
 floorModel = global.mbuffFloor;
 width = 32;
 height = 64;
@@ -40,6 +41,7 @@ function checkNeighbours()
 	{
 		if (layer == list[| i].layer)
 		{
+			if ((object_index != obj_wall_bridge && list[| i].object_index == obj_wall_bridge)){wallModel = bridgeWall; continue;}
 			tile += 1;
 			break;
 		}
@@ -52,6 +54,7 @@ function checkNeighbours()
 	{
 		if (layer == list[| i].layer)
 		{
+			if ((object_index != obj_wall_bridge && list[| i].object_index == obj_wall_bridge)){wallModel = bridgeWall; continue;}
 			tile += 2;
 			break;
 		}
@@ -64,6 +67,7 @@ function checkNeighbours()
 	{
 		if (layer == list[| i].layer)
 		{
+			if ((object_index != obj_wall_bridge && list[| i].object_index == obj_wall_bridge)){wallModel = bridgeWall; continue;}
 			tile += 4;
 			break;
 		}
@@ -76,6 +80,7 @@ function checkNeighbours()
 	{
 		if (layer == list[| i].layer)
 		{
+			if ((object_index != obj_wall_bridge && list[| i].object_index == obj_wall_bridge)){wallModel = bridgeWall; continue;}
 			tile += 8;
 			break;
 		}

@@ -2,13 +2,14 @@
 event_inherited();
 
 floorModel = global.mbuffFloor;
-wallModel = global.mbuffWallHor32;
-floorTex = sprite_get_texture(spr_brick, 0);
+wallModel = global.mbuffWallBridge;
+floorTex = sprite_get_texture(spr_wall_low, 0);
 wallTex = sprite_get_texture(spr_brick, 0);
 tile = checkNeighbours();
 width = 32;
 height = 32;
 deleteAfterUse = true;
+z += 64 - 32;
 
 //The parent contains addToLevel(), which adds this tileable wall to the level
 /*

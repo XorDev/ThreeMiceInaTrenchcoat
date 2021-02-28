@@ -2,8 +2,8 @@
 event_inherited();
 
 floorModel = global.mbuffFloor;
-wallModel = global.mbuffWallWallHorColumns;
-floorTex = sprite_get_texture(spr_brick, 0);
+wallModel = global.mbuffWallHorColumns64;
+floorTex = sprite_get_texture(spr_wall_low, 0);
 wallTex = sprite_get_texture(spr_brick, 0);
 tile = checkNeighbours();
 width = 32;

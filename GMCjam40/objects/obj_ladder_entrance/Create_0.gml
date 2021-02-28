@@ -1,7 +1,7 @@
 /// @description
 event_inherited();
 
-tex = sprite_get_texture(spr_brick, 0);
+tex = sprite_get_texture(tex_ladder, 0);
 height = 192;
 z -= height;
 dir = -1;
