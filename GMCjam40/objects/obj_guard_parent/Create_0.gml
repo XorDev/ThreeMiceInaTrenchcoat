@@ -1,5 +1,7 @@
 ///@desc enemy init
 
+event_inherited();
+
 #region enemy stats:
 //Sight arc = min + add * awareness. High when chasing
 sight_arc_min = 0;
@@ -38,7 +40,6 @@ path_next = 0;
 //No animation currently
 anim = true;
 //Z-position and speed
-z = 0;
 xspeed = 0;
 yspeed = 0;
 zspeed = 0;
@@ -65,9 +66,10 @@ capture = 0;
 
 function setTarget(tx,ty,tz)
 {
-	target_x = tx;
-	target_y = ty;
-	target_z = tz;
+	//////////////FIX
+	target_x = x;//tx;
+	target_y = y;//ty;
+	target_z = z;//tz;
 }
 
 function pathNearest()
