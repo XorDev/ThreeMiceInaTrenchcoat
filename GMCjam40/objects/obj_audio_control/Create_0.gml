@@ -9,7 +9,5 @@ function playSong(snd,loop)
 		audio_play_sound(snd,0,loop);
 	}	
 }
-
-playSong(snd_song1,0);
-audio_sound_gain(snd_song1,0,0);
-audio_sound_gain(snd_song1,1,500);
+playSong(snd_song_main,1)
+audio_sound_gain(snd_song_main,0,0);
