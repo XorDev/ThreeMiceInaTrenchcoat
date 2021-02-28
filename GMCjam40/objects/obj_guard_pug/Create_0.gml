@@ -31,7 +31,7 @@ fric_air = 0.03;
 jumpy = 3;
 #endregion
 
-instance = new smf_instance(global.modPug);
+instance = new smf_instance(global.modPugGuard);
 instance.play("Idle", .2, 1, true);
 
 function draw()
