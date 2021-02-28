@@ -56,6 +56,8 @@ function mouse(_x, _y, _z, _parent) constructor
 	}
 	if (mouseIndex == 0)
 	{
+		dead = false;
+		deathcountdown = 0;
 		instance = new smf_instance(global.modMouse);
 		trenchcoatInst = new smf_instance(global.modTrenchcoat);
 		trenchcoatInst.play("Idle", .1, 1, true);
@@ -80,6 +82,14 @@ function mouse(_x, _y, _z, _parent) constructor
 			prevX += dcos(angle) * 15;
 			prevY -= dsin(angle) * 15;
 			prevZ -= 5;
+			
+			global.mice = max(global.mice - 1, 1);
+			
+			if (global.mice <= 1)
+			{
+				dead = true;
+				deathcountdown = 120;
+			}
 		}
 		//Damage calculations
 	}
@@ -170,9 +180,19 @@ function mouse(_x, _y, _z, _parent) constructor
 			//Controls
 			if (parent.climb_ladder < 0)
 			{
-				jump = global.jumpInput;
-				var h = global.hInput;
-				var v = global.vInput;
+				if (dead)
+				{
+					deathcountdown --;
+					jump = false;
+					h = 0;
+					v = 0;
+				}
+				else
+				{
+					jump = global.jumpInput;
+					var h = global.hInput;
+					var v = global.vInput;
+				}
 				if (h != 0 && v != 0)
 				{	//If walking diagonally, divide the input vector by its own length
 					var s = 1 / sqrt(2);
@@ -187,7 +207,7 @@ function mouse(_x, _y, _z, _parent) constructor
 				z += spdZ - .5 + jump * ground * 7; //Apply gravity in z-direction
 			
 				//Put player in the middle of the map if he falls off
-				if (z < -400)
+				if (z < -400 || (dead && deathcountdown <= 0))
 				{
 					instance_destroy(obj_player);
 					room_goto(rm_menu_lose);
@@ -329,7 +349,7 @@ function mouse(_x, _y, _z, _parent) constructor
 		//Animate the player
 		if (!ladder)
 		{
-			if (obj_player.iframes > 0)
+			if (obj_player.iframes > 0 || dead)
 			{
 				currInst.play("Hurt", .1, .2, false);
 			}

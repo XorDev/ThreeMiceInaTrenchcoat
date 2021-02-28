@@ -1,15 +1,15 @@
 {
   "spriteId": {
-    "name": "spr_stair_north",
-    "path": "sprites/spr_stair_north/spr_stair_north.yy",
+    "name": "spr_tunnel_hor",
+    "path": "sprites/spr_tunnel_hor/spr_tunnel_hor.yy",
   },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "obj_static_parent",
-    "path": "objects/obj_static_parent/obj_static_parent.yy",
+    "name": "obj_static",
+    "path": "objects/obj_static/obj_static.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
@@ -24,16 +24,16 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"obj_stairs_north","path":"objects/obj_stairs_north/obj_stairs_north.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"obj_tunnel_hor","path":"objects/obj_tunnel_hor/obj_tunnel_hor.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Static solids",
-    "path": "folders/Game objects/Static solids.yy",
+    "name": "Walls",
+    "path": "folders/Game objects/Walls.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_stairs_north",
+  "name": "obj_tunnel_hor",
   "tags": [],
   "resourceType": "GMObject",
 }

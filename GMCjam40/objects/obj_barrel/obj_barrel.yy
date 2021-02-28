@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_stair_north",
-    "path": "sprites/spr_stair_north/spr_stair_north.yy",
+    "name": "spr_wall",
+    "path": "sprites/spr_wall/spr_wall.yy",
   },
   "solid": false,
   "visible": true,
@@ -24,7 +24,7 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"obj_stairs_north","path":"objects/obj_stairs_north/obj_stairs_north.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"obj_barrel","path":"objects/obj_barrel/obj_barrel.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
@@ -33,7 +33,7 @@
     "path": "folders/Game objects/Static solids.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_stairs_north",
+  "name": "obj_barrel",
   "tags": [],
   "resourceType": "GMObject",
 }
