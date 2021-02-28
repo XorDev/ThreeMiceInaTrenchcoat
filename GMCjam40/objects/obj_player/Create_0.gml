@@ -89,9 +89,7 @@ function mouse(_x, _y, _z, _parent) constructor
 		if !(steps++%15)
 		{
 			var _snd = choose(snd_mouse_step0,snd_mouse_step1,snd_mouse_step2,snd_mouse_step3,snd_mouse_step4,snd_mouse_step5,snd_mouse_step6);
-			_snd = audio_play_sound(_snd, 0, false);
-			audio_sound_pitch(_snd,random(.4)+.8);
-			audio_sound_gain(_snd,random(.4)+.8,0);
+			sound_randomize(_snd,.2,.2);
 		}
 	}
 	

@@ -80,6 +80,8 @@ else if !irandom(attention)
 		var _ray = levelColmesh.castRay(x,y,z+8,target.x,target.y,target.z);
 		if (!is_array(_ray))
 		{
+			if !snd_attack_played sound_randomize(snd_attack,.2,.2);
+			snd_attack_played = 1;
 			setTarget(target.x,target.y,target.z);
 			//Jump
 			zspeed = speed_jump*_ground*!irandom(jumpy);
@@ -96,6 +98,7 @@ else if !irandom(attention)
 		//Lose interest and move back to the starting postion
 		if (awareness <= random(1/focus))
 		{
+			snd_attack_played = 0;
 			var _dis = point_distance_3d(x,y,z,target_x,target_y,target_z);
 			//Too far from target
 			if (_dis>64)

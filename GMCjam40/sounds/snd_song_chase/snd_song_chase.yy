@@ -13,8 +13,8 @@
   "soundFile": "snd_song_chase.ogg",
   "duration": 15.4879932,
   "parent": {
-    "name": "Audio",
-    "path": "folders/Audio.yy",
+    "name": "Songs",
+    "path": "folders/Audio/Songs.yy",
   },
   "resourceVersion": "1.0",
   "name": "snd_song_chase",

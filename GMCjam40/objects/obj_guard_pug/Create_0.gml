@@ -31,6 +31,9 @@ fric_air = 0.03;
 jumpy = 3;
 #endregion
 
+snd_attack = snd_pug_attack;
+snd_huh = snd_pug_huh;
+
 instance = new smf_instance(global.modPug);
 instance.play("Idle", .2, 1, true);
 

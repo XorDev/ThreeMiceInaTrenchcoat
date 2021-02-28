@@ -13,8 +13,8 @@
   "soundFile": "snd_song_win.ogg",
   "duration": 8.71373,
   "parent": {
-    "name": "Audio",
-    "path": "folders/Audio.yy",
+    "name": "Songs",
+    "path": "folders/Audio/Songs.yy",
   },
   "resourceVersion": "1.0",
   "name": "snd_song_win",
