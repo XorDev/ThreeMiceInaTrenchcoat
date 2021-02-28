@@ -89,6 +89,7 @@ function pathNearest()
 		{
 			_value = _d;
 			_px = _x; _py = _y;
+			_pi = i;
 		}
 	}
 	_nx = path_get_point_x(path,(_pi+1)%_size);
