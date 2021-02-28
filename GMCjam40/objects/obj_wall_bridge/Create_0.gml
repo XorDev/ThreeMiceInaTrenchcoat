@@ -7,9 +7,9 @@ floorTex = sprite_get_texture(spr_wall_low, 0);
 wallTex = sprite_get_texture(spr_brick, 0);
 tile = checkNeighbours();
 width = 32;
-height = 32;
+height = 16;
 deleteAfterUse = true;
-z += 64 - 32;
+z += 64 - 16;
 
 //The parent contains addToLevel(), which adds this tileable wall to the level
 /*
