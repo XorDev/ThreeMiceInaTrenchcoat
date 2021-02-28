@@ -4,6 +4,12 @@ if (countdown < 0)
 {
 	countdown = 60;
 	active = !active;
+	
+	var _snd,_dis,_gain;
+	_snd = active?snd_spike_up: snd_spike_down;
+	_dis = point_distance_3d(x,y,z,obj_player.x,obj_player.y,obj_player.z);
+	_gain = power(clamp(1-_dis/256,0,1),.25)*.3;
+	sound_randomize(_snd,.2,.2,_gain);
 }
 position += (active - position) * .2;
 
