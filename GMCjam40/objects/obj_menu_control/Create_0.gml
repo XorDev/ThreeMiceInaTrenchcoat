@@ -2,8 +2,8 @@
 
 gpu_set_tex_filter(true);
 
-alpha = 0;
-fade = 1;
+global.black = 0;
+global.fade = 1;
 global.button = noone;
 global.hover = noone;
 
