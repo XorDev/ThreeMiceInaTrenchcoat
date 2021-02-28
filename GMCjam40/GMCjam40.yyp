@@ -183,6 +183,7 @@
     {"id":{"name":"obj_guard_parent","path":"objects/obj_guard_parent/obj_guard_parent.yy",},"order":0,},
     {"id":{"name":"snd_mouse_step1","path":"sounds/snd_mouse_step1/snd_mouse_step1.yy",},"order":2,},
     {"id":{"name":"snd_step3","path":"sounds/snd_step3/snd_step3.yy",},"order":7,},
+    {"id":{"name":"obj_door_door","path":"objects/obj_door_door/obj_door_door.yy",},"order":7,},
     {"id":{"name":"spr_button_green","path":"sprites/spr_button_green/spr_button_green.yy",},"order":12,},
     {"id":{"name":"mbuff_write_to_buffer","path":"scripts/mbuff_write_to_buffer/mbuff_write_to_buffer.yy",},"order":11,},
     {"id":{"name":"snd_step0","path":"sounds/snd_step0/snd_step0.yy",},"order":4,},
@@ -440,6 +441,8 @@
     {"CopyToMask":-1,"filePath":"datafiles/Scenery","resourceVersion":"1.0","name":"SpeechBubble.mtl","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Game objects","resourceVersion":"1.0","name":"Door.mtl","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Game objects","resourceVersion":"1.0","name":"Door.obj","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Game objects","resourceVersion":"1.0","name":"Door_door.mtl","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Game objects","resourceVersion":"1.0","name":"Door_door.obj","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2.3.1.542",
