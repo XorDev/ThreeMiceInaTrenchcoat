@@ -174,6 +174,7 @@ function mouse(_x, _y, _z, _parent) constructor
 				//Put player in the middle of the map if he falls off
 				if (z < -400)
 				{
+					instance_destroy(obj_player);
 					room_goto(rm_menu_lose);
 					/*
 					x = obj_player.xstart;
@@ -338,30 +339,6 @@ function mouse(_x, _y, _z, _parent) constructor
 			}
 		}
 		currInst.step(1);
-	}
-	
-	static avoid = function(ind)
-	{
-		var dx = x - ind.x;
-		var dy = y - ind.y;
-		var dz = z - ind.z;
-		var d = dx * dx + dy * dy + dz * dz;
-		var rr = ind.radius + radius;
-		if (d == 0)
-		{
-			x += rr;
-			y += 2 - random(4);
-		}
-		else if (d < rr * rr)
-		{
-			d = rr / sqrt(d);
-			dx *= d;
-			dy *= d;
-			dz *= d;
-			x = ind.x + dx;
-			y = ind.y + dy;
-			z = ind.z + dz;
-		}
 	}
 	
 	static draw = function()
