@@ -4,11 +4,11 @@ event_inherited();
 
 #region enemy stats:
 //Sight arc = min + add * awareness. High when chasing
-sight_arc_min = 0;
-sight_arc_add = 00;
+sight_arc_min = 140;
+sight_arc_add = -40;
 //Sight range. Increases when chasing.
-sight_range_min = 0;//192;
-sight_range_add = 0;//128;
+sight_range_min = 192;
+sight_range_add = 128;
 
 //Odds of seeing per step
 attention = 6;
@@ -30,6 +30,11 @@ turn_add = 0.12;
 fric_ground = 0.2;
 fric_air = 0.02;
 jumpy = 1;
+
+snd_attack = snd_owl_attack;
+snd_attack_played = 0;
+snd_huh = snd_owl_huh;
+snd_huh_played = 0;
 #endregion
 
 path = -1;

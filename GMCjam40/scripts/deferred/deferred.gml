@@ -19,8 +19,8 @@ function deferred_surface()
 	
 	if (window_get_width() != global.screen_w) || (window_get_height() != global.screen_h)
 	{
-		global.screen_w = window_get_width();
-		global.screen_h = window_get_height();
+		global.screen_w = max(window_get_width(),1);
+		global.screen_h = max(window_get_height(),1);
 		
 		surface_resize(application_surface,global.screen_w,global.screen_h);
 		

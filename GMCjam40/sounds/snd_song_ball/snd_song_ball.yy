@@ -13,8 +13,8 @@
   "soundFile": "snd_song_ball.ogg",
   "duration": 170.327,
   "parent": {
-    "name": "Audio",
-    "path": "folders/Audio.yy",
+    "name": "Songs",
+    "path": "folders/Audio/Songs.yy",
   },
   "resourceVersion": "1.0",
   "name": "snd_song_ball",
