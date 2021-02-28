@@ -131,7 +131,7 @@
     "path": "folders/Menus.yy",
   },
   "resourceVersion": "1.0",
-  "name": "fnt_menu",
+  "name": "fnt_menu_small",
   "tags": [],
   "resourceType": "GMFont",
 }

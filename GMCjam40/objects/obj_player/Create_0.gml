@@ -26,7 +26,16 @@ trenchcoatTimer = 0;
 iframes = 0;
 function damaged()
 {
-	iframes = 20;
+	if (iframes <= 0)
+	{
+		iframes = 60;
+		audio_play_sound(snd_ouch, 0, false);
+		
+		//Need to edit the player's previous coordinates in order to make him bounce
+		global.mouseArray[0].prevX += dcos(global.mouseArray[0].angle) * 15;
+		global.mouseArray[0].prevY -= dsin(global.mouseArray[0].angle) * 15;
+		global.mouseArray[0].prevZ -= 5;
+	}
 	//Damage calculations
 }
 
@@ -364,11 +373,9 @@ function mouse(_x, _y, _z, _parent) constructor
 	}
 }
 
-mice = 0;
-mouseArray[mice ++] = new mouse(x, y, z, self);
-mouseArray[mice ++] = new mouse(x + mice * radius * 2, y, z, mouseArray[mice - 1]);
-mouseArray[mice ++] = new mouse(x + mice * radius * 2, y, z, mouseArray[mice - 1]);
-global.masterMouse = mouseArray[0];
+global.mice = 0;
+global.mouseArray[global.mice ++] = new mouse(x, y, z, self);
+global.masterMouse = global.mouseArray[0];
 
 //4-bit item list;
 items = 0;

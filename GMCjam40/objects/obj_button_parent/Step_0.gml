@@ -6,6 +6,7 @@ smooth = lerp(smooth,_hover,.2);
 //Scale
 image_xscale = 8 * (1+.2*smooth);
 image_yscale = 8 * (1+.2*smooth);
+image_angle = (-45 + cos(y + current_time / 1000) * 4);
 
 if _hover && !instance_exists(global.button)
 {

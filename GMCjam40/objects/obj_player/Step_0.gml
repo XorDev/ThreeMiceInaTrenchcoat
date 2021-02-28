@@ -10,16 +10,16 @@ global.jumpInput = keyboard_check_pressed(vk_space);
 global.trenchCoatInput = keyboard_check_pressed(ord("E"));
 
 //Update followers
-if (global.trenchCoatInput && trenchcoatTimer <= 0) && (mice>2)
+if (global.trenchCoatInput && trenchcoatTimer <= 0) && (global.mice>2)
 {
 	trenchcoat = !trenchcoat;
 	if (!trenchcoat)
 	{
 		mouseArray[0].height = 0;
 		mouseArray[0].currInst = mouseArray[0].instance;
-		for (var i = 1; i < mice; i ++)
+		for (var i = 1; i < global.mice; i ++)
 		{
-			with mouseArray[i]
+			with global.mouseArray[i]
 			{
 				trailPos = parent.trailPos;
 			}
@@ -30,7 +30,7 @@ if (global.trenchCoatInput && trenchcoatTimer <= 0) && (mice>2)
 		trenchcoatTimer = 1;
 		
 		//Make follower mice jump towards their new position
-		with mouseArray[0]
+		with global.mouseArray[0]
 		{
 			jumpStartX = x;
 			jumpStartY = y;
@@ -42,9 +42,9 @@ if (global.trenchCoatInput && trenchcoatTimer <= 0) && (mice>2)
 			prevY = jumpEndY;
 			prevZ = jumpEndZ;
 		}
-		for (var i = 1; i < mice; i ++)
+		for (var i = 1; i < global.mice; i ++)
 		{
-			with mouseArray[i]
+			with global.mouseArray[i]
 			{
 				jumpStartX = x;
 				jumpStartY = y;
@@ -58,9 +58,9 @@ if (global.trenchCoatInput && trenchcoatTimer <= 0) && (mice>2)
 }
 if (trenchcoatTimer > 0)
 {
-	for (var i = 0; i < mice; i ++)
+	for (var i = 0; i < global.mice; i ++)
 	{
-		var _mouse = mouseArray[i];
+		var _mouse = global.mouseArray[i];
 		_mouse.x = lerp(_mouse.jumpEndX, _mouse.jumpStartX, trenchcoatTimer);
 		_mouse.y = lerp(_mouse.jumpEndY, _mouse.jumpStartY, trenchcoatTimer);
 		_mouse.z = lerp(_mouse.jumpEndZ, _mouse.jumpStartZ, trenchcoatTimer);
@@ -69,15 +69,15 @@ if (trenchcoatTimer > 0)
 	trenchcoatTimer -= .03;
 	if (trenchcoatTimer <= 0)
 	{
-		mouseArray[0].currInst = mouseArray[0].trenchcoatInst;
-		mouseArray[0].height = mouseArray[0].trenchcoatHeight;
+		global.mouseArray[0].currInst = global.mouseArray[0].trenchcoatInst;
+		global.mouseArray[0].height = global.mouseArray[0].trenchcoatHeight;
 	}
 }
 else
 {
-	for (var i = 0; i < mice; i ++)
+	for (var i = 0; i < global.mice; i ++)
 	{
-		mouseArray[i].step(trenchcoat);
+		global.mouseArray[i].step(trenchcoat);
 		
 		if (trenchcoat)
 		{
@@ -86,16 +86,16 @@ else
 	}
 }
 
-var mainMouse = mouseArray[0];
+var mainMouse = global.mouseArray[0];
 x = mainMouse.x;
 y = mainMouse.y;
 z = mainMouse.z;
 
 if (items&1) && (distance_to_object(obj_cage)<16)
 {
-	for(var i = mice;i<array_length(mouseArray);i++)
+	for(var i = global.mice; i < array_length(global.mouseArray); i++)
 	{
-		var _m = mouseArray[i];
+		var _m = global.mouseArray[i];
 		if (point_distance_3d(x,y,z,_m.x,_m.y,_m.z)<80)
 		{
 			mice++;

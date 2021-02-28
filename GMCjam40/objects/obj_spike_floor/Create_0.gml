@@ -16,7 +16,6 @@ position = 0;
 countdown = 60;
 colFunc = function()
 {
-	audio_play_sound(sndCoin, 0, false);
 	obj_player.damaged();
 }
 
