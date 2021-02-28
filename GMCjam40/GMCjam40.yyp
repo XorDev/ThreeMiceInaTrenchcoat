@@ -35,6 +35,7 @@
     {"id":{"name":"shd_deferred_smf","path":"shaders/shd_deferred_smf/shd_deferred_smf.yy",},"order":1,},
     {"id":{"name":"spr_owl","path":"sprites/spr_owl/spr_owl.yy",},"order":2,},
     {"id":{"name":"obj_static_parent","path":"objects/obj_static_parent/obj_static_parent.yy",},"order":0,},
+    {"id":{"name":"obj_ladder_exit","path":"objects/obj_ladder_exit/obj_ladder_exit.yy",},"order":4,},
     {"id":{"name":"obj_tunnel_hor","path":"objects/obj_tunnel_hor/obj_tunnel_hor.yy",},"order":1,},
     {"id":{"name":"colmesh_shapes","path":"scripts/colmesh_shapes/colmesh_shapes.yy",},"order":3,},
     {"id":{"name":"vbuff_create_from_mbuff","path":"scripts/vbuff_create_from_mbuff/vbuff_create_from_mbuff.yy",},"order":12,},
@@ -314,6 +315,8 @@
     {"CopyToMask":-1,"filePath":"datafiles/Items","resourceVersion":"1.0","name":"Key.obj","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Scenery","resourceVersion":"1.0","name":"OuterWall.obj","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Scenery","resourceVersion":"1.0","name":"OuterWall.mtl","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Game objects","resourceVersion":"1.0","name":"Ladder.mtl","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Game objects","resourceVersion":"1.0","name":"Ladder.obj","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2.3.1.542",

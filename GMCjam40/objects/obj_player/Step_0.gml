@@ -1,5 +1,4 @@
 /// @description
-
 global.hInput = keyboard_check(ord("D")) - keyboard_check(ord("A"));
 global.vInput = keyboard_check(ord("W")) - keyboard_check(ord("S"));
 global.jumpInput = keyboard_check_pressed(vk_space);

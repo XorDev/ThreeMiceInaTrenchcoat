@@ -10,7 +10,8 @@ audio_sound_gain(snd_song1,1,5000);
 
 z = (200 - depth) / 100 * 64 + 10;
 radius = 10;
-global.playerActive = true;
+climb_ladder = -1;
+climb_dir = 1;
 
 trenchcoat = false;
 globalvar trenchcoatTimer;
@@ -30,6 +31,7 @@ function mouse(_x, _y, _z, _parent) constructor
 	ground = false;
 	jumpLag = 4;
 	jump = false;
+	ladder = false;
 	
 	jumpx = x;
 	jumpy = y; 
@@ -126,68 +128,119 @@ function mouse(_x, _y, _z, _parent) constructor
 		{
 			//This is the main mouse
 			//Controls
-			jump = global.jumpInput;
-			var h = global.hInput;
-			var v = global.vInput;
-			if (h != 0 && v != 0)
-			{	//If walking diagonally, divide the input vector by its own length
-				var s = 1 / sqrt(2);
-				h *= s;
-				v *= s;
-			}
-			
-			//Move
-			acc = (2 - trenchcoat) * .6;
-			x += spdX + acc * h;
-			y += spdY - acc * v;
-			z += spdZ - .5 + jump * ground * 7; //Apply gravity in z-direction
-			
-			//Put player in the middle of the map if he falls off
-			if (z < -400)
+			if (parent.climb_ladder < 0)
 			{
-				room_goto(rm_menu_lose);
-				/*
-				x = obj_player.xstart;
-				y = obj_player.ystart;
-				z = 300;
-				prevX = x;
-				prevY = y;
-				prevZ = z;
-				*/
-			}
+				jump = global.jumpInput;
+				var h = global.hInput;
+				var v = global.vInput;
+				if (h != 0 && v != 0)
+				{	//If walking diagonally, divide the input vector by its own length
+					var s = 1 / sqrt(2);
+					h *= s;
+					v *= s;
+				}
 			
-			//Cast a short-range ray from the previous position to the current position to avoid going through geometry
-			if (sqr(x - prevX) + sqr(y - prevY) + sqr(z - height - prevZ) > radius * radius) //Only cast ray if there's a risk that we've gone through geometry
-			{
-				ray = levelColmesh.castRay(prevX, prevY, prevZ - height, x, y, z - height);
-				if (is_array(ray))
+				//Move
+				acc = (2 - trenchcoat) * .6;
+				x += spdX + acc * h;
+				y += spdY - acc * v;
+				z += spdZ - .5 + jump * ground * 7; //Apply gravity in z-direction
+			
+				//Put player in the middle of the map if he falls off
+				if (z < -400)
 				{
-					x = ray[0] - (x - prevX) * .1;
-					y = ray[1] - (y - prevY) * .1;
-					z = ray[2] - (z - prevZ) * .1 + height;
+					room_goto(rm_menu_lose);
+					/*
+					x = obj_player.xstart;
+					y = obj_player.ystart;
+					z = 300;
+					prevX = x;
+					prevY = y;
+					prevZ = z;
+					*/
+				}
+				//Cast a short-range ray from the previous position to the current position to avoid going through geometry
+				if (sqr(x - prevX) + sqr(y - prevY) + sqr(z - height - prevZ) > radius * radius) //Only cast ray if there's a risk that we've gone through geometry
+				{
+					ray = levelColmesh.castRay(prevX, prevY, prevZ - height, x, y, z - height);
+					if (is_array(ray))
+					{
+						x = ray[0] - (x - prevX) * .1;
+						y = ray[1] - (y - prevY) * .1;
+						z = ray[2] - (z - prevZ) * .1 + height;
+					}
+				}
+
+				//Avoid ground
+				ground = false;
+				fast = false;			//Fast collisions should usually not be used for important objects like the player
+				executeColfunc = true;	//We want to execute the collision function of the coins
+				col = levelColmesh.displaceCapsule(x, y, z - height, 0, 0, 1, radius, height, 40, fast, executeColfunc);
+				if (col[6]) //If we're touching ground
+				{
+					x = col[0];
+					y = col[1];
+					z = col[2] + height;
+	
+					//We're touching ground if the dot product between the returned vector 
+					if (col[5] > 0.7)
+					{
+						ground = true;
+					}
 				}
 			}
-
-			//Avoid ground
-			ground = false;
-			fast = false;			//Fast collisions should usually not be used for important objects like the player
-			executeColfunc = true;	//We want to execute the collision function of the coins
-			col = levelColmesh.displaceCapsule(x, y, z - height, 0, 0, 1, radius, height, 40, fast, executeColfunc);
-			if (col[6]) //If we're touching ground
+			else
 			{
-				x = col[0];
-				y = col[1];
-				z = col[2] + height;
-	
-				//We're touching ground if the dot product between the returned vector 
-				if (col[5] > 0.7)
+				ladder = true;
+				var l = parent.climb_ladder;
+				
+				var endX = l.x + 16;
+				var endY = l.y + radius - 2 * radius * (parent.climb_dir && -l.dir);
+				var endZ = l.z + radius + l.height * .5 + l.height * .5 * (parent.climb_dir - l.dir) *.5;
+				
+				var targetX = endX;
+				var targetZ = endZ;
+				var dz = abs(targetZ - z);
+				var targetY = l.y + radius - 2 * radius * (parent.climb_dir && -l.dir) * max(0, radius - dz);
+				
+				var dx = abs(targetX - x);
+				var dy = abs(targetY - y);
+				
+				var spd = 1.5;
+				if (point_distance_3d(x, y, z, endX, endY, endZ) <= spd)
 				{
-					ground = true;
+					if (parent.climb_ladder.dir == -1 && parent.climb_dir == -1)
+					{
+						//If this ladder goes down, and we just climbed down it, go to previous room
+						room_goto_previous();
+						global.climbed_down = true;
+					}
+					if (parent.climb_ladder.dir == 1 && parent.climb_dir == 1)
+					{
+						//If this ladder goes up, and we just climbed up it, go to next room
+						room_goto_next();
+						global.climbed_down = false;
+					}
+					parent.climb_ladder = -1;
+					x = endX;
+					y = endY;
+					z = endZ;
+					prevX = x;
+					prevY = y;
+					prevZ = z;
+					ladder = false;
+				}
+				else
+				{
+					if (dx > 0){x += (targetX - x) * min(spd, dx) / dx;}
+					if (dy > 0){y += (targetY - y) * min(spd, dy) / dy;}
+					if (dz > 0){z += (targetZ - z) * min(spd, dz) / dz;}
+					angle = 90;
 				}
 			}
 			
 			//Save trail
-			if (ground || jump)
+			if (ground || jump || ladder)
 			{
 				var p = floor(trailPos);
 				trail[(p + 1) mod trailSize] = [x, y, z, jump];
@@ -233,22 +286,30 @@ function mouse(_x, _y, _z, _parent) constructor
 		}
 		
 		//Animate the player
-		if (!ground)
+		if (ladder)
 		{
-			var animSpd = currInst.getAnimSpeed("Jump");
-			currInst.play("Jump", animSpd, .25, false);
+			var animSpd = currInst.getAnimSpeed("Climb");
+			currInst.play("Climb", animSpd, .25, false);
 		}
 		else
 		{
-			if (spd > .5)
+			if (!ground)
 			{
-				var animSpd = currInst.getAnimSpeed("Walk");
-				currInst.play("Walk", animSpd, .15, false);
+				var animSpd = currInst.getAnimSpeed("Jump");
+				currInst.play("Jump", animSpd, .25, false);
 			}
 			else
 			{
-				var animSpd = currInst.getAnimSpeed("Idle");
-				currInst.play("Idle", animSpd, .15, false);
+				if (spd > .5)
+				{
+					var animSpd = currInst.getAnimSpeed("Walk");
+					currInst.play("Walk", animSpd, .15, false);
+				}
+				else
+				{
+					var animSpd = currInst.getAnimSpeed("Idle");
+					currInst.play("Idle", animSpd, .15, false);
+				}
 			}
 		}
 		currInst.step(1);

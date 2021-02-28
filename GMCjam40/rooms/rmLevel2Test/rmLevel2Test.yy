@@ -16,10 +16,7 @@
     {"instances":[],"visible":true,"depth":0,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"resourceVersion":"1.0","name":"Level_3","tags":[],"resourceType":"GMRInstanceLayer",},
     {"instances":[],"visible":true,"depth":100,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"resourceVersion":"1.0","name":"Level_2","tags":[],"resourceType":"GMRInstanceLayer",},
     {"instances":[
-        {"properties":[],"isDnd":false,"objectId":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":928.0,"y":608.0,"resourceVersion":"1.0","name":"inst_6438D5F8","tags":[],"resourceType":"GMRInstance",},
-        {"properties":[],"isDnd":false,"objectId":{"name":"obj_tunnel_entrance","path":"objects/obj_tunnel_entrance/obj_tunnel_entrance.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4278255615,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":1024.0,"y":576.0,"resourceVersion":"1.0","name":"inst_4CF34C1D","tags":[],"resourceType":"GMRInstance",},
-        {"properties":[],"isDnd":false,"objectId":{"name":"obj_tunnel_hor","path":"objects/obj_tunnel_hor/obj_tunnel_hor.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":992.0,"y":576.0,"resourceVersion":"1.0","name":"inst_DBEFA3E","tags":[],"resourceType":"GMRInstance",},
-        {"properties":[],"isDnd":false,"objectId":{"name":"obj_tunnel_hor","path":"objects/obj_tunnel_hor/obj_tunnel_hor.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":960.0,"y":576.0,"resourceVersion":"1.0","name":"inst_49BEE58A","tags":[],"resourceType":"GMRInstance",},
+        {"properties":[],"isDnd":false,"objectId":{"name":"obj_ladder_entrance","path":"objects/obj_ladder_entrance/obj_ladder_entrance.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":768.0,"y":640.0,"resourceVersion":"1.0","name":"inst_7361A791","tags":[],"resourceType":"GMRInstance",},
       ],"visible":true,"depth":200,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"resourceVersion":"1.0","name":"Level_1","tags":[],"resourceType":"GMRInstanceLayer",},
     {"instances":[
         {"properties":[],"isDnd":false,"objectId":{"name":"obj_floor","path":"objects/obj_floor/obj_floor.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":608.0,"y":576.0,"resourceVersion":"1.0","name":"inst_305D4D06","tags":[],"resourceType":"GMRInstance",},
@@ -318,7 +315,6 @@
   "creationCodeFile": "",
   "inheritCode": false,
   "instanceCreationOrder": [
-    {"name":"inst_6438D5F8","path":"rooms/rmLevel2Test/rmLevel2Test.yy",},
     {"name":"inst_305D4D06","path":"rooms/rmLevel2Test/rmLevel2Test.yy",},
     {"name":"inst_568F15F1","path":"rooms/rmLevel2Test/rmLevel2Test.yy",},
     {"name":"inst_3DE08297","path":"rooms/rmLevel2Test/rmLevel2Test.yy",},
@@ -608,9 +604,7 @@
     {"name":"inst_7F7C2725","path":"rooms/rmLevel2Test/rmLevel2Test.yy",},
     {"name":"inst_73E0AF9","path":"rooms/rmLevel2Test/rmLevel2Test.yy",},
     {"name":"inst_3D22AEC8","path":"rooms/rmLevel2Test/rmLevel2Test.yy",},
-    {"name":"inst_4CF34C1D","path":"rooms/rmLevel2Test/rmLevel2Test.yy",},
-    {"name":"inst_DBEFA3E","path":"rooms/rmLevel2Test/rmLevel2Test.yy",},
-    {"name":"inst_49BEE58A","path":"rooms/rmLevel2Test/rmLevel2Test.yy",},
+    {"name":"inst_7361A791","path":"rooms/rmLevel2Test/rmLevel2Test.yy",},
   ],
   "inheritCreationOrder": false,
   "sequenceId": null,
