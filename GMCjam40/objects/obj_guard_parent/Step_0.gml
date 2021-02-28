@@ -17,6 +17,7 @@ if _col[6]
 	_ground = (_col[5] > 0.7);
 }
 
+
 #region Capture mouse
 if (target_id>-1)
 {
@@ -28,7 +29,7 @@ if (target_id>-1)
 		yspeed += (target.y-y)/8;
 		//If targeting a mouse, capture it
 		capture = 1;
-		
+
 		//Remove mice if possible
 		if (obj_player.mice>1)
 		{
@@ -51,7 +52,7 @@ if capture
 	//Try to get to cage
 	setTarget(_x,_y,_z);
 	awareness = 1;
-	
+
 }
 //Randomly check for mice
 else if !irandom(attention)
@@ -60,18 +61,18 @@ else if !irandom(attention)
 	var _n = obj_player.mice-1;
 	target_id = min(max(target_id,irandom(_n)),_n);
 	target = obj_player.mouseArray[target_id];
-	
+
 	//Get sight arc and range
 	var _arc,_range;
 	_arc = sight_arc_min+sight_arc_add*awareness;
 	_range = sight_range_min+sight_range_add*awareness;
-	
+
 	//Direction and distance to mouse
 	var _dir,_dis,_ver;
 	_dir = point_direction(x,y,target.x,target.y);
 	_dis = point_distance_3d(x,y,z,target.x,target.y,target.z);
 	_ver = abs(z-target.z);
-	
+
 	//If in sight range
 	if (abs(angle_difference(face,_dir))<_arc) && (_dis<_range) && (_ver<60)
 	{
@@ -84,7 +85,6 @@ else if !irandom(attention)
 			//Maximize awareness
 			awareness = 1;
 		}
-		//path_next = 0;
 	}
 	else
 	{
@@ -97,8 +97,7 @@ else if !irandom(attention)
 			var _dis = point_distance_3d(x,y,z,target_x,target_y,target_z);
 			if (_dis>64)
 			{
-				//If not already on a path
-				if (path_next<2)
+				if path_exists(path)
 				{
 					//Return to nearest path point
 					if path_exists(path)
@@ -112,17 +111,8 @@ else if !irandom(attention)
 					else setTarget(xstart,ystart,z);
 				}
 			}
-			else path_next = min(path_next,1);
 		}
 	}
-}
-
-if capture && (target_id>-1)
-{
-	target.x = x+16*dcos(face);
-	target.y = y-16*dsin(face);
-	target.z = z+24;
-	target.angle = face;
 }
 
 //Gradually lose interest

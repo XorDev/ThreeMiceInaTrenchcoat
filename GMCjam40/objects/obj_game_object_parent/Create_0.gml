@@ -1,2 +1,1 @@
-/// @description
-z = (200 - depth) / 100 * 64;
+update_z_value();
