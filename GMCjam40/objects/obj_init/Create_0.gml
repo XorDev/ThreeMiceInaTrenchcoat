@@ -13,7 +13,7 @@ global.modTrenchcoat = smf_model_load("Characters/MouseInTrenchcoat.smf");
 global.modOwl = smf_model_load("Characters/Owl.smf");
 global.modPug = smf_model_load("Characters/Pug.smf");
 
-//Load scenery (These must be loaded to buffers, not vertex buffers!
+//Load scenery (These must be loaded to buffers, not vertex buffers!)
 global.mbuffTunnelHor = colmesh_load_obj_to_buffer("Scenery/tunnel_hori_32x64.obj");
 global.mbuffWallCornerBottomLeft = colmesh_load_obj_to_buffer("Scenery/wall_corner_bottomleft_32x32.obj");
 global.mbuffWallWallHor = colmesh_load_obj_to_buffer("Scenery/wall_hori_32x32.obj");
@@ -24,10 +24,12 @@ global.mbuffStair = colmesh_load_obj_to_buffer("Scenery/stairs_vert_64x128x64.ob
 global.mbuffStairColmesh = colmesh_load_obj_to_buffer("Scenery/StairColmesh.obj");
 global.mbuffMouseHoleHor = colmesh_load_obj_to_buffer("Scenery/mousehole_tunnel_hor_32x32.obj");
 
+//Load game objects (static ones must be loaded as buffers, not vertex buffers)
 global.mbuffCage = colmesh_load_obj_to_buffer("Game objects/Cage.obj");
 global.mbuffLadder = colmesh_load_obj_to_buffer("Game objects/Ladder.obj");
 
 //Load environment models
+global.modSpikes = loadObj("Game objects/Spikes.obj");
 global.modButton = loadObj("Game objects/Button.obj");
 global.modTrapFloor = loadObj("Scenery/floor_32x32.obj");
 

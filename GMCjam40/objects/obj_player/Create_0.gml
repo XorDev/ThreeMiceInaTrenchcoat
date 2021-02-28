@@ -17,6 +17,13 @@ trenchcoat = false;
 globalvar trenchcoatTimer;
 trenchcoatTimer = 0;
 
+iframes = 0;
+function damaged()
+{
+	iframes = 20;
+	//Damage calculations
+}
+
 /// @func mouse(x, y, z)
 function mouse(_x, _y, _z, _parent) constructor
 {

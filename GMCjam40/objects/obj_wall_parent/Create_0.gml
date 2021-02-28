@@ -7,6 +7,7 @@ width = 32;
 height = 64;
 floorTex = sprite_get_texture(spr_brick, 0);
 wallTex = sprite_get_texture(spr_brick, 0);
+deleteAfterUse = true;
 
 function addToLevel()
 {
@@ -19,7 +20,10 @@ function addToLevel()
 	obj_level_geometry.addModel(floorModel, floorTex, matrix_build(x, y, z + height, 0, 0, 0, 1, 1, 1));	
 	
 	//Destroy
-	instance_destroy();
+	if (deleteAfterUse)
+	{
+		instance_destroy();
+	}
 }
 
 function checkNeighbours()

@@ -9,6 +9,7 @@ wallModel = global.mbuffWallWallOuter;
 floorModel = global.mbuffFloor;
 width = 32;
 height = 64;
+deleteAfterUse = true;
 
 //The parent contains addToLevel(), which adds this tileable wall to the level
 /*
