@@ -2,8 +2,8 @@
 
 #region enemy stats:
 //Sight arc = min + add * awareness. High when chasing
-sight_arc_min = 80;
-sight_arc_add = 60;
+sight_arc_min = 140;
+sight_arc_add = -40;
 //Sight range. Increases when chasing.
 sight_range_min = 256;
 sight_range_add = 128;
@@ -12,8 +12,6 @@ sight_range_add = 128;
 attention = 6;
 //How long he waits after sighting.
 focus = 100;
-//Idle looking arc.
-look = 10;
 
 //Jump speed and fall speed.
 speed_jump = 3;
@@ -57,7 +55,6 @@ target_id = -1;
 target_x = xstart;
 target_y = ystart;
 target_z = z;
-tries = 0;
 //True when a mouse is captured.
 capture = 0;
 

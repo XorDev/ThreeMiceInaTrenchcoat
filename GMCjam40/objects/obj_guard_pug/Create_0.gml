@@ -3,7 +3,7 @@ event_inherited();
 
 #region Set different stats:
 //Sight arc = min + add * awareness. High when chasing
-sight_arc_min = 40;
+sight_arc_min = 80;
 sight_arc_add = 40;
 //Sight range. Increases when chasing.
 sight_range_min = 128;
@@ -13,8 +13,6 @@ sight_range_add = 128;
 attention = 10;
 //How long he waits after sighting.
 focus = 50;
-//Idle looking arc.
-look = 5;
 
 //Jump speed and fall speed.
 speed_jump = 3;

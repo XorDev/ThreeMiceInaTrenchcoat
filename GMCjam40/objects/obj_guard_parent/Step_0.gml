@@ -17,7 +17,7 @@ if _col[6]
 if (target_id>-1)
 {
 	var _dis = point_distance_3d(x,y,z,target.x,target.y,target.z);
-	if (_dis<16)
+	if (_dis<24)
 	{
 		//Lunge at mouse
 		xspeed += (target.x-x)/8;
@@ -63,18 +63,18 @@ else if !irandom(attention)
 	_range = sight_range_min+sight_range_add*awareness;
 	
 	//Direction and distance to mouse
-	var _dir,_dis;
+	var _dir,_dis,_ver;
 	_dir = point_direction(x,y,target.x,target.y);
 	_dis = point_distance_3d(x,y,z,target.x,target.y,target.z);
+	_ver = abs(z-target.z);
 	
 	//If in sight range
-	if (abs(angle_difference(face,_dir))<_arc) &&	(_dis<_range)
+	if (abs(angle_difference(face,_dir))<_arc) && (_dis<_range) && (_ver<60)
 	{
 		var _ray = levelColmesh.castRay(x,y,z+8,target.x,target.y,target.z);
 		if (!is_array(_ray))
 		{
-			setTarget(target.x,target.y,target.z)
-			show_debug_message("Seen");
+			setTarget(target.x,target.y,target.z);
 			//Jump
 			zspeed = speed_jump*_ground*!irandom(jumpy);
 			//Maximize awareness
@@ -92,13 +92,7 @@ else if !irandom(attention)
 			var _dis = point_distance_3d(x,y,z,target_x,target_y,target_z);
 			if (_dis>64)
 			{
-				//Try to return home
-				if setTarget(xstart+random_range(-tries,tries),ystart+random_range(-tries,tries),z)
-				{
-					tries = 0;
-					show_debug_message("Home");
-				}
-				else {tries++;}
+				setTarget(xstart,ystart,z)
 			}
 		}
 	}
@@ -120,7 +114,6 @@ if capture
 	var _dis = point_distance_3d(x,y,z,_x,_y,_z);
 	if (_dis<80)
 	{
-		show_debug_message("Home");
 		//Return to post
 		target.x = _x+random_range(-20,20);
 		target.y = _y+random_range(-20,20);
@@ -136,21 +129,24 @@ var _move = clamp(_dis/64-1+awareness,0,1)*(speed_min+awareness*speed_add);
 //Update speeds
 xspeed = lerp(xspeed,+dcos(face)*_move,fric_air+fric_ground*_ground);
 yspeed = lerp(yspeed,-dsin(face)*_move,fric_air+fric_ground*_ground);
-zspeed = max(zspeed-speed_fall,-z);
+zspeed = zspeed-speed_fall
 
 
 //Move position
 x += xspeed;
 y += yspeed;
-z += zspeed;
+if !_ground || (zspeed > 0) z += zspeed;
+if (z<-400)
+{
+	//Give a mouse back
+	if capture && (target_id>-1)  obj_player.mice++;
+	instance_destroy();
+}
 
 //Update facement direction
-var _dir,_swing;
+var _dir;
 _dir = point_direction(x,y,target_x,target_y);
-//Random swinging for extra visibility.
-_swing = look*cos(current_time/300+id);
-_swing *= power((1-awareness)*awareness*4,6)-min(power(smooth,8)*14,1);
-face += (turn_min+turn_add*awareness)*angle_difference(_dir,face+_swing);
+face += (turn_min+turn_add*awareness)*angle_difference(_dir,face);
 
 var _speed = point_distance(0,0,xspeed,xspeed);
 if (_speed > .1)

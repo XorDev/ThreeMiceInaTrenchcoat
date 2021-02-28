@@ -2,6 +2,8 @@ function deferred_init()
 {
 	global.screen_w = window_get_width();
 	global.screen_h = window_get_height();
+	global.warning = 0;
+	global.smooth_fps = 1000;
 
 	global.surf_dif = -1;
 	global.surf_dep = -1;
@@ -149,6 +151,14 @@ function deferred_draw()
 	gpu_set_blendmode_ext(bm_dest_color,bm_zero);
 	draw_surface_ext(global.surf_dif,0,0,1,1,0,-1,1);
 	gpu_set_blendmode(bm_normal);
+	
+	global.smooth_fps = lerp(global.smooth_fps,fps,.01);
+	if (global.smooth_fps<50)
+	{
+		draw_set_halign(fa_left);
+		draw_set_halign(fa_top);
+		draw_text(20,20,"Slow! Try lower settings")
+	}
 	
 	
 	//draw_surface_ext(global.surf_sha,global.screen_w*.25,0,1/4,1/4,0,-1,1);
