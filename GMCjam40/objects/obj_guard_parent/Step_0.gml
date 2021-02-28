@@ -97,7 +97,14 @@ else if !irandom(attention)
 			var _dis = point_distance_3d(x,y,z,target_x,target_y,target_z);
 			if (_dis>64)
 			{
-				setTarget(xstart,ystart,z)
+				if path_exists(path) 
+				{
+					var _x,_y;
+					_x = path_get_x(path,path_pos);
+					_y = path_get_y(path,path_pos);
+					path_pos += (speed_min+speed_add)/path_get_length(path);
+					setTarget(_x,_y,z);
+				}
 			}
 		}
 	}

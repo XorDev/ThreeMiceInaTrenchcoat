@@ -5,7 +5,7 @@
 sight_arc_min = 140;
 sight_arc_add = -40;
 //Sight range. Increases when chasing.
-sight_range_min = 256;
+sight_range_min = 192;
 sight_range_add = 128;
 
 //Odds of seeing per step
@@ -30,6 +30,8 @@ fric_air = 0.02;
 jumpy = 1;
 #endregion
 
+path = -1;
+path_pos = 0;
 //Enemy variables:
 //No animation currently
 anim = true;
@@ -64,4 +66,32 @@ function setTarget(tx,ty,tz)
 	target_x = tx;
 	target_y = ty;
 	target_z = tz;
+}
+
+function pathNearest()
+{
+	/*var _value,_point,_size,_length,_px,_py;
+	_value = infinity;
+	_point = 0;
+	_size = path_get_number(path);
+	_length = path_get_length(path);
+	for(var i = 0;i<_size;i++)	
+	{
+		var _x,_y,_p,_d;
+		_x = path_get_point_x(path,i);
+		_y = path_get_point_y(path,i);
+		_p = path_ge;
+		_d = distance_to_point(_x,_y);
+		
+		if (_d<_value) // New nearest
+		{
+			var _tx,_ty,_td;
+			_tx = path_get_x(path,i+_d/);
+			_ty = path_get_point_y(path,i);
+			_td = distance_to_point(_x,_y);
+			_value = _d;
+			_point = i;
+		}
+	}
+	return _point;*/
 }

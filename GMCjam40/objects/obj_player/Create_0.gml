@@ -1,5 +1,10 @@
 /// @description
 //Player variables
+if instance_number(obj_player) > 1
+{
+	instance_destroy();
+	exit;
+}
 
 if !audio_is_playing(snd_song1)
 {
@@ -130,6 +135,19 @@ function mouse(_x, _y, _z, _parent) constructor
 				y = parent.y;
 				z = parent.z;
 			}
+			if (parent.ladder && !ladder)
+			{
+				if (!ladder)
+				{
+					var animSpd = currInst.getAnimSpeed("Climb");
+					currInst.play("Climb", animSpd + random(0.02), .25, false);
+				}
+			}
+			ladder = parent.ladder;
+			if (ladder)
+			{
+				angle = 90;
+			}
 		}
 		else
 		{
@@ -198,6 +216,11 @@ function mouse(_x, _y, _z, _parent) constructor
 			}
 			else
 			{
+				if (!ladder)
+				{
+					var animSpd = currInst.getAnimSpeed("Climb");
+					currInst.play("Climb", animSpd + random(0.02), .25, false);
+				}
 				ladder = true;
 				var l = parent.climb_ladder;
 				
@@ -293,12 +316,7 @@ function mouse(_x, _y, _z, _parent) constructor
 		}
 		
 		//Animate the player
-		if (ladder)
-		{
-			var animSpd = currInst.getAnimSpeed("Climb");
-			currInst.play("Climb", animSpd, .25, false);
-		}
-		else
+		if (!ladder)
 		{
 			if (!ground)
 			{

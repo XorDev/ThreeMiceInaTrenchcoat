@@ -28,9 +28,10 @@ VERTEX main(ATTRIBUTE IN)
 	float3 wnor = normalize(mul(gm_Matrices[MATRIX_WORLD], float4(IN.nor,0)).xyz);
 	float3 vnor = normalize(mul(gm_Matrices[MATRIX_WORLD_VIEW], float4(IN.nor,0)).xyz);
 	float l = min(dot(wnor,SUN)+1.,1.);
+	float f = clamp(IN.pos.z/128.+1.,0.,1.);
 	
     OUT.pos = mul(gm_Matrices[MATRIX_WORLD_VIEW_PROJECTION], float4(IN.pos,1));
-    OUT.col = float4(IN.col.rgb,1);
+    OUT.col = float4(IN.col.rgb*f,1);
 	OUT.nor = vnor;
     OUT.tex = IN.tex;
 	OUT.dep = mul(gm_Matrices[MATRIX_WORLD_VIEW], float4(IN.pos,1)).xyz;
