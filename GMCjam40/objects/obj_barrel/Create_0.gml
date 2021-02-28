@@ -3,14 +3,16 @@ event_inherited();
 
 open = false;
 zz = 0;
-tex = sprite_get_texture(spr_cage, 0);
+tex = sprite_get_texture(tex_ladder, 0);
 
 function addToLevel()
 {
 	//Add to colmesh
-	levelColmesh.addShape(new colmesh_cylinder(x, y, z + 16, 0, 0, 1, 8, 16));
+	levelColmesh.addShape(new colmesh_cylinder(x + 16, y + 16, z + 16, 0, 0, 1, 8, 16));
 	
-	obj_level_geometry.addModel(global.mbuffBarrel, tex, matrix_build(x, y, z, 0, 0, 0, 1, 1, 1));	
+	obj_level_geometry.addModel(global.mbuffBarrel, tex, matrix_build(x + 16, y + 16, z, 0, 0, 0, 1, 1, 1));
+	
+	instance_destroy();
 }
 
 //The parent contains addToLevel(), which adds this tileable wall to the level

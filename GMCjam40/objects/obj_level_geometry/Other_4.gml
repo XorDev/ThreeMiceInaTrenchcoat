@@ -9,6 +9,7 @@ while !is_undefined(tex)
 {
 	var mbuff = texMap[? tex];
 	var vbuff = vertex_create_buffer_from_buffer(mbuff, global.ColMeshFormat);
+	vertex_freeze(vbuff);
 	ds_list_add(modelList, [vbuff, tex]);
 	buffer_delete(mbuff);
 	
