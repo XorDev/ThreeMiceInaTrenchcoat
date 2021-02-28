@@ -14,6 +14,7 @@ if !audio_is_playing(snd_song1)
 audio_sound_gain(snd_song1,1,5000);
 
 update_z_value();
+z += 16;
 radius = 10;
 climb_ladder = -1;
 climb_dir = 1;
