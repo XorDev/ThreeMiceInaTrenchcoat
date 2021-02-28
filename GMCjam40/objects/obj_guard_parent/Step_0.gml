@@ -106,8 +106,8 @@ else if !irandom(attention)
 						var _n,_g;
 						_n = pathNearest();
 						_g = 2*(path_next>0);
-						path_next = 2;
-						setTarget(_n[0+_g]+100,_n[1+_g],z);
+						path_next++;
+						setTarget(_n[0+_g],_n[1+_g],z);
 					}
 					else setTarget(xstart,ystart,z);
 				}

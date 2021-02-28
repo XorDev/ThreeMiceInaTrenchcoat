@@ -33,7 +33,6 @@ jumpy = 1;
 #endregion
 
 path = -1;
-path_pos = 0;
 path_next = 0;
 
 //Enemy variables:
