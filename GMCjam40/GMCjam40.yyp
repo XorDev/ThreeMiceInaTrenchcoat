@@ -212,6 +212,7 @@
     {"id":{"name":"_mbuff_rotate_sprite","path":"scripts/_mbuff_rotate_sprite/_mbuff_rotate_sprite.yy",},"order":8,},
     {"id":{"name":"mbuff_create_smooth_normals","path":"scripts/mbuff_create_smooth_normals/mbuff_create_smooth_normals.yy",},"order":6,},
     {"id":{"name":"rm_menu_lose","path":"rooms/rm_menu_lose/rm_menu_lose.yy",},"order":1,},
+    {"id":{"name":"spr_bubble","path":"sprites/spr_bubble/spr_bubble.yy",},"order":15,},
     {"id":{"name":"spr_button_red","path":"sprites/spr_button_red/spr_button_red.yy",},"order":0,},
     {"id":{"name":"obj_guard_pug","path":"objects/obj_guard_pug/obj_guard_pug.yy",},"order":2,},
     {"id":{"name":"snd_mouse_step2","path":"sounds/snd_mouse_step2/snd_mouse_step2.yy",},"order":3,},
@@ -430,6 +431,8 @@
     {"CopyToMask":-1,"filePath":"datafiles/Characters","resourceVersion":"1.0","name":"PugKing_Dance1.ani","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Items","resourceVersion":"1.0","name":"Trenchcoat.obj","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Items","resourceVersion":"1.0","name":"Trenchcoat.mtl","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Scenery","resourceVersion":"1.0","name":"SpeechBubble.obj","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Scenery","resourceVersion":"1.0","name":"SpeechBubble.mtl","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2.3.1.542",

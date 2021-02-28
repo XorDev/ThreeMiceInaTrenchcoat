@@ -38,6 +38,7 @@ global.modCageDoor = loadObj("Game objects/CageDoor.obj");
 global.modSpikes = loadObj("Game objects/Spikes.obj");
 global.modButton = loadObj("Game objects/Button.obj");
 global.modTrapFloor = loadObj("Scenery/floor_32x32.obj");
+global.modSpeechBubble = loadObj("Scenery/SpeechBubble.obj");
 
 //Items
 global.modKey = loadObj("Items/Key.obj");

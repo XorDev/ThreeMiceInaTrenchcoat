@@ -11,6 +11,7 @@ z += 16;
 radius = 10;
 climb_ladder = -1;
 climb_dir = 1;
+action = false;
 
 trenchcoat = false;
 globalvar trenchcoatTimer;
