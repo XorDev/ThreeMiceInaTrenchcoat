@@ -1,4 +1,6 @@
-/// @description
+///@desc
+
+event_inherited();
 
 function addToLevel()
 {
@@ -16,6 +18,4 @@ function addToLevel()
 	
 	//Add to level geometry
 	obj_level_geometry.addModel(global.mbuffTunnelHor, tex, matrix_build(x, y, z, 0, 0, 0, 1, 1, 1));
-	//Destroy
-	instance_destroy();
 }
