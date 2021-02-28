@@ -85,6 +85,7 @@
     {"id":{"name":"sh_colmesh_world","path":"shaders/sh_colmesh_world/sh_colmesh_world.yy",},"order":3,},
     {"id":{"name":"sh_colmesh_collider","path":"shaders/sh_colmesh_collider/sh_colmesh_collider.yy",},"order":0,},
     {"id":{"name":"mbuff_add","path":"scripts/mbuff_add/mbuff_add.yy",},"order":0,},
+    {"id":{"name":"tex_green_button","path":"sprites/tex_green_button/tex_green_button.yy",},"order":3,},
     {"id":{"name":"matrices","path":"scripts/matrices/matrices.yy",},"order":1,},
     {"id":{"name":"texpack_add_texpack","path":"scripts/texpack_add_texpack/texpack_add_texpack.yy",},"order":1,},
     {"id":{"name":"sp_CG_Blood_moon","path":"sprites/sp_CG_Blood_moon/sp_CG_Blood_moon.yy",},"order":1,},

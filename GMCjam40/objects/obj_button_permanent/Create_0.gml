@@ -1,7 +1,7 @@
 /// @description
 event_inherited();
 
-tex = sprite_get_texture(tex_button, 0);
+tex = sprite_get_texture(tex_green_button, 0);
 timer = 20; //20 ingame frames until the button goes from active to inactive
 
 position = 0;
