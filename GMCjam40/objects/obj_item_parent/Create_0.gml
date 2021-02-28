@@ -20,6 +20,6 @@ shape = levelColmesh.addTrigger(new colmesh_sphere(x, y, z, 8), colFunc);
 
 function draw()
 {
-	matrix_set(matrix_world, matrix_build(x, y, z, 0, 0, 0, 10, 10, 10));
+	matrix_set(matrix_world, matrix_build(x, y, z, 0, 0, 0, 1, 1, 1));
 	vertex_submit(model, pr_trianglelist, tex);
 }
