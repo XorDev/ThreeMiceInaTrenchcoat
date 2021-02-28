@@ -12,7 +12,8 @@ global.modMouse = smf_model_load("Characters/Mouse.smf");
 global.modMouseFollower = smf_model_load("Characters/MouseFollower.smf");
 global.modTrenchcoat = smf_model_load("Characters/MouseInTrenchcoat.smf");
 global.modOwl = smf_model_load("Characters/Owl.smf");
-global.modPug = smf_model_load("Characters/Pug.smf");
+global.modPugGuard = smf_model_load("Characters/PugGuard.smf");
+global.modPugGuest = smf_model_load("Characters/PugGuest.smf");
 
 //Load scenery (These must be loaded to buffers, not vertex buffers!)
 global.mbuffTunnelHor = colmesh_load_obj_to_buffer("Scenery/tunnel_hori_32x64.obj");
