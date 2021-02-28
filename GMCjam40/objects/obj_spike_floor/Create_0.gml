@@ -3,6 +3,7 @@ z = 0;
 event_inherited();
 
 tile = checkNeighbours();
+
 floorTex = sprite_get_texture(spr_floor_spikes, 0);
 deleteAfterUse = false;
 
@@ -22,4 +23,4 @@ colFunc = function()
 	}
 }
 
-shape = levelColmesh.addTrigger(new colmesh_sphere(x + 16, y + 16, z + height - h, 6), colFunc);
+trigger = levelColmesh.addTrigger(new colmesh_sphere(x + 16, y + 16, z + height - h, 6), colFunc);
