@@ -3,12 +3,12 @@ z = 0;
 event_inherited();
 
 tile = checkNeighbours();
-tex = sprite_get_texture(spr_floor, 0);
-wallModel = global.mbuffWallWallHorColumns;
+floorTex = sprite_get_texture(spr_floor, 0);
+wallTex = sprite_get_texture(spr_wall_outer, 0);
+wallModel = global.mbuffWallWallOuter;
 floorModel = global.mbuffFloor;
 width = 32;
-height = 128;
-z -= 64;
+height = 64;
 
 //The parent contains addToLevel(), which adds this tileable wall to the level
 /*

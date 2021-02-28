@@ -10,6 +10,7 @@ audio_sound_gain(snd_song1,1,5000);
 
 z = (200 - depth) / 100 * 64 + 10;
 radius = 10;
+global.playerActive = true;
 
 trenchcoat = false;
 globalvar trenchcoatTimer;
