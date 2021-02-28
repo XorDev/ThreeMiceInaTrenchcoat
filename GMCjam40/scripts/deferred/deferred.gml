@@ -153,10 +153,11 @@ function deferred_draw()
 	gpu_set_blendmode(bm_normal);
 	
 	global.smooth_fps = lerp(global.smooth_fps,fps,.01);
-	if (global.smooth_fps<50)
+	if (global.smooth_fps<50) && (global.warning<300)
 	{
+		global.warning++;
 		draw_set_halign(fa_left);
-		draw_set_halign(fa_top);
+		draw_set_valign(fa_top);
 		draw_text(20,20,"Slow! Try lower settings")
 	}
 	

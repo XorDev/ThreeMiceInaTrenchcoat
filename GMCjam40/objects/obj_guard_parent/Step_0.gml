@@ -73,6 +73,7 @@ else if !irandom(attention)
 	_dis = point_distance_3d(x,y,z,target.x,target.y,target.z);
 	_ver = abs(z-target.z);
 
+	var _sighting = 0;
 	//If in sight range
 	if (abs(angle_difference(face,_dir))<_arc) && (_dis<_range) && (_ver<60)
 	{
@@ -84,9 +85,10 @@ else if !irandom(attention)
 			zspeed = speed_jump*_ground*!irandom(jumpy);
 			//Maximize awareness
 			awareness = 1;
+			_sighting = 1;
 		}
 	}
-	else
+	if !_sighting
 	{
 		//Otherwise report nothing
 		target_id = -1;
@@ -95,21 +97,29 @@ else if !irandom(attention)
 		if (awareness <= random(1/focus))
 		{
 			var _dis = point_distance_3d(x,y,z,target_x,target_y,target_z);
+			//Too far from target
 			if (_dis>64)
 			{
+				//Return to nearest path point
 				if path_exists(path)
 				{
-					//Return to nearest path point
-					if path_exists(path)
+					if !path_next
 					{
-						var _n,_g;
+						var _n;
 						_n = pathNearest();
-						_g = 2*(path_next>0);
-						path_next++;
-						setTarget(_n[0+_g],_n[1+_g],z);
+						setTarget(_n[0],_n[1],z);
 					}
-					else setTarget(xstart,ystart,z);
+					
+					path_next = 1;
 				}
+				else setTarget(xstart,ystart,z);
+			}
+			else if path_exists(path) && (path_next==1)
+			{
+				var _n;
+				_n = pathNearest();
+				path_next = 2;
+				setTarget(_n[2],_n[3],z);
 			}
 		}
 	}
@@ -131,7 +141,7 @@ if capture
 	var _dis = point_distance_3d(x,y,z,_x,_y,_z);
 	if (_dis<80)
 	{
-		//Return to post
+		//Put mouse in cage
 		target.x = _x+random_range(-20,20);
 		target.y = _y+random_range(-20,20);
 		target.z = _z+8;
