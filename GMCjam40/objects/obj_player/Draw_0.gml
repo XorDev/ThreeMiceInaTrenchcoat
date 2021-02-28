@@ -1,6 +1,13 @@
 /// @description
 
 //Draw mice
+if (iframes > 0)
+{
+	if (iframes div 5) mod 2 == 0
+	{
+		exit;
+	}
+}
 deferred_set(1);
 for (var i = 0; i < global.mice; i ++)
 {

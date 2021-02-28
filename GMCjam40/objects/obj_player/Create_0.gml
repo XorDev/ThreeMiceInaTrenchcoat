@@ -24,6 +24,7 @@ globalvar trenchcoatTimer;
 trenchcoatTimer = 0;
 
 iframes = 0;
+
 function damaged()
 {
 	if (iframes <= 0)
@@ -330,22 +331,29 @@ function mouse(_x, _y, _z, _parent) constructor
 		//Animate the player
 		if (!ladder)
 		{
-			if (!ground)
+			if (obj_player.iframes > 0)
 			{
-				var animSpd = currInst.getAnimSpeed("Jump");
-				currInst.play("Jump", animSpd, .25, false);
+				currInst.play("Hurt", .1, .2, false);
 			}
 			else
 			{
-				if (spd > .5)
+				if (!ground)
 				{
-					var animSpd = currInst.getAnimSpeed("Walk");
-					currInst.play("Walk", animSpd, .15, false);
+					var animSpd = currInst.getAnimSpeed("Jump");
+					currInst.play("Jump", animSpd, .25, false);
 				}
 				else
 				{
-					var animSpd = currInst.getAnimSpeed("Idle");
-					currInst.play("Idle", animSpd, .15, false);
+					if (spd > .5)
+					{
+						var animSpd = currInst.getAnimSpeed("Walk");
+						currInst.play("Walk", animSpd, .15, false);
+					}
+					else
+					{
+						var animSpd = currInst.getAnimSpeed("Idle");
+						currInst.play("Idle", animSpd, .15, false);
+					}
 				}
 			}
 		}
