@@ -17,6 +17,7 @@ if _col[6]
 	_ground = (_col[5] > 0.7);
 }
 
+
 #region Capture mouse
 if (target_id>-1)
 {
@@ -84,7 +85,6 @@ else if !irandom(attention)
 			//Maximize awareness
 			awareness = 1;
 		}
-		//path_next = 0;
 	}
 	else
 	{
@@ -97,32 +97,17 @@ else if !irandom(attention)
 			var _dis = point_distance_3d(x,y,z,target_x,target_y,target_z);
 			if (_dis>64)
 			{
-				//If not already on a path
-				if (path_next<2)
+				if path_exists(path) 
 				{
-					//Return to nearest path point
-					if path_exists(path)
-					{
-						var _n,_g;
-						_n = pathNearest();
-						_g = 2*(path_next>0);
-						path_next = 2;
-						setTarget(_n[0+_g]+100,_n[1+_g],z);
-					}
-					else setTarget(xstart,ystart,z);
+					var _x,_y;
+					_x = path_get_x(path,path_pos);
+					_y = path_get_y(path,path_pos);
+					path_pos += (speed_min+speed_add)/path_get_length(path);
+					setTarget(_x,_y,z);
 				}
 			}
-			else path_next = min(path_next,1);
 		}
 	}
-}
-
-if capture && (target_id>-1)
-{
-	target.x = x+16*dcos(face);
-	target.y = y-16*dsin(face);
-	target.z = z+24;
-	target.angle = face;
 }
 
 //Gradually lose interest
