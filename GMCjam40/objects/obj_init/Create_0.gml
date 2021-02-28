@@ -63,4 +63,10 @@ if !instance_exists(obj_level_geometry)
 {
 	instance_create_depth(0, 0, 0, obj_level_geometry);
 }
+
+//Audio controller
+if !instance_exists(obj_audio_control)
+{
+	instance_create_depth(0, 0, 0, obj_audio_control);
+}
 room_goto_next();
