@@ -13,7 +13,7 @@ deleteAfterUse = true;
 function addToLevel()
 {
 	//Add to colmesh
-	levelColmesh.addShape(new colmesh_block(colmesh_matrix_build(x + width / 2, y + width / 2, z + height / 2, 0, 0, 0, width / 2, width / 2, height / 2)));
+	shape = levelColmesh.addShape(new colmesh_block(colmesh_matrix_build(x + width / 2, y + width / 2, z + height / 2, 0, 0, 0, width / 2, width / 2, height / 2)));
 	
 	//Add to level geometry
 	addTiledWalls(wallModel, wallTex, width, tile);
@@ -42,6 +42,7 @@ function checkNeighbours()
 		if (layer == list[| i].layer)
 		{
 			if ((object_index != obj_wall_bridge && list[| i].object_index == obj_wall_bridge)){wallModel = bridgeWall; continue;}
+			if (list[| i].object_index == obj_trapfloor){wallModel = bridgeWall; continue;}
 			tile += 1;
 			break;
 		}
@@ -55,6 +56,7 @@ function checkNeighbours()
 		if (layer == list[| i].layer)
 		{
 			if ((object_index != obj_wall_bridge && list[| i].object_index == obj_wall_bridge)){wallModel = bridgeWall; continue;}
+			if (list[| i].object_index == obj_trapfloor){wallModel = bridgeWall; continue;}
 			tile += 2;
 			break;
 		}
@@ -68,6 +70,7 @@ function checkNeighbours()
 		if (layer == list[| i].layer)
 		{
 			if ((object_index != obj_wall_bridge && list[| i].object_index == obj_wall_bridge)){wallModel = bridgeWall; continue;}
+			if (list[| i].object_index == obj_trapfloor){wallModel = bridgeWall; continue;}
 			tile += 4;
 			break;
 		}
@@ -81,6 +84,7 @@ function checkNeighbours()
 		if (layer == list[| i].layer)
 		{
 			if ((object_index != obj_wall_bridge && list[| i].object_index == obj_wall_bridge)){wallModel = bridgeWall; continue;}
+			if (list[| i].object_index == obj_trapfloor){wallModel = bridgeWall; continue;}
 			tile += 8;
 			break;
 		}

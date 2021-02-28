@@ -204,7 +204,7 @@ function mouse(_x, _y, _z, _parent) constructor
 				acc = (2 - trenchcoat) * .6;
 				x += spdX + acc * h;
 				y += spdY - acc * v;
-				z += spdZ - .5 + jump * ground * 7; //Apply gravity in z-direction
+				z += spdZ - .5 + jump * ground * 6; //Apply gravity in z-direction
 			
 				//Put player in the middle of the map if he falls off
 				if (z < -400 || (dead && deathcountdown <= 0))

@@ -1,12 +1,21 @@
 ///@desc Detect player
-
-velocity = lerp(velocity,active,.1);
-angle = min(angle*.95,99)+8*velocity;
-
-//Gradually deactivate
-active *= .95;
-
-if distance_to_object(obj_player)<4 || distance_to_object(obj_guard_parent)<8
+if (timer != 0)
 {
-	active = 1;	
+	var s = sign(timer);
+	timer -= s;
+	if (timer == 0 && s == 1)
+	{
+		timer = -50;
+		open = true;
+		
+		shape.move(levelColmesh, x + 16, y + 16, z + 512);
+	}
+	
+	if (timer == 0 && s == -1)
+	{
+		open = false;
+		shape.move(levelColmesh, x + 16, y + 16, z + 64 - 16);
+	}
 }
+
+angle += (open * 90 - angle) * .1;
