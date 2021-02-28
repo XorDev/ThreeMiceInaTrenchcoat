@@ -1,8 +1,5 @@
 {
-  "spriteId": {
-    "name": "spr_icon_player",
-    "path": "sprites/spr_icon_player/spr_icon_player.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
@@ -24,11 +21,11 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Player",
-    "path": "folders/Game objects/Player.yy",
+    "name": "Items",
+    "path": "folders/Game objects/Items.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_player_start",
+  "name": "obj_item_parent",
   "tags": [],
   "resourceType": "GMObject",
 }

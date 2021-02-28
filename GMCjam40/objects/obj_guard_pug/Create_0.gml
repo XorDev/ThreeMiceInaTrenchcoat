@@ -28,6 +28,7 @@ turn_add = 0.15;
 //Ground friction and air friction
 fric_ground = 0.3;
 fric_air = 0.03;
+jumpy = 3;
 #endregion
 
 instance = new smf_instance(global.modPug);

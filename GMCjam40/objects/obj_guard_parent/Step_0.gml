@@ -2,7 +2,7 @@
 var _ground,_h,_r,_col;
 _ground = 0;
 _h = 20;
-_r = 12;
+_r = 18;
 _col = levelColmesh.displaceCapsule(x, y, z+_r, 0, 0, 1, _r, _h, 40, true, false);
 if _col[6]
 {
@@ -105,7 +105,7 @@ smooth = lerp(smooth,random(1),.1);
 //Add to sway position for wobble animation
 sway += speed;
 
-//End capture if close enough
+//Return mouse to cage
 if capture
 {
 	var _i,_x,_y,_z;
@@ -129,13 +129,14 @@ var _move = clamp(_dis/64-1+awareness,0,1)*(speed_min+awareness*speed_add);
 //Update speeds
 xspeed = lerp(xspeed,+dcos(face)*_move,fric_air+fric_ground*_ground);
 yspeed = lerp(yspeed,-dsin(face)*_move,fric_air+fric_ground*_ground);
-zspeed = zspeed-speed_fall
+zspeed = zspeed-speed_fall;
+if (_ground) zspeed = max(zspeed,0);
 
 
 //Move position
 x += xspeed;
 y += yspeed;
-if !_ground || (zspeed > 0) z += zspeed;
+z += _ground? max(zspeed,0) : zspeed;
 if (z<-400)
 {
 	//Give a mouse back

@@ -1,13 +1,16 @@
 {
   "spriteId": {
-    "name": "spr_icon_player",
-    "path": "sprites/spr_icon_player/spr_icon_player.yy",
+    "name": "spr_icon_bone",
+    "path": "sprites/spr_icon_bone/spr_icon_bone.yy",
   },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "obj_item_parent",
+    "path": "objects/obj_item_parent/obj_item_parent.yy",
+  },
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,
@@ -20,15 +23,17 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [],
+  "eventList": [
+    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"obj_item_bone","path":"objects/obj_item_bone/obj_item_bone.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+  ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Player",
-    "path": "folders/Game objects/Player.yy",
+    "name": "Items",
+    "path": "folders/Game objects/Items.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_player_start",
+  "name": "obj_item_bone",
   "tags": [],
   "resourceType": "GMObject",
 }

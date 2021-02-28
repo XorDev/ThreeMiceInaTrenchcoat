@@ -6,13 +6,14 @@ window_set_cursor(instance_exists(global.hover)? cr_handpoint : cr_default);
 
 fade = lerp(fade,alpha,.2);
 
-var _w,_h;
+var _w,_h,_s;
 _w = view_wport[0];
 _h = view_hport[0];
-layer_x(layer_id,-_w/2*fade);
-layer_y(layer_id,-_h/2*fade);
-layer_background_xscale(back_id,(1+fade)*_w/1920);
-layer_background_yscale(back_id,(1+fade)*_h/1080);
+_s = sqr(fade);
+layer_x(layer_id,-_w/2*_s);
+layer_y(layer_id,-_h/2*_s);
+layer_background_xscale(back_id,(1+_s)*_w/1920);
+layer_background_yscale(back_id,(1+_s)*_h/1080);
 
 var _layer,_back;
 _layer = layer_get_id("Fade");

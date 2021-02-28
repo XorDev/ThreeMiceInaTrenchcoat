@@ -6,7 +6,7 @@ global.jumpInput = keyboard_check_pressed(vk_space);
 global.trenchCoatInput = keyboard_check_pressed(ord("E"));
 
 //Update followers
-if (global.trenchCoatInput && trenchcoatTimer <= 0)
+if (global.trenchCoatInput && trenchcoatTimer <= 0) && (mice>2)
 {
 	trenchcoat = !trenchcoat;
 	if (!trenchcoat)
@@ -86,3 +86,15 @@ var mainMouse = mouseArray[0];
 x = mainMouse.x;
 y = mainMouse.y;
 z = mainMouse.z;
+
+if (items&1) && (distance_to_object(obj_cage)<16)
+{
+	for(var i = mice;i<array_length(mouseArray);i++)
+	{
+		var _m = mouseArray[i];
+		if (point_distance_3d(x,y,z,_m.x,_m.y,_m.z)<80)
+		{
+			mice++;
+		}
+	}
+}

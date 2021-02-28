@@ -91,8 +91,8 @@ function mouse(_x, _y, _z, _parent) constructor
 			{
 				jump = t1[3];
 				ground = !jump;
-				x = lerp(t1[0], t2[0], frac(trailPos));
-				y = lerp(t1[1], t2[1], frac(trailPos));
+				x = x*.8+.2*lerp(t1[0], t2[0], frac(trailPos));
+				y = y*.8+.2*lerp(t1[1], t2[1], frac(trailPos));
 				z = lerp(t1[2], t2[2], frac(trailPos));
 				z += jump * (1 - sqr(frac(trailPos) * 2 - 1)) * radius * 3; //Jump in an arc
 				if (jump)
@@ -292,3 +292,6 @@ mouseArray[mice ++] = new mouse(x, y, z, self);
 mouseArray[mice ++] = new mouse(x + mice * radius * 2, y, z, mouseArray[mice - 1]);
 mouseArray[mice ++] = new mouse(x + mice * radius * 2, y, z, mouseArray[mice - 1]);
 global.masterMouse = mouseArray[0];
+
+//4-bit item list;
+items = 0;
