@@ -102,10 +102,3 @@ if (items&1) && (distance_to_object(obj_cage)<16)
 		}
 	}
 }
-
-
-var _o = obj_tunnel_entrance;
-if instance_exists(_o) && (point_distance_3d(x,y,z,_o.x,_o.y,_o.z)<64)
-{
-	room_goto_previous();
-}
