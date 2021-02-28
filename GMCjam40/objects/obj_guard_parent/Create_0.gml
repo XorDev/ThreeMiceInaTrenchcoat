@@ -38,6 +38,7 @@ z = 0;
 xspeed = 0;
 yspeed = 0;
 zspeed = 0;
+sspeed = 0;
 //Animation Idle = 0, Run = 1
 animation = -1;
 //Face direction

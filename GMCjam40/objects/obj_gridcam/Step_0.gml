@@ -1,6 +1,6 @@
 /// @description
 
-if (room!=rm_menu)
+if (room!=rm_menu) && (room!=rm_menu_lose)
 {
 	targetX = 4 * 32;
 	targetY = 4 * 32;

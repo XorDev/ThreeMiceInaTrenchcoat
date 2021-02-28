@@ -1,3 +1,3 @@
-///@desc Go to next room
+///@desc Go to level 1
 
-room_goto_next();
+room_goto(rmLevel1Test);

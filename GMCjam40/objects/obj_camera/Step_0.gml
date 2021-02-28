@@ -1,6 +1,6 @@
 /// @description
 
-if (room!=rm_menu)
+if (room!=rm_menu) &&  (room!=rm_menu_lose)
 {
 	if (instance_exists(obj_player))
 	{

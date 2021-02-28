@@ -1,4 +1,9 @@
 ///@desc Sight + movement
+var _px,_py,_pz;
+_px = x;
+_py = y;
+_pz = z;
+
 var _ground,_h,_r,_col;
 _ground = 0;
 _h = 20;
@@ -32,7 +37,7 @@ if (target_id>-1)
 		}
 		else
 		{
-			room_goto(rm_menu);
+			room_goto(rm_menu_lose);
 		}
 	}
 }
@@ -125,7 +130,7 @@ if capture
 }
 var _dis = point_distance_3d(x,y,z,target_x,target_y,target_z);
 //Move speed based on distance and awareness.
-var _move = clamp(_dis/64-1+awareness,0,1)*(speed_min+awareness*speed_add);
+var _move = (_dis/64>1-awareness)*(speed_min+awareness*speed_add);
 //Update speeds
 xspeed = lerp(xspeed,+dcos(face)*_move,fric_air+fric_ground*_ground);
 yspeed = lerp(yspeed,-dsin(face)*_move,fric_air+fric_ground*_ground);
@@ -137,6 +142,8 @@ if (_ground) zspeed = max(zspeed,0);
 x += xspeed;
 y += yspeed;
 z += _ground? max(zspeed,0) : zspeed;
+sspeed = lerp(sspeed, point_distance_3d(x,y,z,_px,_py,_pz), .1);
+
 if (z<-400)
 {
 	//Give a mouse back
@@ -145,9 +152,10 @@ if (z<-400)
 }
 
 //Update facement direction
-var _dir;
+var _dir,_t;
 _dir = point_direction(x,y,target_x,target_y);
-face += (turn_min+turn_add*awareness)*angle_difference(_dir,face);
+_t = max(_move-sspeed-1,0)*50;
+face += (turn_min+turn_add*awareness)*angle_difference(_dir,face+_t);
 
 var _speed = point_distance(0,0,xspeed,xspeed);
 if (_speed > .1)
