@@ -31,9 +31,9 @@ if (target_id>-1)
 		capture = 1;
 
 		//Remove mice if possible
-		if (obj_player.mice>1)
+		if (global.mice>1)
 		{
-			obj_player.mice--;
+			global.mice--;
 		}
 		else
 		{
@@ -58,9 +58,9 @@ if capture
 else if !irandom(attention)
 {
 	//Pick and random mouse (preferring last mouse)
-	var _n = obj_player.mice-1;
+	var _n = global.mice-1;
 	target_id = min(max(target_id,irandom(_n)),_n);
-	target = obj_player.mouseArray[target_id];
+	target = global.mouseArray[target_id];
 
 	//Get sight arc and range
 	var _arc,_range;
@@ -159,7 +159,7 @@ sspeed = lerp(sspeed, point_distance_3d(x,y,z,_px,_py,_pz), .1);
 if (z<-400)
 {
 	//Give a mouse back
-	if capture && (target_id>-1)  obj_player.mice++;
+	if capture && (target_id>-1)  global.mice++;
 	instance_destroy();
 }
 

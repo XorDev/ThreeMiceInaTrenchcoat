@@ -25,21 +25,6 @@ trenchcoatTimer = 0;
 
 iframes = 0;
 
-function damaged()
-{
-	if (iframes <= 0)
-	{
-		iframes = 60;
-		audio_play_sound(snd_ouch, 0, false);
-		
-		//Need to edit the player's previous coordinates in order to make him bounce
-		global.mouseArray[0].prevX += dcos(global.mouseArray[0].angle) * 15;
-		global.mouseArray[0].prevY -= dsin(global.mouseArray[0].angle) * 15;
-		global.mouseArray[0].prevZ -= 5;
-	}
-	//Damage calculations
-}
-
 /// @func mouse(x, y, z)
 function mouse(_x, _y, _z, _parent) constructor
 {
@@ -89,6 +74,21 @@ function mouse(_x, _y, _z, _parent) constructor
 	instance.play("Idle", .1, 1, true);
 	instance.scale = .28;
 	currInst = instance;
+	
+	function damaged()
+	{
+		if (obj_player.iframes <= 0)
+		{
+			obj_player.iframes = 60;
+			audio_play_sound(snd_ouch, 0, false);
+		
+			//Need to edit the player's previous coordinates in order to make him bounce
+			prevX += dcos(angle) * 15;
+			prevY -= dsin(angle) * 15;
+			prevZ -= 5;
+		}
+		//Damage calculations
+	}
 	
 	static step = function(trenchcoat)
 	{
@@ -188,14 +188,7 @@ function mouse(_x, _y, _z, _parent) constructor
 				{
 					instance_destroy(obj_player);
 					room_goto(rm_menu_lose);
-					/*
-					x = obj_player.xstart;
-					y = obj_player.ystart;
-					z = 300;
-					prevX = x;
-					prevY = y;
-					prevZ = z;
-					*/
+					exit;
 				}
 				//Cast a short-range ray from the previous position to the current position to avoid going through geometry
 				if (sqr(x - prevX) + sqr(y - prevY) + sqr(z - height - prevZ) > radius * radius) //Only cast ray if there's a risk that we've gone through geometry
@@ -213,7 +206,9 @@ function mouse(_x, _y, _z, _parent) constructor
 				ground = false;
 				fast = false;			//Fast collisions should usually not be used for important objects like the player
 				executeColfunc = true;	//We want to execute the collision function of the coins
+				global.currentCollider = self;
 				col = levelColmesh.displaceCapsule(x, y, z - height, 0, 0, 1, radius, height, 40, fast, executeColfunc);
+				global.currentCollider = -1;
 				if (col[6]) //If we're touching ground
 				{
 					x = col[0];

@@ -15,7 +15,7 @@ if (global.climbdir == 1)
 	obj_player.climb_ladder = self;
 	obj_player.climb_dir = - dir;
 	
-	var ID = obj_player.mouseArray[0];
+	var ID = global.mouseArray[0];
 	ID.x = x + 16;
 	ID.y = y + ID.radius;
 	ID.z = z + 64;

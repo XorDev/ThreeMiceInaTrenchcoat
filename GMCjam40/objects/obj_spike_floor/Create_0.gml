@@ -16,7 +16,10 @@ position = 0;
 countdown = 60;
 colFunc = function()
 {
-	obj_player.damaged();
+	if (is_struct(global.currentCollider))
+	{
+		global.currentCollider.damaged();
+	}
 }
 
 shape = levelColmesh.addTrigger(new colmesh_sphere(x + 16, y + 16, z + height - h, 6), colFunc);

@@ -44,6 +44,7 @@ global.modBone = loadObj("Items/Bone.obj");
 global.climbdir = 0;
 global.texPixelSize = 1 / 6;
 global.mice = 0;
+global.currentCollider = -1;
 
 //Make sure the level colmesh exists
 if !instance_exists(obj_colmesh)
