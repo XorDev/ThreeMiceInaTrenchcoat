@@ -154,6 +154,7 @@ if (z<-400)
 //Update facement direction
 var _dir,_t;
 _dir = point_direction(x,y,target_x,target_y);
+//Cheap wall avoiding:
 _t = max(_move-sspeed-1,0)*50;
 face += (turn_min+turn_add*awareness)*angle_difference(_dir,face+_t);
 
