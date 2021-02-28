@@ -44,6 +44,7 @@ function mouse(_x, _y, _z, _parent) constructor
 	jumpTimer = -1;
 	mouseIndex = 0;
 	trailPos = 0;
+	steps = 0;
 	
 	
 	if (is_struct(parent))
@@ -91,6 +92,17 @@ function mouse(_x, _y, _z, _parent) constructor
 			}
 		}
 		//Damage calculations
+	}
+	
+	function stepSound()
+	{
+		if !(steps++%15)
+		{
+			var _snd = choose(snd_mouse_step0,snd_mouse_step1,snd_mouse_step2,snd_mouse_step3,snd_mouse_step4,snd_mouse_step5,snd_mouse_step6);
+			_snd = audio_play_sound(_snd, 0, false);
+			audio_sound_pitch(_snd,random(.4)+.8);
+			audio_sound_gain(_snd,random(.4)+.8,0);
+		}
 	}
 	
 	static step = function(trenchcoat)
@@ -356,6 +368,7 @@ function mouse(_x, _y, _z, _parent) constructor
 					{
 						var animSpd = currInst.getAnimSpeed("Walk");
 						currInst.play("Walk", animSpd, .15, false);
+						stepSound();
 					}
 					else
 					{
