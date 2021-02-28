@@ -33,7 +33,7 @@ jumpy = 1;
 #endregion
 
 path = -1;
-path_next = 0;
+path_next = 1;
 
 //Enemy variables:
 //No animation currently
@@ -65,19 +65,19 @@ capture = 0;
 
 function setTarget(tx,ty,tz)
 {
-	//////////////FIX
-	target_x = x;//tx;
-	target_y = y;//ty;
-	target_z = z;//tz;
+	target_x = tx;
+	target_y = ty;
+	target_z = tz;
 }
 
 function pathNearest()
 {
-	var _value,_size,_px,_py,_nx,_ny;
-	_value = infinity;
+	var _value,_size,_px,_py,_pi,_nx,_ny;
+	_value = 1000000;
 	_size = path_get_number(path);
 	_px = 0;
 	_py = 0;
+	_pi = 0;
 	for(var i = 0;i<_size;i++)	
 	{
 		var _x,_y,_d;
@@ -91,7 +91,7 @@ function pathNearest()
 			_px = _x; _py = _y;
 		}
 	}
-	_nx = path_get_point_x(path,(_value+1)%_size);
-	_ny = path_get_point_y(path,(_value+1)%_size);
+	_nx = path_get_point_x(path,(_pi+1)%_size);
+	_ny = path_get_point_y(path,(_pi+1)%_size);
 	return [_px,_py,_nx,_ny];
 }
