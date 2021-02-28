@@ -8,7 +8,7 @@ position = 0;
 activated = false;
 colFunc = function()
 {
-	if (!activated)
+	if (position < .2)
 	{
 		audio_play_sound(sndCoin, 0, false);
 	}
