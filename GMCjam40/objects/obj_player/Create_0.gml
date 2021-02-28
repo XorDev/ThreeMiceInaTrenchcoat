@@ -99,7 +99,7 @@ function mouse(_x, _y, _z, _parent) constructor
 		if !(steps++%15)
 		{
 			var _snd = choose(snd_mouse_step0,snd_mouse_step1,snd_mouse_step2,snd_mouse_step3,snd_mouse_step4,snd_mouse_step5,snd_mouse_step6);
-			sound_randomize(_snd,.2,.2);
+			sound_randomize(_snd,.2,.2,1);
 		}
 	}
 	
@@ -166,6 +166,7 @@ function mouse(_x, _y, _z, _parent) constructor
 				{
 					var animSpd = currInst.getAnimSpeed("Climb");
 					currInst.play("Climb", animSpd + random(0.02), .25, false);
+					
 				}
 			}
 			ladder = parent.ladder;
@@ -204,7 +205,7 @@ function mouse(_x, _y, _z, _parent) constructor
 				acc = (2 - trenchcoat) * .6;
 				x += spdX + acc * h;
 				y += spdY - acc * v;
-				z += spdZ - .5 + jump * ground * 7; //Apply gravity in z-direction
+				z += spdZ - .5 + jump * ground * 6; //Apply gravity in z-direction
 			
 				//Put player in the middle of the map if he falls off
 				if (z < -400 || (dead && deathcountdown <= 0))
@@ -251,6 +252,12 @@ function mouse(_x, _y, _z, _parent) constructor
 				{
 					var animSpd = currInst.getAnimSpeed("Climb");
 					currInst.play("Climb", animSpd + random(0.02), .25, false);
+				
+				}
+				
+				if !(steps++%15)
+				{
+					sound_randomize(snd_mouse_ladder,.2,.2,1);
 				}
 				ladder = true;
 				var l = parent.climb_ladder;

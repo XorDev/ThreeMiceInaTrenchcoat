@@ -57,7 +57,7 @@ awareness = 0;
 //Smooth random variable for turning
 smooth = 0;
 //Sway animation variable
-sway = 0;
+steps = 0;
 
 //Target struct, array id and position
 target = -1;

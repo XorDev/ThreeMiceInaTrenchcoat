@@ -7,7 +7,7 @@ if (countdown < 0)
 }
 position += (active - position) * .2;
 
-shape.move(levelColmesh, x + 16, y + 16, z + height + h * (position - 1));
+trigger.move(levelColmesh, x + 16, y + 16, z + height + h * (position - 1));
 
 
 //Draw
