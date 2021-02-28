@@ -8,4 +8,10 @@ matrix_set(matrix_world, matrix_build_identity());
 deferred_reset();
 
 position += (activated - position) * .2;
+
+if (activated<position) && release
+{
+	release = 0;
+	sound_randomize(snd_click2,.2,.2,.5);
+}
 activated = false;

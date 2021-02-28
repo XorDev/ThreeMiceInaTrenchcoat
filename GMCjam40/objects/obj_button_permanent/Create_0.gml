@@ -10,7 +10,7 @@ colFunc = function()
 {
 	if (!activated)
 	{
-		audio_play_sound(sndCoin, 0, false);
+		sound_randomize(snd_click1,.2,.2,1);
 	}
 	activated = true;
 }
