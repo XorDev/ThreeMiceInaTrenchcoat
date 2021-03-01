@@ -164,6 +164,7 @@
     {"id":{"name":"snd_song_chase","path":"sounds/snd_song_chase/snd_song_chase.yy",},"order":0,},
     {"id":{"name":"obj_wall_parent","path":"objects/obj_wall_parent/obj_wall_parent.yy",},"order":10,},
     {"id":{"name":"mbuff_save","path":"scripts/mbuff_save/mbuff_save.yy",},"order":10,},
+    {"id":{"name":"obj_big_trap","path":"objects/obj_big_trap/obj_big_trap.yy",},"order":8,},
     {"id":{"name":"mbuff_combine","path":"scripts/mbuff_combine/mbuff_combine.yy",},"order":1,},
     {"id":{"name":"shd_light","path":"shaders/shd_light/shd_light.yy",},"order":6,},
     {"id":{"name":"shd_soft","path":"shaders/shd_soft/shd_soft.yy",},"order":5,},
@@ -282,8 +283,8 @@
     {"roomId":{"name":"rmLevel2","path":"rooms/rmLevel2/rmLevel2.yy",},},
     {"roomId":{"name":"rmLevel3","path":"rooms/rmLevel3/rmLevel3.yy",},},
     {"roomId":{"name":"rmLevel4","path":"rooms/rmLevel4/rmLevel4.yy",},},
-    {"roomId":{"name":"rmLevel5","path":"rooms/rmLevel5/rmLevel5.yy",},},
     {"roomId":{"name":"rmLevel6","path":"rooms/rmLevel6/rmLevel6.yy",},},
+    {"roomId":{"name":"rmLevel5","path":"rooms/rmLevel5/rmLevel5.yy",},},
   ],
   "Folders": [
     {"folderPath":"folders/Sprites.yy","order":0,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},

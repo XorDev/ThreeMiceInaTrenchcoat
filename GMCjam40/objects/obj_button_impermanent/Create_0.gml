@@ -17,7 +17,7 @@ colFunc = function()
 	}
 	activated = true;
 	release = 1;
-	if (trap) with(obj_trapfloor)
+	if (trap) with(obj_big_trap)
 	{
 		open = true;
 		timer = -10;

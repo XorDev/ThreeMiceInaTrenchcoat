@@ -8,7 +8,7 @@ _pz = z;
 var _ground,_h,_r,_col;
 _ground = 0;
 _h = 20;
-_r = 18;
+_r = 8;
 _col = levelColmesh.displaceCapsule(x, y, z+_r, 0, 0, 1, _r, _h, 40, true, false);
 if _col[6]
 {
