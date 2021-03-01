@@ -24,12 +24,12 @@
   "gridX": 4,
   "gridY": 4,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"7b7b1d6f-b271-4ebd-a494-681dee9b035b","path":"sprites/spr_gravel/spr_gravel.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"7b7b1d6f-b271-4ebd-a494-681dee9b035b","path":"sprites/spr_gravel/spr_gravel.yy",},"LayerId":{"name":"23c680c4-6a86-4745-9b6e-8d5b89dc516d","path":"sprites/spr_gravel/spr_gravel.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_gravel","path":"sprites/spr_gravel/spr_gravel.yy",},"resourceVersion":"1.0","name":"7b7b1d6f-b271-4ebd-a494-681dee9b035b","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"7b7b1d6f-b271-4ebd-a494-681dee9b035b","path":"sprites/spr_ground/spr_ground.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"7b7b1d6f-b271-4ebd-a494-681dee9b035b","path":"sprites/spr_ground/spr_ground.yy",},"LayerId":{"name":"23c680c4-6a86-4745-9b6e-8d5b89dc516d","path":"sprites/spr_ground/spr_ground.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_ground","path":"sprites/spr_ground/spr_ground.yy",},"resourceVersion":"1.0","name":"7b7b1d6f-b271-4ebd-a494-681dee9b035b","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
-    "spriteId": {"name":"spr_gravel","path":"sprites/spr_gravel/spr_gravel.yy",},
+    "spriteId": {"name":"spr_ground","path":"sprites/spr_ground/spr_ground.yy",},
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 30.0,
@@ -41,7 +41,7 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"534a3ce3-ebc5-4bb1-a1e3-aa8ace4d8684","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"7b7b1d6f-b271-4ebd-a494-681dee9b035b","path":"sprites/spr_gravel/spr_gravel.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"534a3ce3-ebc5-4bb1-a1e3-aa8ace4d8684","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"7b7b1d6f-b271-4ebd-a494-681dee9b035b","path":"sprites/spr_ground/spr_ground.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
     ],
     "visibleRange": null,
@@ -58,9 +58,9 @@
     "yorigin": 0,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"spr_gravel","path":"sprites/spr_gravel/spr_gravel.yy",},
+    "parent": {"name":"spr_ground","path":"sprites/spr_ground/spr_ground.yy",},
     "resourceVersion": "1.3",
-    "name": "spr_gravel",
+    "name": "spr_ground",
     "tags": [],
     "resourceType": "GMSequence",
   },
@@ -72,7 +72,7 @@
     "path": "folders/Sprites/Textures.yy",
   },
   "resourceVersion": "1.0",
-  "name": "spr_gravel",
+  "name": "spr_ground",
   "tags": [],
   "resourceType": "GMSprite",
 }

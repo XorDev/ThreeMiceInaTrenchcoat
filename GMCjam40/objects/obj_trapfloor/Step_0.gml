@@ -20,4 +20,4 @@ if (timer != 0)
 	}
 }
 
-angle += (open * 90 - angle) * .1;
+angle += (open * 89 - angle) * .1;

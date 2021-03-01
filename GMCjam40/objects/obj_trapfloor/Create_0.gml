@@ -4,7 +4,7 @@ event_inherited();
 open = false;
 angle = 0;
 
-tex = sprite_get_texture(spr_icon_trapfloor, 0);
+tex = sprite_get_texture(spr_ground_trap, 0);
 
 shape = -1;
 
