@@ -5,7 +5,8 @@ model = choose(global.modPugGuest, global.modOwl);
 dance = choose("Dance1", "Dance2", "Dance3");
 instance = new smf_instance(model);
 angle = 180 + random(180);
-animSpd = .015;
+
+animSpd = .018;
 if (model == global.modOwl && dance == "Dance1")
 {
 	instance.play(dance, animSpd / 2, 1, true);

@@ -69,7 +69,7 @@ else if !irandom(attention)
 {
 	//Pick and random mouse (preferring last mouse)
 	var _n = global.mice-1;
-	target_id = _n;
+	target_id = _n*!global.trenchcoat;
 	target = global.mouseArray[target_id];
 
 	//Get sight arc and range
@@ -90,10 +90,11 @@ else if !irandom(attention)
 		var _ray = levelColmesh.castRay(x,y,z+8,target.x,target.y,target.z);
 		if (!is_array(_ray))
 		{
-			if global.trenchcoat && (sight<10)
+			if global.trenchcoat && (sight<100)
 			{
 				if !snd_huh_played sound_randomize(snd_huh,.2,.2,1);
 				snd_huh_played = 1;
+				
 				target_x = lerp(x,target.x,.1);
 				target_y = lerp(y,target.y,.1);
 				target_z = lerp(z,target.z,.1);
@@ -110,13 +111,13 @@ else if !irandom(attention)
 				awareness = 1;
 				_sighting = 1;
 			}
+			
 			path_next = 0;
-			sight++;
+			sight+=attention;
 		}
 	}
 	if !_sighting
 	{
-		sight = 0;
 		//Otherwise report nothing
 		target_id = -1;
 		target = -1;
@@ -124,10 +125,12 @@ else if !irandom(attention)
 		if (awareness <= random(1/focus))
 		{
 			snd_attack_played = 0;
+			
 			var _dis = point_distance_3d(x,y,z,target_x,target_y,target_z);
 			//Too far from target
 			if (_dis>64)
 			{
+				snd_huh_played = 0;
 				//Return to nearest path point
 				if path_exists(path)
 				{
@@ -155,6 +158,7 @@ else if !irandom(attention)
 
 //Gradually lose interest
 awareness *= .99;
+sight = max(sight-.2,0);
 //Smooth random number
 smooth = lerp(smooth,random(1),.1);
 
@@ -209,9 +213,18 @@ face += (turn_min+turn_add*awareness)*angle_difference(_dir,face+_t);
 var _speed = point_distance(0,0,xspeed,xspeed);
 if (_speed > .1)
 {
-	var animSpd = instance.getAnimSpeed("Run");
-	if (animation != 1) instance.play("Run", animSpd, 1, false);
-	animation = 1;
+	if (_speed>speed_min)
+	{
+		var animSpd = instance.getAnimSpeed("Run");
+		if (animation != 2) instance.play("Run", animSpd, 1, false);
+		animation = 2;
+	}
+	else
+	{
+		var animSpd = instance.getAnimSpeed("Walk");
+		if (animation != 1) instance.play("Walk", animSpd, 1, false);
+		animation = 1;
+	}
 	if !(steps++%20)
 	{
 		var _snd,_dis,_gain;
