@@ -1,5 +1,5 @@
 ///@desc Animate
-
+///@desc Sight + movement
 var _px,_py,_pz;
 _px = x;
 _py = y;
@@ -22,55 +22,33 @@ if _col[6]
 #region Capture mouse
 if (target_id>-1)
 {
-	if (capture)
+	var _dis = point_distance_3d(x,y,z,target.x,target.y,target.z);
+	if (_dis<24)
 	{
-		target.x = x+16*dcos(face);
-		target.y = y-16*dsin(face);
-		target.z = z+24;
-		target.angle = face;
-	}
-	else
-	{
-		var _dis = point_distance_3d(x,y,z,target.x,target.y,target.z);
-		if (_dis<24)
-		{
-			//Lunge at mouse
-			xspeed += (target.x-x)/8;
-			yspeed += (target.y-y)/8;
-			//If targeting a mouse, capture it
-			capture = 1;
+		//Lunge at mouse
+		xspeed += (target.x-x)/8;
+		yspeed += (target.y-y)/8;
 		
-			//Remove mice if possible
-			if (global.mice>1)
-			{
-				global.mice--;
-			}
-			else
-			{
-				room_goto(rm_menu_lose);
-			}
+		//Remove mice if possible
+		if (global.mice>1)
+		{
+			global.mice--;
+		}
+		else
+		{
+			room_goto(rm_menu_lose);
 		}
 	}
 }
 #endregion
 
-//Return mouse to cage?
-if capture
-{
-	var _i,_x,_y,_z;
-	_i = instance_nearest(x,y,obj_cage);
-	_x = _i.x; _y = _i.y; _z = _i.z;
-	//Try to get to cage
-	setTarget(_x,_y,_z);
-	awareness = 1;
 
-}
 //Randomly check for mice
-else if !irandom(attention)
+if !irandom(attention)
 {
 	//Pick and random mouse (preferring last mouse)
 	var _n = global.mice-1;
-	target_id = _n;
+	target_id = _n*!global.trenchcoat;
 	target = global.mouseArray[target_id];
 
 	//Get sight arc and range
@@ -91,33 +69,21 @@ else if !irandom(attention)
 		var _ray = levelColmesh.castRay(x,y,z+8,target.x,target.y,target.z);
 		if (!is_array(_ray))
 		{
-			if global.trenchcoat && (sight<10)
-			{
-				if !snd_huh_played sound_randomize(snd_huh,.2,.2,1);
-				snd_huh_played = 1;
-				target_x = lerp(x,target.x,.1);
-				target_y = lerp(y,target.y,.1);
-				target_z = lerp(z,target.z,.1);
-				attention = min(attention+.02,1);
-			}
-			else
-			{
-				if !snd_attack_played sound_randomize(snd_attack,.2,.2,1);
-				snd_attack_played = 1;
-				setTarget(target.x,target.y,target.z);
-				//Jump
-				zspeed = speed_jump*_ground*!irandom(jumpy);
-				//Maximize awareness
-				awareness = 1;
-				_sighting = 1;
-			}
+			if !snd_attack_played sound_randomize(snd_attack,.2,.2,1);
+			snd_attack_played = 1;
+			setTarget(target.x,target.y,target.z);
+			//Jump
+			zspeed = speed_jump*_ground*!irandom(jumpy);
+			//Maximize awareness
+			awareness = 1;
+			_sighting = 1;
+			
 			path_next = 0;
-			sight++;
+			sight+=attention;
 		}
 	}
 	if !_sighting
 	{
-		sight = 0;
 		//Otherwise report nothing
 		target_id = -1;
 		target = -1;
@@ -125,30 +91,13 @@ else if !irandom(attention)
 		if (awareness <= random(1/focus))
 		{
 			snd_attack_played = 0;
+			
 			var _dis = point_distance_3d(x,y,z,target_x,target_y,target_z);
 			//Too far from target
 			if (_dis>64)
 			{
-				//Return to nearest path point
-				if path_exists(path)
-				{
-					if !path_next
-					{
-						var _n;
-						_n = pathNearest();
-						setTarget(_n[0],_n[1],z);
-					}
-					
-					path_next = 1;
-				}
-				else setTarget(xstart,ystart,z);
-			}
-			else if path_exists(path) && (path_next==1)
-			{
-				var _n;
-				_n = pathNearest();
-				path_next = 2;
-				setTarget(_n[2],_n[3],z);
+				snd_huh_played = 0;
+				setTarget(xstart,ystart,z);
 			}
 		}
 	}
@@ -156,27 +105,10 @@ else if !irandom(attention)
 
 //Gradually lose interest
 awareness *= .99;
+sight = max(sight-.2,0);
 //Smooth random number
 smooth = lerp(smooth,random(1),.1);
 
-//Return mouse to cage
-if capture
-{
-	var _i,_x,_y,_z;
-	_i = instance_nearest(x,y,obj_cage);
-	_x = _i.x; _y = _i.y; _z = _i.z;
-	var _dis = point_distance_3d(x,y,z,_x,_y,_z);
-	if (_dis<80)
-	{
-		//Put mouse in cage
-		target.x = _x+random_range(-20,20);
-		target.y = _y+random_range(-20,20);
-		target.z = _z+8;
-		target_id = -1;
-		capture = 0;
-		awareness = 0;
-	}
-}
 var _dis = point_distance_3d(x,y,z,target_x,target_y,target_z);
 //Move speed based on distance and awareness.
 var _move = (_dis/64>1-2*awareness)*(speed_min+awareness*speed_add);
@@ -195,8 +127,7 @@ sspeed = lerp(sspeed, point_distance_3d(x,y,z,_px,_py,_pz), .1);
 
 if (z<-400)
 {
-	//Give a mouse back
-	if capture && (target_id>-1)  global.mice++;
+	instance_create_depth(x,y,0,obj_item_crown);
 	instance_destroy();
 }
 
@@ -210,9 +141,18 @@ face += (turn_min+turn_add*awareness)*angle_difference(_dir,face+_t);
 var _speed = point_distance(0,0,xspeed,xspeed);
 if (_speed > .1)
 {
-	var animSpd = instance.getAnimSpeed("Run");
-	if (animation != 1) instance.play("Run", animSpd, 1, false);
-	animation = 1;
+	if (_speed>speed_min)
+	{
+		var animSpd = instance.getAnimSpeed("Run");
+		if (animation != 2) instance.play("Run", animSpd, 1, false);
+		animation = 2;
+	}
+	else
+	{
+		var animSpd = instance.getAnimSpeed("Walk");
+		if (animation != 1) instance.play("Walk", animSpd, 1, false);
+		animation = 1;
+	}
 	if !(steps++%20)
 	{
 		var _snd,_dis,_gain;
@@ -229,6 +169,7 @@ else
 	animation = 0;
 }
 instance.step(1);
+
 /*
 if keyboard_check_pressed(vk_space)
 {
