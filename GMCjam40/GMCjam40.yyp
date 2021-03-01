@@ -283,8 +283,8 @@
     {"roomId":{"name":"rmLevel2","path":"rooms/rmLevel2/rmLevel2.yy",},},
     {"roomId":{"name":"rmLevel3","path":"rooms/rmLevel3/rmLevel3.yy",},},
     {"roomId":{"name":"rmLevel4","path":"rooms/rmLevel4/rmLevel4.yy",},},
-    {"roomId":{"name":"rmLevel6","path":"rooms/rmLevel6/rmLevel6.yy",},},
     {"roomId":{"name":"rmLevel5","path":"rooms/rmLevel5/rmLevel5.yy",},},
+    {"roomId":{"name":"rmLevel6","path":"rooms/rmLevel6/rmLevel6.yy",},},
   ],
   "Folders": [
     {"folderPath":"folders/Sprites.yy","order":0,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},
