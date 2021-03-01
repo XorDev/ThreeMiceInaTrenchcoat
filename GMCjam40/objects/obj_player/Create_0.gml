@@ -418,4 +418,4 @@ global.mouseArray[global.mice ++] = new mouse(x, y, z, global.mouseArray[1]);
 global.masterMouse = global.mouseArray[0];
 
 //4-bit item list;
-global.items = 0;
+global.items = 2;

@@ -1,6 +1,7 @@
 /// @description
 event_inherited();
 
+trap = 0;
 tex = sprite_get_texture(tex_button, 0);
 timer = 20; //20 ingame frames until the button goes from active to inactive
 
@@ -16,6 +17,11 @@ colFunc = function()
 	}
 	activated = true;
 	release = 1;
+	if (trap) with(obj_trapfloor)
+	{
+		open = true;
+		timer = -10;
+	}
 }
 
 shape = levelColmesh.addTrigger(new colmesh_cylinder(x + 16, y + 16, z, 0, 0, 1, 5, 5), colFunc);
