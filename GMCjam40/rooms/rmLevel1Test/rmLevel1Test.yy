@@ -49,6 +49,7 @@
         {"properties":[],"isDnd":false,"objectId":{"name":"obj_dancing_NPC","path":"objects/obj_dancing_NPC/obj_dancing_NPC.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":480.0,"y":128.0,"resourceVersion":"1.0","name":"inst_7F7EDC2E","tags":[],"resourceType":"GMRInstance",},
         {"properties":[],"isDnd":false,"objectId":{"name":"obj_dancing_NPC","path":"objects/obj_dancing_NPC/obj_dancing_NPC.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":448.0,"y":192.0,"resourceVersion":"1.0","name":"inst_40A34A7A","tags":[],"resourceType":"GMRInstance",},
         {"properties":[],"isDnd":false,"objectId":{"name":"obj_dancing_NPC","path":"objects/obj_dancing_NPC/obj_dancing_NPC.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":416.0,"y":128.0,"resourceVersion":"1.0","name":"inst_211CB7A3","tags":[],"resourceType":"GMRInstance",},
+        {"properties":[],"isDnd":false,"objectId":{"name":"obj_pug_king","path":"objects/obj_pug_king/obj_pug_king.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":640.0,"y":320.0,"resourceVersion":"1.0","name":"inst_12F55A0C","tags":[],"resourceType":"GMRInstance",},
       ],"visible":true,"depth":-200,"userdefinedDepth":true,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"resourceVersion":"1.0","name":"Level_2","tags":[],"resourceType":"GMRInstanceLayer",},
     {"instances":[
         {"properties":[],"isDnd":false,"objectId":{"name":"obj_wall","path":"objects/obj_wall/obj_wall.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":896.0,"y":480.0,"resourceVersion":"1.0","name":"inst_73241EE4","tags":[],"resourceType":"GMRInstance",},
@@ -755,6 +756,7 @@
     {"name":"inst_DDDEC76","path":"rooms/rmLevel1Test/rmLevel1Test.yy",},
     {"name":"inst_53C2C38A","path":"rooms/rmLevel1Test/rmLevel1Test.yy",},
     {"name":"inst_3729046","path":"rooms/rmLevel1Test/rmLevel1Test.yy",},
+    {"name":"inst_12F55A0C","path":"rooms/rmLevel1Test/rmLevel1Test.yy",},
   ],
   "inheritCreationOrder": false,
   "sequenceId": null,

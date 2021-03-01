@@ -9,17 +9,18 @@ if (global.iframes > 0)
 	}
 }
 deferred_set(1);
-for (var i = 0; i < global.mice; i ++)
+for (var i = 0; i < array_length(global.mouseArray); i ++)
 {
 	global.mouseArray[i].draw();
 	
-	if (trenchcoat && trenchcoatTimer <= 0)
+	if (global.trenchcoat && trenchcoatTimer <= 0)
 	{
 		break;
 	}
 }
 deferred_reset();
 
+/*
 deferred_set(0);
 
 if (action)
@@ -30,4 +31,5 @@ if (action)
 }
 
 deferred_reset();
+*/
 matrix_set(matrix_world, matrix_build_identity());

@@ -1,8 +1,8 @@
-///@desc Mute (temporary)
+///@desc Sound system
 
 //audio_set_master_gain(0,0);
 
-music_gain = 0.4
+music_gain = 0;//0.4;
 
 function playSong(snd,loop)
 {

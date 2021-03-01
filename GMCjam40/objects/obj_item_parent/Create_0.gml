@@ -9,7 +9,7 @@ model = global.modKey;
 //Pick up item
 colFunc = function()
 {
-	obj_player.items |= bit;
+	global.items |= bit;
 	instance_destroy();
 	levelColmesh.removeShape(shape);
 	

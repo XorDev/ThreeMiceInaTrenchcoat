@@ -58,6 +58,7 @@ awareness = 0;
 smooth = 0;
 //Sway animation variable
 steps = 0;
+sight = 0;
 
 //Target struct, array id and position
 target = -1;

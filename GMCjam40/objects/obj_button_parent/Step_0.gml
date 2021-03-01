@@ -14,8 +14,14 @@ if _hover && !instance_exists(global.button)
 	
 	if mouse_check_button_released(mb_left)
 	{
-		window_set_cursor(cr_default);
-		global.button = object_index;
-		global.black = (object_index != obj_button_settings);
+		if (object_index == obj_button_settings)
+		{
+			event_user(0);
+		}
+		else
+		{
+			global.button = object_index;
+			global.black = 1;
+		}
 	}
 }

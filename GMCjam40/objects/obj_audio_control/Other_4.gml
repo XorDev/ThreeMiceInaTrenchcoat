@@ -11,4 +11,5 @@ else
 {
 	_gain = music_gain*(1-.5*(room==rm_menu));
 	audio_sound_gain(snd_song_main,_gain,1500);
+	audio_sound_gain(snd_song_lose,0,200);
 }

@@ -10,13 +10,14 @@ global.jumpInput = keyboard_check_pressed(vk_space);
 global.trenchCoatInput = keyboard_check_pressed(ord("E"));
 
 //Update followers
-if (global.trenchCoatInput && trenchcoatTimer <= 0) && (global.mice>2)
+if (global.trenchCoatInput && trenchcoatTimer <= 0) && (global.mice>2) && (global.items & 4)
 {
-	trenchcoat = !trenchcoat;
-	if (!trenchcoat)
+	sound_randomize(snd_equip,.2,.2,1);
+	global.trenchcoat = !global.trenchcoat;
+	if (!global.trenchcoat)
 	{
-		mouseArray[0].height = 0;
-		mouseArray[0].currInst = mouseArray[0].instance;
+		global.mouseArray[0].height = 0;
+		global.mouseArray[0].currInst = global.mouseArray[0].instance;
 		for (var i = 1; i < global.mice; i ++)
 		{
 			with global.mouseArray[i]
@@ -25,7 +26,7 @@ if (global.trenchCoatInput && trenchcoatTimer <= 0) && (global.mice>2)
 			}
 		}
 	}
-	if (trenchcoat)
+	if (global.trenchcoat)
 	{
 		trenchcoatTimer = 1;
 		
@@ -77,9 +78,9 @@ else
 {
 	for (var i = 0; i < global.mice; i ++)
 	{
-		global.mouseArray[i].step(trenchcoat);
+		global.mouseArray[i].step(global.trenchcoat);
 		
-		if (trenchcoat)
+		if (global.trenchcoat)
 		{
 			break;
 		}
@@ -91,14 +92,14 @@ x = mainMouse.x;
 y = mainMouse.y;
 z = mainMouse.z;
 
-if (items&1) && (distance_to_object(obj_cage)<16)
+if (global.items&1) && (distance_to_object(obj_cage)<16)
 {
 	for(var i = global.mice; i < array_length(global.mouseArray); i++)
 	{
 		var _m = global.mouseArray[i];
 		if (point_distance_3d(x,y,z,_m.x,_m.y,_m.z)<80)
 		{
-			mice++;
+			global.mice++;
 		}
 	}
 }

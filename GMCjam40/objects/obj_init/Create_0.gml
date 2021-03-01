@@ -14,6 +14,7 @@ global.modTrenchcoat = smf_model_load("Characters/MouseInTrenchcoat.smf");
 global.modOwl = smf_model_load("Characters/Owl.smf");
 global.modPugGuard = smf_model_load("Characters/PugGuard.smf");
 global.modPugGuest = smf_model_load("Characters/PugGuest.smf");
+global.modPugKing = smf_model_load("Characters/PugKing.smf");
 
 //Load scenery (These must be loaded to buffers, not vertex buffers!)
 global.mbuffTunnelHor = colmesh_load_obj_to_buffer("Scenery/tunnel_hori_32x64.obj");
@@ -41,11 +42,13 @@ global.modSpikes = loadObj("Game objects/Spikes.obj");
 global.modButton = loadObj("Game objects/Button.obj");
 global.modTrapFloor = loadObj("Scenery/floor_32x32.obj");
 global.modDoor = loadObj("Game objects/Door.obj");
-global.modSpeechBubble = loadObj("Scenery/SpeechBubble.obj");
+//global.modSpeechBubble = loadObj("Scenery/SpeechBubble.obj");
 
 //Items
 global.modKey = loadObj("Items/Key.obj");
 global.modBone = loadObj("Items/Bone.obj");
+global.modTrench = loadObj("Items/Trenchcoat.obj");
+global.modCrown = loadObj("Items/Crown.obj");
 
 //Various
 global.climbdir = 0;

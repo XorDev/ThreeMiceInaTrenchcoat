@@ -21,23 +21,33 @@ if _col[6]
 #region Capture mouse
 if (target_id>-1)
 {
-	var _dis = point_distance_3d(x,y,z,target.x,target.y,target.z);
-	if (_dis<24)
+	if (capture)
 	{
-		//Lunge at mouse
-		xspeed += (target.x-x)/8;
-		yspeed += (target.y-y)/8;
-		//If targeting a mouse, capture it
-		capture = 1;
-
-		//Remove mice if possible
-		if (global.mice>1)
+		target.x = x+16*dcos(face);
+		target.y = y-16*dsin(face);
+		target.z = z+24;
+		target.angle = face;
+	}
+	else
+	{
+		var _dis = point_distance_3d(x,y,z,target.x,target.y,target.z);
+		if (_dis<24)
 		{
-			global.mice--;
-		}
-		else
-		{
-			room_goto(rm_menu_lose);
+			//Lunge at mouse
+			xspeed += (target.x-x)/8;
+			yspeed += (target.y-y)/8;
+			//If targeting a mouse, capture it
+			capture = 1;
+		
+			//Remove mice if possible
+			if (global.mice>1)
+			{
+				global.mice--;
+			}
+			else
+			{
+				room_goto(rm_menu_lose);
+			}
 		}
 	}
 }
@@ -59,7 +69,7 @@ else if !irandom(attention)
 {
 	//Pick and random mouse (preferring last mouse)
 	var _n = global.mice-1;
-	target_id = min(max(target_id,irandom(_n)),_n);
+	target_id = max(target_id,irandom(_n));
 	target = global.mouseArray[target_id];
 
 	//Get sight arc and range
@@ -80,14 +90,27 @@ else if !irandom(attention)
 		var _ray = levelColmesh.castRay(x,y,z+8,target.x,target.y,target.z);
 		if (!is_array(_ray))
 		{
-			if !snd_attack_played sound_randomize(snd_attack,.2,.2,1);
-			snd_attack_played = 1;
-			setTarget(target.x,target.y,target.z);
-			//Jump
-			zspeed = speed_jump*_ground*!irandom(jumpy);
-			//Maximize awareness
-			awareness = 1;
-			_sighting = 1;
+			if global.trenchcoat
+			{
+				if !snd_huh_played sound_randomize(snd_huh,.2,.2,1);
+				snd_huh_played = 1;
+				target_x = lerp(x,target.x,.1);
+				target_y = lerp(y,target.y,.1);
+				target_z = lerp(z,target.z,.1);
+				attention = min(attention+.02,1);
+			}
+			else
+			{
+				if !snd_attack_played sound_randomize(snd_attack,.2,.2,1);
+				snd_attack_played = 1;
+				setTarget(target.x,target.y,target.z);
+				//Jump
+				zspeed = speed_jump*_ground*!irandom(jumpy);
+				//Maximize awareness
+				awareness = 1;
+				_sighting = 1;
+			}
+			sight++;
 		}
 	}
 	if !_sighting
@@ -153,7 +176,7 @@ if capture
 }
 var _dis = point_distance_3d(x,y,z,target_x,target_y,target_z);
 //Move speed based on distance and awareness.
-var _move = (_dis/64>1-awareness)*(speed_min+awareness*speed_add);
+var _move = (_dis/64>1-2*awareness)*(speed_min+awareness*speed_add);
 //Update speeds
 xspeed = lerp(xspeed,+dcos(face)*_move,fric_air+fric_ground*_ground);
 yspeed = lerp(yspeed,-dsin(face)*_move,fric_air+fric_ground*_ground);

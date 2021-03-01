@@ -22,6 +22,7 @@ if (global.fade>.99) && instance_exists(global.button)
 	var _id = global.button;
 	global.button = noone;
 	with(_id) event_user(0);
+	window_set_cursor(cr_default);
 }
 /*
 layer_x(layer_id,(mouse_x-room_width)*.1);

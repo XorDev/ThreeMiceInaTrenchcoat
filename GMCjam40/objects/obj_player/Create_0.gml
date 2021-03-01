@@ -13,7 +13,7 @@ climb_ladder = -1;
 climb_dir = 1;
 action = false;
 
-trenchcoat = false;
+global.trenchcoat = false;
 globalvar trenchcoatTimer;
 trenchcoatTimer = 0;
 
@@ -85,13 +85,13 @@ function mouse(_x, _y, _z, _parent) constructor
 			prevY -= dsin(angle) * 15;
 			prevZ -= 5;
 			
-			global.mice = max(global.mice - 1, 1);
-			
 			if (global.mice <= 1)
 			{
 				dead = true;
 				deathcountdown = 120;
 			}
+			
+			global.mice = max(global.mice - 1, 1);
 		}
 		//Damage calculations
 	}
@@ -204,7 +204,7 @@ function mouse(_x, _y, _z, _parent) constructor
 				}
 			
 				//Move
-				acc = (2 - trenchcoat) * .6;
+				acc = (2 - global.trenchcoat) * .6;
 				x += spdX + acc * h;
 				y += spdY - acc * v;
 				z += spdZ - .5 + jump * ground * 6; //Apply gravity in z-direction
@@ -277,7 +277,7 @@ function mouse(_x, _y, _z, _parent) constructor
 				var dy = abs(targetY - y);
 				
 				var spd = 1.5;
-				global.black = (point_distance_3d(x, y, z, endX, endY, endZ) <= spd*6);
+				global.black = (point_distance_3d(x, y, z, endX, endY, endZ) <= spd*4);
 				if (global.fade>=.99)//(point_distance_3d(x, y, z, endX, endY, endZ) <= spd)
 				{
 					if (parent.climb_ladder.dir == -1 && parent.climb_dir == -1)
@@ -412,7 +412,9 @@ function mouse(_x, _y, _z, _parent) constructor
 
 global.mice = 0;
 global.mouseArray[global.mice ++] = new mouse(x, y, z, self);
+global.mouseArray[global.mice ++] = new mouse(x, y, z, global.mouseArray[0]);
+global.mouseArray[global.mice ++] = new mouse(x, y, z, global.mouseArray[1]);
 global.masterMouse = global.mouseArray[0];
 
 //4-bit item list;
-items = 0;
+global.items = 0;
