@@ -4,4 +4,4 @@ scaleSpd = 0;
 scaleTarget = 20;
 smoothAlpha = 0;
 
-obj_button_play.name = "Restart level";
+obj_button_play.name = "Restart";

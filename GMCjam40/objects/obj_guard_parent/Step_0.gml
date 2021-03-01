@@ -69,7 +69,7 @@ else if !irandom(attention)
 {
 	//Pick and random mouse (preferring last mouse)
 	var _n = global.mice-1;
-	target_id = max(target_id,irandom(_n));
+	target_id = _n;
 	target = global.mouseArray[target_id];
 
 	//Get sight arc and range
@@ -90,7 +90,7 @@ else if !irandom(attention)
 		var _ray = levelColmesh.castRay(x,y,z+8,target.x,target.y,target.z);
 		if (!is_array(_ray))
 		{
-			if global.trenchcoat
+			if global.trenchcoat && (sight<10)
 			{
 				if !snd_huh_played sound_randomize(snd_huh,.2,.2,1);
 				snd_huh_played = 1;
@@ -110,11 +110,13 @@ else if !irandom(attention)
 				awareness = 1;
 				_sighting = 1;
 			}
+			path_next = 0;
 			sight++;
 		}
 	}
 	if !_sighting
 	{
+		sight = 0;
 		//Otherwise report nothing
 		target_id = -1;
 		target = -1;

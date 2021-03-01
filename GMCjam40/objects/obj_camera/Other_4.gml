@@ -1,6 +1,6 @@
 /// @description
 
-if (room==rm_menu) || (room==rm_menu_lose)
+if (room==rm_menu) || (room==rm_menu_lose) || (room==rm_menu_win)
 {
 	gpu_set_zwriteenable(false);
 }

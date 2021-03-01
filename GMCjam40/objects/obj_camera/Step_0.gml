@@ -1,6 +1,6 @@
 /// @description
 
-if (room!=rm_menu) &&  (room!=rm_menu_lose)
+if (room!=rm_menu) &&  (room!=rm_menu_lose) &&  (room!=rm_menu_win)
 {
 	var d = 1;
 	if (instance_exists(obj_player))

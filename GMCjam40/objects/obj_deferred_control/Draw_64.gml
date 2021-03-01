@@ -1,6 +1,7 @@
 ///@desc Render deferred output
 
-if (room!=rm_menu) && (room!=rm_menu_lose)
+matrix_set(matrix_world,matrix_build_identity());
+if (room!=rm_menu) && (room!=rm_menu_lose) && (room!=rm_menu_win)
 {
 	deferred_draw();
 }
