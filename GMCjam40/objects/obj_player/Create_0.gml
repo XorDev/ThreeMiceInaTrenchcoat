@@ -412,10 +412,10 @@ function mouse(_x, _y, _z, _parent) constructor
 
 global.mice = 0;
 global.mouseArray[global.mice ++] = new mouse(x, y, z, self);
-global.mouseArray[global.mice ++] = new mouse(x, y, z, global.mouseArray[0]);
-global.mouseArray[global.mice ++] = new mouse(x, y, z, global.mouseArray[1]);
+global.mouseArray[1] = new mouse(-999, -999, -999, global.mouseArray[0]);
+global.mouseArray[2] = new mouse(-999, -999, -999, global.mouseArray[1]);
 
 global.masterMouse = global.mouseArray[0];
 
 //4-bit item list;
-global.items = 0;
+global.items = 2;

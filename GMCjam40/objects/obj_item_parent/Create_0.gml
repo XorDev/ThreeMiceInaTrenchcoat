@@ -10,6 +10,12 @@ model = global.modKey;
 colFunc = function()
 {
 	global.items |= bit;
+	
+	if (bit==8)
+	{
+		room_goto(rm_menu_win);
+		instance_destroy(obj_player);
+	}
 	instance_destroy();
 	levelColmesh.removeShape(shape);
 	

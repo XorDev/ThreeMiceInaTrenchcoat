@@ -8,7 +8,7 @@ _pz = z;
 var _ground,_h,_r,_col;
 _ground = 0;
 _h = 20;
-_r = 18;
+_r = 8;
 _col = levelColmesh.displaceCapsule(x, y, z+_r, 0, 0, 1, _r, _h, 40, true, false);
 if _col[6]
 {
@@ -44,7 +44,7 @@ if (target_id>-1)
 
 
 //Randomly check for mice
-if !irandom(attention)
+if !irandom(attention) && !bone
 {
 	//Pick and random mouse (preferring last mouse)
 	var _n = global.mice-1;
@@ -111,7 +111,7 @@ smooth = lerp(smooth,random(1),.1);
 
 var _dis = point_distance_3d(x,y,z,target_x,target_y,target_z);
 //Move speed based on distance and awareness.
-var _move = (_dis/64>1-2*awareness)*(speed_min+awareness*speed_add);
+var _move = (_dis>8)*(speed_min+awareness*speed_add);
 //Update speeds
 xspeed = lerp(xspeed,+dcos(face)*_move,fric_air+fric_ground*_ground);
 yspeed = lerp(yspeed,-dsin(face)*_move,fric_air+fric_ground*_ground);
@@ -127,7 +127,8 @@ sspeed = lerp(sspeed, point_distance_3d(x,y,z,_px,_py,_pz), .1);
 
 if (z<-400)
 {
-	instance_create_depth(x,y,0,obj_item_crown);
+	var _i = instance_create_depth(x,y,0,obj_item_crown);
+	_i.z = obj_player.z;
 	instance_destroy();
 }
 
@@ -167,6 +168,32 @@ else
 	var animSpd = instance.getAnimSpeed("Idle");
 	if (animation != 0) instance.play("Idle", animSpd, 1, false);
 	animation = 0;
+}
+
+
+if instance_exists(obj_item_bone)
+{
+	var _i = obj_item_bone;
+	setTarget(_i.x,_i.y,_i.z);
+	attention = attention*.9+.1;
+	
+	if (point_distance_3d(x,y,z,_i.x,_i.y,_i.z)<16)
+	{
+		//pick up
+		if (animation != 3)
+		{
+			var animSpd = instance.getAnimSpeed("PickUp");
+			instance.play("PickUp", animSpd, 1, false);
+			alarm[0] = 60;
+		}
+		animation = 3;
+	}
+	
+	bone = 1;
+}
+else
+{
+	bone = 0;	
 }
 instance.step(1);
 

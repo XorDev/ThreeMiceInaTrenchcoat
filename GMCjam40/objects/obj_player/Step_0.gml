@@ -104,3 +104,15 @@ if (global.items&1) && (distance_to_object(obj_cage)<16)
 		}
 	}
 }
+if keyboard_check_pressed(ord("B")) && (global.items&2)
+{
+	var _m = global.mouseArray[0];
+	var _d = _m.angle;
+	var _i = instance_create_depth(x+lengthdir_x(16,_d),y+lengthdir_y(16,_d),0,obj_item_bone);
+	global.items &= ~2;
+	
+	_i.direction = _m.angle;
+	_i.speed = 6;
+	_i.friction = 1;
+	_i.z = z;
+}

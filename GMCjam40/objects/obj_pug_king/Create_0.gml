@@ -19,7 +19,7 @@ speed_jump = 3;
 speed_fall = 0.4;
 //Default speed + chase speed.
 speed_min = 1;
-speed_add = 2;
+speed_add = 1;
 
 //Default turning speed + chase speed.
 turn_min = 0.05;
@@ -37,6 +37,7 @@ snd_attack = snd_king_attack;
 snd_huh = snd_king_huh;
 
 instance.play("Idle", .2, 1, true);
+bone = 0;
 
 function draw()
 {
