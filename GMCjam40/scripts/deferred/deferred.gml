@@ -1,7 +1,7 @@
 function deferred_init()
 {
-	global.screen_w = window_get_width();
-	global.screen_h = window_get_height();
+	global.screen_w = max(window_get_width(),1);
+	global.screen_h = max(window_get_height(),1);
 
 	global.surf_dif = -1;
 	global.surf_dep = -1;

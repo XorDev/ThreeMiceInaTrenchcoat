@@ -39,7 +39,7 @@ if (target_id>-1)
 	else
 	{
 		var _dis = point_distance_3d(x,y,z,target.x,target.y,target.z);
-		if (_dis<24+16*global.trenchcoat)
+		if (_dis<24+8*global.trenchcoat)
 		{
 			sound_randomize(snd_capture,.2,.2,1);
 			//Lunge at mouse
