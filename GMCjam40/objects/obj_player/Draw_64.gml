@@ -20,7 +20,7 @@ if lvlMessage
 	{
 		case rmLevel1:
 		_t1 = "This kingdom has been ruled by the evil Pug King for far too long. It's time we mice take it back!";
-		_t2 = "Watch out for pug guards; they may try to catch you and imprision you.\n[X] to close"
+		_t2 = "Watch out for pug guards; they may try to catch you and imprison you.\n[X] to close"
 		break;
 		case rmLevel2:
 		_t1 = "There's a key around here somewhere. You're going to need it to free any mice you find in cages."
@@ -32,15 +32,15 @@ if lvlMessage
 		break;
 		case rmLevel4:
 		_t1 = "Find the trench coat. Maybe it will fool them!"
-		_t2 = "As long as you have two mice companions you may activate the trench coat disguise by pressing [E]."
+		_t2 = "As long as you have three mice you may activate the trench coat disguise by pressing [E]. \n[X] to close"
 		break;
 		case rmLevel5:
-		_t1 = "Now that is one big party! Sneak your way through the crowd and find the bone."
-		_t2 = "Make sure you stay on the move.\n[X] to close"
+		_t1 = "That is one big party! Sneak your way through the crowd and find the bone."
+		_t2 = "Make sure you stay on the move, or else they may become suspicious.\n[X] to close"
 		break;
 		case rmLevel6:
-		_t1 = "You are now in the king's private rooms. He must be defeated!"
-		_t2 = "Use the bone to distract the king. Press [B] to throw it.\n[X] to close"
+		_t1 = "You are nearing the king's private rooms, so be on guard!"
+		_t2 = "You may use the bone to distract the king. Press [B] to throw it.\n[X] to close"
 		break;
 	}
 
