@@ -53,7 +53,7 @@ sspeed = 0;
 //Animation Idle = 0, Run = 1
 animation = -1;
 //Face direction
-face = image_angle+180;
+face = image_angle;
 //Awareness = 1 when chasing or capturing mouse
 awareness = 0;
 //Smooth random variable for turning

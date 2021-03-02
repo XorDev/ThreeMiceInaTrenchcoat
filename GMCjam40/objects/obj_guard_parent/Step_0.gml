@@ -6,8 +6,8 @@ _pz = z;
 
 var _ground,_h,_r,_col;
 _ground = 0;
-_h = 20;
-_r = 10;
+_h = 16;
+_r = 12;
 _col = levelColmesh.displaceCapsule(x, y, z+_r, 0, 0, 1, _r, _h, 40, true, false);
 if _col[6]
 {
@@ -80,6 +80,11 @@ else if !irandom(attention)
 	var _n = global.mice-1;
 	target_id = _n*!global.trenchcoat;
 	target = global.mouseArray[target_id];
+	if (target.lost)
+	{
+		target_id = (_n-1)*!global.trenchcoat;
+		target = global.mouseArray[target_id];
+	}
 
 	//Get sight arc and range
 	var _arc,_range;

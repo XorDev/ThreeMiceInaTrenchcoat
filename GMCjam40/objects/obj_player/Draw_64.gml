@@ -2,7 +2,7 @@
 
 gpu_set_tex_filter(1);
 
-if lvlMessage
+if lvlMessage && !global.fade
 {
 	draw_primitive_begin(pr_trianglestrip);
 	draw_vertex_color(0,0,0,0.6);

@@ -1,5 +1,8 @@
 /// @description
+
 event_inherited();
+
+global.nearestCage = 10000;
 
 open = false;
 zz = 0;

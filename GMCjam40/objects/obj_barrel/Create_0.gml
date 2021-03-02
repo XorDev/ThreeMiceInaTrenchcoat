@@ -1,6 +1,9 @@
 /// @description
 event_inherited();
 
+x += random_range(-4,4);
+y += random_range(-4,4);
+
 open = false;
 zz = 0;
 tex = sprite_get_texture(spr_barrel2, 0);

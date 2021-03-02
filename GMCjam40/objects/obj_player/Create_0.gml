@@ -1,4 +1,9 @@
 /// @description
+
+global.nearestCage = 1
+
+randomize();
+
 //Player variables
 if instance_number(obj_player) > 1
 {
@@ -8,7 +13,7 @@ if instance_number(obj_player) > 1
 global.message = "";
 global.messageFade = 0;
 
-lvlMessage = true;
+lvlMessage = false;
 update_z_value();
 z += 16;
 radius = 10;

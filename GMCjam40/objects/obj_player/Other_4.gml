@@ -1,5 +1,6 @@
 ///@desc Show message
 
+window_set_cursor(cr_none);
 var _level = 0;
 switch(room)
 {

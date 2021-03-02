@@ -1,4 +1,5 @@
 /// @description
+
 if (global.iframes > 0)
 {
 	global.iframes --;

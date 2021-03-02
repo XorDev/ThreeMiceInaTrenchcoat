@@ -56,6 +56,7 @@ global.texPixelSize = 1 / 5;
 global.mice = 0;
 global.currentCollider = -1;
 global.level = 0;
+global.nearestCage = 10000;
 //4-bit item list;
 global.items = 0;
 

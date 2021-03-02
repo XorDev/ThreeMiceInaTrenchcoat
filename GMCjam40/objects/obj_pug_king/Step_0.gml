@@ -136,6 +136,9 @@ if (z<-400)
 {
 	var _i = instance_create_depth(x,y,0,obj_item_crown);
 	_i.z = floor(obj_player.z/64)*64;
+	_i.direction = point_direction(x,y,obj_player.x,obj_player.y);
+	_i.speed = 10;
+	_i.friction = 1;
 ;
 	instance_destroy();
 }
