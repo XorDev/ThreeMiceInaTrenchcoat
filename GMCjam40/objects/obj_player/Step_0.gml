@@ -117,7 +117,7 @@ if keyboard_check_pressed(ord("B")) && (global.items&2)
 	_i.direction = _m.angle;
 	_i.speed = 6;
 	_i.friction = 1;
-	_i.z = z;
+	_i.z = floor(z/64)*64;
 }
 
 if keyboard_check_pressed(ord("X"))

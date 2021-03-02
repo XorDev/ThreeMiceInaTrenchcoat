@@ -10,12 +10,20 @@ function deferred_init()
 }
 function deferred_surface()
 {
+	var _resize = false;
+	if (window_get_width() != global.screen_w) || (window_get_height() != global.screen_h)
+	{
+		global.screen_w = max(window_get_width(),1);
+		global.screen_h = max(window_get_height(),1);
+		_resize = true;
+	}
+	
 	if !surface_exists(global.surf_dif) global.surf_dif = surface_create(global.screen_w,global.screen_h);
 	if !surface_exists(global.surf_dep) global.surf_dep = surface_create(global.screen_w,global.screen_h);
 	if !surface_exists(global.surf_nor) global.surf_nor = surface_create(global.screen_w,global.screen_h);
 	if !surface_exists(global.surf_buf) global.surf_buf = surface_create(global.screen_w,global.screen_h);
 	
-	if (window_get_width() != global.screen_w) || (window_get_height() != global.screen_h)
+	if _resize
 	{
 		global.screen_w = max(window_get_width(),1);
 		global.screen_h = max(window_get_height(),1);
@@ -27,6 +35,7 @@ function deferred_surface()
 		surface_resize(global.surf_nor,global.screen_w,global.screen_h);
 		surface_resize(global.surf_buf,global.screen_w,global.screen_h);
 	}
+	
 	
 	surface_set_target(global.surf_dif);
 	draw_clear_alpha($000000,0);

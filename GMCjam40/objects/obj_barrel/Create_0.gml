@@ -3,7 +3,7 @@ event_inherited();
 
 open = false;
 zz = 0;
-tex = sprite_get_texture(tex_ladder, 0);
+tex = sprite_get_texture(spr_barrel2, 0);
 
 function addToLevel()
 {

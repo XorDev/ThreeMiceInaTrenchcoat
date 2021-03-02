@@ -8,7 +8,7 @@ if (timer != 0)
 		timer = -50;
 		open = true;
 		
-		sound_randomize(snd_trapdoor,.2,.2,1);
+		sound_randomize(snd_trapdoor,.2,.2,0.7);
 		
 		shape.move(levelColmesh, x + 16, y + 16, z + 512);
 	}

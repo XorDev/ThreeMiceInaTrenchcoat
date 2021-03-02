@@ -135,7 +135,8 @@ sspeed = lerp(sspeed, point_distance_3d(x,y,z,_px,_py,_pz), .1);
 if (z<-400)
 {
 	var _i = instance_create_depth(x,y,0,obj_item_crown);
-	_i.z = obj_player.z;
+	_i.z = floor(obj_player.z/64)*64;
+;
 	instance_destroy();
 }
 
