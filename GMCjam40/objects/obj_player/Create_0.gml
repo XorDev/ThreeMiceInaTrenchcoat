@@ -5,6 +5,8 @@ if instance_number(obj_player) > 1
 	instance_destroy();
 	exit;
 }
+global.message = "";
+global.messageFade = 0;
 
 lvlMessage = true;
 update_z_value();
@@ -48,6 +50,7 @@ function mouse(_x, _y, _z, _parent) constructor
 	trailPos = 0;
 	steps = 0;
 	dead = false;
+	lost = false;
 	
 	
 	if (is_struct(parent))
@@ -91,6 +94,11 @@ function mouse(_x, _y, _z, _parent) constructor
 				dead = true;
 				deathcountdown = 120;
 			}
+			
+			var _a,_i;
+			_a = global.mouseArray;
+			_i = global.mice-1;
+			if (_i) _a[_i].lost = true;
 			
 			global.mice = max(global.mice - 1, 1);
 		}
@@ -393,30 +401,32 @@ function mouse(_x, _y, _z, _parent) constructor
 	static draw = function()
 	{
 		var t = trenchcoatTimer;
-		
-		var s = currInst.scale * radius;
-		if (t > 0 && mouseIndex == 0)
+		if !lost
 		{
-			s *= min(1, 1.5 * t);
-		}
-		matrix_set(matrix_world, matrix_build(x, y, z - radius - height, 0, 0, angle, s, s, s));
-		currInst.draw();
+			var s = currInst.scale * radius;
+			if (t > 0 && mouseIndex == 0)
+			{
+				s *= min(1, 1.5 * t);
+			}
+			matrix_set(matrix_world, matrix_build(x, y, z - radius - height, 0, 0, angle, s, s, s));
+			currInst.draw();
 		
-		if mouseIndex == 0 && t > 0
-		{
-			var s = trenchcoatInst.scale * radius;
-			matrix_set(matrix_world, matrix_build(x, y, z - (radius + trenchcoatHeight) * max(0, (1 - 2 * t)), 0, 0, angle, s * min(2 - 2 * t, 1), s * min(2 - 2 * t, 1), s * max(.2, min(1 - 2 * t, 1))));
-			trenchcoatInst.draw();
+			if mouseIndex == 0 && t > 0
+			{
+				var s = trenchcoatInst.scale * radius;
+				matrix_set(matrix_world, matrix_build(x, y, z - (radius + trenchcoatHeight) * max(0, (1 - 2 * t)), 0, 0, angle, s * min(2 - 2 * t, 1), s * min(2 - 2 * t, 1), s * max(.2, min(1 - 2 * t, 1))));
+				trenchcoatInst.draw();
+			}
 		}
 	}
 }
 
 global.mice = 0;
 global.mouseArray[global.mice ++] = new mouse(x, y, z, self);
-global.mouseArray[1] = new mouse(-999, -999, -999, global.mouseArray[0]);
-global.mouseArray[2] = new mouse(-999, -999, -999, global.mouseArray[1]);
+global.mouseArray[1] = new mouse(x, y, z, global.mouseArray[0]);
+global.mouseArray[2] = new mouse(x, y, z, global.mouseArray[1]);
+
+global.mouseArray[1].lost = true;
+global.mouseArray[2].lost = true;
 
 global.masterMouse = global.mouseArray[0];
-
-//4-bit item list;
-global.items = 0;

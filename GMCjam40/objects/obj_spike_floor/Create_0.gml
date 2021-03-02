@@ -23,4 +23,4 @@ colFunc = function()
 	}
 }
 
-trigger = levelColmesh.addTrigger(new colmesh_sphere(x + 16, y + 16, z + height - h, 6), colFunc);
+trigger = levelColmesh.addTrigger(new colmesh_sphere(x + 16, y + 16, z + height - h, 8), colFunc);

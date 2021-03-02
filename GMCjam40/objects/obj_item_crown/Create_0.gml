@@ -4,6 +4,8 @@ event_inherited();
 
 model = global.modCrown;
 tex = sprite_get_texture(spr_crown,0);
+msg = "Clown collected!";
+
 
 bit = 8;
 

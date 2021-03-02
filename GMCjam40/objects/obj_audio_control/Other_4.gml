@@ -24,6 +24,7 @@ switch(room)
 	break;
 
 	case rmLevel5:
+	case rmLevel6:
 	audio_sound_gain(snd_song_main,0,200);
 	playSong(snd_song_ball,1);
 	audio_sound_gain(snd_song_ball,music_gain,200);

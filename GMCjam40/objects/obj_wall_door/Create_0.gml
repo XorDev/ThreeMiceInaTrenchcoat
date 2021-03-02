@@ -3,7 +3,7 @@ event_inherited();
 
 floorModel = global.mbuffFloor;
 wallModel = global.mbuffWallDoor;
-floorTex = sprite_get_texture(spr_wall_low, 0);
+floorTex = sprite_get_texture(spr_brick, 0);
 wallTex = sprite_get_texture(spr_brick, 0);
 tile = checkNeighbours();
 width = 64;
@@ -23,7 +23,7 @@ function addToLevel()
 	//Add to level geometry
 	addTiledWalls(wallModel, wallTex, width, 0);
 	
-	obj_level_geometry.addModel(floorModel, floorTex, matrix_build(x, y, z + height, 0, 0, 0, 1, 1, 1));	
+	obj_level_geometry.addModel(floorModel, floorTex, matrix_build(x, y, z + 64, 0, 0, 0, 2, 2, 2));	
 	
 	//Destroy
 	instance_destroy();

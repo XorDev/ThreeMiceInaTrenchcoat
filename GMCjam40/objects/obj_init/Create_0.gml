@@ -55,6 +55,9 @@ global.climbdir = 0;
 global.texPixelSize = 1 / 5;
 global.mice = 0;
 global.currentCollider = -1;
+global.level = 0;
+//4-bit item list;
+global.items = 0;
 
 //Make sure the level colmesh exists
 if !instance_exists(obj_colmesh)

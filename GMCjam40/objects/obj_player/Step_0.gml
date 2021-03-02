@@ -99,6 +99,9 @@ if (global.items&1) && (distance_to_object(obj_cage)<16)
 		var _m = global.mouseArray[i];
 		if (point_distance_3d(x,y,z,_m.x,_m.y,_m.z)<80)
 		{
+			global.message = "Mouse rescued!";
+			global.messageFade = 1;
+			
 			global.mice++;
 			sound_randomize(snd_mouse_yipee,.2,.2,1);
 		}

@@ -1,5 +1,7 @@
 ///@desc
 
+gpu_set_tex_filter(1);
+
 if lvlMessage
 {
 	draw_primitive_begin(pr_trianglestrip);
@@ -42,15 +44,24 @@ if lvlMessage
 		break;
 	}
 
-	gpu_set_tex_filter(1);
 	draw_set_font(fnt_menu_smaller);
-	var _h = string_height_ext(_t1,34,global.screen_w*.9);
+	var _h = string_height_ext(_t1,48,global.screen_w*.9);
 	draw_set_color($AAAAAA);
-	draw_text_ext(.5*global.screen_w,.1*global.screen_h,_t1,34,global.screen_w*.9);
-	draw_set_font(fnt_menu_smaller);
+	draw_text_ext(.5*global.screen_w,.1*global.screen_h,_t1,48,global.screen_w*.9);
 	draw_set_color($FFFFFF);
 	
 	var _o = 4*cos(current_time/400);
-	draw_text_ext_transformed(.5*global.screen_w,.2*global.screen_h+_h+_o,_t2,34,global.screen_w*.9,.8,.8,0);
-	gpu_set_tex_filter(0);
+	draw_text_ext_transformed(.5*global.screen_w,.2*global.screen_h+_h+_o,_t2,48,global.screen_w*.9,.8,.8,0);
 }
+
+
+global.messageFade *= .99;
+var _fade = global.messageFade;
+
+draw_set_alpha(_fade);
+
+draw_set_font(fnt_menu_smaller);
+draw_set_color($FFFFFF);
+draw_text_transformed(.5*global.screen_w,.1*(0.5+sqrt(_fade))*global.screen_h,global.message,.8,.8,0);
+draw_set_alpha(1);
+gpu_set_tex_filter(0);

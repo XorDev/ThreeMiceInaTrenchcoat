@@ -7,7 +7,7 @@ _pz = z;
 var _ground,_h,_r,_col;
 _ground = 0;
 _h = 20;
-_r = 18;
+_r = 10;
 _col = levelColmesh.displaceCapsule(x, y, z+_r, 0, 0, 1, _r, _h, 40, true, false);
 if _col[6]
 {
@@ -114,7 +114,7 @@ else if !irandom(attention)
 			}
 			
 			path_next = 0;
-			sight+=attention;
+			sight += attention;
 		}
 	}
 	if !_sighting
@@ -146,7 +146,8 @@ else if !irandom(attention)
 				}
 				else setTarget(xstart,ystart,z);
 			}
-			else if path_exists(path) && (path_next==1)
+			//if close, go to next node
+			else if path_exists(path)
 			{
 				var _n;
 				_n = pathNearest();
@@ -183,7 +184,7 @@ if capture
 }
 var _dis = point_distance_3d(x,y,z,target_x,target_y,target_z);
 //Move speed based on distance and awareness.
-var _move = (_dis/64>1-2*awareness)*(speed_min+awareness*speed_add);
+var _move = (_dis/64>1-2*awareness-(path_next>0))*(speed_min+awareness*speed_add);
 //Update speeds
 xspeed = lerp(xspeed,+dcos(face)*_move,fric_air+fric_ground*_ground);
 yspeed = lerp(yspeed,-dsin(face)*_move,fric_air+fric_ground*_ground);
@@ -223,7 +224,7 @@ if (_speed > .1)
 	else
 	{
 		var animSpd = instance.getAnimSpeed("Walk");
-		if (animation != 1) instance.play("Walk", animSpd, 1, false);
+		if (animation != 1) instance.play("Walk", animSpd, 0.2, false);
 		animation = 1;
 	}
 	if !(steps++%20)

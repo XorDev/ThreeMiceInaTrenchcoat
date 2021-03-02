@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_icon_trapfloor",
-    "path": "sprites/spr_icon_trapfloor/spr_icon_trapfloor.yy",
+    "name": "spr_icon_bigtrap",
+    "path": "sprites/spr_icon_bigtrap/spr_icon_bigtrap.yy",
   },
   "solid": false,
   "visible": true,

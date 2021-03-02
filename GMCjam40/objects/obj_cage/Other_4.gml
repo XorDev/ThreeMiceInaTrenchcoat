@@ -1,4 +1,4 @@
-///@desc
+///@desc Spawn mice
 
 if (global.mice<3)
 {
@@ -6,4 +6,6 @@ if (global.mice<3)
 	_m.x = x+random_range(-20,20);
 	_m.y = y+random_range(-20,20);
 	_m.z = z+12;
+	_m.lost = false;
+	_m.angle = 360;
 }

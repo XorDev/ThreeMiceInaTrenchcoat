@@ -140,56 +140,68 @@ _t = max(_move-sspeed-1,0)*50;
 face += (turn_min+turn_add*awareness)*angle_difference(_dir,face+_t);
 
 var _speed = point_distance(0,0,xspeed,xspeed);
-if (_speed > .1)
+if (bone != 2)
 {
-	if (_speed>speed_min)
+	if (_speed > .1)
 	{
-		var animSpd = instance.getAnimSpeed("Run");
-		if (animation != 2) instance.play("Run", animSpd, 1, false);
-		animation = 2;
+		if (_speed>speed_min)
+		{
+			var animSpd = instance.getAnimSpeed("Run");
+			if (animation != 2) instance.play("Run", animSpd, 1, false);
+			animation = 2;
+		}
+		else
+		{
+			var animSpd = instance.getAnimSpeed("Walk");
+			if (animation != 1) instance.play("Walk", animSpd, 1, false);
+			animation = 1;
+		}
+		if !(steps++%20)
+		{
+			var _snd,_dis,_gain;
+			_snd = choose(snd_step0,snd_step1,snd_step2,snd_step3,snd_step4,snd_step5,snd_step6);
+			_dis = point_distance_3d(x,y,z,obj_player.x,obj_player.y,obj_player.z);
+			_gain = clamp(1-_dis/512,0,.5);
+			sound_randomize(_snd,.2,.2,_gain);
+		}
 	}
 	else
 	{
-		var animSpd = instance.getAnimSpeed("Walk");
-		if (animation != 1) instance.play("Walk", animSpd, 1, false);
-		animation = 1;
-	}
-	if !(steps++%20)
-	{
-		var _snd,_dis,_gain;
-		_snd = choose(snd_step0,snd_step1,snd_step2,snd_step3,snd_step4,snd_step5,snd_step6);
-		_dis = point_distance_3d(x,y,z,obj_player.x,obj_player.y,obj_player.z);
-		_gain = clamp(1-_dis/512,0,.5);
-		sound_randomize(_snd,.2,.2,_gain);
+		var animSpd = instance.getAnimSpeed("Idle");
+		if (animation != 0) instance.play("Idle", animSpd, 1, false);
+		animation = 0;
 	}
 }
-else
-{
-	var animSpd = instance.getAnimSpeed("Idle");
-	if (animation != 0) instance.play("Idle", animSpd, 1, false);
-	animation = 0;
-}
-
 
 if instance_exists(obj_item_bone)
 {
-	var _i = obj_item_bone;
-	setTarget(_i.x,_i.y,_i.z);
-	attention = attention*.9+.1;
-	
-	if (point_distance_3d(x,y,z,_i.x,_i.y,_i.z)<16)
+	if !snd_huh_played sound_randomize(snd_huh,.2,.2,1);
+	snd_huh_played = 1;
+	var _i,_d;
+	_i = obj_item_bone;
+	_d = point_distance_3d(x,y,z,_i.x,_i.y,_i.z);
+	if (_d<512)
 	{
-		//pick up
-		if (animation != 3)
+		bone = 1;
+		setTarget(_i.x,_i.y,_i.z);
+		awareness = awareness*.9+.1;
+	
+		if (_d<16)
 		{
-			var animSpd = instance.getAnimSpeed("PickUp");
-			instance.play("PickUp", animSpd, 1, false);
-			alarm[0] = 60;
+			//pick up
+			if (animation != 3)
+			{
+				var animSpd = instance.getAnimSpeed("Pickup")/3;
+				instance.play("Pickup", animSpd, 1, false);
+				animation = 3;
+				alarm[0] = 60*2;
+				
+			}
+			bone = 2;
 		}
-		animation = 3;
 	}
 	
-	bone = 1;
+	
 }
 else
 {
