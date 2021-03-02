@@ -1,4 +1,3 @@
-///@desc Animate
 ///@desc Sight + movement
 var _px,_py,_pz;
 _px = x;
@@ -12,10 +11,18 @@ _r = 8;
 _col = levelColmesh.displaceCapsule(x, y, z+_r, 0, 0, 1, _r, _h, 40, true, false);
 if _col[6]
 {
-	x = _col[0];
-	y = _col[1];
-	z = _col[2]-_r;
-	_ground = (_col[5] > 0.7);
+	var _i = instance_position(x,y,obj_big_trap);
+	if instance_exists(_i)
+	{
+		_ground = !_i.open;	
+	}
+	else
+	{
+		x = _col[0];
+		y = _col[1];
+		z = _col[2]-_r;
+		_ground = (_col[5] > 0.7);
+	}
 }
 
 

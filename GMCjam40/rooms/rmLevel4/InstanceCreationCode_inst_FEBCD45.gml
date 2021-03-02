@@ -1,0 +1,1 @@
+floorTex = sprite_get_texture(spr_button,0);

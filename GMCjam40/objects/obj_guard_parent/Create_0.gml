@@ -16,8 +16,8 @@ attention = 6;
 focus = 100;
 
 //Jump speed and fall speed.
-speed_jump = 3;
-speed_fall = 0.2;
+speed_jump = 5;
+speed_fall = 0.5;
 //Default speed + chase speed.
 speed_min = 1;
 speed_add = 3;
@@ -38,7 +38,7 @@ snd_huh_played = 0;
 #endregion
 
 path = -1;
-path_next = 1;
+path_next = 0;
 
 scale = 6;
 

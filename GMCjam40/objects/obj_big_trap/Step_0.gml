@@ -10,7 +10,7 @@ if (timer != 0)
 		
 		sound_randomize(snd_trapdoor,.2,.2,1);
 		
-		shape.move(levelColmesh, x + 16+32, y + 16, z + 512);
+		shape.move(levelColmesh, x + 16, y + 16, z + 512);
 	}
 	
 	if (timer == 0 && s == -1)
