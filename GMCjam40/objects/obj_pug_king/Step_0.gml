@@ -183,13 +183,13 @@ if (bone != 2)
 
 if instance_exists(obj_item_bone)
 {
-	if !snd_huh_played sound_randomize(snd_huh,.2,.2,1);
-	snd_huh_played = 1;
 	var _i,_d;
 	_i = obj_item_bone;
 	_d = point_distance_3d(x,y,z,_i.x,_i.y,_i.z);
 	if (_d<512)
 	{
+		if !snd_huh_played sound_randomize(snd_huh,.2,.2,1);
+		snd_huh_played = 1;
 		bone = 1;
 		setTarget(_i.x,_i.y,_i.z);
 		awareness = awareness*.9+.1;

@@ -11,7 +11,7 @@ _r = 10;
 _col = levelColmesh.displaceCapsule(x, y, z+_r, 0, 0, 1, _r, _h, 40, true, false);
 if _col[6]
 {
-	var _i = instance_position(x,y,obj_big_trap);
+	var _i = instance_position(x,y,obj_trap_parent);
 	if instance_exists(_i)
 	{
 		_ground = !_i.open;	
@@ -39,7 +39,7 @@ if (target_id>-1)
 	else
 	{
 		var _dis = point_distance_3d(x,y,z,target.x,target.y,target.z);
-		if (_dis<24)
+		if (_dis<24+16*global.trenchcoat)
 		{
 			sound_randomize(snd_capture,.2,.2,1);
 			//Lunge at mouse
@@ -99,7 +99,7 @@ else if !irandom(attention)
 		var _ray = levelColmesh.castRay(x,y,z+8,target.x,target.y,target.z);
 		if (!is_array(_ray))
 		{
-			if global.trenchcoat && (sight<150)
+			if global.trenchcoat && (sight<250)
 			{
 				if !snd_huh_played sound_randomize(snd_huh,.2,.2,1);
 				snd_huh_played = 1;
@@ -107,7 +107,7 @@ else if !irandom(attention)
 				target_x = lerp(x,target.x,.1);
 				target_y = lerp(y,target.y,.1);
 				target_z = lerp(z,target.z,.1);
-				attention = min(attention+.02,1);
+				awareness = min(awareness+.02,1);
 			}
 			else
 			{
@@ -137,7 +137,7 @@ else if !irandom(attention)
 			
 			var _dis = point_distance_3d(x,y,z,target_x,target_y,target_z);
 			//Too far from target
-			if (_dis>64)
+			if (_dis>64*(.2+.8*!path_next))
 			{
 				snd_huh_played = 0;
 				//Return to nearest path point
