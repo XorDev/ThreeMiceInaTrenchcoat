@@ -1,5 +1,5 @@
 #define LIG_COL float3(1,1,1)
-#define AMB_COL float3(.1,.18,.3)
+#define AMB_COL float3(.1,.18,.3)*.7
 
 #define CLIP_DEP 85.
 #define CLIP_RAD 15.

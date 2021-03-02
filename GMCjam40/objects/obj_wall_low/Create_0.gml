@@ -12,6 +12,8 @@ deleteAfterUse = true;
 
 //The parent contains addToLevel(), which adds this tileable wall to the level
 /*
+
+obj_walll
 function addToLevel()
 {
 	//Add to colmesh

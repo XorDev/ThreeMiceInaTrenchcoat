@@ -31,6 +31,8 @@ fric_air = 0.03;
 jumpy = 3;
 #endregion
 
+scale = 6;
+
 instance = new smf_instance(global.modPugKing);
 
 snd_attack = snd_king_attack;
@@ -39,13 +41,6 @@ snd_huh = snd_king_huh;
 instance.play("Idle", .2, 1, true);
 bone = 0;
 
-function draw()
-{
-	matrix_set(matrix_world,matrix_build(x,y,z,0,0,face,6,6,6));
-	instance.draw();
-	
-	matrix_set(matrix_world,matrix_build_identity());
-}
 /*
 go = 0;
 face = 0;

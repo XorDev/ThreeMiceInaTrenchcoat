@@ -41,6 +41,7 @@ function checkNeighbours()
 	{
 		if (layer == list[| i].layer)
 		{
+			if (list[| i].object_index == obj_wall_low){continue;}
 			if ((object_index != obj_wall_bridge && list[| i].object_index == obj_wall_bridge)){wallModel = bridgeWall; continue;}
 			if (list[| i].object_index == obj_trapfloor){wallModel = bridgeWall; continue;}
 			tile += 1;
@@ -55,6 +56,7 @@ function checkNeighbours()
 	{
 		if (layer == list[| i].layer)
 		{
+			if (list[| i].object_index == obj_wall_low){continue;}
 			if ((object_index != obj_wall_bridge && list[| i].object_index == obj_wall_bridge)){wallModel = bridgeWall; continue;}
 			if (list[| i].object_index == obj_trapfloor){wallModel = bridgeWall; continue;}
 			tile += 2;
@@ -69,6 +71,7 @@ function checkNeighbours()
 	{
 		if (layer == list[| i].layer)
 		{
+			if (list[| i].object_index == obj_wall_low){continue;}
 			if ((object_index != obj_wall_bridge && list[| i].object_index == obj_wall_bridge)){wallModel = bridgeWall; continue;}
 			if (list[| i].object_index == obj_trapfloor){wallModel = bridgeWall; continue;}
 			tile += 4;
@@ -83,6 +86,7 @@ function checkNeighbours()
 	{
 		if (layer == list[| i].layer)
 		{
+			if (list[| i].object_index == obj_wall_low){continue;}
 			if ((object_index != obj_wall_bridge && list[| i].object_index == obj_wall_bridge)){wallModel = bridgeWall; continue;}
 			if (list[| i].object_index == obj_trapfloor){wallModel = bridgeWall; continue;}
 			tile += 8;

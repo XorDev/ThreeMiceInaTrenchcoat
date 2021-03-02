@@ -40,6 +40,8 @@ snd_huh_played = 0;
 path = -1;
 path_next = 1;
 
+scale = 6;
+
 //Enemy variables:
 //No animation currently
 anim = true;
@@ -51,7 +53,7 @@ sspeed = 0;
 //Animation Idle = 0, Run = 1
 animation = -1;
 //Face direction
-face = 180;
+face = image_angle+180;
 //Awareness = 1 when chasing or capturing mouse
 awareness = 0;
 //Smooth random variable for turning
@@ -63,8 +65,8 @@ sight = 0;
 //Target struct, array id and position
 target = -1;
 target_id = -1;
-target_x = xstart;
-target_y = ystart;
+target_x = xstart+dcos(face);
+target_y = ystart-dsin(face);
 target_z = z;
 //True when a mouse is captured.
 capture = 0;
@@ -101,4 +103,13 @@ function pathNearest()
 	_nx = path_get_point_x(path,(_pi+1)%_size);
 	_ny = path_get_point_y(path,(_pi+1)%_size);
 	return [_px,_py,_nx,_ny];
+}
+
+
+function draw()
+{
+	matrix_set(matrix_world,matrix_build(x,y,z,0,0,face,6,6,6));
+	instance.draw();
+	
+	matrix_set(matrix_world,matrix_build_identity());
 }

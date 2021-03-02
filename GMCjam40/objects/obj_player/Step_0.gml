@@ -4,8 +4,8 @@ if (global.iframes > 0)
 	global.iframes --;
 }
 
-global.hInput = keyboard_check(ord("D")) - keyboard_check(ord("A"));
-global.vInput = keyboard_check(ord("W")) - keyboard_check(ord("S"));
+global.hInput = (keyboard_check(ord("D")) || keyboard_check(vk_right)) - (keyboard_check(ord("A")) || keyboard_check(vk_left));
+global.vInput = (keyboard_check(ord("W")) || keyboard_check(vk_up)) - (keyboard_check(ord("S")) || keyboard_check(vk_down));
 global.jumpInput = keyboard_check_pressed(vk_space);
 global.trenchCoatInput = keyboard_check_pressed(ord("E"));
 
@@ -115,4 +115,9 @@ if keyboard_check_pressed(ord("B")) && (global.items&2)
 	_i.speed = 6;
 	_i.friction = 1;
 	_i.z = z;
+}
+
+if keyboard_check_pressed(ord("X"))
+{
+	lvlMessage ^= 1;
 }

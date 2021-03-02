@@ -65,6 +65,6 @@ PIXEL main(VERTEX IN) : SV_TARGET
 	}
 	
 	PIXEL OUT;
-	OUT.col = soft/soft.a;
+	OUT.col = pow(soft/soft.a,.7)*1.2;
     return OUT;
 }

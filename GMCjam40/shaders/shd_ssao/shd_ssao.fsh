@@ -6,7 +6,7 @@
 
 #define SAM (RES.z)
 #define RAD 5.
-#define AMT 3.
+#define AMT 5.
 #define D (.5625)
 
 #define RATIO RES.x/RES.y

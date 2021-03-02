@@ -1,5 +1,5 @@
 #define LIG_COL float3(1,1,1)
-#define AMB_COL float3(.1,.18,.3)
+#define AMB_COL float3(.1,.18,.3)*.7
 
 //MIN is the z-near clipping distance.
 #define MIN 1.

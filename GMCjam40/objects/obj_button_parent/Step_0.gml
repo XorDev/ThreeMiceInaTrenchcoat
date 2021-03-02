@@ -14,6 +14,7 @@ if _hover && !instance_exists(global.button)
 	
 	if mouse_check_button_released(mb_left)
 	{
+		sound_randomize(snd_menu_click,.2,.2,1);
 		if (object_index == obj_button_settings)
 		{
 			event_user(0);

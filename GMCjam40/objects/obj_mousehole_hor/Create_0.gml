@@ -1,9 +1,10 @@
 /// @description
 
+event_inherited();
+
 function addToLevel()
 {
 	tex = sprite_get_texture(spr_brick, 0);
-	z = 0;
 	
 	//Add to colmesh
 	var w = 32;

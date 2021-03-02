@@ -33,6 +33,7 @@ if (target_id>-1)
 		var _dis = point_distance_3d(x,y,z,target.x,target.y,target.z);
 		if (_dis<24)
 		{
+			sound_randomize(snd_capture,.2,.2,1);
 			//Lunge at mouse
 			xspeed += (target.x-x)/8;
 			yspeed += (target.y-y)/8;
@@ -40,7 +41,7 @@ if (target_id>-1)
 			capture = 1;
 		
 			//Remove mice if possible
-			if (global.mice>1)
+			if (global.mice>1) && !global.trenchcoat
 			{
 				global.mice--;
 			}
@@ -90,7 +91,7 @@ else if !irandom(attention)
 		var _ray = levelColmesh.castRay(x,y,z+8,target.x,target.y,target.z);
 		if (!is_array(_ray))
 		{
-			if global.trenchcoat && (sight<100)
+			if global.trenchcoat && (sight<150)
 			{
 				if !snd_huh_played sound_randomize(snd_huh,.2,.2,1);
 				snd_huh_played = 1;

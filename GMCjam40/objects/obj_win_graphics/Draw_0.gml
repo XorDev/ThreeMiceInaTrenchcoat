@@ -4,7 +4,7 @@ scaleSpd *= .92;
 scale += scaleSpd;
 smoothAlpha += (1 - smoothAlpha) * .05;
 
-xx = room_width / 2;
+xx = room_width / 2-160;
 yy = room_height / 2 + 90;
 draw_sprite_ext(sprite_index, 0, xx, yy, scale, scale, -45, c_white, 1);
 

@@ -6,6 +6,7 @@ if instance_number(obj_player) > 1
 	exit;
 }
 
+lvlMessage = true;
 update_z_value();
 z += 16;
 radius = 10;
@@ -418,4 +419,4 @@ global.mouseArray[2] = new mouse(-999, -999, -999, global.mouseArray[1]);
 global.masterMouse = global.mouseArray[0];
 
 //4-bit item list;
-global.items = 2;
+global.items = 0;

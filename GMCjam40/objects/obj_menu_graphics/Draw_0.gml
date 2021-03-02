@@ -4,7 +4,7 @@ scaleSpd *= .92;
 scale += scaleSpd;
 smoothAlpha += (1 - smoothAlpha) * .01;
 
-xx = room_width / 2;
+xx = room_width / 2-160;
 yy = room_height / 2;
 gpu_set_texfilter(false);
 draw_sprite_ext(spr_mouse, 0, xx, yy, scale, scale, -45, c_white, 1);
