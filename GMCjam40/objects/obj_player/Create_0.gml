@@ -1,7 +1,5 @@
 /// @description
 
-global.nearestCage = 1
-
 randomize();
 
 //Player variables

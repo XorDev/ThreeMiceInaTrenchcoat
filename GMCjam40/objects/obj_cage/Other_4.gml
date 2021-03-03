@@ -2,7 +2,7 @@
 
 if (global.mice<3)
 {
-	var _d = point_distance(x,y,obj_player.x,obj_player.y);
+	
 	if irandom(1) && (global.mice==1)
 	{
 		var _m = global.mouseArray[1];
@@ -12,7 +12,9 @@ if (global.mice<3)
 		_m.lost = false;
 		_m.angle = 360;
 	}
-	if (_d<=global.nearestCage)
+	
+	var _d = point_distance_3d(x,y,z,obj_player.x,obj_player.y,obj_player.z);
+	if (_d <= global.nearestCage)
 	{
 		global.nearestCage = _d;
 		var _m = global.mouseArray[2];

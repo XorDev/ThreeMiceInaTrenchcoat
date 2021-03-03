@@ -10,8 +10,6 @@
 Texture2D	 tsha : register(t1);
 SamplerState ssha : register(s1);
 
-
-
 struct VERTEX
 {
 	float4 pos : SV_POSITION;

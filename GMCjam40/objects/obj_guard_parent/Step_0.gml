@@ -225,19 +225,20 @@ _dir = point_direction(x,y,target_x,target_y);
 _t = max(_move-sspeed-1,0)*50;
 face += (turn_min+turn_add*awareness)*angle_difference(_dir,face+_t);
 
-var _speed = point_distance(0,0,xspeed,xspeed);
+var _speed = point_distance(0,0,xspeed,yspeed);
 if (_speed > .1)
 {
+	var _spd = 1+(object_index==obj_guard_owl);
 	if (_speed>speed_min)
 	{
 		var animSpd = instance.getAnimSpeed("Run");
-		if (animation != 2) instance.play("Run", animSpd, 1, false);
+		if (animation != 2) instance.play("Run", animSpd*_spd, 1, false);
 		animation = 2;
 	}
 	else
 	{
 		var animSpd = instance.getAnimSpeed("Walk");
-		if (animation != 1) instance.play("Walk", animSpd, 0.2, false);
+		if (animation != 1) instance.play("Walk", animSpd*_spd, 1, false);
 		animation = 1;
 	}
 	if !(steps++%20)
