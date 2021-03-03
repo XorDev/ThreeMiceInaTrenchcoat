@@ -1,9 +1,6 @@
 #define LIG_COL float3(1,1,1)
 #define AMB_COL float3(.1,.18,.3)*.7
 
-#define CLIP_DEP 85.
-#define CLIP_RAD 15.
-
 //MIN is the z-near clipping distance.
 #define MIN 1.
 //MIN is the z-far clipping distance.
@@ -57,7 +54,7 @@ float2 hash2(float2 p)
 float hard(float2 u,float d)
 {
 	float4 shadeRGBA = tsha.Sample(ssha,u);
-	return step(.1,d-unpack_depth(shadeRGBA));
+	return step(96./SHA_RES,d-unpack_depth(shadeRGBA));
 }
 float soft(float2 u,float d)
 {
@@ -79,8 +76,7 @@ PIXEL main(VERTEX IN) : SV_TARGET
 	float2 b = smoothstep(.5,.4,abs(u-.5));
 	
 	float3 c = lerp(LIG_COL,AMB_COL,max(soft(u,IN.coo.z)*b.x*b.y,IN.lig));
-	float dis = length(IN.dep-float3(0,0,1)*clamp(IN.dep.z,0.,CLIP_DEP))-CLIP_RAD;
-	//if (dis<0 || sample.a<0.5) discard;
+	//if (sample.a<0.5) discard;
 	
 	PIXEL OUT;
 	OUT.col = IN.col*sample;

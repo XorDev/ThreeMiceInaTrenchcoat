@@ -4,7 +4,7 @@
 #define MAX 65025.
 //Screen resolution
 #define RATIO RES.x/RES.y
-#define SAM RES.z
+#define SAM (RES.z)
 #define RAD 4.
 #define D (.5625)
 

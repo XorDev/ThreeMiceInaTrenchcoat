@@ -5,7 +5,8 @@
 #define MIN 1.
 //MIN is the z-far clipping distance.
 #define MAX 65025.
-#define RES float2(1024,1024)
+
+uniform float2 SHA_RES;
 
 Texture2D	 tsha : register(t1);
 SamplerState ssha : register(s1);
@@ -13,9 +14,10 @@ SamplerState ssha : register(s1);
 struct VERTEX
 {
 	float4 pos : SV_POSITION;
+	float4 col : COLOR0;
 	float3 nor : NORMAL;
 	float2 tex : TEXCOORD0;
-	float  dep : TEXCOORD1;
+	float3 dep : TEXCOORD1;
 	float3 coo : TEXCOORD2;
 	float  lig : TEXCOORD3;
 };
@@ -51,13 +53,13 @@ float2 hash2(float2 p)
 float hard(float2 u,float d)
 {
 	float4 shadeRGBA = tsha.Sample(ssha,u);
-	return step(.1,d-unpack_depth(shadeRGBA));
+	return step(96./SHA_RES,d-unpack_depth(shadeRGBA));
 }
 float soft(float2 u,float d)
 {
-	float3 o = float3(1./RES,0.);
-	float2 f = floor(u*RES)/RES;
-	float2 s = frac(u*RES);
+	float3 o = float3(1./SHA_RES,0.);
+	float2 f = floor(u*SHA_RES)/SHA_RES;
+	float2 s = frac(u*SHA_RES);
 	
 	float h1 = hard(f+o.zz,d);
 	float h2 = hard(f+o.xz,d);
@@ -73,11 +75,11 @@ PIXEL main(VERTEX IN) : SV_TARGET
 	float2 b = smoothstep(.5,.4,abs(u-.5));
 	
 	float3 c = lerp(LIG_COL,AMB_COL,max(soft(u,IN.coo.z)*b.x*b.y,IN.lig));
-	//if (sample.a<0.5) discard;	
+	//if (sample.a<0.5) discard;
 	
 	PIXEL OUT;
-	OUT.col = sample;
-	OUT.dep = pack_depth(IN.dep);
+	OUT.col = IN.col*sample;
+	OUT.dep = pack_depth(IN.dep.z);
 	OUT.nor = float4(.5+.5*IN.nor,1);
 	OUT.buf = float4(c,1);
     return OUT;

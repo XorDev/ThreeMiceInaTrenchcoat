@@ -84,7 +84,7 @@ function deferred_set(animated)
 	camera_apply(view_camera[0]);
 	gpu_set_blendenable(0);
 	var _uni,_tex;
-	_uni = shader_get_uniform(shd_deferred,"SHA_RES");
+	_uni = shader_get_uniform(_shader,"SHA_RES");
 	shader_set_uniform_f(_uni,global.shadow_res,global.shadow_res);
 	_uni = shader_get_sampler_index(_shader,"ssha");
 	_tex = surface_get_texture(global.surf_sha);
@@ -104,7 +104,7 @@ function deferred_reset()
 function deferred_draw()
 {
 	//SSAO:
-	var _quality = (global.gsettings!=0)+(global.gsettings==2);
+	var _quality = global.gsettings;
 	if _quality
 	{
 		var _proj = matrix_get(matrix_projection);
@@ -114,7 +114,7 @@ function deferred_draw()
 		shader_set(shd_ssao);
 		var _uni,_tex;
 		_uni = shader_get_uniform(shd_ssao,"RES");
-		shader_set_uniform_f(_uni,global.screen_w,global.screen_h,32*_quality);
+		shader_set_uniform_f(_uni,global.screen_w,global.screen_h,32*_quality,3*sqrt(_quality));
 		_uni = shader_get_sampler_index(shd_ssao,"snor");
 		_tex = surface_get_texture(global.surf_nor);
 		texture_set_stage(_uni,_tex);
@@ -125,7 +125,7 @@ function deferred_draw()
 		
 		shader_set(shd_soft);
 		_uni = shader_get_uniform(shd_soft,"RES");
-		shader_set_uniform_f(_uni,global.screen_w,global.screen_h,16*_quality);
+		shader_set_uniform_f(_uni,global.screen_w,global.screen_h,16*sqrt(_quality),3*power(_quality,0.3));
 		_uni = shader_get_sampler_index(shd_soft,"sdep");
 		_tex = surface_get_texture(global.surf_dep);
 		texture_set_stage(_uni,_tex);

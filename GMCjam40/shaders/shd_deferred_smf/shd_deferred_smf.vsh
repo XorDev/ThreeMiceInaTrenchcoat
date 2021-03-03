@@ -13,9 +13,10 @@ struct ATTRIBUTE
 struct VERTEX
 {
 	float4 pos : SV_POSITION;
+	float4 col : COLOR0;
 	float3 nor : NORMAL;
 	float2 tex : TEXCOORD0;
-	float  dep : TEXCOORD1;
+	float3 dep : TEXCOORD1;
 	float3 coo : TEXCOORD2;
 	float  lig : TEXCOORD3;
 };
@@ -57,12 +58,14 @@ VERTEX main(ATTRIBUTE IN)
 	float3 wnor = normalize(mul(gm_Matrices[MATRIX_WORLD], float4(anor,0)).xyz);
 	float3 vnor = normalize(mul(gm_Matrices[MATRIX_WORLD_VIEW], float4(anor,0)).xyz);
 	float l = min(dot(wnor,SUN)+1.,1.);
+	float f = clamp(wpos.z/128.+.5,0.,1.);
 	
 	VERTEX OUT;
     OUT.pos = mul(gm_Matrices[MATRIX_WORLD_VIEW_PROJECTION], float4(apos,1));
+	OUT.col = float4(IN.col0.rgb*f,1);
 	OUT.nor = vnor;
     OUT.tex = IN.tex;
-	OUT.dep = mul(gm_Matrices[MATRIX_WORLD_VIEW], float4(apos,1)).z;
+	OUT.dep = mul(gm_Matrices[MATRIX_WORLD_VIEW], float4(apos,1)).xyz;
 	OUT.coo = mul(lig_mat, float4(wpos,1)).xyz;
 	OUT.lig = l;
     return OUT;

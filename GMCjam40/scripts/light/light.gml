@@ -14,7 +14,8 @@ function light_set_pos(x,y,z,dx,dy,dz,dist)
 }
 function light_follow(x,y,z)
 {
-	light_set_pos(x,y,z,-.48,-.36,-.80,1000);
+	var _d = 800+200*global.gsettings;
+	light_set_pos(x,y,z,-.48,-.36,-.80,_d);
 }
 function light_set(animated)
 {

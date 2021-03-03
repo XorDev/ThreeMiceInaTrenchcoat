@@ -11,7 +11,7 @@
 
 #define RATIO RES.x/RES.y
 
-uniform float3 RES;
+uniform float4 RES;
 
 Texture2D	 tnor : register(t1);
 SamplerState snor : register(s1);
@@ -44,7 +44,7 @@ PIXEL main(VERTEX IN) : SV_TARGET
 	float3 normalRGB = tnor.Sample(snor,IN.tex).rgb;
 	
 	float depth = unpack_depth(depthRGBA);
-	float3 normal = normalize(normalRGB-.5)*float3(1,-1,1);
+	float3 normal = normalize(normalRGB-.5); normal.y = -normal.y;
 	
 	float3 pos = float3(IN.tex-.5,1)*float3(RATIO/D,1./D,1)*depth;
 	float o = 0.;
