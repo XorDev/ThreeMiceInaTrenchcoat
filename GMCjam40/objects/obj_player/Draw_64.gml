@@ -62,5 +62,5 @@ if lvlMessage && !global.fade
 	draw_set_color($FFFFFF);
 	draw_text_transformed(.5*global.screen_w,.1*(0.5+sqrt(_fade))*global.screen_h,global.message,.8,.8,0);
 	draw_set_alpha(1);
-	gpu_set_tex_filter(0);
 }
+gpu_set_tex_filter(0);
