@@ -1,1 +1,1 @@
-floorTex=sprite_get_texture(spr_brickground,0);
+floorSprite = spr_brickground;

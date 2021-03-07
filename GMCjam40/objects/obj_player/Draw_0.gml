@@ -19,17 +19,12 @@ for (var i = 0; i < array_length(global.mouseArray); i ++)
 	}
 }
 deferred_reset();
-
-/*
-deferred_set(0);
-
-if (action)
-{
-	gpu_set_texfilter(false);
-	matrix_set(matrix_world, matrix_build(x, y, z, -30, 0, 10, 1, 1, 1));
-	vertex_submit(global.modSpeechBubble, pr_trianglelist, sprite_get_texture(spr_bubble, 0));
-}
-
-deferred_reset();
-*/
 matrix_set(matrix_world, matrix_build_identity());
+
+//Debug draw colmesh
+/*
+surface_set_target(global.surf_dif);
+matrix_set(matrix_world, matrix_build_identity());
+camera_apply(view_camera[0]);
+levelColmesh.debugDraw(levelColmesh.getRegion(x, y, z, 0, 0, 1, radius, 0));
+surface_reset_target();

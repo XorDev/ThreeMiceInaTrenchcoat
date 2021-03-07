@@ -913,7 +913,7 @@ function colmesh_shapes() constructor
 							vbuff = global.ColMeshDebugShapes[type];
 						}
 						shader_set_uniform_f(shader_get_uniform(sh_colmesh_debug, "u_radius"), 0);
-						matrix_set(matrix_world, matrix_multiply(matrix_build(x, y, z, 0, 0, 0, hsize * 1.01, hsize * 1.01, hsize * 1.01), W));
+						matrix_set(matrix_world, matrix_multiply(matrix_build(x, y, z, 0, 0, 0, halfW * 1.01, halfL * 1.01, halfH * 1.01), W));
 						vertex_submit(vbuff, pr_trianglelist, tex);
 						break;
 				}
@@ -2534,17 +2534,19 @@ function colmesh_disk(_x, _y, _z, _xup, _yup, _zup, _R, _r) : colmesh_shapes() c
 	#endregion
 }
 
-/// @func colmesh_cube(x, y, z, sideLength)
-function colmesh_cube(_x, _y, _z, sideLength) : colmesh_shapes() constructor
+/// @func colmesh_cube(x, y, z, width, length, height)
+function colmesh_cube(_x, _y, _z, width, length, height) : colmesh_shapes() constructor
 {
 	type = eColMeshShape.Cube;
 	x = _x;
 	y = _y;
 	z = _z;
-	hsize = sideLength / 2;
+	halfW = width / 2;
+	halfL = length / 2;
+	halfH = height / 2;
 	
 	#region functions
-		
+	
 	/// @func getMinMax()
 	static getMinMax = function()
 	{
@@ -2552,12 +2554,12 @@ function colmesh_cube(_x, _y, _z, sideLength) : colmesh_shapes() constructor
 			Returns the AABB of the shape as an array with six values
 		*/
 		static ret = array_create(6);
-		ret[0] = x - hsize;
-		ret[1] = y - hsize;
-		ret[2] = z - hsize;
-		ret[3] = x + hsize;
-		ret[4] = y + hsize;
-		ret[5] = z + hsize;
+		ret[0] = x - halfW;
+		ret[1] = y - halfW;
+		ret[2] = z - halfW;
+		ret[3] = x + halfL;
+		ret[4] = y + halfL;
+		ret[5] = z + halfL;
 		return ret;
 	}
 	
@@ -2570,25 +2572,38 @@ function colmesh_cube(_x, _y, _z, sideLength) : colmesh_shapes() constructor
 		*/
 		gml_pragma("forceinline");
 		static ret = array_create(3);
-		//Check bottom
-		var bx = x + clamp(_x - x, -hsize, hsize);
-		var by = y + clamp(_y - y, -hsize, hsize);
-		var bz = z + clamp(_z - z, -hsize, hsize);
-		var d = clamp((bx - _x) * xup + (by - _y) * yup + (bz - _z) * zup, 0, height);
+		
+		//Check bottom of capsule
+		var xx = _x - x;
+		var yy = _y - y;
+		var zz = _z - z;
+		var bx = clamp(xx / halfW, -1, 1);
+		var by = clamp(yy / halfL, -1, 1);
+		var bz = clamp(zz / halfH, -1, 1);
+		var px = x + bx * halfW;
+		var py = y + by * halfL;
+		var pz = z + bz * halfH;
+		var d = clamp((px - _x) * xup + (py - _y) * yup + (pz - _z) * zup, 0, height);
 		var rx1 = _x + xup * d;
 		var ry1 = _y + yup * d;
 		var rz1 = _z + zup * d;
-		var d1 = sqr(rx1 - bx) + sqr(ry1 - by) + sqr(rz1 - bz);
+		var d1 = sqr(rx1 - px) + sqr(ry1 - py) + sqr(rz1 - pz);
 		
-		//Check top
-		var bx = x + clamp(_x + xup * height - x, -hsize, hsize);
-		var by = y + clamp(_y + yup * height - y, -hsize, hsize);
-		var bz = z + clamp(_z + zup * height - z, -hsize, hsize);
-		var d = clamp((bx - _x) * xup + (by - _y) * yup + (bz - _z) * zup, 0, height);
+		//Check top of capsule
+		xx += xup * height;
+		yy += yup * height;
+		zz += zup * height;
+		var bx = clamp(xx / halfW, -1, 1);
+		var by = clamp(yy / halfL, -1, 1);
+		var bz = clamp(zz / halfH, -1, 1);
+		var px = x + bx * halfW;
+		var py = y + by * halfL;
+		var pz = z + bz * halfH;
+		var d = clamp((px - _x) * xup + (py - _y) * yup + (pz - _z) * zup, 0, height);
 		var rx2 = _x + xup * d;
 		var ry2 = _y + yup * d;
 		var rz2 = _z + zup * d;
-		if (sqr(rx2 - bx) + sqr(ry2 - by) + sqr(rz2 - bz) < d1)
+		if (sqr(rx2 - px) + sqr(ry2 - py) + sqr(rz2 - pz) < d1)
 		{
 			ret[0] = rx2;
 			ret[1] = ry2;
@@ -2611,19 +2626,20 @@ function colmesh_cube(_x, _y, _z, sideLength) : colmesh_shapes() constructor
 		*/
 		//Algorithm created by TheSnidr
 		var t = 2;
-		var x1 = ox - x;
-		var y1 = oy - y;
-		var z1 = oz - z;
-		var x2 = cmRay[0] - x;
-		var y2 = cmRay[1] - y;
-		var z2 = cmRay[2] - z;
-		var nx = 0, ny = 0, nz = 0;
+		var x1 = (ox - x) / halfW;
+		var y1 = (oy - y) / halfL;
+		var z1 = (oz - z) / halfH;
+		var x2 = (cmRay[0] - x) / halfW;
+		var y2 = (cmRay[1] - y) / halfL;
+		var z2 = (cmRay[2] - z) / halfH;
+		
+		var nx = 0, ny = 0, nz = 1;
 		var intersection = false;
 		var insideBlock = true;
-		if (x2 != x1 && abs(x1) > hsize)
+		if (x2 != x1 && abs(x1) > 1)
 		{
 			insideBlock = false;
-			var s = hsize * sign(x1 - x2);
+			var s = sign(x1 - x2);
 			var _t = (s - x1) / (x2 - x1);
 			if (_t > 1)
 			{
@@ -2633,21 +2649,23 @@ function colmesh_cube(_x, _y, _z, sideLength) : colmesh_shapes() constructor
 			{
 				var itsY = lerp(y1, y2, _t);
 				var itsZ = lerp(z1, z2, _t);
-				if (abs(itsY) <= hsize && abs(itsZ) <= hsize)
+				if (abs(itsY) <= 1 && abs(itsZ) <= 1)
 				{
 					t = _t;
 					x2 = s;
 					y2 = itsY;
 					z2 = itsZ;
-					nx = sign(z1);
+					nx = sign(x1);
+					ny = 0;
+					nz = 0;
 					intersection = true;
 				}
 			}
 		}
-		if (y2 != y1 && abs(y1) > hsize)
+		if (y2 != y1 && abs(y1) > 1)
 		{
 			insideBlock = false;
-			var s = hsize * sign(y1 - y2);
+			var s = sign(y1 - y2);
 			var _t = (s - y1) / (y2 - y1);
 			if (_t > 1)
 			{
@@ -2657,21 +2675,23 @@ function colmesh_cube(_x, _y, _z, sideLength) : colmesh_shapes() constructor
 			{
 				var itsX = lerp(x1, x2, _t);
 				var itsZ = lerp(z1, z2, _t);
-				if (abs(itsX) <= hsize && abs(itsZ) <= hsize)
+				if (abs(itsX) <= 1 && abs(itsZ) <= 1)
 				{
 					t = _t;
 					x2 = itsX;
 					y2 = s;
 					z2 = itsZ;
-					nx = 0; ny = sign(y1); nz = 0;
+					nx = 0;
+					ny = sign(y1);
+					nz = 0;
 					intersection = true;
 				}
 			}
 		}
-		if (z2 != z1 && abs(z1) > hsize)
+		if (z2 != z1 && abs(z1) > 1)
 		{
 			insideBlock = false;
-			var s = hsize * sign(z1 - z2);
+			var s = sign(z1 - z2);
 			var _t = (s - z1) / (z2 - z1);
 			if (_t > 1)
 			{
@@ -2681,31 +2701,33 @@ function colmesh_cube(_x, _y, _z, sideLength) : colmesh_shapes() constructor
 			{
 				var itsX = lerp(x1, x2, _t);
 				var itsY = lerp(y1, y2, _t);
-				if (abs(itsX) <= hsize && abs(itsY) <= hsize)
+				if (abs(itsX) <= 1 && abs(itsY) <= 1)
 				{
 					t = _t;
 					x2 = itsX;
 					y2 = itsY;
 					z2 = s;
-					nx = 0; ny = 0; nz = sign(z1);
+					nx = 0;
+					ny = 0;
+					nz = sign(z1);
 					intersection = true;
 				}
 			}
 		}
 		if (insideBlock || !intersection) return false;
-
+		
 		///////////////////////////////////////////////////////////////////
 		//Return the point of intersection in world space
-		cmRay[0] = x + x2;
-		cmRay[1] = y + y2;
-		cmRay[2] = z + z2;
+		cmRay[0] = x + x2 * halfW;
+		cmRay[1] = y + y2 * halfL;
+		cmRay[2] = z + z2 * halfH;
 		cmRay[3] = nx;
 		cmRay[4] = ny;
 		cmRay[5] = nz;
 		cmRay[6] = self;
 		return true;
 	}
-	
+		
 	/// @func _getClosestPoint(x, y, z)
 	static _getClosestPoint = function(_x, _y, _z)
 	{
@@ -2714,45 +2736,38 @@ function colmesh_cube(_x, _y, _z, sideLength) : colmesh_shapes() constructor
 			Used by colmesh.getClosestPoint
 		*/
 		static ret = array_create(3);
+		
 		//Find normalized block space position
-		var bx = _x - x;
-		var by = _y - y;
-		var bz = _z - z;
+		var bx = (_x - x) / halfW;
+		var by = (_y - y) / halfL;
+		var bz = (_z - z) / halfH;
 		var b = max(abs(bx), abs(by), abs(bz));
-		var nx = 0, ny = 0, nz = 0;
 		
 		//If the center of the sphere is inside the cube, normalize the largest axis
-		if (b <= hsize)
-		{
-			if (b == abs(bx))
-			{
-				nx = sign(bx);
-				bx = hsize * nx;
+		if (b <= 1){
+			if (b == abs(bx)){
+				bx = sign(bx);
 			}
-			else if (b == abs(by))
-			{
-				ny = sign(by);
-				by = hsize * ny;
+			else if (b == abs(by)){
+				by = sign(by);
 			}
-			else
-			{
-				nz = sign(bz);
-				bz = hsize * nz;
+			else{
+				bz = sign(bz);
 			}
-			bx += x;
-			by += y;
-			bz += z;
-			ret[@ 6] = sqr(bx - _x) + sqr(by - _y) + sqr(bz - _z);
+			ret[@ 0] = x + bx * halfW;
+			ret[@ 1] = y + by * halfL;
+			ret[@ 2] = z + bz * halfH;
+			ret[@ 6] = 0;
 		}
 		else
 		{	//Nearest point on the cube in normalized block space
-			bx = x + clamp(bx, -hsize, hsize);
-			by = y + clamp(by, -hsize, hsize);
-			bz = z + clamp(bz, -hsize, hsize);
+			bx = clamp(bx, -1, 1);
+			by = clamp(by, -1, 1);
+			bz = clamp(bz, -1, 1);
+			ret[@ 0] = x + bx * halfW;
+			ret[@ 1] = y + by * halfL;
+			ret[@ 2] = z + bz * halfH;
 		}
-		ret[@ 0] = bx;
-		ret[@ 1] = by;
-		ret[@ 2] = bz;
 		return ret;
 	}
 	
@@ -2765,48 +2780,55 @@ function colmesh_cube(_x, _y, _z, sideLength) : colmesh_shapes() constructor
 			Returns true if there was a collision.
 		*/
 		//Find normalized block space position
-		var bx = _x - x;
-		var by = _y - y;
-		var bz = _z - z;
+		var bx = (_x - x) / halfW;
+		var by = (_y - y) / halfL;
+		var bz = (_z - z) / halfH;
 		var b = max(abs(bx), abs(by), abs(bz));
 		var nx = 0, ny = 0, nz = 0;
-		var D = 0;
-		
 		//If the center of the sphere is inside the cube, normalize the largest axis
-		if (b <= hsize)
+		if (b <= 1)
 		{
 			if (b == abs(bx))
 			{
-				nx = sign(bx);
-				bx = hsize * nx;
+				bx = sign(bx);
+				nx = bx;
+				ny = 0;
+				nz = 0;
 			}
 			else if (b == abs(by))
 			{
-				ny = sign(by);
-				by = hsize * ny;
+				by = sign(by);
+				nx = 0;
+				ny = by;
+				nz = 0;
 			}
 			else
 			{
-				nz = sign(bz);
-				bz = hsize * nz;
+				bz = sign(bz);
+				nx = 0;
+				ny = 0;
+				nz = bz;
 			}
-			bx += x;
-			by += y;
-			bz += z;
-			var dx = _x - bx;
-			var dy = _y - by;
-			var dz = _z - bz;
+			var px = x + bx * halfW;
+			var py = y + by * halfL;
+			var pz = z + bz * halfH;
+			var dx = _x - px;
+			var dy = _y - py;
+			var dz = _z - pz;
 			var _d = dx * nx + dy * ny + dz * nz;
 			_displace(nx, ny, nz, _xup, _yup, _zup, radius - _d, slope);
 			return true;
 		}
 		//Nearest point on the cube in normalized block space
-		bx = x + clamp(bx, -hsize, hsize);
-		by = y + clamp(by, -hsize, hsize);
-		bz = z + clamp(bz, -hsize, hsize);
-		var dx = _x - bx;
-		var dy = _y - by;
-		var dz = _z - bz;
+		bx = clamp(bx, -1, 1);
+		by = clamp(by, -1, 1);
+		bz = clamp(bz, -1, 1);
+		var px = x + bx * halfW;
+		var py = y + by * halfL;
+		var pz = z + bz * halfH;
+		var dx = _x - px;
+		var dy = _y - py;
+		var dz = _z - pz;
 		var d = dx * dx + dy * dy + dz * dz;
 		if (d > radius * radius) return false;
 		var _d = sqrt(d);
@@ -2823,39 +2845,39 @@ function colmesh_cube(_x, _y, _z, sideLength) : colmesh_shapes() constructor
 			Returns the square of the distance between the shape and the given point
 		*/
 		//Find normalized block space position
-		var bx = _x - x;
-		var by = _y - y;
-		var bz = _z - z;
+		var bx = (_x - x) / halfW;
+		var by = (_y - y) / halfL;
+		var bz = (_z - z) / halfH;
 		var b = max(abs(bx), abs(by), abs(bz));
-		if (b <= hsize)
-		{
+		if (b <= 1)
+		{	//If the center of the sphere is inside the cube, normalize the largest axis
 			return 0; //0 is the highest possible priority
 		}
 		//Nearest point on the cube in normalized block space
-		bx = x + clamp(bx, -hsize, hsize);
-		by = y + clamp(by, -hsize, hsize);
-		bz = z + clamp(bz, -hsize, hsize);
-		var dx = _x - bx;
-		var dy = _y - by;
-		var dz = _z - bz;
+		bx = clamp(bx, -1, 1);
+		by = clamp(by, -1, 1);
+		bz = clamp(bz, -1, 1);
+		var px = x + bx * halfW;
+		var py = y + by * halfL;
+		var pz = z + bz * halfH;
+		var dx = _x - px;
+		var dy = _y - py;
+		var dz = _z - pz;
 		var d = dx * dx + dy * dy + dz * dz;
 		if (d > maxR * maxR){return -1;}
 		return d;
 	}
 	
 	/// @func _intersectsCube(cubeHalfSize, cubeCenterX, cubeCenterY, cubeCenterZ)
-	static _intersectsCube = function(_hsize, bX, bY, bZ) 
+	static _intersectsCube = function(hsize, bX, bY, bZ) 
 	{
 		/*
 			A supplementary function, not meant to be used by itself.
 			Returns true if the shape intersects the given axis-aligned cube
 		*/
-		if	(x - hsize > bX + _hsize) ||
-			(x + hsize < bX - _hsize) ||
-			(y - hsize > bY + _hsize) ||
-			(y + hsize < bY - _hsize) ||
-			(z - hsize > bZ + _hsize) ||
-			(z + hsize < bZ - _hsize) return false;
+		if (abs(bX - x) > hsize + halfW){return false;}
+		if (abs(bY - y) > hsize + halfL){return false;}
+		if (abs(bZ - z) > hsize + halfH){return false;}
 		return true;
 	}
 	
@@ -2876,7 +2898,9 @@ function colmesh_cube(_x, _y, _z, sideLength) : colmesh_shapes() constructor
 function colmesh_block(_M) : colmesh_shapes() constructor
 {
 	type = eColMeshShape.Block;
-	M = _M;
+	M = array_create(16);
+	array_copy(M, 0, _M, 0, 16);
+	
 	lx = 1 / sqrt(M[0] * M[0] + M[1] * M[1] + M[2] * M[2]);
 	ly = 1 / sqrt(M[4] * M[4] + M[5] * M[5] + M[6] * M[6]);
 	lz = 1 / sqrt(M[8] * M[8] + M[9] * M[9] + M[10] * M[10]);

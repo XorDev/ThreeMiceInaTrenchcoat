@@ -2,13 +2,13 @@
 modelList = ds_list_create();
 texMap = ds_map_create();
 
-function addModel(mesh, tex, matrix)
+function addModel(mesh, spr, matrix)
 {
-	var mbuff = texMap[? tex];
+	var mbuff = texMap[? spr];
 	if (is_undefined(mbuff))
 	{
 		mbuff = buffer_create(1, buffer_grow, 1);
-		texMap[? tex] = mbuff;
+		texMap[? spr] = mbuff;
 	}
 	model_combine_ext(mbuff, mesh, matrix);
 }
@@ -59,5 +59,100 @@ function model_combine_ext(trg, src, M)
         buffer_write(trg, buffer_f32, n[0] * l);
         buffer_write(trg, buffer_f32, n[1] * l);
         buffer_write(trg, buffer_f32, n[2] * l);
+	}
+}
+
+function instance_position_layer(xx, yy, obj, layer)
+{
+	static list = ds_list_create();
+	ds_list_clear(list);
+	instance_position_list(xx, yy, obj, list, false);
+	var num = ds_list_size(list);
+	for (var i = num - 1; i >= 0; i --)
+	{
+		var ind = list[| i];
+		if (layer == ind.layer)
+		{
+			return ind;
+		}
+	}
+	return noone;
+}
+
+function checkNeighbours(xx, yy, height, layer)
+{
+	var tile = 0;
+	xx += 16;
+	yy += 16;
+	
+	//Check east
+	var ind = instance_position_layer(xx + 32, yy, obj_wall_parent, layer);
+	if (ind == noone)
+	{
+		tile |= 1;
+	}
+	else if (ind.height != height)
+	{
+		tile |= 16 | 1;
+	}
+
+	//Check north
+	var ind = instance_position_layer(xx, yy - 32, obj_wall_parent, layer);
+	if (ind == noone)
+	{
+		tile |= 2;
+	}
+	else if (ind.height != height)
+	{
+		tile |= 16 | 2;
+	}
+
+	//Check west
+	var ind = instance_position_layer(xx - 32, yy, obj_wall_parent, layer);
+	if (ind == noone)
+	{
+		tile |= 4;
+	}
+	else if (ind.height != height)
+	{
+		tile |= 16 | 4;
+	}
+
+	//Check south
+	var ind = instance_position_layer(xx, yy + 32, obj_wall_parent, layer);
+	if (ind == noone)
+	{
+		tile |= 8;
+	}
+	else if (ind.height != height)
+	{
+		tile |= 16 | 8;
+	}
+	
+	return tile;
+}
+
+function addTiledWalls(x, y, z, mesh, spr, size, tile)
+{
+	if ((tile & 16) && (mesh == global.mbuffWallHorColumns64))
+	{
+		mesh = global.mbuffWallHor64;
+	}
+	
+	if (tile & 1) //If there is no wall beside this one, add a wall
+	{
+		obj_level_geometry.addModel(mesh, spr, matrix_build(x + size, y + size, z, 0, 0, 90, 1, 1, 1));
+	}
+	if (tile & 2) //If there is no wall beside this one, add a wall
+	{
+		obj_level_geometry.addModel(mesh, spr, matrix_build(x + size, y, z, 0, 0, 180, 1, 1, 1));
+	}
+	if (tile & 4) //If there is no wall beside this one, add a wall
+	{
+		obj_level_geometry.addModel(mesh, spr, matrix_build(x, y, z, 0, 0, -90, 1, 1, 1));
+	}
+	if (tile & 8) //If there is no wall beside this one, add a wall
+	{
+		obj_level_geometry.addModel(mesh, spr, matrix_build(x, y + size, z, 0, 0, 0, 1, 1, 1));
 	}
 }

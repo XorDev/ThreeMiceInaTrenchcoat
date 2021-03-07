@@ -242,8 +242,8 @@ function colmesh() : colmesh_shapes() constructor
 		*/
 		levelColmesh.addShape(shape);
 		shape.setSolid(false);
-		shape.setCollisionFunction(colFunc);
-		shape.setRayFunction(rayFunc);
+		if (!is_undefined(colFunc)){shape.setCollisionFunction(colFunc);}
+		if (!is_undefined(rayFunc)){shape.setRayFunction(rayFunc);}
 		return shape;
 	}
 	
@@ -316,7 +316,7 @@ function colmesh() : colmesh_shapes() constructor
 			var mBuffSize = buffer_get_size(mesh);
 			var triNum = mBuffSize div bytesPerTri;
 			array_resize(triangles, array_length(triangles) + triNum);
-			for (var i = 0; i < triNum; i += 1)
+			for (var i = 0; i < mBuffSize; i += bytesPerTri)
 			{
 				static V = array_create(9);
 				for (var j = 0; j < 3; j ++)
@@ -324,7 +324,7 @@ function colmesh() : colmesh_shapes() constructor
 					for (var k = 0; k < 3; k ++)
 					{
 						//Read vert position
-					    V[j * 3 + k] = buffer_peek(mesh, i * bytesPerTri + j * bytesPerVert + k * 4, buffer_f32);
+					    V[j * 3 + k] = buffer_peek(mesh, i + j * bytesPerVert + k * 4, buffer_f32);
 					}
 				}
 				if (is_array(M))
@@ -435,13 +435,9 @@ function colmesh() : colmesh_shapes() constructor
 		cmCol[2] = z;
 		cmCol[6] = -1; //Until collision checking is done, this will store the highest dot product between triangle normal and up vector
 		
-		if (is_undefined(region))
+		if (is_undefined(region) || cmRecursion >= cmMaxRecursion)
 		{
 			//Exit the script if the given region does not exist
-			return cmCol;
-		}
-		if (cmRecursion >= cmMaxRecursion)
-		{
 			//Exit the script if we've reached the recursive limit
 			return cmCol;
 		}
@@ -777,7 +773,11 @@ function colmesh() : colmesh_shapes() constructor
 		}
 		if (!_constrain_ray(x1, y1, z1, x2, y2, z2))
 		{	//The ray is fully outside the borders of this ColMesh
-			return false;
+			cmRay[0] = x2;
+			cmRay[1] = y2;
+			cmRay[2] = z2;
+			cmRay[6] = false;
+			return cmRay;
 		}
 		x1 = cmRay[0];	y1 = cmRay[1];	z1 = cmRay[2];
 		x2 = cmRay[3];	y2 = cmRay[4];	z2 = cmRay[5];
@@ -1405,8 +1405,10 @@ function colmesh() : colmesh_shapes() constructor
 					var _x    = buffer_read(tempBuff, buffer_f32);
 					var _y    = buffer_read(tempBuff, buffer_f32);
 					var _z    = buffer_read(tempBuff, buffer_f32);
-					var hsize = buffer_read(tempBuff, buffer_f32);
-					addShape(new colmesh_cube(_x, _y, _z, hsize * 2));
+					var halfW = buffer_read(tempBuff, buffer_f32);
+					var halfL = buffer_read(tempBuff, buffer_f32);
+					var halfH = buffer_read(tempBuff, buffer_f32);
+					addShape(new colmesh_cube(_x, _y, _z, halfW * 2, halfW * 2, halfH * 2));
 					break;
 				case eColMeshShape.Block:
 					static M = array_create(16);

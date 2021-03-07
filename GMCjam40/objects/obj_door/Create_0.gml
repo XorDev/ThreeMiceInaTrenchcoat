@@ -4,7 +4,7 @@ event_inherited();
 
 function addToLevel()
 {
-	tex = sprite_get_texture(spr_brick, 0);
+	spr = spr_brick;
 	
 	//Add to colmesh
 	var w = 32;
@@ -16,7 +16,7 @@ function addToLevel()
 	levelColmesh.addShape(new colmesh_block(matrix_build(x + w / 2, y + h / 2, z + h - ct / 2, 0, 0, 0, w / 2, w / 2, ct / 2)));
 	
 	//Add to level geometry
-	obj_level_geometry.addModel(global.mbuffTunnelHor, tex, matrix_build(x, y, z, 0, 0, 0, 1, 1, 1));
+	obj_level_geometry.addModel(global.mbuffTunnelHor, spr, matrix_build(x, y, z, 0, 0, 0, 1, 1, 1));
 	//Destroy
 	instance_destroy();
 }

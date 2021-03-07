@@ -8,8 +8,8 @@
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "obj_static_parent",
-    "path": "objects/obj_static_parent/obj_static_parent.yy",
+    "name": "obj_game_object_parent",
+    "path": "objects/obj_game_object_parent/obj_game_object_parent.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
@@ -24,7 +24,9 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"obj_ladder_entrance","path":"objects/obj_ladder_entrance/obj_ladder_entrance.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":4,"eventType":7,"collisionObjectId":null,"parent":{"name":"obj_ladder_entrance","path":"objects/obj_ladder_entrance/obj_ladder_entrance.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,"parent":{"name":"obj_ladder_entrance","path":"objects/obj_ladder_entrance/obj_ladder_entrance.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":72,"eventType":8,"collisionObjectId":null,"parent":{"name":"obj_ladder_entrance","path":"objects/obj_ladder_entrance/obj_ladder_entrance.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],

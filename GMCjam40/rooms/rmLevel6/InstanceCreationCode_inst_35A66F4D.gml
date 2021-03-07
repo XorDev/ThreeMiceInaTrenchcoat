@@ -1,1 +1,1 @@
-floorTex=sprite_get_texture(spr_carpet2,0);
+floorSprite = spr_carpet2;

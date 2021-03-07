@@ -32,17 +32,16 @@ global.mbuffMouseHoleHor = colmesh_load_obj_to_buffer("Scenery/mousehole_tunnel_
 global.mbuffBarrel = colmesh_load_obj_to_buffer("Scenery/Barrel.obj");
 
 //Load game objects (static ones must be loaded as buffers, not vertex buffers)
-global.mbuffCage = colmesh_load_obj_to_buffer("Game objects/Cage.obj");
-global.mbuffLadder = colmesh_load_obj_to_buffer("Game objects/Ladder.obj");
 global.mbuffDoor = colmesh_load_obj_to_buffer("Game objects/Door.obj");
 
 //Load environment models
+global.modLadder = loadObj("Game objects/Ladder.obj");
+global.modCage = loadObj("Game objects/Cage.obj");
 global.modCageDoor = loadObj("Game objects/CageDoor.obj");
 global.modSpikes = loadObj("Game objects/Spikes.obj");
 global.modButton = loadObj("Game objects/Button.obj");
 global.modTrapFloor = loadObj("Scenery/floor_32x32.obj");
 global.modDoor = loadObj("Game objects/Door.obj");
-//global.modSpeechBubble = loadObj("Scenery/SpeechBubble.obj");
 
 //Items
 global.modKey = loadObj("Items/Key.obj");
@@ -81,7 +80,7 @@ if !instance_exists(obj_camera)
 //Make sure the level geometry controller exists
 if !instance_exists(obj_level_geometry)
 {
-	instance_create_depth(0, 0, 0, obj_level_geometry);
+	instance_create_depth(0, 0, -99999, obj_level_geometry);
 }
 
 //Audio controller

@@ -1,26 +1,8 @@
 /// @description
 z = 0;
 event_inherited();
+height = 64;
 
-tile = checkNeighbours();
-
-floorTex = sprite_get_texture(spr_floor_spikes, 0);
-deleteAfterUse = false;
-
-tex = sprite_get_texture(spr_white, 0);
-
-timer = 60; //20 ingame frames until the button goes from active to inactive
-
-h = 16;
-active = 0;
-position = 0;
-countdown = 60;
-colFunc = function()
-{
-	if (is_struct(global.currentCollider))
-	{
-		global.currentCollider.damaged();
-	}
-}
-
-trigger = levelColmesh.addTrigger(new colmesh_sphere(x + 16, y + 16, z + height - h, 8), colFunc);
+//Create a floor object
+floorInd = instance_create_layer(x, y, layer, obj_floor);
+floorInd.floorSprite = spr_floor_spikes;
