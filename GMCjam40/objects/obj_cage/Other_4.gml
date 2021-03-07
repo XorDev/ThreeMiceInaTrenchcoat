@@ -22,8 +22,14 @@ if (global.mice<3)
 		_m.lost = false;
 		_m.angle = 360;
 	}
-	
-	var _d = point_distance_3d(x, y, z, obj_player.x, obj_player.y, obj_player.z);
+	if (instance_exists(obj_player))
+	{
+		var _d = point_distance_3d(x, y, z, obj_player.x, obj_player.y, obj_player.z);
+	}
+	else
+	{
+		var _d = 0;
+	}
 	if (_d <= global.nearestCage)
 	{
 		global.nearestCage = _d;
@@ -33,6 +39,5 @@ if (global.mice<3)
 		_m.z = z+12;
 		_m.lost = false;
 		_m.angle = 360;
-		
 	}
 }

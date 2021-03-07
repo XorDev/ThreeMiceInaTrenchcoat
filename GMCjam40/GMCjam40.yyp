@@ -429,6 +429,10 @@
     {"CopyToMask":-1,"filePath":"datafiles/Levels","resourceVersion":"1.0","name":"Level5","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Levels","resourceVersion":"1.0","name":"Level6","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Levels","resourceVersion":"1.0","name":"rmLevel1.lvl","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Levels","resourceVersion":"1.0","name":"rmLevel2.lvl","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Levels","resourceVersion":"1.0","name":"rmLevel3.lvl","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Levels","resourceVersion":"1.0","name":"rmLevel4.lvl","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Levels","resourceVersion":"1.0","name":"rmLevel5.lvl","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2.3.1.542",
