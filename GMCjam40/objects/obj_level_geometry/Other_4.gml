@@ -3,7 +3,7 @@
 #macro exportLevels 1
 #macro readyForRelease 2
 
-var status = readyForRelease;
+var status = exportLevels;
 
 if (room == rm_menu){exit;}
 
@@ -19,9 +19,9 @@ if (status == inDevelopment || status == exportLevels)
 	}
 	if (status == exportLevels)
 	{
-		saveBuff = buffer_create(1, buffer_grow, 1);
+		var saveBuff = buffer_create(1, buffer_grow, 1);
 		buffer_write(saveBuff, buffer_u8, ds_map_size(texMap));
-		totalSize = 1;
+		var totalSize = 1;
 	}
 
 	var sprite = ds_map_find_first(texMap);
@@ -52,11 +52,14 @@ if (status == inDevelopment || status == exportLevels)
 	if (status == exportLevels)
 	{
 		levelColmesh.writeToBuffer(saveBuff);
-		buffer_resize(saveBuff, buffer_tell(saveBuff));
+		var size = buffer_tell(saveBuff);
+		buffer_resize(saveBuff, size);
+		var compressedBuffer = buffer_compress(saveBuff, 0, size);
 		
 		var path = get_save_filename("", room_get_name(room) + ".lvl");
-		buffer_save(saveBuff, path);
+		buffer_save(compressedBuffer, path);
 		buffer_delete(saveBuff);
+		buffer_delete(compressedBuffer);
 	}
 }
 
@@ -70,16 +73,19 @@ if (status == readyForRelease)
 	var path = "Levels/" + room_get_name(room) + ".lvl";
 	var loadBuff = buffer_load(path);
 	if (loadBuff < 0){exit;}
+	var decompressedBuffer = buffer_decompress(loadBuff);
+	buffer_delete(loadBuff);
+	if (decompressedBuffer < 0){exit;}
 	
-	var num = buffer_read(loadBuff, buffer_u8)
+	var num = buffer_read(decompressedBuffer, buffer_u8)
 	for (var i = 0; i < num; i ++)
 	{
-		var str = buffer_read(loadBuff, buffer_string);
+		var str = buffer_read(decompressedBuffer, buffer_string);
 		var sprite = asset_get_index(str);
-		var size = buffer_read(loadBuff, buffer_u64);
-		buffer_copy(loadBuff, buffer_tell(loadBuff), size, mbuff, 0);
+		var size = buffer_read(decompressedBuffer, buffer_u64);
+		buffer_copy(decompressedBuffer, buffer_tell(decompressedBuffer), size, mbuff, 0);
 		buffer_resize(mbuff, size);
-		buffer_seek(loadBuff, buffer_seek_relative, size);
+		buffer_seek(decompressedBuffer, buffer_seek_relative, size);
 		
 		var vbuff = vertex_create_buffer_from_buffer(mbuff, global.ColMeshFormat);
 		vertex_freeze(vbuff);
@@ -87,6 +93,6 @@ if (status == readyForRelease)
 	}
 	buffer_delete(mbuff);
 	
-	levelColmesh.readFromBuffer(loadBuff);
-	buffer_delete(loadBuff);
+	levelColmesh.readFromBuffer(decompressedBuffer);
+	buffer_delete(decompressedBuffer);
 }

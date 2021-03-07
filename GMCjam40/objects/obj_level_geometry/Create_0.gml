@@ -7,7 +7,7 @@ function addModel(mesh, spr, matrix)
 	var mbuff = texMap[? spr];
 	if (is_undefined(mbuff))
 	{
-		mbuff = buffer_create(1, buffer_grow, 1);
+		mbuff = buffer_create(1, buffer_fixed, 1);
 		texMap[? spr] = mbuff;
 	}
 	model_combine_ext(mbuff, mesh, matrix);
