@@ -1242,7 +1242,9 @@ function colmesh() : colmesh_shapes() constructor
 						buffer_write(tempBuff, buffer_f32, x);
 						buffer_write(tempBuff, buffer_f32, y);
 						buffer_write(tempBuff, buffer_f32, z);
-						buffer_write(tempBuff, buffer_f32, hsize);
+						buffer_write(tempBuff, buffer_f32, halfW);
+						buffer_write(tempBuff, buffer_f32, halfL);
+						buffer_write(tempBuff, buffer_f32, halfH);
 						break;
 					case eColMeshShape.Block:
 						buffer_write(tempBuff, buffer_f32, M[0]);
