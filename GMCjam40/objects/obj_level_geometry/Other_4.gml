@@ -3,7 +3,7 @@
 #macro exportLevels 1
 #macro readyForRelease 2
 
-var status = exportLevels;
+var status = readyForRelease;
 
 if (room == rm_menu){exit;}
 
